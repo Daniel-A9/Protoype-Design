@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Create Event - Brewery Central</title>
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body class="dark">
+    <!-- Top Navigation (Desktop/Tablet) -->
+    <nav class="top s hide-s hide-m">
+        <div class="container">
+            <div class="row no-gap">
+                <div class="col s12">
+                    <div class="nav-content">
+                        <div class="nav-brand">
+                            <img src="https://www.beercss.com/favicon.png" class="circle small">
+                            <span>Brewery Central</span>
+                        </div>
+                        <div class="nav-links">
+                            <a href="index.html" class="nav-link">Home</a>
+                            <a href="EventListPage.html" class="nav-link active">Create Event</a>
+                            <a href="vendorpage.html" class="nav-link">Vendors</a>
+                            <a href="#about" class="nav-link">About</a>
+                        </div>
+                        <div class="nav-actions">
+                            <button class="btn circle small">
+                                <i>search</i>
+                            </button>
+                            <button class="btn circle small">
+                                <i>favorite_border</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom s show-s hide-l">
+        <a href="index.html" class="nav-item">
+            <i>home</i>
+            <span>Home</span>
+        </a>
+        <a href="EventListPage.html" class="nav-item active">
+            <i>add</i>
+            <span>Create Event</span>
+        </a>
+        <a href="vendorpage.html" class="nav-item">
+            <i>store</i>
+            <span>Vendors</span>
+        </a>
+        <a href="#about" class="nav-item">
+            <i>info</i>
+            <span>About</span>
+        </a>
+    </nav>
+
+    <main class="responsive">
+        <!-- Create Event Hero Section -->
+        <section class="events-hero">
+            <div class="hero-banner">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=400&fit=crop" 
+                     alt="Create Event Banner" class="responsive round">
+            </div>
+            
+            <div class="hero-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <h1>Create New Event</h1>
+                            <p>Share your event with the community</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Create Event Form Section -->
+        <section class="create-event-section">
+            <div class="container">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Event Details</h2>
+                        <p>Fill out the information below to create your event</p>
+                    </div>
+                    
+                    <form class="event-form" hx-post="/api/create-event" hx-target="#form-result" hx-swap="innerHTML">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event-title">Event Title *</label>
+                                <input type="text" id="event-title" name="title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-category">Category *</label>
+                                <select id="event-category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="tasting">Tasting</option>
+                                    <option value="festival">Festival</option>
+                                    <option value="workshop">Workshop</option>
+                                    <option value="tour">Brewery Tour</option>
+                                    <option value="meetup">Meetup</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event-date">Date *</label>
+                                <input type="date" id="event-date" name="date" required>
+                            </div>
+                            <div class="form-row-time">
+                                <div class="form-group">
+                                    <label for="start-time">Start Time *</label>
+                                    <input type="time" id="start-time" name="start_time" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="end-time">End Time *</label>
+                                    <input type="time" id="end-time" name="end_time" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event-location">Location *</label>
+                                <input type="text" id="event-location" name="location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-price">Price</label>
+                                <input type="number" id="event-price" name="price" min="0" step="0.01" placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="event-description">Description *</label>
+                            <textarea id="event-description" name="description" rows="4" required placeholder="Describe your event, what attendees can expect, and any special details..."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event-image">Upload Event Image</label>
+                                <div class="upload-container">
+                                    <input type="file" id="event-image" name="event_image" accept="image/*" style="display: none;">
+                                    <button type="button" class="btn outline upload-btn" onclick="document.getElementById('event-image').click()">
+                                        <i>cloud_upload</i>
+                                        <span>Choose Image</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="capacity">Capacity</label>
+                                <input type="number" id="capacity" name="capacity" min="1" placeholder="Unlimited">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ticket-link">Ticket Purchase Link</label>
+                            <input type="url" id="ticket-link" name="ticket_link" placeholder="https://example.com/tickets">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email">Contact Email *</label>
+                            <input type="email" id="contact-email" name="contact_email" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn outline cancel-btn">Cancel</button>
+                            <button type="submit" class="btn outline submit-btn">Create Event</button>
+                        </div>
+
+                        <div id="form-result"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Navigation Styles */
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--on-surface);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: #ceee92;
+            color: #000000;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Bottom Navigation */
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--on-surface);
+            transition: color 0.2s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #ceee92;
+        }
+
+        .nav-item span {
+            font-size: 0.75rem;
+        }
+
+        /* Hero Section */
+        .events-hero {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .hero-banner {
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 2rem 0;
+        }
+
+        .hero-content h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        /* Create Event Form Section */
+        .create-event-section {
+            padding: 2rem 0;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--surface-container);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            color: var(--on-surface);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--on-surface-variant);
+        }
+
+        .event-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-row-time {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: var(--on-surface);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: var(--surface-container-low);
+            border: 1px solid var(--outline);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--on-surface);
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input[type="file"] {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ceee92;
+            box-shadow: 0 0 0 2px rgba(206, 238, 146, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .form-actions .btn {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+        }
+
+        .cancel-btn,
+        .submit-btn {
+            background-color: transparent;
+            border: 2px solid #ceee92;
+            color: #ceee92;
+        }
+
+        .cancel-btn:hover,
+        .submit-btn:hover {
+            background-color: #ceee92;
+            color: #000000;
+        }
+
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .upload-btn {
+            background-color: transparent;
+            border: 2px solid #ceee92;
+            color: #ceee92;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .upload-btn:hover {
+            background-color: #ceee92;
+            color: #000000;
+        }
+
+        .upload-btn i {
+            font-size: 1.1rem;
+        }
+
+        #form-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-container {
+                margin: 0 1rem;
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form-row-time {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+            }
+
+            .hero-content {
+                position: static;
+                background: transparent;
+                padding: 1rem 0;
+            }
+
+            .hero-content h1 {
+                color: var(--on-surface);
+            }
+
+            .hero-content p {
+                color: var(--on-surface-variant);
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form validation
+            const form = document.querySelector('.event-form');
+            const requiredFields = form.querySelectorAll('[required]');
+            const fileInput = document.getElementById('event-image');
+
+            // File upload preview
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                const uploadBtn = document.querySelector('.upload-btn');
+                
+                if (file) {
+                    // Update button text to show selected file
+                    uploadBtn.innerHTML = `<i>check_circle</i><span>${file.name}</span>`;
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // Create preview image if it doesn't exist
+                        let preview = document.getElementById('image-preview');
+                        if (!preview) {
+                            preview = document.createElement('img');
+                            preview.id = 'image-preview';
+                            preview.style.maxWidth = '200px';
+                            preview.style.maxHeight = '150px';
+                            preview.style.marginTop = '0.5rem';
+                            preview.style.borderRadius = '8px';
+                            preview.style.objectFit = 'cover';
+                            fileInput.parentNode.appendChild(preview);
+                        }
+                        preview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // Reset button if no file selected
+                    uploadBtn.innerHTML = `<i>cloud_upload</i><span>Choose Image</span>`;
+                }
+            });
+
+            // Real-time validation
+            requiredFields.forEach(field => {
+                field.addEventListener('blur', function() {
+                    validateField(this);
+                });
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                requiredFields.forEach(field => {
+                    if (!validateField(field)) {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Show loading state
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Creating Event...';
+                    submitBtn.disabled = true;
+
+                    // Simulate form submission (replace with actual HTMX handling)
+                    setTimeout(() => {
+                        document.getElementById('form-result').innerHTML = 
+                            '<div style="color: #ceee92; background: rgba(206, 238, 146, 0.1); padding: 1rem; border-radius: 8px;">Event created successfully!</div>';
+                        
+                        // Reset form
+                        form.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 2000);
+                }
+            });
+
+            function validateField(field) {
+                const value = field.value.trim();
+                const isValid = value.length > 0;
+
+                // Remove existing error styling
+                field.style.borderColor = '';
+                const existingError = field.parentNode.querySelector('.error-message');
+                if (existingError) {
+                    existingError.remove();
+                }
+
+                if (!isValid) {
+                    field.style.borderColor = '#ff6b6b';
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'error-message';
+                    errorMsg.style.color = '#ff6b6b';
+                    errorMsg.style.fontSize = '0.8rem';
+                    errorMsg.style.marginTop = '0.25rem';
+                    errorMsg.textContent = 'This field is required';
+                    field.parentNode.appendChild(errorMsg);
+                }
+
+                return isValid;
+            }
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+  </body>
+</html>

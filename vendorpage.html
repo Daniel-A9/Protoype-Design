@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,8 +10,8 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-</head>
-<body class="dark">
+  </head>
+  <body class="dark">
     <!-- Top Navigation (Desktop/Tablet) -->
     <nav class="top s hide-s hide-m">
         <div class="container">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="nav-actions">
                             <button class="btn circle small">
-                                <i>search</i>
+        <i>search</i>
                             </button>
                             <button class="btn circle small">
                                 <i>favorite_border</i>
@@ -45,7 +45,7 @@
     <!-- Bottom Navigation (Mobile) -->
     <nav class="bottom s show-s hide-l">
         <a href="#home" class="nav-item active">
-            <i>home</i>
+        <i>home</i>
             <span>Home</span>
         </a>
         <a href="#products" class="nav-item">
@@ -59,7 +59,7 @@
         <a href="#posts" class="nav-item">
             <i>article</i>
             <span>Posts</span>
-        </a>
+      </a>
     </nav>
 
     <main class="responsive">
@@ -1211,16 +1211,16 @@
 
         @media (max-width: 480px) {
             .profile-actions .btn {
-                padding: 0.4rem 0.5rem;
+                padding: 0.1rem 0.15rem;
                 font-size: 0.8rem;
             }
 
             .profile-actions .btn i {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
 
             .profile-actions .dropdown-trigger {
-                padding: 0.4rem 0.5rem;
+                padding: 0.1rem 0.15rem;
                 font-size: 0.8rem;
             }
 
@@ -1231,11 +1231,12 @@
 
             .message-btn {
                 flex: 0 0 auto !important;
-                padding: 0.4rem 0.75rem !important;
+                padding: 0.1rem 0.2rem !important;
             }
 
             .message-btn i {
                 margin: 0;
+                font-size: 1rem;
             }
 
 
@@ -1462,5 +1463,5 @@
             window.addEventListener('scroll', updateActiveNav);
         });
     </script>
-</body>
+  </body>
 </html>

@@ -26,7 +26,6 @@
                             <a href="#home" class="nav-link active">Home</a>
                             <a href="#products" class="nav-link">Products</a>
                             <a href="#about" class="nav-link">About</a>
-                            <a href="#reviews" class="nav-link">Reviews</a>
                             <a href="#contact" class="nav-link">Contact</a>
                         </div>
                         <div class="nav-actions">
@@ -56,10 +55,6 @@
         <a href="#about" class="nav-item">
             <i>info</i>
             <span>About</span>
-        </a>
-        <a href="#reviews" class="nav-item">
-            <i>star</i>
-            <span>Reviews</span>
         </a>
         <a href="#contact" class="nav-item">
             <i>contact_support</i>
@@ -121,6 +116,45 @@
                                         <i>message</i>
                                         Message
                                     </button>
+                                    <div class="dropdown-container">
+                                        <button class="btn large outline dropdown-trigger" onclick="toggleDropdown()">
+                                            <i>info</i>
+                                            Info
+                                        </button>
+                                        <div class="dropdown-content" id="info-dropdown">
+                                            <div class="contact-info">
+                                                <h6>Visit Us</h6>
+                                                <div class="contact-item">
+                                                    <i>location_on</i>
+                                                    <div>
+                                                        <strong>Address</strong>
+                                                        <p>123 Brewery Lane<br>Beer City, BC 12345</p>
+                                                    </div>
+                                                </div>
+                                                <div class="contact-item">
+                                                    <i>phone</i>
+                                                    <div>
+                                                        <strong>Phone</strong>
+                                                        <p>(555) 123-BREW</p>
+                                                    </div>
+                                                </div>
+                                                <div class="contact-item">
+                                                    <i>email</i>
+                                                    <div>
+                                                        <strong>Email</strong>
+                                                        <p>hello@brewerycentral.com</p>
+                                                    </div>
+                                                </div>
+                                                <div class="contact-item">
+                                                    <i>schedule</i>
+                                                    <div>
+                                                        <strong>Hours</strong>
+                                                        <p>Mon-Fri: 9AM-6PM<br>Sat-Sun: 10AM-4PM</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -279,71 +313,12 @@
             </div>
         </section>
 
-        <!-- Reviews Section -->
-        <section id="reviews" class="reviews-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <h3>Customer Reviews</h3>
-                        <div class="reviews-grid">
-                            <div class="card medium review-card">
-                                <div class="card-content">
-                                    <div class="review-header">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                        <div class="reviewer-info">
-                                            <h6>BeerLover42</h6>
-                                            <div class="review-rating">
-                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
-                                            </div>
-                                        </div>
-                                        <small class="review-date">2 days ago</small>
-                                    </div>
-                                    <p class="review-text">"Amazing quality! The Citrus IPA is exactly what I was looking for. Perfect balance of hops and citrus notes."</p>
-                                </div>
-                            </div>
-
-                            <div class="card medium review-card">
-                                <div class="card-content">
-                                    <div class="review-header">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                        <div class="reviewer-info">
-                                            <h6>HopHead</h6>
-                                            <div class="review-rating">
-                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star_half</i>
-                                            </div>
-                                        </div>
-                                        <small class="review-date">1 week ago</small>
-                                    </div>
-                                    <p class="review-text">"Great selection and fast shipping. The Chocolate Stout is perfect for winter evenings."</p>
-                                </div>
-                            </div>
-
-                            <div class="card medium review-card">
-                                <div class="card-content">
-                                    <div class="review-header">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                        <div class="reviewer-info">
-                                            <h6>CraftBeerFan</h6>
-                                            <div class="review-rating">
-                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
-                                            </div>
-                                        </div>
-                                        <small class="review-date">2 weeks ago</small>
-                                    </div>
-                                    <p class="review-text">"Brewery Central never disappoints. Their Golden Lager is crisp and refreshing - my go-to summer beer!"</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact-section">
             <div class="container">
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12">
                         <h3>Get in Touch</h3>
                         <form hx-post="/api/contact" hx-target="#contact-response" hx-swap="innerHTML">
                             <div class="field">
@@ -365,87 +340,11 @@
                         </form>
                         <div id="contact-response"></div>
                     </div>
-                    <div class="col s12 m6">
-                        <h3>Visit Us</h3>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <i>location_on</i>
-                                <div>
-                                    <strong>Address</strong>
-                                    <p>123 Brewery Lane<br>Beer City, BC 12345</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <i>phone</i>
-                                <div>
-                                    <strong>Phone</strong>
-                                    <p>(555) 123-BREW</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <i>email</i>
-                                <div>
-                                    <strong>Email</strong>
-                                    <p>hello@brewerycentral.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <i>schedule</i>
-                                <div>
-                                    <strong>Hours</strong>
-                                    <p>Mon-Fri: 9AM-6PM<br>Sat-Sun: 10AM-4PM</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m4">
-                    <h5>Brewery Central</h5>
-                    <p>Crafting exceptional beers with passion and precision since 2015.</p>
-                    <div class="social-links">
-                        <a href="#" class="btn circle small"><i>facebook</i></a>
-                        <a href="#" class="btn circle small"><i>twitter</i></a>
-                        <a href="#" class="btn circle small"><i>instagram</i></a>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <h6>Quick Links</h6>
-                    <ul>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col s12 m4">
-                    <h6>Newsletter</h6>
-                    <p>Subscribe for updates on new brews and special offers.</p>
-                    <form hx-post="/api/newsletter" hx-target="#newsletter-response" hx-swap="innerHTML">
-                        <div class="field">
-                            <input type="email" name="email" placeholder="Enter your email" required>
-                            <button type="submit" class="btn small">Subscribe</button>
-                        </div>
-                    </form>
-                    <div id="newsletter-response"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <div class="footer-bottom">
-                        <p>&copy; 2024 Brewery Central. All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- Contact Modal (HTMX target) -->
     <div id="contact-modal" class="modal">
@@ -676,50 +575,34 @@
             color: var(--on-surface-variant);
         }
 
-        /* Reviews Section */
-        .reviews-section {
-            padding: 2rem 0;
-            background: var(--surface-container-low);
+        /* Dropdown Styles */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
         }
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--surface-container);
+            border: 1px solid var(--outline-variant);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            min-width: 300px;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            padding: 1rem;
         }
 
-        .review-card {
-            transition: transform 0.2s;
+        .dropdown-content.show {
+            display: block;
         }
 
-        .review-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .dropdown-content h6 {
             margin-bottom: 1rem;
-        }
-
-        .reviewer-info {
-            flex: 1;
-        }
-
-        .review-rating {
             color: var(--primary);
-            margin-top: 0.25rem;
-        }
-
-        .review-date {
-            color: var(--on-surface-variant);
-        }
-
-        .review-text {
-            font-style: italic;
-            color: var(--on-surface-variant);
         }
 
         /* Contact Section */
@@ -753,54 +636,6 @@
             color: var(--on-surface-variant);
         }
 
-        /* Footer */
-        .footer {
-            background: var(--surface-container);
-            padding: 2rem 0 1rem;
-            margin-top: 3rem;
-        }
-
-        .footer h5,
-        .footer h6 {
-            margin-bottom: 1rem;
-        }
-
-        .footer ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer ul li a {
-            color: var(--on-surface-variant);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer ul li a:hover {
-            color: var(--primary);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--outline-variant);
-            margin-top: 2rem;
-        }
-
-        .footer-bottom p {
-            color: var(--on-surface-variant);
-            margin: 0;
-        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -826,12 +661,15 @@
                 grid-template-columns: 1fr;
             }
 
-            .reviews-grid {
-                grid-template-columns: 1fr;
-            }
 
             .contact-section .row {
                 flex-direction: column;
+            }
+
+            .dropdown-content {
+                min-width: 280px;
+                right: auto;
+                left: 0;
             }
         }
 
@@ -865,6 +703,21 @@
 
     <script>
         // Essential JavaScript for UI interactions only
+        function toggleDropdown() {
+            const dropdown = document.getElementById('info-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('info-dropdown');
+            const trigger = document.querySelector('.dropdown-trigger');
+            
+            if (!dropdown.contains(event.target) && !trigger.contains(event.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             // Smooth scroll for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

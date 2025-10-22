@@ -25,8 +25,8 @@
                         <div class="nav-links">
                             <a href="#home" class="nav-link active">Home</a>
                             <a href="#products" class="nav-link">Products</a>
+                            <a href="#posts" class="nav-link">Posts</a>
                             <a href="#about" class="nav-link">About</a>
-                            <a href="#contact" class="nav-link">Contact</a>
                         </div>
                         <div class="nav-actions">
                             <button class="btn circle small">
@@ -56,9 +56,9 @@
             <i>info</i>
             <span>About</span>
         </a>
-        <a href="#contact" class="nav-item">
-            <i>contact_support</i>
-            <span>Contact</span>
+        <a href="#posts" class="nav-item">
+            <i>article</i>
+            <span>Posts</span>
         </a>
     </nav>
 
@@ -102,24 +102,24 @@
                                 </div>
                                 
                                 <div class="profile-actions">
-                                    <button class="btn large" 
+                                    <button class="btn large follow-btn" 
                                             hx-post="/api/follow" 
                                             hx-target="this" 
                                             hx-swap="outerHTML">
                                         <i>person_add</i>
-                                        Follow
+                                        <span class="btn-text">Follow</span>
                                     </button>
-                                    <button class="btn large outline" 
+                                    <button class="btn large outline message-btn" 
                                             hx-get="/contact-form" 
                                             hx-target="#contact-modal" 
                                             hx-swap="innerHTML">
-                                        <i>message</i>
-                                        Message
+                                        <i>mail</i>
+                                        <span class="btn-text">Message</span>
                                     </button>
                                     <div class="dropdown-container">
-                                        <button class="btn large outline dropdown-trigger" onclick="toggleDropdown()">
+                                        <button class="btn large outline dropdown-trigger info-btn" onclick="toggleDropdown()">
                                             <i>info</i>
-                                            Info
+                                            <span class="btn-text">Info</span>
                                         </button>
                                         <div class="dropdown-content" id="info-dropdown">
                                             <div class="contact-info">
@@ -190,7 +190,7 @@
                             </div>
                         </div>
                         
-                        <div id="products-grid" class="products-grid">
+                        <div id="products-grid" class="products-horizontal-scroll">
                             <!-- Product Card 1 -->
                             <div class="card medium product-card">
                                 <div class="card-content">
@@ -307,6 +307,84 @@
                                     </button>
                                 </div>
                             </div>
+
+                            <!-- Product Card 4 -->
+                            <div class="card medium product-card">
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" 
+                                         alt="Hefeweizen" class="responsive round">
+                                    <div class="product-info">
+                                        <h5>Hefeweizen</h5>
+                                        <p class="product-description">Traditional German wheat beer with banana and clove notes</p>
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
+                                            </div>
+                                            <span class="rating-text">4.6 (95 reviews)</span>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">$8.49</span>
+                                            <span class="unit">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn small" 
+                                            hx-post="/api/cart/add" 
+                                            hx-vals='{"product_id": "hefeweizen"}' 
+                                            hx-target="#cart-count" 
+                                            hx-swap="innerHTML">
+                                        <i>add_shopping_cart</i>
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn small outline" 
+                                            hx-post="/api/favorite" 
+                                            hx-vals='{"product_id": "hefeweizen"}' 
+                                            hx-target="this" 
+                                            hx-swap="outerHTML">
+                                        <i>favorite_border</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 5 -->
+                            <div class="card medium product-card">
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
+                                         alt="Pale Ale" class="responsive round">
+                                    <div class="product-info">
+                                        <h5>Pale Ale</h5>
+                                        <p class="product-description">Classic American pale ale with balanced hop bitterness</p>
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star_half</i>
+                                            </div>
+                                            <span class="rating-text">4.5 (156 reviews)</span>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">$7.49</span>
+                                            <span class="unit">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn small" 
+                                            hx-post="/api/cart/add" 
+                                            hx-vals='{"product_id": "pale-ale"}' 
+                                            hx-target="#cart-count" 
+                                            hx-swap="innerHTML">
+                                        <i>add_shopping_cart</i>
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn small outline" 
+                                            hx-post="/api/favorite" 
+                                            hx-vals='{"product_id": "pale-ale"}' 
+                                            hx-target="this" 
+                                            hx-swap="outerHTML">
+                                        <i>favorite_border</i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -314,31 +392,237 @@
         </section>
 
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
+        <!-- Vendor Posts Section -->
+        <section id="posts" class="posts-section">
             <div class="container">
                 <div class="row">
                     <div class="col s12">
-                        <h3>Get in Touch</h3>
-                        <form hx-post="/api/contact" hx-target="#contact-response" hx-swap="innerHTML">
-                            <div class="field">
-                                <input type="text" name="name" placeholder="Your Name" required>
-                                <label>Name</label>
+                        <h3>Latest Posts</h3>
+                        
+                        <!-- Post Card 1 -->
+                        <div class="card medium post-card">
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Brewery Central</h6>
+                                        <small class="text-grey">2 hours ago</small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="field">
-                                <input type="email" name="email" placeholder="Your Email" required>
-                                <label>Email</label>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop" 
+                                     alt="Brewing Process" class="responsive round medium-height">
+                                <p>Just finished brewing our latest batch of Citrus IPA! The hops are perfectly balanced with refreshing citrus notes. Can't wait to share this with our community. The brewing process took 3 weeks of careful fermentation and conditioning. 🍺</p>
                             </div>
-                            <div class="field">
-                                <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-                                <label>Message</label>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="clickable-container" onclick="toggleLike(this)">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">24</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="clickable-container" onclick="toggleComments(this)">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">8</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <button type="submit" class="btn large">
-                                <i>send</i>
-                                Send Message
-                            </button>
-                        </form>
-                        <div id="contact-response"></div>
+                            
+                            <!-- Comments Section -->
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BeerLover42</strong>
+                                                <p>This looks amazing! When will it be available in stores?</p>
+                                                <small class="text-grey">1 hour ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>HopHead</strong>
+                                                <p>Love the citrus notes! Perfect for summer 🍺</p>
+                                                <small class="text-grey">45 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add Comment Form -->
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="input-field">
+                                                <input type="text" class="comment-input" placeholder="Write a comment...">
+                                                <button class="btn small" onclick="addComment(this)">Post</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post Card 2 -->
+                        <div class="card medium post-card">
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Brewery Central</h6>
+                                        <small class="text-grey">1 day ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
+                                     alt="Chocolate Stout" class="responsive round medium-height">
+                                <p>Our seasonal Chocolate Stout is back! Rich chocolate and coffee flavors with a smooth finish. Perfect for these cooler evenings. Limited batch available - get yours before it's gone! ☕</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="clickable-container" onclick="toggleLike(this)">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">31</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="clickable-container" onclick="toggleComments(this)">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">12</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Comments Section -->
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>StoutLover</strong>
+                                                <p>Perfect for winter nights! The chocolate notes are incredible</p>
+                                                <small class="text-grey">3 hours ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add Comment Form -->
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="input-field">
+                                                <input type="text" class="comment-input" placeholder="Write a comment...">
+                                                <button class="btn small" onclick="addComment(this)">Post</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post Card 3 -->
+                        <div class="card medium post-card">
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Brewery Central</h6>
+                                        <small class="text-grey">3 days ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
+                                     alt="Brewery Tour" class="responsive round medium-height">
+                                <p>New brewery tour dates are live! Come see how we craft our signature beers. Includes tasting flight and take-home growler. Book your spot today! Limited to 15 people per tour. 🏭</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="clickable-container" onclick="toggleLike(this)">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">18</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="clickable-container" onclick="toggleComments(this)">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Comments Section -->
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BreweryTourist</strong>
+                                                <p>I went on the tour last week! Highly recommend it</p>
+                                                <small class="text-grey">1 day ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add Comment Form -->
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="input-field">
+                                                <input type="text" class="comment-input" placeholder="Write a comment...">
+                                                <button class="btn small" onclick="addComment(this)">Post</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -433,6 +717,11 @@
             z-index: 2;
         }
 
+        .hero-banner img {
+            height: 300px;
+            object-fit: cover;
+        }
+
         .profile-content {
             display: flex;
             align-items: center;
@@ -500,6 +789,7 @@
         /* Products Section */
         .products-section {
             padding: 2rem 0;
+            overflow: hidden;
         }
 
         .section-header {
@@ -517,10 +807,54 @@
             flex-wrap: wrap;
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        .products-horizontal-scroll {
+            display: flex;
             gap: 1.5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .products-horizontal-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .products-horizontal-scroll::-webkit-scrollbar-track {
+            background: var(--surface-container-low);
+            border-radius: 4px;
+        }
+
+        .products-horizontal-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .products-horizontal-scroll::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-container);
+        }
+
+        /* Hide scrollbar on mobile for cleaner look */
+        @media (max-width: 768px) {
+            .products-horizontal-scroll::-webkit-scrollbar {
+                height: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-horizontal-scroll::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .product-card {
+            flex: 0 0 320px;
+            min-width: 320px;
+            flex-shrink: 0;
         }
 
         .product-card {
@@ -530,6 +864,117 @@
         .product-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-card .card-content img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        /* Posts Section */
+        .posts-section {
+            padding: 2rem 0;
+            background: var(--surface-container-low);
+        }
+
+        .post-card {
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .post-card .card-content img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .clickable-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .clickable-container:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .clickable-container i {
+            font-size: 1.2rem;
+        }
+
+        .clickable-container.liked i {
+            color: #f44336;
+        }
+
+        .clickable-container.liked .like-text {
+            color: #f44336;
+        }
+
+        .comments-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .comment-item {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comment-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .comment-item p {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .add-comment {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-field {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .comment-input {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 0.5rem;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .comment-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .comment-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn.small {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            min-width: auto;
         }
 
         .product-info {
@@ -646,30 +1091,219 @@
             .profile-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 0.75rem;
+            }
+
+            .profile-info {
+                order: 1;
+            }
+
+            .profile-actions {
+                order: 2;
+                justify-content: center;
+                flex-direction: row;
+                width: 100%;
+                gap: 0.5rem;
+            }
+
+            .profile-actions .btn {
+                flex: 1;
+                min-width: 0;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            .profile-actions .btn i {
+                font-size: 1rem;
+            }
+
+            .profile-actions .dropdown-container {
+                flex: 1;
+            }
+
+            .profile-actions .dropdown-trigger {
+                width: 100%;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
             }
 
             .profile-stats {
+                order: 3;
                 justify-content: center;
+                gap: 1rem;
+                flex-direction: row;
+            }
+
+            .stat {
+                flex: 1;
+                min-width: 0;
             }
 
             .section-header {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 1rem;
             }
 
-            .products-grid {
-                grid-template-columns: 1fr;
+            .filter-controls {
+                width: 100%;
+                justify-content: center;
             }
 
+            .products-horizontal-scroll {
+                flex-direction: row;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 1rem;
+                padding: 0.5rem 0;
+            }
 
-            .contact-section .row {
-                flex-direction: column;
+            .product-card {
+                flex: 0 0 280px;
+                min-width: 280px;
+                width: 280px;
+                max-width: 280px;
+                flex-shrink: 0;
+            }
+
+            .product-card .card-content img {
+                height: 250px;
+                object-fit: cover;
+            }
+
+            .post-card .card-content img {
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .vendor-profile {
+                margin: 0 0.5rem;
+                padding: 1.5rem;
+            }
+
+            .hero-banner {
+                margin-bottom: -2rem;
+            }
+
+            .hero-banner img {
+                height: 200px;
             }
 
             .dropdown-content {
                 min-width: 280px;
                 right: auto;
                 left: 0;
+            }
+
+            .container {
+                padding: 0 1rem;
+                overflow: hidden;
+            }
+
+            .posts-section {
+                padding: 1rem 0;
+            }
+
+            .products-section {
+                padding: 1rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-actions .btn {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .profile-actions .btn i {
+                font-size: 0.9rem;
+            }
+
+            .profile-actions .dropdown-trigger {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            /* Hide text on message button, show only envelope icon */
+            .message-btn .btn-text {
+                display: none;
+            }
+
+            .message-btn {
+                flex: 0 0 auto !important;
+                padding: 0.4rem 0.75rem !important;
+            }
+
+            .message-btn i {
+                margin: 0;
+            }
+
+
+            /* Shorten Info button text */
+            .info-btn .btn-text::after {
+                content: '';
+            }
+
+            .info-btn .btn-text {
+                font-size: 0;
+            }
+
+            .info-btn .btn-text::before {
+                content: 'i';
+                font-size: 0.8rem;
+                font-weight: bold;
+            }
+
+            .profile-stats {
+                flex-direction: row;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .stat {
+                flex: 1;
+                min-width: 0;
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 1.1rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .product-card {
+                flex: 0 0 250px;
+                min-width: 250px;
+                width: 250px;
+                max-width: 250px;
+                flex-shrink: 0;
+            }
+
+            .product-card .card-content img {
+                height: 180px;
+            }
+
+            .post-card .card-content img {
+                height: 120px;
+            }
+
+            .hero-banner img {
+                height: 150px;
+            }
+
+            .filter-controls {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+
+            .filter-controls .btn {
+                flex: 1;
+                min-width: 80px;
+                font-size: 0.8rem;
+                padding: 0.5rem 0.25rem;
             }
         }
 
@@ -717,6 +1351,76 @@
                 dropdown.classList.remove('show');
             }
         });
+
+        function toggleLike(element) {
+            const icon = element.querySelector('i');
+            const likeText = element.querySelector('.like-text');
+            const likeCount = element.querySelector('.like-count');
+            
+            if (element.classList.contains('liked')) {
+                // Unlike
+                element.classList.remove('liked');
+                icon.textContent = 'favorite_border';
+                likeText.textContent = 'Like';
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            } else {
+                // Like
+                element.classList.add('liked');
+                icon.textContent = 'favorite';
+                likeText.textContent = 'Liked';
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+            }
+        }
+        
+        function toggleComments(element) {
+            const postCard = element.closest('.card');
+            const commentsSection = postCard.querySelector('.comments-section');
+            
+            if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+                commentsSection.style.display = 'block';
+                element.querySelector('.comment-text').textContent = 'Hide Comments';
+            } else {
+                commentsSection.style.display = 'none';
+                element.querySelector('.comment-text').textContent = 'Comment';
+            }
+        }
+        
+        function addComment(element) {
+            const postCard = element.closest('.card');
+            const commentInput = postCard.querySelector('.comment-input');
+            const commentsList = postCard.querySelector('.comments-list');
+            const commentCount = postCard.querySelector('.comment-count');
+            
+            if (commentInput.value.trim() === '') return;
+            
+            // Create new comment element
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-item';
+            newComment.innerHTML = `
+                <div class="row no-gap">
+                    <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                    </div>
+                    <div class="col s10">
+                        <strong>You</strong>
+                        <p>${commentInput.value}</p>
+                        <small class="text-grey">Just now</small>
+                    </div>
+                </div>
+            `;
+            
+            // Add to comments list
+            commentsList.appendChild(newComment);
+            
+            // Update comment count
+            commentCount.textContent = parseInt(commentCount.textContent) + 1;
+            
+            // Clear input
+            commentInput.value = '';
+            
+            // Scroll to new comment
+            newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             // Smooth scroll for navigation links

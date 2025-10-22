@@ -8,67 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
   <body class="dark">
-    <nav class="left max l">
-      <header>
-        <nav>
-          <img src="https://www.beercss.com/favicon.png" class="circle extra">
-          <h6>Cheers</h6>
-        </nav>
-      </header>
-      <a>
-        <i>home</i>
-        <div>Home</div>
-      </a>
-      <a>
-        <i>search</i>
-        <div>Search</div>
-      </a>
-      <a>
-        <i>share</i>
-        <div>Share</div>
-      </a>
-      <a>
-        <i>more_vert</i>
-        <div>More</div>
-      </a>
-      <div class="divider"></div>
-      <a>
-        <i>widgets</i>
-        <div>Widgets</div>
-      </a>
-      <a>
-        <i>chat</i>
-        <div>Chat</div>
-      </a>
-      <a>
-        <i>help</i>
-        <div>Help</div>
-      </a>  
-    </nav>
-
-    <nav class="left m">
-      <header>
-        <img src="https://www.beercss.com/favicon.png" class="circle extra">
-      </header>
-      <a>
-        <i>home</i>
-        <div>Home</div>
-      </a>
-      <a>
-        <i>search</i>
-        <div>Search</div>
-      </a>
-      <a>
-        <i>share</i>
-        <div>Share</div>
-      </a>
-      <a>
-        <i>more_vert</i>
-        <div>More</div>
-      </a>
-    </nav>
 
     <nav class="bottom s">
       <a>
@@ -86,9 +28,270 @@
     </nav>
 
     <main class="responsive">
-      <img src="https://www.beercss.com/beer-and-woman.svg" class="responsive round medium-height">
-      <h3>Welcome</h3>
-      <h5>The beer is ready!</h5>
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h4>Vendor Feed</h4>
+            <div class="feed-container">
+              
+              <!-- Post Card 1 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Brewery Central</h6>
+                      <small class="text-grey">2 hours ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://www.beercss.com/beer-and-woman.svg" class="responsive round medium-height">
+                  <p>Just finished brewing our latest IPA! The hops are perfectly balanced with citrus notes. Can't wait to share this with our community. 🍺</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">24</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="showComments()">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 2 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Hop Haven</h6>
+                      <small class="text-grey">5 hours ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://www.beercss.com/beer-and-woman.svg" class="responsive round medium-height">
+                  <p>Our seasonal stout is back! Rich chocolate and coffee flavors with a smooth finish. Perfect for these cooler evenings. Limited batch available! ☕</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">31</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="showComments()">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">12</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 3 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Golden Ale Co.</h6>
+                      <small class="text-grey">1 day ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://www.beercss.com/beer-and-woman.svg" class="responsive round medium-height">
+                  <p>New brewery tour dates are live! Come see how we craft our signature golden ales. Includes tasting flight and take-home growler. Book your spot today! 🏭</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">18</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="showComments()">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 4 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Wheat Fields Brewing</h6>
+                      <small class="text-grey">2 days ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://www.beercss.com/beer-and-woman.svg" class="responsive round medium-height">
+                  <p>Our hefeweizen is perfectly cloudy and refreshing! Traditional German yeast with banana and clove notes. Pairs beautifully with our pretzel bites. 🥨</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">42</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="showComments()">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">15</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 5 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Lager House</h6>
+                      <small class="text-grey">3 days ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://www.beercss.com/beer-and-woman.svg" class="responsive round medium-height">
+                  <p>Cold fermentation complete! Our crisp pilsner is ready to serve. Clean, refreshing, and perfect for any occasion. Available on tap and in bottles. 🍻</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">27</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="showComments()">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">9</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
+    <style>
+      main {
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+        padding-bottom: 2rem;
+      }
+      
+      .feed-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      
+      .card {
+        margin-bottom: 1.5rem;
+      }
+      
+      .clickable-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+      
+      .clickable-container:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      .clickable-container i {
+        font-size: 1.2rem;
+      }
+      
+      .clickable-container.liked i {
+        color: #f44336;
+      }
+      
+      .clickable-container.liked .like-text {
+        color: #f44336;
+      }
+    </style>
+
+    <script>
+      function toggleLike(element) {
+        const icon = element.querySelector('i');
+        const likeText = element.querySelector('.like-text');
+        const likeCount = element.querySelector('.like-count');
+        
+        if (element.classList.contains('liked')) {
+          // Unlike
+          element.classList.remove('liked');
+          icon.textContent = 'favorite_border';
+          likeText.textContent = 'Like';
+          likeCount.textContent = parseInt(likeCount.textContent) - 1;
+        } else {
+          // Like
+          element.classList.add('liked');
+          icon.textContent = 'favorite';
+          likeText.textContent = 'Liked';
+          likeCount.textContent = parseInt(likeCount.textContent) + 1;
+        }
+      }
+      
+      function showComments() {
+        alert('Comments feature coming soon!');
+      }
+    </script>
   </body>
 </html>

@@ -61,10 +61,67 @@
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" onclick="showComments()">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>BeerLover42</strong>
+                          <p>This looks amazing! When will it be available in stores?</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>HopHead</strong>
+                          <p>Love the citrus notes! Perfect for summer 🍺</p>
+                          <small class="text-grey">45 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>CraftBeerFan</strong>
+                          <p>Can't wait to try this! Your IPAs are always top quality</p>
+                          <small class="text-grey">30 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -98,10 +155,55 @@
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" onclick="showComments()">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">12</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>StoutLover</strong>
+                          <p>Perfect for winter nights! The chocolate notes are incredible</p>
+                          <small class="text-grey">3 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>CoffeeBeer</strong>
+                          <p>Love the coffee flavor! How long is this batch available?</p>
+                          <small class="text-grey">2 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -135,10 +237,43 @@
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" onclick="showComments()">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>BreweryTourist</strong>
+                          <p>I went on the tour last week! Highly recommend it</p>
+                          <small class="text-grey">1 day ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -172,10 +307,55 @@
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" onclick="showComments()">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">15</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>WheatFan</strong>
+                          <p>The banana notes are perfect! Best hefeweizen in town</p>
+                          <small class="text-grey">1 day ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>PretzelPairing</strong>
+                          <p>Love the pretzel pairing suggestion! Perfect combo</p>
+                          <small class="text-grey">18 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -209,10 +389,43 @@
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" onclick="showComments()">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">9</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>PilsnerPro</strong>
+                          <p>Clean and crisp! Exactly what I look for in a pilsner</p>
+                          <small class="text-grey">2 days ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -266,6 +479,66 @@
       .clickable-container.liked .like-text {
         color: #f44336;
       }
+      
+      .comments-section {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.02);
+      }
+      
+      .comment-item {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .comment-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+      
+      .comment-item p {
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+      }
+      
+      .add-comment {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .input-field {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      
+      .comment-input {
+        flex: 1;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        padding: 0.5rem;
+        color: white;
+        font-size: 0.9rem;
+      }
+      
+      .comment-input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      
+      .comment-input:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.4);
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+      
+      .btn.small {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        min-width: auto;
+      }
     </style>
 
     <script>
@@ -289,8 +562,54 @@
         }
       }
       
-      function showComments() {
-        alert('Comments feature coming soon!');
+      function toggleComments(element) {
+        const postCard = element.closest('.card');
+        const commentsSection = postCard.querySelector('.comments-section');
+        
+        if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+          commentsSection.style.display = 'block';
+          element.querySelector('.comment-text').textContent = 'Hide Comments';
+        } else {
+          commentsSection.style.display = 'none';
+          element.querySelector('.comment-text').textContent = 'Comment';
+        }
+      }
+      
+      function addComment(element) {
+        const postCard = element.closest('.card');
+        const commentInput = postCard.querySelector('.comment-input');
+        const commentsList = postCard.querySelector('.comments-list');
+        const commentCount = postCard.querySelector('.comment-count');
+        
+        if (commentInput.value.trim() === '') return;
+        
+        // Create new comment element
+        const newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.innerHTML = `
+          <div class="row no-gap">
+            <div class="col s2">
+              <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+            </div>
+            <div class="col s10">
+              <strong>You</strong>
+              <p>${commentInput.value}</p>
+              <small class="text-grey">Just now</small>
+            </div>
+          </div>
+        `;
+        
+        // Add to comments list
+        commentsList.appendChild(newComment);
+        
+        // Update comment count
+        commentCount.textContent = parseInt(commentCount.textContent) + 1;
+        
+        // Clear input
+        commentInput.value = '';
+        
+        // Scroll to new comment
+        newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     </script>
   </body>

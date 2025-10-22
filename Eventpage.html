@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Summer Craft Beer Tasting - Brewery Central</title>
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body class="dark">
+    <!-- Top Navigation (Desktop/Tablet) -->
+    <nav class="top s hide-s hide-m">
+        <div class="container">
+            <div class="row no-gap">
+                <div class="col s12">
+                    <div class="nav-content">
+                        <div class="nav-brand">
+                            <img src="https://www.beercss.com/favicon.png" class="circle small">
+                            <span>Brewery Central</span>
+                        </div>
+                        <div class="nav-links">
+                            <a href="index.html" class="nav-link">Home</a>
+                            <a href="EventListPage.html" class="nav-link">Events</a>
+                            <a href="vendorpage.html" class="nav-link">Vendors</a>
+                            <a href="#about" class="nav-link">About</a>
+                        </div>
+                        <div class="nav-actions">
+                            <button class="btn circle small">
+                                <i>search</i>
+                            </button>
+                            <button class="btn circle small">
+                                <i>favorite_border</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom s show-s hide-l">
+        <a href="index.html" class="nav-item">
+            <i>home</i>
+            <span>Home</span>
+        </a>
+        <a href="EventListPage.html" class="nav-item active">
+            <i>event</i>
+            <span>Events</span>
+        </a>
+        <a href="vendorpage.html" class="nav-item">
+            <i>store</i>
+            <span>Vendors</span>
+        </a>
+        <a href="#about" class="nav-item">
+            <i>info</i>
+            <span>About</span>
+        </a>
+    </nav>
+
+    <main class="responsive">
+        <!-- Event Hero Section -->
+        <section class="event-hero">
+            <div class="hero-banner">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
+                     alt="Summer Craft Beer Tasting" class="responsive round">
+            </div>
+            
+            <div class="event-profile">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="profile-content">
+                                <div class="profile-avatar">
+                                    <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=200&h=200&fit=crop" class="circle large">
+                                    <div class="verified-badge">
+                                        <i>verified</i>
+                                    </div>
+                                </div>
+                                
+                                <div class="profile-info">
+                                    <h2>Summer Craft Beer Tasting</h2>
+                                    <p class="profile-tagline">Exclusive seasonal craft beer tasting experience</p>
+                                    <div class="profile-stats">
+                                        <div class="stat">
+                                            <span class="stat-number">4.9</span>
+                                            <span class="stat-label">Rating</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">127</span>
+                                            <span class="stat-label">Following</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">45</span>
+                                            <span class="stat-label">Attending</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="profile-actions">
+                                    <button class="btn large follow-btn" 
+                                            hx-post="/api/follow-event" 
+                                            hx-target="this" 
+                                            hx-swap="outerHTML">
+                                        <i>person_add</i>
+                                        <span class="btn-text">Follow</span>
+                                    </button>
+                                    <button class="btn large primary buy-tickets-btn" 
+                                            hx-get="https://example.com/tickets"
+                                            hx-trigger="click"
+                                            hx-target="body"
+                                            hx-swap="none">
+                                        <i>local_activity</i>
+                                        <span class="btn-text">Buy Tickets</span>
+                                    </button>
+                                    <div class="dropdown-container">
+                                        <button class="btn large outline info-btn" 
+                                                onclick="toggleInfoDropdown()">
+                                            <i>info</i>
+                                            <span class="btn-text">Info</span>
+                                        </button>
+                                        <div class="dropdown-content event-info-content" style="display: none;">
+                                            <div class="event-info">
+                                                <h6>Event Details</h6>
+                                                <div class="info-item">
+                                                    <i>schedule</i>
+                                                    <div>
+                                                        <strong>Date & Time</strong>
+                                                        <p>July 15, 2024<br>6:00 PM - 9:00 PM</p>
+                                                    </div>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i>location_on</i>
+                                                    <div>
+                                                        <strong>Venue</strong>
+                                                        <p>Downtown Brewery<br>123 Main Street, City</p>
+                                                    </div>
+                                                </div>
+                                                <div class="info-item">
+                                                    <i>attach_money</i>
+                                                    <div>
+                                                        <strong>Price</strong>
+                                                        <p>$45 per person</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Quick Info Section -->
+        <section class="event-quick-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="quick-info-content">
+                            <div class="quick-info-item">
+                                <i>schedule</i>
+                                <div>
+                                    <strong>Date & Time</strong>
+                                    <p>July 15, 2024 • 6:00 PM - 9:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="quick-info-item">
+                                <i>location_on</i>
+                                <div>
+                                    <strong>Location</strong>
+                                    <p>Downtown Brewery • 123 Main Street, City</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Description Section -->
+        <section class="event-description-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 l8">
+                        <div class="event-details">
+                            <h3>About This Event</h3>
+                            <p>Join us for an exclusive summer craft beer tasting featuring the finest seasonal brews from local and regional breweries. This intimate event will showcase limited-edition summer releases, seasonal IPAs, refreshing wheat beers, and unique fruit-infused ales.</p>
+                            
+                            <p>Our expert brewers have carefully curated a selection of exceptional craft beers that capture the essence of summer. From crisp lagers to bold stouts, each beer tells a story of craftsmanship and passion. You'll discover new flavors, learn about brewing techniques, and connect with fellow beer enthusiasts in a relaxed, welcoming atmosphere.</p>
+                            
+                            <p>This event is perfect for both seasoned beer connoisseurs and those just beginning their craft beer journey. Our knowledgeable staff will guide you through each tasting, explaining the unique characteristics of each brew, from the hop varieties used to the brewing process that creates these distinctive flavors.</p>
+                            
+                            <h4>What's Included</h4>
+                            <ul>
+                                <li>Tasting of 8 different craft beers</li>
+                                <li>Expert guidance from professional brewers</li>
+                                <li>Light appetizers and snacks</li>
+                                <li>Take-home tasting notes and beer guide</li>
+                                <li>Networking with fellow beer enthusiasts</li>
+                            </ul>
+
+                            <h4>Event Schedule</h4>
+                            <div class="schedule">
+                                <div class="schedule-item">
+                                    <strong>6:00 PM</strong> - Welcome & Introduction
+                                </div>
+                                <div class="schedule-item">
+                                    <strong>6:15 PM</strong> - First Flight Tasting (3 beers)
+                                </div>
+                                <div class="schedule-item">
+                                    <strong>7:00 PM</strong> - Break & Appetizers
+                                </div>
+                                <div class="schedule-item">
+                                    <strong>7:30 PM</strong> - Second Flight Tasting (3 beers)
+                                </div>
+                                <div class="schedule-item">
+                                    <strong>8:15 PM</strong> - Special Release Tasting (2 beers)
+                                </div>
+                                <div class="schedule-item">
+                                    <strong>9:00 PM</strong> - Event Conclusion
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col s12 l4">
+                        <div class="event-sidebar">
+                            <div class="host-info">
+                                <h4>Hosted By</h4>
+                                <div class="host-profile">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" class="circle medium">
+                                    <div class="host-details">
+                                        <strong>Downtown Brewery</strong>
+                                        <p>Premium craft brewery specializing in seasonal and limited-edition beers since 2018.</p>
+                                        <a href="vendorpage.html" class="btn small outline">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="event-highlights">
+                                <h4>Event Highlights</h4>
+                                <div class="highlight-item">
+                                    <i>star</i>
+                                    <span>Featured seasonal releases</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i>restaurant</i>
+                                    <span>Complimentary appetizers</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i>groups</i>
+                                    <span>Small group experience</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i>local_activity</i>
+                                    <span>Take-home tasting guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Navigation Styles */
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--on-surface);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: #ceee92;
+            color: #000000;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Bottom Navigation */
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--on-surface);
+            transition: color 0.2s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #ceee92;
+        }
+
+        .nav-item span {
+            font-size: 0.75rem;
+        }
+
+        /* Event Hero Section */
+        .event-hero {
+            margin-bottom: 1rem;
+        }
+
+        .hero-banner {
+            margin-bottom: -2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .event-profile {
+            background: var(--surface-container);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 0 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-banner img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-avatar {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #ceee92;
+            color: #000000;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .profile-info h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-tagline {
+            color: var(--on-surface-variant);
+            margin: 0.25rem 0;
+            font-size: 0.8rem;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 0.25rem 0.5rem;
+            background: var(--surface-container-low);
+            border-radius: 6px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ceee92;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--on-surface-variant);
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 0.25rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .profile-actions .btn {
+            padding: 0.4rem 0.5rem;
+            font-size: 0.75rem;
+            min-width: 55px;
+            height: 55px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-actions .btn i {
+            font-size: 1rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .profile-actions .btn .btn-text {
+            font-size: 0.7rem;
+            line-height: 1;
+            font-weight: 500;
+        }
+
+        .follow-btn {
+            background-color: #ceee92;
+            color: #000000;
+        }
+
+        .follow-btn:hover {
+            background-color: #b8d87a;
+            color: #000000;
+        }
+
+        .buy-tickets-btn {
+            background-color: #ceee92 !important;
+            color: #000000 !important;
+        }
+
+        .buy-tickets-btn:hover {
+            background-color: #b8d87a !important;
+            color: #000000 !important;
+        }
+
+        .info-btn {
+            background-color: #ceee92 !important;
+            color: #000000 !important;
+            border: 2px solid #ceee92 !important;
+        }
+
+        .info-btn:hover {
+            background-color: #b8d87a !important;
+            color: #000000 !important;
+            border: 2px solid #b8d87a !important;
+        }
+
+        /* HTMX Dropdown Styles */
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--surface-container-high);
+            border-radius: 8px;
+            padding: 1rem;
+            min-width: 250px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item i {
+            color: #ceee92;
+            margin-top: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .info-item div {
+            flex: 1;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--on-surface);
+        }
+
+        .info-item p {
+            margin: 0;
+            color: var(--on-surface-variant);
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        /* Event Quick Info Section */
+        .event-quick-info {
+            padding: 1.5rem 0;
+            background: var(--surface-container-low);
+        }
+
+        .quick-info-content {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quick-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .quick-info-item i {
+            color: #ceee92;
+            font-size: 1.5rem;
+        }
+
+        .quick-info-item strong {
+            display: block;
+            color: var(--on-surface);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .quick-info-item p {
+            margin: 0;
+            color: var(--on-surface-variant);
+            font-size: 0.9rem;
+        }
+
+        /* Event Description Section */
+        .event-description-section {
+            padding: 2rem 0;
+        }
+
+        .event-details {
+            background: var(--surface-container);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 0 auto 2rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .event-details h3,
+        .event-details h4 {
+            color: var(--on-surface);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .event-details h4 {
+            font-size: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .event-details p {
+            color: var(--on-surface-variant);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .event-details ul {
+            color: var(--on-surface-variant);
+            margin-bottom: 1.5rem;
+            padding-left: 1.25rem;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .event-details li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .schedule {
+            background: var(--surface-container-low);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .schedule-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--outline-variant);
+            color: var(--on-surface-variant);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-item strong {
+            color: #ceee92;
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        /* Sidebar */
+        .event-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .host-info,
+        .event-highlights {
+            background: var(--surface-container);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .host-info h4,
+        .event-highlights h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .host-profile {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-top: 1rem;
+        }
+
+        .host-details {
+            flex: 1;
+        }
+
+        .host-details strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--on-surface);
+        }
+
+        .host-details p {
+            color: var(--on-surface-variant);
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--on-surface-variant);
+            font-size: 0.9rem;
+        }
+
+        .highlight-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-item i {
+            color: #ceee92;
+            font-size: 1rem;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .event-profile {
+                padding: 1rem;
+                margin: 0 0.25rem;
+            }
+
+            .hero-banner img {
+                height: 150px;
+            }
+
+            .profile-content {
+                gap: 1rem;
+            }
+
+        .profile-avatar img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .verified-badge {
+            width: 16px;
+            height: 16px;
+            font-size: 8px;
+        }
+
+            .profile-info h2 {
+                font-size: 1.25rem;
+            }
+
+            .profile-stats {
+                gap: 0.75rem;
+            }
+
+            .stat {
+                padding: 0.25rem 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 0.9rem;
+            }
+
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            .profile-actions {
+                gap: 0.25rem;
+            }
+
+            .profile-actions .btn {
+                padding: 0.35rem 0.4rem;
+                font-size: 0.7rem;
+                min-width: 50px;
+                height: 50px;
+            }
+
+            .profile-actions .btn i {
+                font-size: 0.9rem;
+            }
+
+            .profile-actions .btn .btn-text {
+                font-size: 0.65rem;
+                font-weight: 500;
+            }
+
+            .dropdown-content {
+                right: auto;
+                left: 0;
+                min-width: calc(100vw - 2rem);
+                max-width: 280px;
+            }
+
+            .quick-info-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .quick-info-item {
+                justify-content: center;
+            }
+
+            .quick-info-item:first-child {
+                text-align: center;
+                margin-left: 0;
+            }
+
+            .quick-info-item:last-child {
+                text-align: right;
+                padding-right: 0;
+                margin-right: 0;
+                justify-content: flex-end;
+            }
+
+            .event-details {
+                padding: 1.5rem;
+                margin: 0 0.5rem 1.5rem 0.5rem;
+            }
+
+            .host-info,
+            .event-highlights {
+                padding: 1rem;
+            }
+
+            .host-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .host-profile img {
+                align-self: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-stats {
+                gap: 0.5rem;
+            }
+
+            .stat {
+                padding: 0.25rem 0.4rem;
+            }
+
+            .stat-number {
+                font-size: 0.85rem;
+            }
+
+            .stat-label {
+                font-size: 0.6rem;
+            }
+
+            .profile-actions .btn {
+                padding: 0.3rem 0.35rem;
+                font-size: 0.65rem;
+                min-width: 48px;
+                height: 48px;
+            }
+
+            .profile-actions .btn i {
+                font-size: 0.8rem;
+            }
+
+            .profile-actions .btn .btn-text {
+                font-size: 0.6rem;
+                font-weight: 500;
+            }
+
+            .event-details h3 {
+                font-size: 1.1rem;
+            }
+
+            .event-details h4 {
+                font-size: 1rem;
+            }
+
+            .schedule-item {
+                font-size: 0.85rem;
+            }
+
+            .schedule-item strong {
+                min-width: 70px;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleInfoDropdown() {
+            const dropdown = document.querySelector('.event-info-content');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.style.display = 'none';
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.event-info-content');
+            const button = document.querySelector('.info-btn');
+            const container = document.querySelector('.dropdown-container');
+            
+            if (!container.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+  </body>
+</html>

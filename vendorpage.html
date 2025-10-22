@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Brewery Central - Craft Beer Vendor</title>
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body class="dark">
+    <!-- Top Navigation (Desktop/Tablet) -->
+    <nav class="top s hide-s hide-m">
+        <div class="container">
+            <div class="row no-gap">
+                <div class="col s12">
+                    <div class="nav-content">
+                        <div class="nav-brand">
+                            <img src="https://www.beercss.com/favicon.png" class="circle small">
+                            <span>Brewery Central</span>
+                        </div>
+                        <div class="nav-links">
+                            <a href="#home" class="nav-link active">Home</a>
+                            <a href="#products" class="nav-link">Products</a>
+                            <a href="#about" class="nav-link">About</a>
+                            <a href="#reviews" class="nav-link">Reviews</a>
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </div>
+                        <div class="nav-actions">
+                            <button class="btn circle small">
+                                <i>search</i>
+                            </button>
+                            <button class="btn circle small">
+                                <i>favorite_border</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom s show-s hide-l">
+        <a href="#home" class="nav-item active">
+            <i>home</i>
+            <span>Home</span>
+        </a>
+        <a href="#products" class="nav-item">
+            <i>inventory</i>
+            <span>Products</span>
+        </a>
+        <a href="#about" class="nav-item">
+            <i>info</i>
+            <span>About</span>
+        </a>
+        <a href="#reviews" class="nav-item">
+            <i>star</i>
+            <span>Reviews</span>
+        </a>
+        <a href="#contact" class="nav-item">
+            <i>contact_support</i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <main class="responsive">
+        <!-- Vendor Profile Hero Section -->
+        <section id="home" class="vendor-hero">
+            <div class="hero-banner">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
+                     alt="Brewery Central Banner" class="responsive round">
+            </div>
+            
+            <div class="vendor-profile">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="profile-content">
+                                <div class="profile-avatar">
+                                    <img src="https://www.beercss.com/favicon.png" class="circle large">
+                                    <div class="verified-badge">
+                                        <i>verified</i>
+                                    </div>
+                                </div>
+                                
+                                <div class="profile-info">
+                                    <h2>Brewery Central</h2>
+                                    <p class="profile-tagline">Crafting exceptional beers since 2015</p>
+                                    <div class="profile-stats">
+                                        <div class="stat">
+                                            <span class="stat-number">4.8</span>
+                                            <span class="stat-label">Rating</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">2.3k</span>
+                                            <span class="stat-label">Followers</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-number">156</span>
+                                            <span class="stat-label">Products</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="profile-actions">
+                                    <button class="btn large" 
+                                            hx-post="/api/follow" 
+                                            hx-target="this" 
+                                            hx-swap="outerHTML">
+                                        <i>person_add</i>
+                                        Follow
+                                    </button>
+                                    <button class="btn large outline" 
+                                            hx-get="/contact-form" 
+                                            hx-target="#contact-modal" 
+                                            hx-swap="innerHTML">
+                                        <i>message</i>
+                                        Message
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="section-header">
+                            <h3>Featured Products</h3>
+                            <div class="filter-controls">
+                                <button class="btn small" 
+                                        hx-get="/api/products?filter=all" 
+                                        hx-target="#products-grid" 
+                                        hx-swap="innerHTML">All</button>
+                                <button class="btn small outline" 
+                                        hx-get="/api/products?filter=ipa" 
+                                        hx-target="#products-grid" 
+                                        hx-swap="innerHTML">IPA</button>
+                                <button class="btn small outline" 
+                                        hx-get="/api/products?filter=stout" 
+                                        hx-target="#products-grid" 
+                                        hx-swap="innerHTML">Stout</button>
+                                <button class="btn small outline" 
+                                        hx-get="/api/products?filter=lager" 
+                                        hx-target="#products-grid" 
+                                        hx-swap="innerHTML">Lager</button>
+                            </div>
+                        </div>
+                        
+                        <div id="products-grid" class="products-grid">
+                            <!-- Product Card 1 -->
+                            <div class="card medium product-card">
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
+                                         alt="Citrus IPA" class="responsive round">
+                                    <div class="product-info">
+                                        <h5>Citrus IPA</h5>
+                                        <p class="product-description">Perfectly balanced hops with refreshing citrus notes</p>
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
+                                            </div>
+                                            <span class="rating-text">4.9 (127 reviews)</span>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">$8.99</span>
+                                            <span class="unit">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn small" 
+                                            hx-post="/api/cart/add" 
+                                            hx-vals='{"product_id": "citrus-ipa"}' 
+                                            hx-target="#cart-count" 
+                                            hx-swap="innerHTML">
+                                        <i>add_shopping_cart</i>
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn small outline" 
+                                            hx-post="/api/favorite" 
+                                            hx-vals='{"product_id": "citrus-ipa"}' 
+                                            hx-target="this" 
+                                            hx-swap="outerHTML">
+                                        <i>favorite_border</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2 -->
+                            <div class="card medium product-card">
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
+                                         alt="Chocolate Stout" class="responsive round">
+                                    <div class="product-info">
+                                        <h5>Chocolate Stout</h5>
+                                        <p class="product-description">Rich chocolate and coffee flavors with smooth finish</p>
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star_half</i>
+                                            </div>
+                                            <span class="rating-text">4.7 (89 reviews)</span>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">$9.99</span>
+                                            <span class="unit">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn small" 
+                                            hx-post="/api/cart/add" 
+                                            hx-vals='{"product_id": "chocolate-stout"}' 
+                                            hx-target="#cart-count" 
+                                            hx-swap="innerHTML">
+                                        <i>add_shopping_cart</i>
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn small outline" 
+                                            hx-post="/api/favorite" 
+                                            hx-vals='{"product_id": "chocolate-stout"}' 
+                                            hx-target="this" 
+                                            hx-swap="outerHTML">
+                                        <i>favorite_border</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3 -->
+                            <div class="card medium product-card">
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
+                                         alt="Golden Lager" class="responsive round">
+                                    <div class="product-info">
+                                        <h5>Golden Lager</h5>
+                                        <p class="product-description">Crisp and refreshing with clean finish</p>
+                                        <div class="product-rating">
+                                            <div class="stars">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
+                                            </div>
+                                            <span class="rating-text">4.8 (203 reviews)</span>
+                                        </div>
+                                        <div class="product-price">
+                                            <span class="price">$7.99</span>
+                                            <span class="unit">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn small" 
+                                            hx-post="/api/cart/add" 
+                                            hx-vals='{"product_id": "golden-lager"}' 
+                                            hx-target="#cart-count" 
+                                            hx-swap="innerHTML">
+                                        <i>add_shopping_cart</i>
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn small outline" 
+                                            hx-post="/api/favorite" 
+                                            hx-vals='{"product_id": "golden-lager"}' 
+                                            hx-target="this" 
+                                            hx-swap="outerHTML">
+                                        <i>favorite_border</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="reviews-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h3>Customer Reviews</h3>
+                        <div class="reviews-grid">
+                            <div class="card medium review-card">
+                                <div class="card-content">
+                                    <div class="review-header">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <div class="reviewer-info">
+                                            <h6>BeerLover42</h6>
+                                            <div class="review-rating">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
+                                            </div>
+                                        </div>
+                                        <small class="review-date">2 days ago</small>
+                                    </div>
+                                    <p class="review-text">"Amazing quality! The Citrus IPA is exactly what I was looking for. Perfect balance of hops and citrus notes."</p>
+                                </div>
+                            </div>
+
+                            <div class="card medium review-card">
+                                <div class="card-content">
+                                    <div class="review-header">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <div class="reviewer-info">
+                                            <h6>HopHead</h6>
+                                            <div class="review-rating">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star_half</i>
+                                            </div>
+                                        </div>
+                                        <small class="review-date">1 week ago</small>
+                                    </div>
+                                    <p class="review-text">"Great selection and fast shipping. The Chocolate Stout is perfect for winter evenings."</p>
+                                </div>
+                            </div>
+
+                            <div class="card medium review-card">
+                                <div class="card-content">
+                                    <div class="review-header">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <div class="reviewer-info">
+                                            <h6>CraftBeerFan</h6>
+                                            <div class="review-rating">
+                                                <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
+                                            </div>
+                                        </div>
+                                        <small class="review-date">2 weeks ago</small>
+                                    </div>
+                                    <p class="review-text">"Brewery Central never disappoints. Their Golden Lager is crisp and refreshing - my go-to summer beer!"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <h3>Get in Touch</h3>
+                        <form hx-post="/api/contact" hx-target="#contact-response" hx-swap="innerHTML">
+                            <div class="field">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <label>Name</label>
+                            </div>
+                            <div class="field">
+                                <input type="email" name="email" placeholder="Your Email" required>
+                                <label>Email</label>
+                            </div>
+                            <div class="field">
+                                <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                                <label>Message</label>
+                            </div>
+                            <button type="submit" class="btn large">
+                                <i>send</i>
+                                Send Message
+                            </button>
+                        </form>
+                        <div id="contact-response"></div>
+                    </div>
+                    <div class="col s12 m6">
+                        <h3>Visit Us</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i>location_on</i>
+                                <div>
+                                    <strong>Address</strong>
+                                    <p>123 Brewery Lane<br>Beer City, BC 12345</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i>phone</i>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <p>(555) 123-BREW</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i>email</i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>hello@brewerycentral.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i>schedule</i>
+                                <div>
+                                    <strong>Hours</strong>
+                                    <p>Mon-Fri: 9AM-6PM<br>Sat-Sun: 10AM-4PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m4">
+                    <h5>Brewery Central</h5>
+                    <p>Crafting exceptional beers with passion and precision since 2015.</p>
+                    <div class="social-links">
+                        <a href="#" class="btn circle small"><i>facebook</i></a>
+                        <a href="#" class="btn circle small"><i>twitter</i></a>
+                        <a href="#" class="btn circle small"><i>instagram</i></a>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <h6>Quick Links</h6>
+                    <ul>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col s12 m4">
+                    <h6>Newsletter</h6>
+                    <p>Subscribe for updates on new brews and special offers.</p>
+                    <form hx-post="/api/newsletter" hx-target="#newsletter-response" hx-swap="innerHTML">
+                        <div class="field">
+                            <input type="email" name="email" placeholder="Enter your email" required>
+                            <button type="submit" class="btn small">Subscribe</button>
+                        </div>
+                    </form>
+                    <div id="newsletter-response"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="footer-bottom">
+                        <p>&copy; 2024 Brewery Central. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal (HTMX target) -->
+    <div id="contact-modal" class="modal">
+        <!-- Content loaded via HTMX -->
+    </div>
+
+    <style>
+        /* Navigation Styles */
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--on-surface);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--primary-container);
+            color: var(--on-primary-container);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Bottom Navigation */
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--on-surface);
+            transition: color 0.2s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-item span {
+            font-size: 0.75rem;
+        }
+
+        /* Hero Section */
+        .vendor-hero {
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner {
+            margin-bottom: -3rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .vendor-profile {
+            background: var(--surface-container);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-avatar {
+            position: relative;
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--primary);
+            color: var(--on-primary);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .profile-tagline {
+            color: var(--on-surface-variant);
+            margin: 0.5rem 0;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--on-surface-variant);
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 2rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-info {
+            padding: 1rem 0;
+        }
+
+        .product-description {
+            color: var(--on-surface-variant);
+            margin: 0.5rem 0;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .stars {
+            color: var(--primary);
+        }
+
+        .rating-text {
+            font-size: 0.875rem;
+            color: var(--on-surface-variant);
+        }
+
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .unit {
+            font-size: 0.875rem;
+            color: var(--on-surface-variant);
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 2rem 0;
+            background: var(--surface-container-low);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .review-card {
+            transition: transform 0.2s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-info {
+            flex: 1;
+        }
+
+        .review-rating {
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .review-date {
+            color: var(--on-surface-variant);
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--on-surface-variant);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 2rem 0;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: var(--on-surface-variant);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface-container);
+            padding: 2rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer h5,
+        .footer h6 {
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer ul li a {
+            color: var(--on-surface-variant);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer ul li a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--outline-variant);
+            margin-top: 2rem;
+        }
+
+        .footer-bottom p {
+            color: var(--on-surface-variant);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .profile-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section .row {
+                flex-direction: column;
+            }
+        }
+
+        /* HTMX Loading States */
+        [hx-indicator] {
+            opacity: 0.6;
+        }
+
+        .htmx-indicator {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .htmx-request .htmx-indicator {
+            opacity: 1;
+        }
+
+        /* Accessibility */
+        .btn:focus,
+        .nav-link:focus,
+        .nav-item:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    <script>
+        // Essential JavaScript for UI interactions only
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Update active nav item on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link, .nav-item');
+
+            function updateActiveNav() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNav);
+        });
+    </script>
+</body>
+</html>

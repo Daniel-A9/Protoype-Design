@@ -1,0 +1,830 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Local Discussions</title>
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body class="dark">
+
+    <nav class="bottom s">
+      <a>
+        <i>home</i>
+      </a>
+      <a>
+        <i>search</i>
+      </a>
+      <a>
+        <i>share</i>
+      </a>
+      <a>
+        <i>more_vert</i>
+      </a>
+    </nav>
+
+    <main class="responsive">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h4>Local Discussions</h4>
+            <div class="feed-container">
+              
+              <!-- Post Card 1 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Sarah M.</h6>
+                      <small class="text-grey">2 hours ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" class="responsive round medium-height">
+                  <p>Anyone know of good hiking trails near downtown? Looking for something moderate with nice views. Planning to go this weekend! 🥾</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "1"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">24</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/1" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>TrailBlazer</strong>
+                          <p>Try the Sunset Ridge trail! Moderate difficulty with amazing city views</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>HikerPro</strong>
+                          <p>Oakwood Trail is great too - shorter but very scenic!</p>
+                          <small class="text-grey">45 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>NatureLover</strong>
+                          <p>Bring water and snacks! The trail can get steep in places</p>
+                          <small class="text-grey">30 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 2 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Mike R.</h6>
+                      <small class="text-grey">5 hours ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <p>Best coffee shop recommendations? Need a quiet place to work remotely. WiFi and good coffee are must-haves! ☕</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "2"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">31</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/2" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">12</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>CoffeeAddict</strong>
+                          <p>Blue Moon Cafe has great WiFi and amazing lattes!</p>
+                          <small class="text-grey">3 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>RemoteWorker</strong>
+                          <p>Second Blue Moon! Also try Corner Coffee - quieter atmosphere</p>
+                          <small class="text-grey">2 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 3 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Emma L.</h6>
+                      <small class="text-grey">1 day ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" class="responsive round medium-height">
+                  <p>Community cleanup event this Saturday at Riverside Park! Bring gloves and we'll provide trash bags. Great way to meet neighbors and help the environment 🌱</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "3"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">18</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/3" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>CommunityHelper</strong>
+                          <p>I'll be there! What time should we meet?</p>
+                          <small class="text-grey">1 day ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/3" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 4 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>David K.</h6>
+                      <small class="text-grey">2 days ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <p>Lost my cat near 5th and Main yesterday. Orange tabby, answers to "Whiskers". Please message if you see him! 🐱</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "4"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">42</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/4" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">15</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>CatLover</strong>
+                          <p>I'll keep an eye out! Have you checked the animal shelter?</p>
+                          <small class="text-grey">1 day ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>NeighborHelp</strong>
+                          <p>Shared this on my social media. Hope you find Whiskers soon!</p>
+                          <small class="text-grey">18 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 5 -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Lisa T.</h6>
+                      <small class="text-grey">3 days ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" class="responsive round medium-height">
+                  <p>Looking for a reliable dog walker for my golden retriever. Need someone available weekday mornings. Any recommendations? 🐕</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "5"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">27</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/5" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">9</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>DogOwner</strong>
+                          <p>Sarah from Paws & Walks is excellent! Very reliable and loves dogs</p>
+                          <small class="text-grey">2 days ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/5" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 6 - Text Only -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Tom W.</h6>
+                      <small class="text-grey">4 days ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <p>Anyone interested in starting a community garden? I have some extra seeds and would love to share the space. We could grow vegetables together and split the harvest! 🌱</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "6"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">15</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/6" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">6</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>GreenThumb</strong>
+                          <p>I'm interested! What kind of seeds do you have?</p>
+                          <small class="text-grey">3 days ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/6" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 7 - Craft Image -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Maria S.</h6>
+                      <small class="text-grey">5 days ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" class="responsive round medium-height">
+                  <p>Finished my latest pottery piece! Hand-thrown ceramic bowl with a beautiful blue glaze. Anyone else into ceramics? Would love to share techniques! 🏺</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "7"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">22</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/7" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">4</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>PotteryLover</strong>
+                          <p>Beautiful work! The glaze is stunning</p>
+                          <small class="text-grey">4 days ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/7" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post Card 8 - Text Only -->
+              <div class="card medium">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Alex P.</h6>
+                      <small class="text-grey">6 days ago</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-content center-align">
+                  <p>Local farmers market is starting this Saturday! Fresh produce, handmade crafts, and live music. Support local vendors and enjoy a great community atmosphere. See you there! 🥕</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-post="/api/like" 
+                           hx-vals='{"postId": "8"}'
+                           hx-swap="outerHTML"
+                           hx-target="this">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">33</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" 
+                           hx-get="/api/comments/8" 
+                           hx-target=".comments-section"
+                           hx-swap="outerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">11</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>MarketGoer</strong>
+                          <p>What time does it start? I'll definitely be there!</p>
+                          <small class="text-grey">5 days ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/8" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <style>
+      main {
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+        padding-bottom: 2rem;
+      }
+      
+      .feed-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 0.5rem;
+      }
+      
+      @media (max-width: 768px) {
+        .feed-container {
+          max-width: 320px;
+          padding: 0.25rem;
+        }
+      }
+      
+      .card {
+        margin-bottom: 1.5rem;
+      }
+      
+      .clickable-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+      
+      .clickable-container:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      .clickable-container i {
+        font-size: 1.2rem;
+      }
+      
+      .clickable-container.liked i {
+        color: #f44336;
+      }
+      
+      .clickable-container.liked .like-text {
+        color: #f44336;
+      }
+      
+      .comments-section {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.02);
+      }
+      
+      .comment-item {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .comment-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+      
+      .comment-item p {
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+      }
+      
+      .add-comment {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .input-field {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      
+      .comment-input {
+        flex: 1;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        padding: 0.5rem;
+        color: white;
+        font-size: 0.9rem;
+      }
+      
+      .comment-input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      
+      .comment-input:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.4);
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+      
+      .btn.small {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        min-width: auto;
+      }
+    </style>
+
+  </body>
+</html>

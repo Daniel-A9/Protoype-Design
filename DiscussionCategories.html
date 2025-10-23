@@ -1,0 +1,332 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Local Market Discussions</title>
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body class="dark">
+
+    <!-- Desktop Top Navigation -->
+    <nav class="top desktop-nav" style="display: none;">
+      <div class="container">
+        <div class="row no-gap">
+          <div class="col s12">
+            <div class="nav-content">
+              <div class="nav-logo">
+                <h4 class="brand-title">LocalMarket</h4>
+                <div class="logo-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#F59E0B"/>
+                    <path d="M12 6L12.5 8.5L15 9L12.5 9.5L12 12L11.5 9.5L9 9L11.5 8.5L12 6Z" fill="#FCD34D"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="nav-links">
+                <a href="#" class="nav-link"><i>home</i></a>
+                <a href="#" class="nav-link"><i>search</i></a>
+                <a href="#" class="nav-link"><i>group</i></a>
+                <a href="#" class="nav-link"><i>shopping_cart</i></a>
+                <a href="#" class="nav-link"><i>person</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom s mobile-nav">
+      <a href="#" class="nav-item">
+        <i>home</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>search</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>group</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>shopping_cart</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h4>Local Market Discussions</h4>
+            <div class="categories-container">
+              
+              <!-- Category 1: Local Discussions -->
+              <div class="category-card">
+                <div class="category-content">
+                  <div class="category-info">
+                    <h6>Local Discussions</h6>
+                    <p>General community conversations and local topics</p>
+                  </div>
+                  <button class="btn outlined follow-btn" 
+                          hx-post="/api/categories/local-discussions/follow"
+                          hx-swap="outerHTML"
+                          hx-target="this">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              <!-- Category 2: Local Groups -->
+              <div class="category-card">
+                <div class="category-content">
+                  <div class="category-info">
+                    <h6>Local Groups</h6>
+                    <p>Community groups, clubs, and organizations</p>
+                  </div>
+                  <button class="btn outlined follow-btn" 
+                          hx-post="/api/categories/local-groups/follow"
+                          hx-swap="outerHTML"
+                          hx-target="this">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              <!-- Category 3: Local Used/Barter -->
+              <div class="category-card">
+                <div class="category-content">
+                  <div class="category-info">
+                    <h6>Local Used/Barter</h6>
+                    <p>Buy, sell, trade, and barter items locally</p>
+                  </div>
+                  <button class="btn outlined follow-btn" 
+                          hx-post="/api/categories/local-used-barter/follow"
+                          hx-swap="outerHTML"
+                          hx-target="this">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              <!-- Category 4: Food & Farm News -->
+              <div class="category-card">
+                <div class="category-content">
+                  <div class="category-info">
+                    <h6>Food & Farm News</h6>
+                    <p>Local food, farming, and agricultural updates</p>
+                  </div>
+                  <button class="btn outlined follow-btn" 
+                          hx-post="/api/categories/food-farm-news/follow"
+                          hx-swap="outerHTML"
+                          hx-target="this">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+              <!-- Category 5: Tips & Resources -->
+              <div class="category-card">
+                <div class="category-content">
+                  <div class="category-info">
+                    <h6>Tips & Resources</h6>
+                    <p>Helpful tips, guides, and local resources</p>
+                  </div>
+                  <button class="btn outlined follow-btn" 
+                          hx-post="/api/categories/tips-resources/follow"
+                          hx-swap="outerHTML"
+                          hx-target="this">
+                    Follow
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <style>
+      main {
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+        padding-bottom: 2rem;
+      }
+      
+      .categories-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      
+      .category-card {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        transition: all 0.2s ease;
+      }
+      
+      .category-card:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+      }
+      
+      .category-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+      }
+      
+      .category-info {
+        flex: 1;
+      }
+      
+      .category-info h6 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: white;
+      }
+      
+      .category-info p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.4;
+      }
+      
+      .follow-btn {
+        min-width: 100px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      
+      .follow-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+      
+      .follow-btn.following {
+        background-color: #4caf50;
+        border-color: #4caf50;
+        color: white;
+      }
+      
+      .follow-btn.following:hover {
+        background-color: #45a049;
+        border-color: #45a049;
+      }
+      
+      /* Navigation */
+      .desktop-nav {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.5rem 0;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .brand-title {
+        color: white;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .nav-link {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.2s;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      .mobile-nav {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-item {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+        transition: color 0.2s;
+      }
+
+      .nav-item:hover {
+        color: white;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .category-content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+        
+        .follow-btn {
+          align-self: flex-end;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .desktop-nav {
+          display: block !important;
+        }
+        
+        .mobile-nav {
+          display: none !important;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .desktop-nav {
+          display: none !important;
+        }
+        
+        .mobile-nav {
+          display: flex !important;
+        }
+      }
+    </style>
+
+  </body>
+</html>

@@ -1,0 +1,1269 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>LocalMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="light">
+
+    <!-- Desktop Top Navigation -->
+    <nav class="top desktop-nav" style="display: none;">
+      <div class="container">
+        <div class="row no-gap">
+          <div class="col s12">
+            <div class="nav-content">
+              <div class="nav-logo">
+                <h4 class="brand-title">LocalMarket</h4>
+                <div class="logo-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#F59E0B"/>
+                    <path d="M12 6L12.5 8.5L15 9L12.5 9.5L12 12L11.5 9.5L9 9L11.5 8.5L12 6Z" fill="#FCD34D"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="nav-links">
+                <a href="#" class="nav-link"><i>home</i></a>
+                <a href="#" class="nav-link"><i>search</i></a>
+                <a href="#" class="nav-link"><i>group</i></a>
+                <a href="#" class="nav-link"><i>shopping_cart</i></a>
+                <a href="#" class="nav-link"><i>person</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom s mobile-nav">
+      <a href="#" class="nav-item">
+        <i>home</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>search</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>group</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>shopping_cart</i>
+      </a>
+      <a href="#" class="nav-item">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <!-- Header Section -->
+            <div class="header-section">
+              <div class="header-content">
+                <div class="brand-section">
+                  <h1 class="brand-title">LocalMarket</h1>
+                  <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#F59E0B"/>
+                      <path d="M12 6L12.5 8.5L15 9L12.5 9.5L12 12L11.5 9.5L9 9L11.5 8.5L12 6Z" fill="#FCD34D"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="search-section">
+                  <div class="search-bar">
+                    <div class="search-input-container">
+                      <input type="text" value="15235" class="zip-input">
+                      <div class="input-divider"></div>
+                      <input type="text" placeholder="Search near me" class="search-input">
+                    </div>
+                    <button class="settings-btn"><i>settings</i></button>
+                  </div>
+                  <div class="filter-section">
+                    <select class="filter-dropdown">
+                      <option>VENDORS, EVENTS</option>
+                      <option>VENDORS</option>
+                      <option>EVENTS</option>
+                    </select>
+                    <span class="filter-connector">in</span>
+                    <select class="filter-dropdown">
+                      <option>1000 miles</option>
+                      <option>500 miles</option>
+                      <option>100 miles</option>
+                      <option>50 miles</option>
+                      <option>25 miles</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="feed-container">
+              
+              <!-- Card 1: Brewery Central -->
+              <div class="card medium clickable-card" onclick="window.location.href='vendorpage.html'">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Brewery Central</h5>
+                  <div class="card-meta">
+                    <span class="location">12345</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Crafting exceptional beers since 2015. Visit our taproom for fresh brews and brewery tours!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">24</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 2: Farmer -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Sunny Acres Farm</h5>
+                  <div class="card-meta">
+                    <span class="location">15235</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Fresh organic vegetables, free-range eggs, and seasonal fruits. Visit our farm stand or join our CSA program!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">18</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 2: Artisan -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Mountain Pottery Studio</h5>
+                  <div class="card-meta">
+                    <span class="location">03860</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Handcrafted ceramic pieces made with local clay. Custom orders welcome! Visit our studio for pottery classes and workshops.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">23</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/2" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">7</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 3: Event -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Summer Music Festival</h5>
+                  <div class="card-meta">
+                    <span class="location">03894</span>
+                    <span class="separator">-</span>
+                    <span class="date-range">2025-07-15 - 2025-07-17</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge event">EVENT</span>
+                  </div>
+                  <p>Three days of local bands, food trucks, and artisan vendors. Family-friendly activities and live music all weekend long!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">45</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/3" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">12</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 4: Craftsman -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Riverside Woodworks</h5>
+                  <div class="card-meta">
+                    <span class="location">15235</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Custom furniture and home decor made from reclaimed wood. Each piece tells a story of local history and craftsmanship.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">31</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 5: Class -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Farm-to-Table Cooking Class</h5>
+                  <div class="card-meta">
+                    <span class="location">03860</span>
+                    <span class="separator">-</span>
+                    <span class="date-range">2025-06-20 - 2025-06-20</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge event">EVENT</span>
+                  </div>
+                  <p>Learn to cook with fresh, local ingredients! Chef Maria will teach you seasonal recipes using produce from nearby farms.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">28</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/5" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">6</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 6: Farmer -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Honey Hill Apiary</h5>
+                  <div class="card-meta">
+                    <span class="location">15235</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Raw, unfiltered honey from our local bee colonies. Also offering beekeeping classes and hive tours for the whole family!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">36</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/6" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">11</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 7: Fair -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">County Craft Fair</h5>
+                  <div class="card-meta">
+                    <span class="location">03894</span>
+                    <span class="separator">-</span>
+                    <span class="date-range">2025-08-10 - 2025-08-11</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge event">EVENT</span>
+                  </div>
+                  <p>Over 50 local artisans showcasing handmade goods, jewelry, pottery, textiles, and more. Food trucks and live demonstrations!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">52</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/7" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">19</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 8: Artisan -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Silver Moon Jewelry</h5>
+                  <div class="card-meta">
+                    <span class="location">03860</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Handcrafted sterling silver jewelry inspired by nature. Custom pieces available. Visit our studio or shop online!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">29</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/8" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">4</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 9: Farmer -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Green Valley Organic Farm</h5>
+                  <div class="card-meta">
+                    <span class="location">15235</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Certified organic vegetables, herbs, and flowers. Pick-your-own berries in season. Farm tours available by appointment.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">41</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/9" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">9</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 10: Class -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Beginner Woodworking Workshop</h5>
+                  <div class="card-meta">
+                    <span class="location">03860</span>
+                    <span class="separator">-</span>
+                    <span class="date-range">2025-07-05 - 2025-07-05</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge event">EVENT</span>
+                  </div>
+                  <p>Learn basic woodworking skills and create your own cutting board! All tools and materials provided. Perfect for beginners.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">33</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/10" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">7</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 11: Artisan -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Heritage Textiles</h5>
+                  <div class="card-meta">
+                    <span class="location">03894</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge vendor">VENDOR</span>
+                  </div>
+                  <p>Handwoven textiles using traditional techniques. Scarves, blankets, and home decor items. Custom orders welcome!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">26</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/11" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">3</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 12: Event -->
+              <div class="card medium">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Farmers Market Opening Day</h5>
+                  <div class="card-meta">
+                    <span class="location">15235</span>
+                    <span class="separator">-</span>
+                    <span class="date-range">2025-05-15 - 2025-05-15</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge event">EVENT</span>
+                  </div>
+                  <p>Join us for the opening day of our weekly farmers market! Fresh produce, local vendors, live music, and family activities.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">38</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/12" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">14</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <style>
+      /* LocalMarket Color Scheme */
+      :root {
+        --beige-bg: #F5F1E8;
+        --beige-light: #F9F7F2;
+        --beige-card: #FFFFFF;
+        --brown-text: #3C2415;
+        --brown-light: #6B4E3D;
+        --accent-orange: #F59E0B;
+        --accent-yellow: #FCD34D;
+        --shadow: rgba(60, 36, 21, 0.1);
+      }
+
+      body {
+        background-color: var(--beige-bg);
+        color: var(--brown-text);
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Typography */
+      .brand-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        color: var(--brown-text);
+        margin: 0;
+      }
+
+      .card-title {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        color: var(--brown-text);
+        margin: 0.5rem 0;
+      }
+
+      /* Header Section */
+      .header-section {
+        background-color: var(--beige-light);
+        padding: 1rem;
+        border-bottom: 1px solid var(--shadow);
+        margin-bottom: 1rem;
+      }
+
+      .header-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .brand-section {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .search-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .search-bar {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .search-input-container {
+        display: flex;
+        flex: 1;
+        border: 1px solid var(--shadow);
+        border-radius: 8px;
+        background-color: var(--beige-card);
+        overflow: hidden;
+      }
+
+      .zip-input, .search-input {
+        border: none;
+        background: transparent;
+        padding: 0.75rem;
+        color: var(--brown-text);
+        font-size: 0.9rem;
+        outline: none;
+      }
+
+      .zip-input {
+        width: 80px;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .input-divider {
+        width: 1px;
+        background-color: var(--shadow);
+        margin: 0.5rem 0;
+      }
+
+      .search-input {
+        flex: 1;
+      }
+
+      .search-input::placeholder {
+        color: var(--brown-light);
+      }
+
+      .settings-btn {
+        background: none;
+        border: none;
+        color: var(--brown-light);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+      }
+
+      .filter-section {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .filter-dropdown {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid var(--shadow);
+        border-radius: 6px;
+        background-color: var(--beige-card);
+        color: var(--brown-text);
+        font-size: 0.85rem;
+      }
+
+      .filter-connector {
+        color: var(--brown-text);
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      /* Navigation */
+      .desktop-nav {
+        background-color: var(--beige-light);
+        border-bottom: 1px solid var(--shadow);
+        padding: 0.5rem 0;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .nav-link {
+        color: var(--brown-light);
+        text-decoration: none;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+      }
+
+      .nav-link:hover {
+        background-color: var(--shadow);
+      }
+
+      .mobile-nav {
+        background-color: var(--beige-light);
+        border-top: 1px solid var(--shadow);
+      }
+
+      .nav-item {
+        color: var(--brown-light);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+        transition: color 0.2s;
+      }
+
+      .nav-item:hover {
+        color: var(--brown-text);
+      }
+
+      /* Main Content */
+      main {
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+        padding-bottom: 2rem;
+        background-color: var(--beige-bg);
+      }
+      
+      .feed-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      
+      .card {
+        margin-bottom: 1.5rem;
+        background-color: var(--beige-card);
+        border-radius: 12px;
+        box-shadow: 0 2px 8px var(--shadow);
+        overflow: hidden;
+      }
+
+      .clickable-card {
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .clickable-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px var(--shadow);
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 1rem;
+      }
+
+      .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+        font-size: 0.85rem;
+        color: var(--brown-light);
+      }
+
+      .type-badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .type-badge.vendor {
+        background-color: var(--accent-yellow);
+        color: var(--brown-text);
+      }
+
+      .type-badge.event {
+        background-color: var(--accent-orange);
+        color: white;
+      }
+
+      .card-footer {
+        padding: 0.75rem 1rem;
+        border-top: 1px solid var(--shadow);
+        background-color: var(--beige-light);
+      }
+      
+      .clickable-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background-color 0.2s;
+        color: var(--brown-light);
+      }
+      
+      .clickable-container:hover {
+        background-color: var(--shadow);
+      }
+      
+      .clickable-container i {
+        font-size: 1.2rem;
+      }
+      
+      .clickable-container.liked i {
+        color: #e53e3e;
+      }
+      
+      .clickable-container.liked .like-text {
+        color: #e53e3e;
+      }
+      
+      .comments-section {
+        border-top: 1px solid var(--shadow);
+        padding: 1rem;
+        background-color: var(--beige-light);
+      }
+      
+      .comment-item {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--shadow);
+      }
+      
+      .comment-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+      
+      .comment-item p {
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+        color: var(--brown-text);
+      }
+      
+      .add-comment {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--shadow);
+      }
+      
+      .input-field {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      
+      .comment-input {
+        flex: 1;
+        background-color: var(--beige-card);
+        border: 1px solid var(--shadow);
+        border-radius: 6px;
+        padding: 0.5rem;
+        color: var(--brown-text);
+        font-size: 0.9rem;
+      }
+      
+      .comment-input::placeholder {
+        color: var(--brown-light);
+      }
+      
+      .comment-input:focus {
+        outline: none;
+        border-color: var(--accent-orange);
+        background-color: var(--beige-card);
+      }
+      
+      .btn.small {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        min-width: auto;
+        background-color: var(--accent-orange);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      /* Responsive Design */
+      @media (min-width: 768px) {
+        .desktop-nav {
+          display: block !important;
+        }
+        
+        .mobile-nav {
+          display: none !important;
+        }
+
+        .search-section {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .search-bar {
+          flex: 1;
+        }
+
+        .filter-section {
+          flex: 0 0 auto;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .desktop-nav {
+          display: none !important;
+        }
+        
+        .mobile-nav {
+          display: flex !important;
+        }
+
+        .header-section {
+          padding: 0.5rem 0.5rem 0.5rem 0.25rem;
+        }
+
+        .header-content {
+          max-width: none;
+          margin: 0;
+        }
+
+        .brand-section {
+          margin-bottom: 0.5rem;
+          justify-content: flex-start;
+        }
+
+        .brand-title {
+          font-size: 1.2rem;
+        }
+
+        .logo-icon {
+          width: 24px;
+          height: 24px;
+        }
+
+        .search-section {
+          gap: 0.5rem;
+          align-items: flex-start;
+        }
+
+        .filter-section {
+          justify-content: flex-start;
+        }
+
+        .zip-input, .search-input {
+          padding: 0.5rem;
+          font-size: 0.85rem;
+        }
+
+        .filter-dropdown {
+          padding: 0.4rem;
+          font-size: 0.8rem;
+        }
+
+        .search-bar {
+          flex-direction: row;
+          gap: 0.5rem;
+          justify-content: flex-start;
+        }
+
+        .search-input-container {
+          flex: 1;
+          max-width: 280px;
+        }
+
+        .zip-input {
+          width: 70px;
+          font-size: 0.8rem;
+        }
+
+        .search-input {
+          font-size: 0.8rem;
+        }
+
+        /* Mobile Feed Content Adjustments - Full Width Cards */
+        .feed-container {
+          max-width: 100%;
+          padding: 0.1rem;
+          margin: 0;
+        }
+
+        .card {
+          margin-bottom: 0.5rem;
+          border-radius: 0;
+          box-shadow: none;
+          border: none;
+        }
+
+        .clickable-card {
+          cursor: pointer;
+          transition: none; /* Disable hover effects on mobile */
+        }
+
+        .clickable-card:active {
+          opacity: 0.8;
+        }
+
+        .card-image img {
+          height: 200px;
+          width: 100%;
+          object-fit: cover;
+        }
+
+        .card-content {
+          padding: 0.75rem 1rem;
+        }
+
+        .card-title {
+          font-size: 1.1rem;
+          line-height: 1.2;
+          margin: 0.25rem 0 0.5rem 0;
+          font-weight: 600;
+        }
+
+        .card-content p {
+          display: none; /* Hide description text on mobile to match image */
+        }
+
+        .card-meta {
+          font-size: 0.8rem;
+          flex-wrap: nowrap;
+          gap: 0.5rem;
+          margin: 0;
+          justify-content: flex-start;
+        }
+
+        .card-meta .location {
+          font-weight: 500;
+        }
+
+        .card-meta .date-range {
+          font-weight: 500;
+        }
+
+        .card-meta .type-badge {
+          margin-left: auto;
+          font-weight: 600;
+        }
+
+        .card-footer {
+          display: none; /* Hide like/comment buttons on mobile to match image */
+        }
+
+        /* Ensure content fits mobile screens */
+        main {
+          height: calc(100vh - 60px);
+          overflow-y: auto;
+          padding-bottom: 1rem;
+        }
+
+        .container {
+          padding: 0;
+          margin: 0;
+        }
+
+        .row {
+          margin: 0;
+        }
+
+        .col.s12 {
+          padding: 0;
+        }
+      }
+    </style>
+
+    <script>
+      // Minimal JavaScript for UI interactions that don't require server communication
+      
+      // Toggle comments visibility (client-side only)
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.clickable-container') && e.target.closest('.clickable-container').querySelector('.comment-text')) {
+          const container = e.target.closest('.clickable-container');
+          const postCard = container.closest('.card');
+          const commentsSection = postCard.querySelector('.comments-section');
+          const commentText = container.querySelector('.comment-text');
+          
+          if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+            commentsSection.style.display = 'block';
+            commentText.textContent = 'Hide Comments';
+          } else {
+            commentsSection.style.display = 'none';
+            commentText.textContent = 'Comment';
+          }
+        }
+      });
+
+      // Add comment functionality (client-side for demo)
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn') && e.target.textContent === 'Post') {
+          const postCard = e.target.closest('.card');
+          const commentInput = postCard.querySelector('.comment-input');
+          const commentsSection = postCard.querySelector('.comments-section');
+          const commentCount = postCard.querySelector('.comment-count');
+          
+          if (commentInput.value.trim() === '') return;
+          
+          // Create new comment element
+          const newComment = document.createElement('div');
+          newComment.className = 'comment-item';
+          newComment.innerHTML = `
+            <div class="row no-gap">
+              <div class="col s2">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" class="circle extra-small">
+              </div>
+              <div class="col s10">
+                <strong>You</strong>
+                <p>${commentInput.value}</p>
+                <small class="text-grey">Just now</small>
+              </div>
+            </div>
+          `;
+          
+          // Add to comments list (create if doesn't exist)
+          let commentsList = commentsSection.querySelector('.comments-list');
+          if (!commentsList) {
+            commentsList = document.createElement('div');
+            commentsList.className = 'comments-list';
+            commentsSection.appendChild(commentsList);
+          }
+          
+          commentsList.appendChild(newComment);
+          
+          // Update comment count
+          commentCount.textContent = parseInt(commentCount.textContent) + 1;
+          
+          // Clear input
+          commentInput.value = '';
+          
+          // Scroll to new comment
+          newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+
+      // Handle htmx responses for like functionality
+      document.addEventListener('htmx:afterRequest', function(event) {
+        if (event.detail.xhr.status === 200 && event.detail.pathInfo.requestPath.includes('/like')) {
+          // Like was successful, update UI
+          const container = event.target;
+          const icon = container.querySelector('i');
+          const likeText = container.querySelector('.like-text');
+          const likeCount = container.querySelector('.like-count');
+          
+          if (container.classList.contains('liked')) {
+            container.classList.remove('liked');
+            icon.textContent = 'favorite_border';
+            likeText.textContent = 'Like';
+            likeCount.textContent = parseInt(likeCount.textContent) - 1;
+          } else {
+            container.classList.add('liked');
+            icon.textContent = 'favorite';
+            likeText.textContent = 'Liked';
+            likeCount.textContent = parseInt(likeCount.textContent) + 1;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

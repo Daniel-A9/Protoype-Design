@@ -1,0 +1,22 @@
+{
+  "name": "protoype-design",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel-A9/Protoype-Design.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel-A9/Protoype-Design/issues"
+  },
+  "homepage": "https://github.com/Daniel-A9/Protoype-Design#readme",
+  "dependencies": {
+    "cypress": "^15.5.0"
+  }
+}

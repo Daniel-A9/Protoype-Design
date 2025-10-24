@@ -66,11 +66,16 @@
             <h4>Local Market Discussions</h4>
             <div class="categories-container">
               
-              <!-- Category 1: Local Discussions -->
+              <!-- Local Section -->
+              <div class="section-header">
+                <h5>Local</h5>
+              </div>
+              
+              <!-- Category 1: Discussions -->
               <div class="category-card">
                 <div class="category-content">
                   <div class="category-info">
-                    <h6>Local Discussions</h6>
+                    <h6>Discussions</h6>
                     <p>General community conversations and local topics</p>
                   </div>
                   <button class="btn outlined follow-btn" 
@@ -82,11 +87,11 @@
                 </div>
               </div>
 
-              <!-- Category 2: Local Groups -->
+              <!-- Category 2: Groups -->
               <div class="category-card">
                 <div class="category-content">
                   <div class="category-info">
-                    <h6>Local Groups</h6>
+                    <h6>Groups</h6>
                     <p>Community groups, clubs, and organizations</p>
                   </div>
                   <button class="btn outlined follow-btn" 
@@ -98,11 +103,11 @@
                 </div>
               </div>
 
-              <!-- Category 3: Local Used/Barter -->
+              <!-- Category 3: Used/Barter -->
               <div class="category-card">
                 <div class="category-content">
                   <div class="category-info">
-                    <h6>Local Used/Barter</h6>
+                    <h6>Used/Barter</h6>
                     <p>Buy, sell, trade, and barter items locally</p>
                   </div>
                   <button class="btn outlined follow-btn" 
@@ -112,6 +117,11 @@
                     Follow
                   </button>
                 </div>
+              </div>
+
+              <!-- General Section -->
+              <div class="section-header">
+                <h5>General</h5>
               </div>
 
               <!-- Category 4: Food & Farm News -->
@@ -161,7 +171,25 @@
       .categories-container {
         max-width: 600px;
         margin: 0 auto;
-        padding: 1rem;
+        padding: 0.5rem;
+      }
+      
+      .section-header {
+        margin: 1.5rem 0 0.75rem 0;
+        padding: 0 0.5rem;
+      }
+      
+      .section-header:first-child {
+        margin-top: 0.5rem;
+      }
+      
+      .section-header h5 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
       
       .category-card {
@@ -182,51 +210,67 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem;
+        padding: 1rem;
+        gap: 0.5rem;
       }
       
       .category-info {
         flex: 1;
+        min-width: 0;
+        overflow: hidden;
       }
       
       .category-info h6 {
-        margin: 0 0 0.5rem 0;
-        font-size: 1.1rem;
+        margin: 0 0 0.25rem 0;
+        font-size: 1rem;
         font-weight: 600;
         color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       
       .category-info p {
         margin: 0;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.7);
-        line-height: 1.4;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       
       .follow-btn {
-        min-width: 100px;
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-        font-weight: 500;
-        border-radius: 6px;
+        min-width: 50px;
+        padding: 0.2rem 0.4rem;
+        font-size: 0.65rem;
+        font-weight: 400;
+        border-radius: 2px;
         transition: all 0.2s ease;
         white-space: nowrap;
+        background-color: transparent;
+        border: 1px solid #fffffe;
+        color: #fffffe;
+        height: 22px;
+        flex-shrink: 0;
       }
       
       .follow-btn:hover {
         transform: translateY(-1px);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 254, 0.1);
       }
       
       .follow-btn.following {
-        background-color: #4caf50;
-        border-color: #4caf50;
-        color: white;
+        background-color: transparent;
+        border-color: #fffffe;
+        color: #fffffe;
       }
       
       .follow-btn.following:hover {
-        background-color: #45a049;
-        border-color: #45a049;
+        background-color: rgba(255, 255, 254, 0.1);
+        border-color: #fffffe;
       }
       
       /* Navigation */
@@ -296,14 +340,35 @@
 
       /* Responsive adjustments */
       @media (max-width: 600px) {
+        .categories-container {
+          padding: 0.25rem;
+        }
+        
         .category-content {
           flex-direction: column;
           align-items: flex-start;
-          gap: 1rem;
+          padding: 0.75rem;
+          gap: 0.75rem;
+        }
+        
+        .category-info {
+          width: 100%;
+        }
+        
+        .category-info h6 {
+          font-size: 0.9rem;
+        }
+        
+        .category-info p {
+          font-size: 0.75rem;
         }
         
         .follow-btn {
-          align-self: flex-end;
+          min-width: 45px;
+          padding: 0.15rem 0.3rem;
+          font-size: 0.6rem;
+          height: 20px;
+          align-self: flex-start;
         }
       }
 

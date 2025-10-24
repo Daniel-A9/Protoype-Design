@@ -29,9 +29,9 @@
                 </div>
               </div>
               <div class="nav-links">
-                <a href="#" class="nav-link"><i>home</i></a>
+                <a href="/" class="nav-link"><i>home</i></a>
                 <a href="#" class="nav-link"><i>search</i></a>
-                <a href="#" class="nav-link"><i>group</i></a>
+                <a href="discussions/categories/" class="nav-link"><i>group</i></a>
                 <a href="#" class="nav-link"><i>shopping_cart</i></a>
                 <a href="#" class="nav-link"><i>person</i></a>
               </div>
@@ -43,13 +43,13 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="bottom s mobile-nav">
-      <a href="#" class="nav-item">
+      <a href="/" class="nav-item">
         <i>home</i>
       </a>
       <a href="#" class="nav-item">
         <i>search</i>
       </a>
-      <a href="#" class="nav-item">
+      <a href="discussions/categories/" class="nav-item">
         <i>group</i>
       </a>
       <a href="#" class="nav-item">
@@ -107,7 +107,7 @@
             <div class="feed-container">
               
               <!-- Card 1: Brewery Central -->
-              <div class="card medium clickable-card" onclick="window.location.href='vendorpage.html'">
+              <div class="card medium clickable-card" onclick="window.location.href='vendors/brewery/'">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -264,7 +264,48 @@
                 </div>
               </div>
 
-              <!-- Card 4: Craftsman -->
+              <!-- Card 4: Beer Tasting Event -->
+              <div class="card medium clickable-card" onclick="window.location.href='events/beer/'">
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive">
+                </div>
+                <div class="card-content">
+                  <h5 class="card-title">Craft Beer Tasting Event</h5>
+                  <div class="card-meta">
+                    <span class="location">12345</span>
+                    <span class="separator">-</span>
+                    <span class="date-range">2025-08-20</span>
+                    <span class="separator">-</span>
+                    <span class="type-badge event">EVENT</span>
+                  </div>
+                  <p>Join us for an exclusive craft beer tasting featuring local breweries. Sample unique brews, meet the brewers, and enjoy live music!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">32</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">15</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <!-- Comments loaded via htmx -->
+                </div>
+              </div>
+
+              <!-- Card 5: Craftsman -->
               <div class="card medium">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" class="responsive">

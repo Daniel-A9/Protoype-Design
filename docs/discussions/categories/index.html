@@ -28,11 +28,11 @@
                 </div>
               </div>
               <div class="nav-links">
-                <a href="../../" class="nav-link"><i>home</i></a>
-                <a href="#" class="nav-link"><i>search</i></a>
-                <a href="./" class="nav-link"><i>group</i></a>
-                <a href="#" class="nav-link"><i>shopping_cart</i></a>
-                <a href="#" class="nav-link"><i>person</i></a>
+                <a href="../../" class="nav-link" data-testid="nav-home"><i>home</i></a>
+                <a href="#" class="nav-link" data-testid="nav-search"><i>search</i></a>
+                <a href="./" class="nav-link" data-testid="nav-discussions"><i>group</i></a>
+                <a href="#" class="nav-link" data-testid="nav-cart"><i>shopping_cart</i></a>
+                <a href="#" class="nav-link" data-testid="nav-profile"><i>person</i></a>
               </div>
             </div>
           </div>
@@ -42,19 +42,19 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="bottom s mobile-nav">
-      <a href="../../" class="nav-item">
+      <a href="../../" class="nav-item" data-testid="mobile-nav-home">
         <i>home</i>
       </a>
-      <a href="#" class="nav-item">
+      <a href="#" class="nav-item" data-testid="mobile-nav-search">
         <i>search</i>
       </a>
-      <a href="./" class="nav-item">
+      <a href="./" class="nav-item" data-testid="mobile-nav-discussions">
         <i>group</i>
       </a>
-      <a href="#" class="nav-item">
+      <a href="#" class="nav-item" data-testid="mobile-nav-cart">
         <i>shopping_cart</i>
       </a>
-      <a href="#" class="nav-item">
+      <a href="#" class="nav-item" data-testid="mobile-nav-profile">
         <i>person</i>
       </a>
     </nav>
@@ -81,7 +81,8 @@
                   <button class="btn outlined follow-btn" 
                           hx-post="/api/categories/local-discussions/follow"
                           hx-swap="outerHTML"
-                          hx-target="this">
+                          hx-target="this"
+                          data-testid="follow-discussions-btn">
                     Follow
                   </button>
                 </div>
@@ -97,7 +98,8 @@
                   <button class="btn outlined follow-btn" 
                           hx-post="/api/categories/local-groups/follow"
                           hx-swap="outerHTML"
-                          hx-target="this">
+                          hx-target="this"
+                          data-testid="follow-groups-btn">
                     Follow
                   </button>
                 </div>
@@ -113,7 +115,8 @@
                   <button class="btn outlined follow-btn" 
                           hx-post="/api/categories/local-used-barter/follow"
                           hx-swap="outerHTML"
-                          hx-target="this">
+                          hx-target="this"
+                          data-testid="follow-used-barter-btn">
                     Follow
                   </button>
                 </div>
@@ -134,7 +137,8 @@
                   <button class="btn outlined follow-btn" 
                           hx-post="/api/categories/food-farm-news/follow"
                           hx-swap="outerHTML"
-                          hx-target="this">
+                          hx-target="this"
+                          data-testid="follow-food-farm-news-btn">
                     Follow
                   </button>
                 </div>
@@ -150,7 +154,8 @@
                   <button class="btn outlined follow-btn" 
                           hx-post="/api/categories/tips-resources/follow"
                           hx-swap="outerHTML"
-                          hx-target="this">
+                          hx-target="this"
+                          data-testid="follow-tips-resources-btn">
                     Follow
                   </button>
                 </div>

@@ -23,16 +23,16 @@
                             <span>Brewery Central</span>
                         </div>
                         <div class="nav-links">
-                            <a href="../../" class="nav-link">Home</a>
-                            <a href="./" class="nav-link active">Create Event</a>
-                            <a href="../../vendors/brewery/" class="nav-link">Vendors</a>
-                            <a href="#about" class="nav-link">About</a>
+                            <a href="../../" class="nav-link" data-testid="nav-home">Home</a>
+                            <a href="./" class="nav-link active" data-testid="nav-create-event">Create Event</a>
+                            <a href="../../vendors/brewery/" class="nav-link" data-testid="nav-vendors">Vendors</a>
+                            <a href="#about" class="nav-link" data-testid="nav-about">About</a>
                         </div>
                         <div class="nav-actions">
-                            <button class="btn circle small">
+                            <button class="btn circle small" data-testid="nav-search-btn">
                                 <i>search</i>
                             </button>
-                            <button class="btn circle small">
+                            <button class="btn circle small" data-testid="nav-favorite-btn">
                                 <i>favorite_border</i>
                             </button>
                         </div>
@@ -44,19 +44,19 @@
 
     <!-- Bottom Navigation (Mobile) -->
     <nav class="bottom s show-s hide-l">
-        <a href="../../" class="nav-item">
+        <a href="../../" class="nav-item" data-testid="mobile-nav-home">
             <i>home</i>
             <span>Home</span>
         </a>
-        <a href="./" class="nav-item active">
+        <a href="./" class="nav-item active" data-testid="mobile-nav-create-event">
             <i>add</i>
             <span>Create Event</span>
         </a>
-        <a href="../../vendors/brewery/" class="nav-item">
+        <a href="../../vendors/brewery/" class="nav-item" data-testid="mobile-nav-vendors">
             <i>store</i>
             <span>Vendors</span>
         </a>
-        <a href="#about" class="nav-item">
+        <a href="#about" class="nav-item" data-testid="mobile-nav-about">
             <i>info</i>
             <span>About</span>
         </a>
@@ -91,15 +91,15 @@
                         <p>Fill out the information below to create your event</p>
                     </div>
                     
-                    <form class="event-form" hx-post="/api/create-event" hx-target="#form-result" hx-swap="innerHTML">
+                    <form class="event-form" hx-post="/api/create-event" hx-target="#form-result" hx-swap="innerHTML" data-testid="create-event-form">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="event-title">Event Title *</label>
-                                <input type="text" id="event-title" name="title" required>
+                                <input type="text" id="event-title" name="title" required data-testid="event-title-input">
                             </div>
                             <div class="form-group">
                                 <label for="event-category">Category *</label>
-                                <select id="event-category" name="category" required>
+                                <select id="event-category" name="category" required data-testid="event-category-select">
                                     <option value="">Select Category</option>
                                     <option value="tasting">Tasting</option>
                                     <option value="festival">Festival</option>
@@ -113,16 +113,16 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="event-date">Date *</label>
-                                <input type="date" id="event-date" name="date" required>
+                                <input type="date" id="event-date" name="date" required data-testid="event-date-input">
                             </div>
                             <div class="form-row-time">
                                 <div class="form-group">
                                     <label for="start-time">Start Time *</label>
-                                    <input type="time" id="start-time" name="start_time" required>
+                                    <input type="time" id="start-time" name="start_time" required data-testid="start-time-input">
                                 </div>
                                 <div class="form-group">
                                     <label for="end-time">End Time *</label>
-                                    <input type="time" id="end-time" name="end_time" required>
+                                    <input type="time" id="end-time" name="end_time" required data-testid="end-time-input">
                                 </div>
                             </div>
                         </div>
@@ -130,25 +130,25 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="event-location">Location *</label>
-                                <input type="text" id="event-location" name="location" required>
+                                <input type="text" id="event-location" name="location" required data-testid="event-location-input">
                             </div>
                             <div class="form-group">
                                 <label for="event-price">Price</label>
-                                <input type="number" id="event-price" name="price" min="0" step="0.01" placeholder="0.00">
+                                <input type="number" id="event-price" name="price" min="0" step="0.01" placeholder="0.00" data-testid="event-price-input">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="event-description">Description *</label>
-                            <textarea id="event-description" name="description" rows="4" required placeholder="Describe your event, what attendees can expect, and any special details..."></textarea>
+                            <textarea id="event-description" name="description" rows="4" required placeholder="Describe your event, what attendees can expect, and any special details..." data-testid="event-description-textarea"></textarea>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="event-image">Upload Event Image</label>
                                 <div class="upload-container">
-                                    <input type="file" id="event-image" name="event_image" accept="image/*" style="display: none;">
-                                    <button type="button" class="btn outline upload-btn" onclick="document.getElementById('event-image').click()">
+                                    <input type="file" id="event-image" name="event_image" accept="image/*" style="display: none;" data-testid="event-image-input">
+                                    <button type="button" class="btn outline upload-btn" onclick="document.getElementById('event-image').click()" data-testid="upload-image-btn">
                                         <i>cloud_upload</i>
                                         <span>Choose Image</span>
                                     </button>
@@ -156,23 +156,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="capacity">Capacity</label>
-                                <input type="number" id="capacity" name="capacity" min="1" placeholder="Unlimited">
+                                <input type="number" id="capacity" name="capacity" min="1" placeholder="Unlimited" data-testid="capacity-input">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="ticket-link">Ticket Purchase Link</label>
-                            <input type="url" id="ticket-link" name="ticket_link" placeholder="https://example.com/tickets">
+                            <input type="url" id="ticket-link" name="ticket_link" placeholder="https://example.com/tickets" data-testid="ticket-link-input">
                         </div>
 
                         <div class="form-group">
                             <label for="contact-email">Contact Email *</label>
-                            <input type="email" id="contact-email" name="contact_email" required>
+                            <input type="email" id="contact-email" name="contact_email" required data-testid="contact-email-input">
                         </div>
 
                         <div class="form-actions">
-                            <button type="button" class="btn outline cancel-btn">Cancel</button>
-                            <button type="submit" class="btn outline submit-btn">Create Event</button>
+                            <button type="button" class="btn outline cancel-btn" data-testid="cancel-btn">Cancel</button>
+                            <button type="submit" class="btn outline submit-btn" data-testid="submit-btn">Create Event</button>
                         </div>
 
                         <div id="form-result"></div>

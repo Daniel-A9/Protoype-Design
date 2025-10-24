@@ -29,11 +29,11 @@
                 </div>
               </div>
               <div class="nav-links">
-                <a href="/" class="nav-link"><i>home</i></a>
-                <a href="#" class="nav-link"><i>search</i></a>
-                <a href="discussions/categories/" class="nav-link"><i>group</i></a>
-                <a href="#" class="nav-link"><i>shopping_cart</i></a>
-                <a href="#" class="nav-link"><i>person</i></a>
+                <a href="/" class="nav-link" data-testid="nav-home"><i>home</i></a>
+                <a href="#" class="nav-link" data-testid="nav-search"><i>search</i></a>
+                <a href="discussions/categories/" class="nav-link" data-testid="nav-discussions"><i>group</i></a>
+                <a href="#" class="nav-link" data-testid="nav-cart"><i>shopping_cart</i></a>
+                <a href="#" class="nav-link" data-testid="nav-profile"><i>person</i></a>
               </div>
             </div>
           </div>
@@ -43,19 +43,19 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="bottom s mobile-nav">
-      <a href="/" class="nav-item">
+      <a href="/" class="nav-item" data-testid="mobile-nav-home">
         <i>home</i>
       </a>
-      <a href="#" class="nav-item">
+      <a href="#" class="nav-item" data-testid="mobile-nav-search">
         <i>search</i>
       </a>
-      <a href="discussions/categories/" class="nav-item">
+      <a href="discussions/categories/" class="nav-item" data-testid="mobile-nav-discussions">
         <i>group</i>
       </a>
-      <a href="#" class="nav-item">
+      <a href="#" class="nav-item" data-testid="mobile-nav-cart">
         <i>shopping_cart</i>
       </a>
-      <a href="#" class="nav-item">
+      <a href="#" class="nav-item" data-testid="mobile-nav-profile">
         <i>person</i>
       </a>
     </nav>
@@ -79,20 +79,20 @@
                 <div class="search-section">
                   <div class="search-bar">
                     <div class="search-input-container">
-                      <input type="text" value="15235" class="zip-input">
+                      <input type="text" value="15235" class="zip-input" data-testid="zip-input">
                       <div class="input-divider"></div>
-                      <input type="text" placeholder="Search near me" class="search-input">
+                      <input type="text" placeholder="Search near me" class="search-input" data-testid="search-input">
                     </div>
-                    <button class="settings-btn"><i>settings</i></button>
+                    <button class="settings-btn" data-testid="settings-btn"><i>settings</i></button>
                   </div>
                   <div class="filter-section">
-                    <select class="filter-dropdown">
+                    <select class="filter-dropdown" data-testid="type-filter">
                       <option>VENDORS, EVENTS</option>
                       <option>VENDORS</option>
                       <option>EVENTS</option>
                     </select>
                     <span class="filter-connector">in</span>
-                    <select class="filter-dropdown">
+                    <select class="filter-dropdown" data-testid="distance-filter">
                       <option>1000 miles</option>
                       <option>500 miles</option>
                       <option>100 miles</option>
@@ -107,7 +107,7 @@
             <div class="feed-container">
               
               <!-- Card 1: Brewery Central -->
-              <div class="card medium clickable-card" onclick="window.location.href='vendors/brewery/'">
+              <div class="card medium clickable-card" onclick="window.location.href='vendors/brewery/'" data-testid="brewery-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -123,14 +123,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="brewery-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">24</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML" data-testid="brewery-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
@@ -146,7 +146,7 @@
               </div>
 
               <!-- Card 2: Farmer -->
-              <div class="card medium">
+              <div class="card medium" data-testid="farm-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -162,14 +162,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="farm-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">18</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML" data-testid="farm-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">5</span>
@@ -185,7 +185,7 @@
               </div>
 
               <!-- Card 2: Artisan -->
-              <div class="card medium">
+              <div class="card medium" data-testid="pottery-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -201,14 +201,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="pottery-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">23</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/2" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/2" hx-target=".comments-section" hx-swap="innerHTML" data-testid="pottery-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">7</span>
@@ -224,7 +224,7 @@
               </div>
 
               <!-- Card 3: Event -->
-              <div class="card medium">
+              <div class="card medium" data-testid="music-festival-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -242,14 +242,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="music-festival-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">45</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/3" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/3" hx-target=".comments-section" hx-swap="innerHTML" data-testid="music-festival-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">12</span>
@@ -265,7 +265,7 @@
               </div>
 
               <!-- Card 4: Beer Tasting Event -->
-              <div class="card medium clickable-card" onclick="window.location.href='events/beer/'">
+              <div class="card medium clickable-card" onclick="window.location.href='events/beer/'" data-testid="beer-event-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -283,14 +283,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="beer-event-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">32</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML" data-testid="beer-event-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">15</span>
@@ -306,7 +306,7 @@
               </div>
 
               <!-- Card 5: Craftsman -->
-              <div class="card medium">
+              <div class="card medium" data-testid="woodworks-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -322,14 +322,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="woodworks-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">31</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML" data-testid="woodworks-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
@@ -345,7 +345,7 @@
               </div>
 
               <!-- Card 5: Class -->
-              <div class="card medium">
+              <div class="card medium" data-testid="cooking-class-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -363,14 +363,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="cooking-class-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">28</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/5" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/5" hx-target=".comments-section" hx-swap="innerHTML" data-testid="cooking-class-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">6</span>
@@ -386,7 +386,7 @@
               </div>
 
               <!-- Card 6: Farmer -->
-              <div class="card medium">
+              <div class="card medium" data-testid="apiary-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -402,14 +402,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="apiary-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">36</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/6" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/6" hx-target=".comments-section" hx-swap="innerHTML" data-testid="apiary-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">11</span>
@@ -425,7 +425,7 @@
               </div>
 
               <!-- Card 7: Fair -->
-              <div class="card medium">
+              <div class="card medium" data-testid="craft-fair-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -443,14 +443,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="craft-fair-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">52</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/7" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/7" hx-target=".comments-section" hx-swap="innerHTML" data-testid="craft-fair-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">19</span>
@@ -466,7 +466,7 @@
               </div>
 
               <!-- Card 8: Artisan -->
-              <div class="card medium">
+              <div class="card medium" data-testid="jewelry-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -482,14 +482,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="jewelry-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">29</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/8" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/8" hx-target=".comments-section" hx-swap="innerHTML" data-testid="jewelry-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">4</span>
@@ -505,7 +505,7 @@
               </div>
 
               <!-- Card 9: Farmer -->
-              <div class="card medium">
+              <div class="card medium" data-testid="organic-farm-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -521,14 +521,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="organic-farm-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">41</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/9" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/9" hx-target=".comments-section" hx-swap="innerHTML" data-testid="organic-farm-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">9</span>
@@ -544,7 +544,7 @@
               </div>
 
               <!-- Card 10: Class -->
-              <div class="card medium">
+              <div class="card medium" data-testid="woodworking-class-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -562,14 +562,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="woodworking-class-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">33</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/10" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/10" hx-target=".comments-section" hx-swap="innerHTML" data-testid="woodworking-class-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">7</span>
@@ -585,7 +585,7 @@
               </div>
 
               <!-- Card 11: Artisan -->
-              <div class="card medium">
+              <div class="card medium" data-testid="textiles-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -601,14 +601,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="textiles-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">26</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/11" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/11" hx-target=".comments-section" hx-swap="innerHTML" data-testid="textiles-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">3</span>
@@ -624,7 +624,7 @@
               </div>
 
               <!-- Card 12: Event -->
-              <div class="card medium">
+              <div class="card medium" data-testid="farmers-market-card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" class="responsive">
                 </div>
@@ -642,14 +642,14 @@
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML">
+                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="farmers-market-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">38</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/12" hx-target=".comments-section" hx-swap="innerHTML">
+                      <div class="clickable-container" hx-get="/comments/12" hx-target=".comments-section" hx-swap="innerHTML" data-testid="farmers-market-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">14</span>

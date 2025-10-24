@@ -13,16 +13,16 @@
   <body class="dark">
 
     <nav class="bottom s">
-      <a href="../../">
+      <a href="../../" data-testid="nav-home">
         <i>home</i>
       </a>
-      <a href="#">
+      <a href="#" data-testid="nav-search">
         <i>search</i>
       </a>
-      <a href="../categories/">
+      <a href="../categories/" data-testid="nav-categories">
         <i>share</i>
       </a>
-      <a href="#">
+      <a href="#" data-testid="nav-more">
         <i>more_vert</i>
       </a>
     </nav>
@@ -58,7 +58,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "1"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="hiking-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">24</span>
@@ -68,7 +69,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/1" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="hiking-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
@@ -127,8 +129,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="hiking-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="hiking-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>
@@ -160,7 +162,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "2"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="coffee-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">31</span>
@@ -170,7 +173,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/2" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="coffee-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">12</span>
@@ -217,8 +221,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="coffee-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="coffee-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>
@@ -251,7 +255,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "3"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="cleanup-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">18</span>
@@ -261,7 +266,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/3" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="cleanup-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">5</span>
@@ -296,8 +302,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/3" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="cleanup-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="cleanup-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>
@@ -329,7 +335,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "4"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="cat-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">42</span>
@@ -339,7 +346,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/4" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="cat-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">15</span>
@@ -386,8 +394,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="cat-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="cat-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>
@@ -420,7 +428,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "5"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="dog-walker-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">27</span>
@@ -430,7 +439,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/5" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="dog-walker-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">9</span>
@@ -465,8 +475,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/5" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="dog-walker-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="dog-walker-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>
@@ -498,7 +508,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "6"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="garden-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">15</span>
@@ -508,7 +519,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/6" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="garden-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">6</span>
@@ -543,8 +555,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/6" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="garden-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="garden-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>
@@ -577,7 +589,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "7"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="pottery-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">22</span>
@@ -587,7 +600,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/7" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="pottery-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">4</span>
@@ -622,8 +636,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/7" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="pottery-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="pottery-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>
@@ -655,7 +669,8 @@
                            hx-post="/api/like" 
                            hx-vals='{"postId": "8"}'
                            hx-swap="outerHTML"
-                           hx-target="this">
+                           hx-target="this"
+                           data-testid="farmers-market-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">33</span>
@@ -665,7 +680,8 @@
                       <div class="clickable-container" 
                            hx-get="/api/comments/8" 
                            hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           hx-swap="outerHTML"
+                           data-testid="farmers-market-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">11</span>
@@ -700,8 +716,8 @@
                       <div class="col s10">
                         <form hx-post="/api/comments/8" hx-target=".comments-list" hx-swap="beforeend">
                           <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="farmers-market-post-comment-input">
+                            <button type="submit" class="btn small" data-testid="farmers-market-post-comment-submit">Post</button>
                           </div>
                         </form>
                       </div>

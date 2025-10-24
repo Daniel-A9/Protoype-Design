@@ -23,16 +23,16 @@
                             <span>Brewery Central</span>
                         </div>
                         <div class="nav-links">
-                            <a href="../../" class="nav-link">Home</a>
-                            <a href="../new/" class="nav-link">Events</a>
-                            <a href="../../vendors/brewery/" class="nav-link">Vendors</a>
-                            <a href="#about" class="nav-link">About</a>
+                            <a href="../../" class="nav-link" data-testid="nav-home">Home</a>
+                            <a href="../new/" class="nav-link" data-testid="nav-events">Events</a>
+                            <a href="../../vendors/brewery/" class="nav-link" data-testid="nav-vendors">Vendors</a>
+                            <a href="#about" class="nav-link" data-testid="nav-about">About</a>
                         </div>
                         <div class="nav-actions">
-                            <button class="btn circle small">
+                            <button class="btn circle small" data-testid="nav-search-btn">
                                 <i>search</i>
                             </button>
-                            <button class="btn circle small">
+                            <button class="btn circle small" data-testid="nav-favorite-btn">
                                 <i>favorite_border</i>
                             </button>
                         </div>
@@ -44,19 +44,19 @@
 
     <!-- Bottom Navigation (Mobile) -->
     <nav class="bottom s show-s hide-l">
-        <a href="../../" class="nav-item">
+        <a href="../../" class="nav-item" data-testid="mobile-nav-home">
             <i>home</i>
             <span>Home</span>
         </a>
-        <a href="../new/" class="nav-item active">
+        <a href="../new/" class="nav-item active" data-testid="mobile-nav-events">
             <i>event</i>
             <span>Events</span>
         </a>
-        <a href="../../vendors/brewery/" class="nav-item">
+        <a href="../../vendors/brewery/" class="nav-item" data-testid="mobile-nav-vendors">
             <i>store</i>
             <span>Vendors</span>
         </a>
-        <a href="#about" class="nav-item">
+        <a href="#about" class="nav-item" data-testid="mobile-nav-about">
             <i>info</i>
             <span>About</span>
         </a>
@@ -105,7 +105,8 @@
                                     <button class="btn large follow-btn" 
                                             hx-post="/api/follow-event" 
                                             hx-target="this" 
-                                            hx-swap="outerHTML">
+                                            hx-swap="outerHTML"
+                                            data-testid="follow-event-btn">
                                         <i>person_add</i>
                                         <span class="btn-text">Follow</span>
                                     </button>
@@ -113,13 +114,15 @@
                                             hx-get="https://example.com/tickets"
                                             hx-trigger="click"
                                             hx-target="body"
-                                            hx-swap="none">
+                                            hx-swap="none"
+                                            data-testid="buy-tickets-btn">
                                         <i>local_activity</i>
                                         <span class="btn-text">Buy Tickets</span>
                                     </button>
                                     <div class="dropdown-container">
                                         <button class="btn large outline info-btn" 
-                                                onclick="toggleInfoDropdown()">
+                                                onclick="toggleInfoDropdown()"
+                                                data-testid="info-dropdown-btn">
                                             <i>info</i>
                                             <span class="btn-text">Info</span>
                                         </button>
@@ -239,7 +242,7 @@
                                     <div class="host-details">
                                         <strong>Downtown Brewery</strong>
                                         <p>Premium craft brewery specializing in seasonal and limited-edition beers since 2018.</p>
-                                        <a href="../../vendors/brewery/" class="btn small outline">View Profile</a>
+                                        <a href="../../vendors/brewery/" class="btn small outline" data-testid="view-host-profile-btn">View Profile</a>
                                     </div>
                                 </div>
                             </div>

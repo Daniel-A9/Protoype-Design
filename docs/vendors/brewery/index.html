@@ -23,17 +23,17 @@
                             <span>Brewery Central</span>
                         </div>
                         <div class="nav-links">
-                            <a href="../../" class="nav-link">Home</a>
-                            <a href="#products" class="nav-link">Products</a>
-                            <a href="#posts" class="nav-link">Posts</a>
-                            <a href="../../events/new/" class="nav-link">Events</a>
-                            <a href="../../discussions/categories/" class="nav-link">Discussions</a>
+                            <a href="../../" class="nav-link" data-testid="nav-home">Home</a>
+                            <a href="#products" class="nav-link" data-testid="nav-products">Products</a>
+                            <a href="#posts" class="nav-link" data-testid="nav-posts">Posts</a>
+                            <a href="../../events/new/" class="nav-link" data-testid="nav-events">Events</a>
+                            <a href="../../discussions/categories/" class="nav-link" data-testid="nav-discussions">Discussions</a>
                         </div>
                         <div class="nav-actions">
-                            <button class="btn circle small">
+                            <button class="btn circle small" data-testid="nav-search-btn">
         <i>search</i>
                             </button>
-                            <button class="btn circle small">
+                            <button class="btn circle small" data-testid="nav-favorite-btn">
                                 <i>favorite_border</i>
                             </button>
                         </div>
@@ -45,19 +45,19 @@
 
     <!-- Bottom Navigation (Mobile) -->
     <nav class="bottom s show-s hide-l">
-        <a href="../../" class="nav-item">
+        <a href="../../" class="nav-item" data-testid="mobile-nav-home">
         <i>home</i>
             <span>Home</span>
         </a>
-        <a href="#products" class="nav-item">
+        <a href="#products" class="nav-item" data-testid="mobile-nav-products">
             <i>inventory</i>
             <span>Products</span>
         </a>
-        <a href="../../events/new/" class="nav-item">
+        <a href="../../events/new/" class="nav-item" data-testid="mobile-nav-events">
             <i>event</i>
             <span>Events</span>
         </a>
-        <a href="#posts" class="nav-item">
+        <a href="#posts" class="nav-item" data-testid="mobile-nav-posts">
             <i>article</i>
             <span>Posts</span>
       </a>
@@ -106,19 +106,21 @@
                                     <button class="btn large follow-btn" 
                                             hx-post="/api/follow" 
                                             hx-target="this" 
-                                            hx-swap="outerHTML">
+                                            hx-swap="outerHTML"
+                                            data-testid="follow-vendor-btn">
                                         <i>person_add</i>
                                         <span class="btn-text">Follow</span>
                                     </button>
                                     <button class="btn large outline message-btn" 
                                             hx-get="/contact-form" 
                                             hx-target="#contact-modal" 
-                                            hx-swap="innerHTML">
+                                            hx-swap="innerHTML"
+                                            data-testid="message-vendor-btn">
                                         <i>mail</i>
                                         <span class="btn-text">Message</span>
                                     </button>
                                     <div class="dropdown-container">
-                                        <button class="btn large outline dropdown-trigger info-btn" onclick="toggleDropdown()">
+                                        <button class="btn large outline dropdown-trigger info-btn" onclick="toggleDropdown()" data-testid="info-dropdown-btn">
                                             <i>info</i>
                                             <span class="btn-text">Info</span>
                                         </button>
@@ -175,19 +177,23 @@
                                 <button class="btn small" 
                                         hx-get="/api/products?filter=all" 
                                         hx-target="#products-grid" 
-                                        hx-swap="innerHTML">All</button>
+                                        hx-swap="innerHTML"
+                                        data-testid="filter-all-btn">All</button>
                                 <button class="btn small outline" 
                                         hx-get="/api/products?filter=ipa" 
                                         hx-target="#products-grid" 
-                                        hx-swap="innerHTML">IPA</button>
+                                        hx-swap="innerHTML"
+                                        data-testid="filter-ipa-btn">IPA</button>
                                 <button class="btn small outline" 
                                         hx-get="/api/products?filter=stout" 
                                         hx-target="#products-grid" 
-                                        hx-swap="innerHTML">Stout</button>
+                                        hx-swap="innerHTML"
+                                        data-testid="filter-stout-btn">Stout</button>
                                 <button class="btn small outline" 
                                         hx-get="/api/products?filter=lager" 
                                         hx-target="#products-grid" 
-                                        hx-swap="innerHTML">Lager</button>
+                                        hx-swap="innerHTML"
+                                        data-testid="filter-lager-btn">Lager</button>
                             </div>
                         </div>
                         
@@ -217,7 +223,8 @@
                                             hx-post="/api/cart/add" 
                                             hx-vals='{"product_id": "citrus-ipa"}' 
                                             hx-target="#cart-count" 
-                                            hx-swap="innerHTML">
+                                            hx-swap="innerHTML"
+                                            data-testid="citrus-ipa-add-to-cart-btn">
                                         <i>add_shopping_cart</i>
                                         Add to Cart
                                     </button>
@@ -225,7 +232,8 @@
                                             hx-post="/api/favorite" 
                                             hx-vals='{"product_id": "citrus-ipa"}' 
                                             hx-target="this" 
-                                            hx-swap="outerHTML">
+                                            hx-swap="outerHTML"
+                                            data-testid="citrus-ipa-favorite-btn">
                                         <i>favorite_border</i>
                                     </button>
                                 </div>
@@ -256,7 +264,8 @@
                                             hx-post="/api/cart/add" 
                                             hx-vals='{"product_id": "chocolate-stout"}' 
                                             hx-target="#cart-count" 
-                                            hx-swap="innerHTML">
+                                            hx-swap="innerHTML"
+                                            data-testid="chocolate-stout-add-to-cart-btn">
                                         <i>add_shopping_cart</i>
                                         Add to Cart
                                     </button>
@@ -264,7 +273,8 @@
                                             hx-post="/api/favorite" 
                                             hx-vals='{"product_id": "chocolate-stout"}' 
                                             hx-target="this" 
-                                            hx-swap="outerHTML">
+                                            hx-swap="outerHTML"
+                                            data-testid="chocolate-stout-favorite-btn">
                                         <i>favorite_border</i>
                                     </button>
                                 </div>
@@ -295,7 +305,8 @@
                                             hx-post="/api/cart/add" 
                                             hx-vals='{"product_id": "golden-lager"}' 
                                             hx-target="#cart-count" 
-                                            hx-swap="innerHTML">
+                                            hx-swap="innerHTML"
+                                            data-testid="golden-lager-add-to-cart-btn">
                                         <i>add_shopping_cart</i>
                                         Add to Cart
                                     </button>
@@ -303,7 +314,8 @@
                                             hx-post="/api/favorite" 
                                             hx-vals='{"product_id": "golden-lager"}' 
                                             hx-target="this" 
-                                            hx-swap="outerHTML">
+                                            hx-swap="outerHTML"
+                                            data-testid="golden-lager-favorite-btn">
                                         <i>favorite_border</i>
                                     </button>
                                 </div>
@@ -334,7 +346,8 @@
                                             hx-post="/api/cart/add" 
                                             hx-vals='{"product_id": "hefeweizen"}' 
                                             hx-target="#cart-count" 
-                                            hx-swap="innerHTML">
+                                            hx-swap="innerHTML"
+                                            data-testid="hefeweizen-add-to-cart-btn">
                                         <i>add_shopping_cart</i>
                                         Add to Cart
                                     </button>
@@ -342,7 +355,8 @@
                                             hx-post="/api/favorite" 
                                             hx-vals='{"product_id": "hefeweizen"}' 
                                             hx-target="this" 
-                                            hx-swap="outerHTML">
+                                            hx-swap="outerHTML"
+                                            data-testid="hefeweizen-favorite-btn">
                                         <i>favorite_border</i>
                                     </button>
                                 </div>
@@ -373,7 +387,8 @@
                                             hx-post="/api/cart/add" 
                                             hx-vals='{"product_id": "pale-ale"}' 
                                             hx-target="#cart-count" 
-                                            hx-swap="innerHTML">
+                                            hx-swap="innerHTML"
+                                            data-testid="pale-ale-add-to-cart-btn">
                                         <i>add_shopping_cart</i>
                                         Add to Cart
                                     </button>
@@ -381,7 +396,8 @@
                                             hx-post="/api/favorite" 
                                             hx-vals='{"product_id": "pale-ale"}' 
                                             hx-target="this" 
-                                            hx-swap="outerHTML">
+                                            hx-swap="outerHTML"
+                                            data-testid="pale-ale-favorite-btn">
                                         <i>favorite_border</i>
                                     </button>
                                 </div>
@@ -421,14 +437,14 @@
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="clickable-container" onclick="toggleLike(this)">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="brewing-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">24</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="clickable-container" onclick="toggleComments(this)">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">8</span>
@@ -474,8 +490,8 @@
                                         </div>
                                         <div class="col s10">
                                             <div class="input-field">
-                                                <input type="text" class="comment-input" placeholder="Write a comment...">
-                                                <button class="btn small" onclick="addComment(this)">Post</button>
+                                                <input type="text" class="comment-input" placeholder="Write a comment..." data-testid="brewing-post-comment-input">
+                                                <button class="btn small" onclick="addComment(this)" data-testid="brewing-post-comment-submit">Post</button>
                                             </div>
                                         </div>
                                     </div>
@@ -504,14 +520,14 @@
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="clickable-container" onclick="toggleLike(this)">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="festival-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">31</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="clickable-container" onclick="toggleComments(this)">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="festival-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">12</span>
@@ -545,8 +561,8 @@
                                         </div>
                                         <div class="col s10">
                                             <div class="input-field">
-                                                <input type="text" class="comment-input" placeholder="Write a comment...">
-                                                <button class="btn small" onclick="addComment(this)">Post</button>
+                                                <input type="text" class="comment-input" placeholder="Write a comment..." data-testid="tasting-post-comment-input">
+                                                <button class="btn small" onclick="addComment(this)" data-testid="tasting-post-comment-submit">Post</button>
                                             </div>
                                         </div>
                                     </div>
@@ -575,14 +591,14 @@
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="clickable-container" onclick="toggleLike(this)">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="tasting-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">18</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="clickable-container" onclick="toggleComments(this)">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">5</span>
@@ -616,8 +632,8 @@
                                         </div>
                                         <div class="col s10">
                                             <div class="input-field">
-                                                <input type="text" class="comment-input" placeholder="Write a comment...">
-                                                <button class="btn small" onclick="addComment(this)">Post</button>
+                                                <input type="text" class="comment-input" placeholder="Write a comment..." data-testid="festival-post-comment-input">
+                                                <button class="btn small" onclick="addComment(this)" data-testid="festival-post-comment-submit">Post</button>
                                             </div>
                                         </div>
                                     </div>

@@ -1,3 +1,13 @@
+# rules for AI
+
+## when editing html files
+
+don't use any custom css, instead use beer css settings, helpers, and elements
+never import new js or css files, other than style css
+all js goes at the bottom
+read this entire beercss documentation below when editing
+
+
 # BeerCSS - Complete Documentation for AI/LLM Systems
 
 This file is auto-generated from the BeerCSS documentation.

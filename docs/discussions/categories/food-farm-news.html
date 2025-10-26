@@ -104,10 +104,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "1"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">22</span>
@@ -115,12 +112,92 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/1" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">6</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>FarmLover</strong>
+                          <p>Can't wait to try the fresh tomatoes! What time do you open on weekends?</p>
+                          <small class="text-grey">4 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>GreenThumb</strong>
+                          <p>Do you have any organic herbs available?</p>
+                          <small class="text-grey">2 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -147,10 +224,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "2"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">18</span>
@@ -158,12 +232,80 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/2" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">4</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>DairyFan</strong>
+                          <p>Excited about the fresh dairy products! Will you have cheese too?</p>
+                          <small class="text-grey">1 day ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -191,10 +333,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "3"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">26</span>
@@ -202,12 +341,80 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/3" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Beekeeper</strong>
+                          <p>Great to see local honey! What flowers do your bees prefer?</p>
+                          <small class="text-grey">3 hours ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/3" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -234,10 +441,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "4"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">18</span>
@@ -245,12 +449,45 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/4" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">4</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -278,10 +515,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "5"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">32</span>
@@ -289,12 +523,45 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/5" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">11</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -321,10 +588,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "6"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">21</span>
@@ -332,12 +596,45 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/6" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">6</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -365,10 +662,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "7"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">29</span>
@@ -376,12 +670,45 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/7" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">9</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -408,10 +735,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "8"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">35</span>
@@ -419,12 +743,45 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/8" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">14</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>Commenter</strong>
+                          <p>Great post! Thanks for sharing.</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <form hx-post="/api/comments/4" hx-target=".comments-list" hx-swap="beforeend">
+                          <div class="input-field">
+                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                            <button type="submit" class="btn small">Post</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -452,10 +809,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "9"}'
-                           hx-swap="outerHTML"
-                           hx-target="this">
+                           onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">27</span>
@@ -463,9 +817,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/9" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML">
+                           onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">7</span>
@@ -550,6 +902,37 @@
           overlay.classList.remove('active');
         }
       });
+
+      // Toggle comments dropdown
+      function toggleComments(button) {
+        const card = button.closest('.card');
+        const commentsSection = card.querySelector('.comments-section');
+        
+        if (commentsSection.style.display === 'none') {
+          commentsSection.style.display = 'block';
+        } else {
+          commentsSection.style.display = 'none';
+        }
+      }
+
+      // Toggle like button
+      function toggleLike(button) {
+        const heartIcon = button.querySelector('.material-icons');
+        const likeCountSpan = button.querySelector('.like-count');
+        const currentCount = parseInt(likeCountSpan.textContent);
+        
+        if (heartIcon.textContent === 'favorite_border') {
+          // Like the post
+          heartIcon.textContent = 'favorite';
+          button.classList.add('liked');
+          likeCountSpan.textContent = currentCount + 1;
+        } else {
+          // Unlike the post
+          heartIcon.textContent = 'favorite_border';
+          button.classList.remove('liked');
+          likeCountSpan.textContent = currentCount - 1;
+        }
+      }
     </script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>

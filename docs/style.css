@@ -183,12 +183,14 @@ body.light {
     background-color: var(--surface-container-low);
     border-radius: 12px;
     padding: 1.5rem;
-    margin-top: 1rem;
-    position: sticky;
-    top: 1rem;
-    max-height: calc(100vh - 2rem);
+    position: fixed;
+    top: 60px;
+    right: 1rem;
+    width: 320px;
+    max-height: calc(100vh - 64px);
     overflow-y: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 0;
   }
 
   .categories-sidebar h5 {
@@ -198,16 +200,31 @@ body.light {
     font-weight: 600;
   }
 
+  .category-description {
+    color: var(--on-surface-variant);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
   /* Main Content and Feed Container Styles */
-  main {
+  main.responsive {
     height: calc(100vh - 60px);
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+  }
+  
+  main.responsive > .container {
+    max-width: none;
   }
   
   .main-content {
-    padding-right: 1rem;
-    height: 100%;
-    overflow-y: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+    height: fit-content;
+    width: 100% !important;
   }
   
   .feed-container {
@@ -285,6 +302,8 @@ body.light {
     border-top: 1px solid var(--outline-variant);
     padding: 1rem;
     background-color: var(--surface-container);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
   }
 
   .comment-item {
@@ -367,6 +386,11 @@ body.light {
       display: none !important;
     }
     
+    main.responsive {
+      height: calc(100vh - 60px);
+      padding-right: 1rem !important;
+    }
+    
     .feed-container {
       max-width: none;
       padding: 0 1rem;
@@ -374,11 +398,8 @@ body.light {
     
     .main-content {
       width: 100% !important;
-      padding-right: 0;
-    }
-    
-    main {
-      height: calc(100vh - 60px);
+      max-width: 100% !important;
+      padding-right: 0 !important;
     }
     
     .container {
@@ -411,4 +432,23 @@ body.light {
 
   .clickable-container.comments-open {
     background-color: var(--surface-container-high);
+  }
+
+  /* Like button styles */
+  .liked {
+    color: #f44336 !important;
+  }
+
+  .liked .material-icons {
+    color: #f44336 !important;
+  }
+
+  .comments-section.show {
+    display: block !important;
+  }
+
+  /* Like button hover effect */
+  .clickable-container:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }

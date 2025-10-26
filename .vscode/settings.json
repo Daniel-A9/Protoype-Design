@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "Protoype Design"
+    "liveServer.settings.multiRootWorkspaceName": "Protoype Design",
+    "files.autoSave": "afterDelay"
 }

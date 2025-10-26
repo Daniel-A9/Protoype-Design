@@ -1,4 +1,4 @@
-﻿<html>
+<html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,41 +62,32 @@
           <div class="col s12">
             <!-- Header Section -->
             <div class="header-section">
-              <div class="header-content">
-                <div class="brand-section">
-                  <h1 class="brand-title">LocalMarket</h1>
-                  <div class="logo-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#F59E0B"/>
-                      <path d="M12 6L12.5 8.5L15 9L12.5 9.5L12 12L11.5 9.5L9 9L11.5 8.5L12 6Z" fill="#FCD34D"/>
-                    </svg>
-                  </div>
+              <div class="search-bar">
+                <div class="search-input-container">
+                  <i class="material-icons location-pin-icon">location_on</i>
+                  <input type="text" value="15235" class="zip-input" data-testid="zip-input">
+                  <div class="input-divider"></div>
+                  <input type="text" placeholder="Search near me" class="search-input" data-testid="search-input">
                 </div>
-                <div class="search-section">
-                  <div class="search-bar">
-                    <div class="search-input-container">
-                      <input type="text" value="15235" class="zip-input" data-testid="zip-input">
-                      <div class="input-divider"></div>
-                      <input type="text" placeholder="Search near me" class="search-input" data-testid="search-input">
-                    </div>
-                    <button class="settings-btn" data-testid="settings-btn"><i>settings</i></button>
-                  </div>
-                  <div class="filter-section">
-                    <select class="filter-dropdown" data-testid="type-filter">
-                      <option>VENDORS, EVENTS</option>
-                      <option>VENDORS</option>
-                      <option>EVENTS</option>
-                    </select>
-                    <span class="filter-connector">in</span>
-                    <select class="filter-dropdown" data-testid="distance-filter">
-                      <option>1000 miles</option>
-                      <option>500 miles</option>
-                      <option>100 miles</option>
-                      <option>50 miles</option>
-                      <option>25 miles</option>
-                    </select>
-                  </div>
-                </div>
+                <button class="filter-toggle-btn" onclick="document.getElementById('filterDropdown').classList.toggle('show')" data-testid="filter-btn">
+                  <i class="material-icons">tune</i>
+                </button>
+              </div>
+              
+              <div id="filterDropdown" class="filter-dropdown-menu">
+                <select class="filter-dropdown" data-testid="type-filter">
+                  <option>VENDORS, EVENTS</option>
+                  <option>VENDORS</option>
+                  <option>EVENTS</option>
+                </select>
+                <span class="filter-connector">in</span>
+                <select class="filter-dropdown" data-testid="distance-filter">
+                  <option>1000 miles</option>
+                  <option>500 miles</option>
+                  <option>100 miles</option>
+                  <option>50 miles</option>
+                  <option>25 miles</option>
+                </select>
               </div>
             </div>
             
@@ -117,22 +108,7 @@
                   <p>Crafting exceptional beers since 2015. Visit our taproom for fresh brews and brewery tours!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="brewery-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">24</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML" data-testid="brewery-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">8</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -156,22 +132,7 @@
                   <p>Fresh organic vegetables, free-range eggs, and seasonal fruits. Visit our farm stand or join our CSA program!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="farm-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">18</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/1" hx-target=".comments-section" hx-swap="innerHTML" data-testid="farm-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">5</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -195,22 +156,7 @@
                   <p>Handcrafted ceramic pieces made with local clay. Custom orders welcome! Visit our studio for pottery classes and workshops.</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="pottery-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">23</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/2" hx-target=".comments-section" hx-swap="innerHTML" data-testid="pottery-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">7</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -236,22 +182,7 @@
                   <p>Three days of local bands, food trucks, and artisan vendors. Family-friendly activities and live music all weekend long!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="music-festival-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">45</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/3" hx-target=".comments-section" hx-swap="innerHTML" data-testid="music-festival-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">12</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -277,22 +208,7 @@
                   <p>Join us for an exclusive craft beer tasting featuring local breweries. Sample unique brews, meet the brewers, and enjoy live music!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="beer-event-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">32</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML" data-testid="beer-event-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">15</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -316,22 +232,7 @@
                   <p>Custom furniture and home decor made from reclaimed wood. Each piece tells a story of local history and craftsmanship.</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="woodworks-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">31</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/4" hx-target=".comments-section" hx-swap="innerHTML" data-testid="woodworks-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">8</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -357,22 +258,7 @@
                   <p>Learn to cook with fresh, local ingredients! Chef Maria will teach you seasonal recipes using produce from nearby farms.</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="cooking-class-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">28</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/5" hx-target=".comments-section" hx-swap="innerHTML" data-testid="cooking-class-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">6</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -396,22 +282,7 @@
                   <p>Raw, unfiltered honey from our local bee colonies. Also offering beekeeping classes and hive tours for the whole family!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="apiary-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">36</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/6" hx-target=".comments-section" hx-swap="innerHTML" data-testid="apiary-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">11</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -437,22 +308,7 @@
                   <p>Over 50 local artisans showcasing handmade goods, jewelry, pottery, textiles, and more. Food trucks and live demonstrations!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="craft-fair-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">52</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/7" hx-target=".comments-section" hx-swap="innerHTML" data-testid="craft-fair-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">19</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -476,22 +332,7 @@
                   <p>Handcrafted sterling silver jewelry inspired by nature. Custom pieces available. Visit our studio or shop online!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="jewelry-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">29</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/8" hx-target=".comments-section" hx-swap="innerHTML" data-testid="jewelry-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">4</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -515,22 +356,7 @@
                   <p>Certified organic vegetables, herbs, and flowers. Pick-your-own berries in season. Farm tours available by appointment.</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="organic-farm-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">41</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/9" hx-target=".comments-section" hx-swap="innerHTML" data-testid="organic-farm-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">9</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -556,22 +382,7 @@
                   <p>Learn basic woodworking skills and create your own cutting board! All tools and materials provided. Perfect for beginners.</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="woodworking-class-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">33</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/10" hx-target=".comments-section" hx-swap="innerHTML" data-testid="woodworking-class-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">7</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -595,22 +406,7 @@
                   <p>Handwoven textiles using traditional techniques. Scarves, blankets, and home decor items. Custom orders welcome!</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="textiles-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">26</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/11" hx-target=".comments-section" hx-swap="innerHTML" data-testid="textiles-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">3</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->
@@ -636,22 +432,7 @@
                   <p>Join us for the opening day of our weekly farmers market! Fresh produce, local vendors, live music, and family activities.</p>
                 </div>
                 <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" hx-post="/like" hx-target="this" hx-swap="outerHTML" data-testid="farmers-market-like-btn">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">38</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" hx-get="/comments/12" hx-target=".comments-section" hx-swap="innerHTML" data-testid="farmers-market-comment-btn">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">14</span>
-                      </div>
-                    </div>
-                  </div>
+                  <button class="follow-btn">Follow</button>
                 </div>
                 
                 <!-- Comments Section -->

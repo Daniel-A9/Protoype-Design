@@ -207,6 +207,121 @@ body.light {
     margin-bottom: 1.5rem;
   }
 
+  /* Header Section Styles */
+  .header-section {
+    background-color: transparent;
+    border: 2px solid #F5F0E8;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .search-input-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #8B4513;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .location-pin-icon {
+    color: #654321;
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .zip-input {
+    color: #654321;
+    font-weight: 500;
+    width: 80px;
+    border: none;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  .input-divider {
+    width: 1px;
+    background: #8B4513;
+    height: 60%;
+    margin: 0 0.5rem;
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    color: #654321;
+  }
+
+  .search-input::placeholder {
+    color: #999;
+  }
+
+  .filter-toggle-btn {
+    padding: 0.75rem 1rem;
+    background-color: #F5F0E8;
+    border: 1px solid #8B4513;
+    border-radius: 8px;
+    color: #654321;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+
+  .filter-toggle-btn:hover {
+    background-color: #E5E0D8;
+  }
+
+  .filter-toggle-btn i {
+    font-size: 1.5rem;
+  }
+
+  .filter-dropdown-menu {
+    display: none;
+    margin-top: 0.75rem;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid #8B4513;
+    border-radius: 8px;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .filter-dropdown-menu.show {
+    display: flex;
+  }
+
+  .filter-dropdown {
+    border: 1px solid #8B4513;
+    background: white;
+    color: #654321;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .filter-connector {
+    color: #654321;
+    font-weight: 500;
+  }
+
   /* Main Content and Feed Container Styles */
   main.responsive {
     height: calc(100vh - 60px);
@@ -216,7 +331,8 @@ body.light {
   }
   
   main.responsive > .container {
-    max-width: none;
+    max-width: 800px;
+    margin: 0 auto;
   }
   
   .main-content {

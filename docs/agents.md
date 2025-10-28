@@ -393,10 +393,10 @@ body.light {
 }
 
 body.dark {
-  --primary: #cfbcff;
-  --on-primary: #381e72;
-  --primary-container: #4f378a;
-  --on-primary-container: #e9ddff;
+  --primary: #fff9e2;
+  --on-primary: #1c1b1e;
+  --primary-container: #fff9e2;
+  --on-primary-container: #1c1b1e;
   --secondary: #cbc2db;
   --on-secondary: #332d41;
   --secondary-container: #4a4458;

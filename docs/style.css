@@ -39,10 +39,10 @@ body.light {
   }
   
   body.dark {
-    --primary: #cfbcff;
-    --on-primary: #381e72;
-    --primary-container: #4f378a;
-    --on-primary-container: #e9ddff;
+    --primary: #fff9e2;
+    --on-primary: #1c1b1e;
+    --primary-container: #fff9e2;
+    --on-primary-container: #1c1b1e;
     --secondary: #cbc2db;
     --on-secondary: #332d41;
     --secondary-container: #4a4458;
@@ -79,10 +79,10 @@ body.light {
 
   /* Mobile Menu Styles */
   .mobile-menu-btn {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1001;
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 1001 !important;
     background-color: var(--surface-container);
     border-radius: 50%;
     width: 48px;
@@ -92,6 +92,8 @@ body.light {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .mobile-menu-btn i {
@@ -335,23 +337,27 @@ body.light {
     padding: 1rem;
   }
   
-  main.responsive > .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .main-content {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0;
-    height: fit-content;
-    width: 100% !important;
-  }
-  
-  .feed-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0;
+  /* Desktop Layout - Align with sidebar */
+  @media (min-width: 769px) {
+    main.responsive > .container {
+      max-width: calc(100% - 352px);
+      margin: 0;
+      padding-right: 1rem;
+    }
+    
+    .main-content {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      height: fit-content;
+      width: 100% !important;
+    }
+    
+    .feed-container {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .card {
@@ -510,8 +516,8 @@ body.light {
     color: var(--on-primary-container);
   }
 
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
+  /* Mobile-specific styles for small screens */
+  @media (max-width: 600px) {
     /* Prevent horizontal overflow globally */
     * {
       max-width: 100%;
@@ -522,8 +528,97 @@ body.light {
       overflow-x: hidden;
     }
     
+    /* Hero section adjustments */
+    .card.surface-container {
+      padding: 1rem !important;
+      margin: 0.5rem !important;
+    }
+    
+    /* Info dropdown responsive */
+    #info-dropdown {
+      min-width: 90vw !important;
+      max-width: 90vw !important;
+      right: 5vw !important;
+    }
+    
+    /* Product cards mobile optimization */
+    .card.medium {
+      flex: 0 0 280px !important;
+      min-width: 280px !important;
+      max-width: 280px !important;
+    }
+    
+    /* Products grid mobile padding */
+    #products-grid {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+      gap: 1rem !important;
+    }
+    
+    /* Container adjustments */
+    .container {
+      padding: 0 0.5rem !important;
+    }
+    
+    /* Posts section mobile optimization */
+    #posts .container {
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+    
+    #posts .card.medium {
+      margin-left: 0.5rem !important;
+      margin-right: 0.5rem !important;
+      max-width: calc(100% - 1rem) !important;
+    }
+    
+    /* Button adjustments */
+    .btn.large {
+      padding: 0.75rem 1rem !important;
+      font-size: 0.9rem !important;
+    }
+    
+    /* Text size adjustments */
+    h2 {
+      font-size: 1.5rem !important;
+    }
+    
+    h3 {
+      font-size: 1.3rem !important;
+    }
+    
+    /* Stats section mobile layout */
+    .row.no-gap.center-align .col.s4 {
+      padding: 0.25rem !important;
+    }
+    
+    .text-bold.text-large {
+      font-size: 1.2rem !important;
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    /* Prevent horizontal overflow globally */
+    * {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    
+    body {
+      overflow-x: hidden;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
     .mobile-menu-btn {
       display: flex !important;
+      position: fixed !important;
+      top: 1rem !important;
+      right: 1rem !important;
+      z-index: 1001 !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
     
     .mobile-categories-overlay {
@@ -537,32 +632,72 @@ body.light {
     main.responsive {
       height: calc(100vh - 60px);
       padding: 0 !important;
+      margin: 0 !important;
       overflow-x: hidden;
     }
     
     .feed-container {
-      max-width: 100%;
-      padding: 0 0.75rem;
-      margin: 0;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100% !important;
     }
     
     .main-content {
       width: 100% !important;
       max-width: 100% !important;
       padding: 0 !important;
+      margin: 0 !important;
+    }
+    
+    .col .main-content {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
     }
     
     .container {
-      padding: 0;
-      max-width: 100%;
+      padding: 0 !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      width: 100% !important;
     }
     
-    .row {
-      margin: 0;
+    /* Force full width containers */
+    main.responsive .container {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
     
-    .col {
-      padding: 0;
+    main.responsive .container .row {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    main.responsive .container .row .col.main-content {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      flex: 0 0 100% !important;
+    }
+    
+    main.responsive .container .row .col.main-content .feed-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    
+    main.responsive .container .row .col.main-content .feed-container .card {
+      width: calc(100% - 0.5rem) !important;
+      max-width: calc(100% - 0.5rem) !important;
+      margin-left: 0.25rem !important;
+      margin-right: 0.25rem !important;
     }
     
     /* Header section width constraints */
@@ -627,8 +762,11 @@ body.light {
     
     /* Mobile Card Optimization */
     .card {
-      margin-bottom: 1.5rem;
-      max-width: 100%;
+      margin-bottom: 1.5rem !important;
+      margin-left: 0.125rem !important;
+      margin-right: 0.125rem !important;
+      max-width: calc(100% - 0.25rem) !important;
+      width: calc(100% - 0.25rem) !important;
       box-sizing: border-box;
       overflow: hidden;
       border-top: 2px solid rgba(255, 255, 255, 0.3);
@@ -644,7 +782,7 @@ body.light {
     }
     
   .card-image {
-    max-height: 160px;
+    max-height: 200px;
     overflow: hidden;
     width: 100%;
     position: relative;
@@ -703,12 +841,15 @@ body.light {
     font-size: 0.7rem;
   }
     
-    .card-image img {
+    .card-image img,
+    img.medium-height,
+    img.responsive,
+    img.responsive.round.medium-height {
       width: 100%;
       max-width: 100%;
-      height: 160px;
+      height: 200px !important;
       object-fit: cover;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 1 / 1;
     }
     
   .card-divider {
@@ -846,4 +987,100 @@ body.light {
   .clickable-container:hover {
     opacity: 0.8;
     cursor: pointer;
+  }
+
+  /* 
+  STANDARDIZED BOTTOM NAVIGATION HTML STRUCTURE
+  
+  Use this HTML structure for consistent bottom navigation across all pages:
+  
+  <nav class="bottom-nav">
+    <a href="../../" class="nav-item" data-testid="nav-home">
+      <i>home</i>
+    </a>
+    <a href="#search" class="nav-item" data-testid="nav-search">
+      <i>search</i>
+    </a>
+    <a href="../../discussions/categories/" class="nav-item" data-testid="nav-discussions">
+      <i>groups</i>
+    </a>
+    <a href="#cart" class="nav-item" data-testid="nav-cart">
+      <i>shopping_cart</i>
+    </a>
+    <a href="#profile" class="nav-item" data-testid="nav-profile">
+      <i>person</i>
+    </a>
+  </nav>
+  
+  Customize the href attributes as needed for each page.
+  Add "active" class to the current page's nav-item for highlighting.
+  Icons only - no text labels for clean minimalist design.
+  */
+
+  /* Standardized Bottom Navigation Styles */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+    background-color: var(--surface-container);
+    border-top: 1px solid var(--outline-variant);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .bottom-nav .nav-item {
+    padding: 12px 8px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--on-surface);
+    transition: background-color 0.2s ease;
+    border-radius: 8px;
+    margin: 2px;
+    min-height: 48px;
+  }
+
+  .bottom-nav .nav-item:hover {
+    background-color: var(--surface-container-high);
+  }
+
+  .bottom-nav .nav-item.active {
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+  }
+
+  .bottom-nav .nav-item.active i {
+    color: var(--on-primary-container);
+  }
+
+  .bottom-nav .nav-item i {
+    font-size: 24px;
+  }
+
+  /* Mobile navigation responsive adjustments */
+  @media (max-width: 768px) {
+    .bottom-nav {
+      display: flex !important;
+    }
+    
+    .top-nav {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .bottom-nav {
+      display: none !important;
+    }
+    
+    .top-nav {
+      display: block !important;
+    }
   }

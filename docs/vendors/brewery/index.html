@@ -11,187 +11,78 @@
 <link href="../../style.css" rel="stylesheet">
   </head>
   <body class="dark">
-    <!-- Top Navigation (Desktop/Tablet) -->
-    <nav class="top s hide-s hide-m">
-        <div class="container">
-            <div class="row no-gap">
-                <div class="col s12">
-                    <div class="row no-gap middle-align">
-                        <div class="col s4">
-                            <div class="row no-gap middle-align">
-                                <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                <span class="text-bold">Brewery Central</span>
-                            </div>
-                        </div>
-                        <div class="col s4 center-align">
-                            <div class="row no-gap">
-                                <a href="../../" class="btn transparent" data-testid="nav-home">Home</a>
-                                <a href="#products" class="btn transparent" data-testid="nav-products">Products</a>
-                                <a href="#posts" class="btn transparent" data-testid="nav-posts">Posts</a>
-                                <a href="../../events/new/" class="btn transparent" data-testid="nav-events">Events</a>
-                                <a href="../../discussions/categories/" class="btn transparent" data-testid="nav-discussions">Discussions</a>
-                            </div>
-                        </div>
-                        <div class="col s4 right-align">
-                            <div class="row no-gap">
-                                <button class="btn circle small" data-testid="nav-search-btn">
-                                    <i>search</i>
-                                </button>
-                                <button class="btn circle small" data-testid="nav-favorite-btn">
-                                    <i>favorite_border</i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="../../" class="nav-item" data-testid="nav-home">
+        <i>home</i>
+      </a>
+      <a href="../../" class="nav-item" data-testid="nav-search">
+        <i>search</i>
+      </a>
+      <a href="../../discussions/forums/" class="nav-item" data-testid="nav-discussions">
+        <i>group</i>
+      </a>
+      <a href="#cart" class="nav-item" data-testid="nav-cart">
+        <i>shopping_cart</i>
+      </a>
+      <a href="#profile" class="nav-item" data-testid="nav-profile">
+        <i>person</i>
+      </a>
     </nav>
 
-    <!-- Bottom Navigation (Mobile) -->
-    <nav class="bottom s show-s hide-l">
-        <a href="../../" data-testid="mobile-nav-home">
-            <i>home</i>
-            <span>Home</span>
-        </a>
-        <a href="#products" data-testid="mobile-nav-products">
-            <i>inventory</i>
-            <span>Products</span>
-        </a>
-        <a href="../../events/new/" data-testid="mobile-nav-events">
-            <i>event</i>
-            <span>Events</span>
-        </a>
-        <a href="#posts" data-testid="mobile-nav-posts">
-            <i>article</i>
-            <span>Posts</span>
-        </a>
-    </nav>
-
-    <main class="responsive">
+    <main class="responsive" style="padding-bottom: 70px;">
         <!-- Vendor Profile Hero Section -->
         <section id="home" class="margin-bottom-large">
             <div class="margin-bottom-negative-large">
                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
-                     alt="Brewery Central Banner" class="responsive round" style="height: 300px; object-fit: cover;">
+                     alt="Brewery Interior with Copper Vessels" class="responsive round" style="height: 300px; object-fit: cover;">
             </div>
             
-            <div class="card surface-container margin-horizontal-small" style="border-radius: 12px; padding: 2rem; position: relative; z-index: 2;">
+            <div class="card surface-container margin-horizontal-small" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
                             <div class="row no-gap middle-align">
-                                <div class="col s12 m3 center-align">
-                                    <div class="relative">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle large">
-                                        <div class="btn circle small primary" style="position: absolute; bottom: 0; right: 0;">
-                                            <i>verified</i>
+                                <div class="col s12 m6">
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s2">
+                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" class="circle small">
+                                        </div>
+                                        <div class="col s10">
+                                            <h2 class="left-align">Brewery Central</h2>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <div class="col s12 m6">
-                                    <h2 class="center-align">Brewery Central</h2>
-                                    <p class="text-center text-grey">Crafting exceptional beers since 2015</p>
-                                    <div class="row no-gap center-align margin-top-medium">
+                                    <p class="text-left text-grey">Crafting exceptional beers since 2015</p>
+                                    <div class="row no-gap middle-align margin-top-small">
                                         <div class="col s4">
-                                            <div class="text-center">
-                                                <span class="text-bold text-large">4.8</span>
-                                                <div class="text-small text-grey">Rating</div>
-                                            </div>
-                                        </div>
-                                        <div class="col s4">
-                                            <div class="text-center">
+                                            <div class="text-left">
                                                 <span class="text-bold text-large">2.3k</span>
                                                 <div class="text-small text-grey">Followers</div>
                                             </div>
                                         </div>
                                         <div class="col s4">
-                                            <div class="text-center">
+                                            <div class="text-left">
                                                 <span class="text-bold text-large">156</span>
-                                                <div class="text-small text-grey">Products</div>
+                                                <div class="text-small text-grey">Connections</div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col s12 m3">
-                                    <div class="row no-gap">
-                                        <div class="col s12">
-                                            <button class="btn large" 
-                                                    hx-post="/api/follow" 
-                                                    hx-target="this" 
-                                                    hx-swap="outerHTML"
-                                                    data-testid="follow-vendor-btn">
-                                                <i>person_add</i>
-                                                <span>Follow</span>
-                                            </button>
-                                        </div>
-                                        <div class="col s12">
-                                            <button class="btn large outline" 
-                                                    hx-get="/contact-form" 
-                                                    hx-target="#contact-modal" 
-                                                    hx-swap="innerHTML"
-                                                    data-testid="message-vendor-btn">
-                                                <i>mail</i>
-                                                <span>Message</span>
-                                            </button>
-                                        </div>
-                                        <div class="col s12">
-                                            <div class="relative">
-                                                <button class="btn large outline" onclick="toggleDropdown()" data-testid="info-dropdown-btn">
-                                                    <i>info</i>
-                                                    <span>Info</span>
+                                        <div class="col s4">
+                                            <div class="row no-gap right-align">
+                                                <button class="btn tiny primary border" 
+                                                        hx-post="/api/follow" 
+                                                        hx-target="this" 
+                                                        hx-swap="outerHTML"
+                                                        data-testid="follow-vendor-btn">
+                                                    <span>Follow</span>
                                                 </button>
-                                                <div class="card surface-container" id="info-dropdown" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 0.5rem; padding: 1rem; min-width: 300px; z-index: 1000;">
-                                                    <h6>Visit Us</h6>
-                                                    <div class="row no-gap margin-top-medium">
-                                                        <div class="col s12">
-                                                            <div class="row no-gap">
-                                                                <div class="col s2">
-                                                                    <i class="primary">location_on</i>
-                                                                </div>
-                                                                <div class="col s10">
-                                                                    <strong>Address</strong>
-                                                                    <p class="text-grey">123 Brewery Lane<br>Beer City, BC 12345</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col s12">
-                                                            <div class="row no-gap">
-                                                                <div class="col s2">
-                                                                    <i class="primary">phone</i>
-                                                                </div>
-                                                                <div class="col s10">
-                                                                    <strong>Phone</strong>
-                                                                    <p class="text-grey">(555) 123-BREW</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col s12">
-                                                            <div class="row no-gap">
-                                                                <div class="col s2">
-                                                                    <i class="primary">email</i>
-                                                                </div>
-                                                                <div class="col s10">
-                                                                    <strong>Email</strong>
-                                                                    <p class="text-grey">hello@brewerycentral.com</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col s12">
-                                                            <div class="row no-gap">
-                                                                <div class="col s2">
-                                                                    <i class="primary">schedule</i>
-                                                                </div>
-                                                                <div class="col s10">
-                                                                    <strong>Hours</strong>
-                                                                    <p class="text-grey">Mon-Fri: 9AM-6PM<br>Sat-Sun: 10AM-4PM</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <button class="btn tiny primary border circle" 
+                                                        hx-get="/contact-form" 
+                                                        hx-target="#contact-modal" 
+                                                        hx-swap="innerHTML"
+                                                        data-testid="message-vendor-btn">
+                                                    <i>mail</i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -207,56 +98,22 @@
         <section id="products" class="padding-vertical-large">
             <div class="container">
                 <div class="row no-gap middle-align margin-bottom-large">
-                    <div class="col s12 m6">
+                    <div class="col s12">
                         <h3>Featured Products</h3>
-                    </div>
-                    <div class="col s12 m6">
-                        <div class="row no-gap center-align">
-                            <button class="btn small" 
-                                    hx-get="/api/products?filter=all" 
-                                    hx-target="#products-grid" 
-                                    hx-swap="innerHTML"
-                                    data-testid="filter-all-btn">All</button>
-                            <button class="btn small outline" 
-                                    hx-get="/api/products?filter=ipa" 
-                                    hx-target="#products-grid" 
-                                    hx-swap="innerHTML"
-                                    data-testid="filter-ipa-btn">IPA</button>
-                            <button class="btn small outline" 
-                                    hx-get="/api/products?filter=stout" 
-                                    hx-target="#products-grid" 
-                                    hx-swap="innerHTML"
-                                    data-testid="filter-stout-btn">Stout</button>
-                            <button class="btn small outline" 
-                                    hx-get="/api/products?filter=lager" 
-                                    hx-target="#products-grid" 
-                                    hx-swap="innerHTML"
-                                    data-testid="filter-lager-btn">Lager</button>
-                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Products Grid - Full Width for Horizontal Scroll -->
-            <div id="products-grid" class="row scroll" style="padding: 1rem 0; gap: 1.5rem; padding-left: 1rem; padding-right: 1rem;">
+            <div id="products-grid" class="row scroll" style="padding: 0.5rem 0; gap: 1rem; padding-left: 0.5rem; padding-right: 0.5rem;">
                             <!-- Product Card 1 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0;">
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
                                 <div class="card-content">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
                                          alt="Citrus IPA" class="responsive round" style="height: 220px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Citrus IPA</h5>
                                         <p class="text-grey margin-vertical-small">Perfectly balanced hops with refreshing citrus notes</p>
-                                        <div class="row no-gap middle-align margin-vertical-small">
-                                            <div class="col s6">
-                                                <div class="primary">
-                                                    <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
-                                                </div>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">4.9 (127 reviews)</span>
-                                            </div>
-                                        </div>
                                         <div class="row no-gap middle-align margin-top-medium">
                                             <div class="col s6">
                                                 <span class="text-bold text-large primary">$8.99</span>
@@ -277,7 +134,7 @@
                                                     hx-swap="innerHTML"
                                                     data-testid="citrus-ipa-add-to-cart-btn">
                                                 <i>add_shopping_cart</i>
-                                                Add to Cart
+                                                <small><small><small>Add to Cart</small></small></small>
                                             </button>
                                         </div>
                                         <div class="col s4">
@@ -295,23 +152,13 @@
                             </div>
 
                             <!-- Product Card 2 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0;">
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
                                 <div class="card-content">
                                     <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
                                          alt="Chocolate Stout" class="responsive round" style="height: 220px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Chocolate Stout</h5>
                                         <p class="text-grey margin-vertical-small">Rich chocolate and coffee flavors with smooth finish</p>
-                                        <div class="row no-gap middle-align margin-vertical-small">
-                                            <div class="col s6">
-                                                <div class="primary">
-                                                    <i>star</i><i>star</i><i>star</i><i>star</i><i>star_half</i>
-                                                </div>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">4.7 (89 reviews)</span>
-                                            </div>
-                                        </div>
                                         <div class="row no-gap middle-align margin-top-medium">
                                             <div class="col s6">
                                                 <span class="text-bold text-large primary">$9.99</span>
@@ -332,7 +179,7 @@
                                                     hx-swap="innerHTML"
                                                     data-testid="chocolate-stout-add-to-cart-btn">
                                                 <i>add_shopping_cart</i>
-                                                Add to Cart
+                                                <small><small><small>Add to Cart</small></small></small>
                                             </button>
                                         </div>
                                         <div class="col s4">
@@ -350,23 +197,13 @@
                             </div>
 
                             <!-- Product Card 3 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0;">
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
                                 <div class="card-content">
                                     <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
                                          alt="Golden Lager" class="responsive round" style="height: 220px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Golden Lager</h5>
                                         <p class="text-grey margin-vertical-small">Crisp and refreshing with clean finish</p>
-                                        <div class="row no-gap middle-align margin-vertical-small">
-                                            <div class="col s6">
-                                                <div class="primary">
-                                                    <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
-                                                </div>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">4.8 (203 reviews)</span>
-                                            </div>
-                                        </div>
                                         <div class="row no-gap middle-align margin-top-medium">
                                             <div class="col s6">
                                                 <span class="text-bold text-large primary">$7.99</span>
@@ -387,7 +224,7 @@
                                                     hx-swap="innerHTML"
                                                     data-testid="golden-lager-add-to-cart-btn">
                                                 <i>add_shopping_cart</i>
-                                                Add to Cart
+                                                <small><small><small>Add to Cart</small></small></small>
                                             </button>
                                         </div>
                                         <div class="col s4">
@@ -405,23 +242,13 @@
                             </div>
 
                             <!-- Product Card 4 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0;">
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
                                 <div class="card-content">
                                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" 
                                          alt="Hefeweizen" class="responsive round" style="height: 220px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Hefeweizen</h5>
                                         <p class="text-grey margin-vertical-small">Traditional German wheat beer with banana and clove notes</p>
-                                        <div class="row no-gap middle-align margin-vertical-small">
-                                            <div class="col s6">
-                                                <div class="primary">
-                                                    <i>star</i><i>star</i><i>star</i><i>star</i><i>star</i>
-                                                </div>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">4.6 (95 reviews)</span>
-                                            </div>
-                                        </div>
                                         <div class="row no-gap middle-align margin-top-medium">
                                             <div class="col s6">
                                                 <span class="text-bold text-large primary">$8.49</span>
@@ -442,7 +269,7 @@
                                                     hx-swap="innerHTML"
                                                     data-testid="hefeweizen-add-to-cart-btn">
                                                 <i>add_shopping_cart</i>
-                                                Add to Cart
+                                                <small><small><small>Add to Cart</small></small></small>
                                             </button>
                                         </div>
                                         <div class="col s4">
@@ -460,23 +287,13 @@
                             </div>
 
                             <!-- Product Card 5 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0;">
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
                                 <div class="card-content">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
                                          alt="Pale Ale" class="responsive round" style="height: 220px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Pale Ale</h5>
                                         <p class="text-grey margin-vertical-small">Classic American pale ale with balanced hop bitterness</p>
-                                        <div class="row no-gap middle-align margin-vertical-small">
-                                            <div class="col s6">
-                                                <div class="primary">
-                                                    <i>star</i><i>star</i><i>star</i><i>star</i><i>star_half</i>
-                                                </div>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">4.5 (156 reviews)</span>
-                                            </div>
-                                        </div>
                                         <div class="row no-gap middle-align margin-top-medium">
                                             <div class="col s6">
                                                 <span class="text-bold text-large primary">$7.49</span>
@@ -497,7 +314,7 @@
                                                     hx-swap="innerHTML"
                                                     data-testid="pale-ale-add-to-cart-btn">
                                                 <i>add_shopping_cart</i>
-                                                Add to Cart
+                                                <small><small><small>Add to Cart</small></small></small>
                                             </button>
                                         </div>
                                         <div class="col s4">

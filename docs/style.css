@@ -4,19 +4,19 @@
 
 /* Light Theme (Default) */
 body {
-  background-color: #fffbff;
+  background-color: #fcf6dc;
   color: #1c1b1e;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark Theme */
 body.dark {
-  background-color: #1c1b1e;
-  color: #e6e1e6;
+  background-color: #161613;
+  color: #fffff1;
 }
 
 body.dark .card {
-  background-color: #141316;
+  background-color: #49554e;
   color: #e6e1e6;
 }
 
@@ -26,7 +26,7 @@ body.dark .bottom-nav {
 }
 
 body.dark .bottom-nav .nav-item {
-  color: #e6e1e6;
+  color: #fcf6d9;
 }
 
 body.dark .bottom-nav .nav-item:hover {
@@ -40,6 +40,63 @@ body.dark .theme-toggle {
 
 body.dark .theme-toggle i {
   color: #e6e1e6;
+}
+
+/* ============================================
+   CUSTOM BRAND COLORS - Option 1 (CSS Variables)
+   ============================================ */
+
+/* Light Mode Custom Colors */
+:root,
+body.light {
+  /* Primary Button Colors */
+  --primary: #e0dc8d;              /* Lime green - primary brand color */
+  --on-primary: #373512;           /* Dark green text on buttons */
+  --primary-container: #d4e8a0;    /* Light lime for hover state */
+  --on-primary-container: #38330c; /* Very dark green text on hover */
+  
+  /* Secondary/Accent Colors */
+  --secondary: #776a56;            /* Muted purple accent */
+  --on-secondary: #ffffff;         /* White text on secondary */
+  --secondary-container: #e8def8;  /* Light secondary for hover */
+  --on-secondary-container: #1e192b;
+  
+  /* Surface & Background Colors */
+  --background: #fffbff;           /* Page background */
+  --surface: #fdf8fd;              /* Card backgrounds */
+  --on-surface: #1c1b1e;           /* Text on surfaces */
+  --surface-variant: #e7e0eb;
+  --on-surface-variant: #49454e;
+  
+  /* Border & Outline Colors */
+  --outline: #7a757f;
+  --outline-variant: #cac4cf;
+}
+
+/* Dark Mode Custom Colors */
+body.dark {
+  /* Primary Button Colors - Lighter/Softer for dark mode */
+  --primary: #fcf6dc;              /* Cream/beige - easy on eyes */
+  --on-primary: #2d2816;           /* Dark brown text (high contrast) */
+  --primary-container: #e8dbb0;    /* Darker cream for hover */
+  --on-primary-container: #1a1709; /* Very dark brown text on hover */
+  
+  /* Secondary/Accent Colors */
+  --secondary: #cbc2db;            /* Light muted purple */
+  --on-secondary: #332d41;         /* Dark text on secondary */
+  --secondary-container: #4a4458;  /* Dark secondary for hover */
+  --on-secondary-container: #e8def8;
+  
+  /* Surface & Background Colors */
+  --background: #1c1b1e;           /* Dark page background */
+  --surface: #141316;              /* Darker card backgrounds */
+  --on-surface: #e6e1e6;           /* Light text on dark */
+  --surface-variant: #49454e;
+  --on-surface-variant: #cac4cf;
+  
+  /* Border & Outline Colors */
+  --outline: #948f99;
+  --outline-variant: #49454e;
 }
 
 /* Theme Toggle Button Styles */

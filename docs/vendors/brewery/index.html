@@ -10,23 +10,23 @@
    
 <link href="../../style.css" rel="stylesheet">
   </head>
-  <body class="dark">
+  <body>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-      <a href="../../" class="nav-item" data-testid="nav-home">
+      <a href="../../index.html" class="nav-item" data-testid="nav-home">
         <i>home</i>
       </a>
-      <a href="../../" class="nav-item" data-testid="nav-search">
+      <a href="../../index.html" class="nav-item" data-testid="nav-search">
         <i>search</i>
       </a>
-      <a href="../../discussions/forums/" class="nav-item" data-testid="nav-discussions">
+      <a href="../../discussions/forums/index.html" class="nav-item" data-testid="nav-discussions">
         <i>group</i>
       </a>
-      <a href="#cart" class="nav-item" data-testid="nav-cart">
+      <a href="#" class="nav-item" data-testid="nav-cart">
         <i>shopping_cart</i>
       </a>
-      <a href="#profile" class="nav-item" data-testid="nav-profile">
+      <a href="#" class="nav-item" data-testid="nav-profile">
         <i>person</i>
       </a>
     </nav>
@@ -54,6 +54,15 @@
                                         </div>
                                     </div>
                                     <p class="text-left text-grey">Crafting exceptional beers since 2015</p>
+                                    
+                                    <!-- Upcoming Event Link -->
+                                    <div class="margin-top-medium">
+                                        <a href="../../events/beer/index.html" class="btn primary" style="width: 100%; text-align: center;">
+                                            <i>local_activity</i>
+                                            <span>Join Our Beer Tasting Event</span>
+                                        </a>
+                                    </div>
+                                    
                                     <div class="row no-gap middle-align margin-top-small">
                                         <div class="col s4">
                                             <div class="text-left">
@@ -585,6 +594,37 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+    </script>
     <script>
         // Essential JavaScript for UI interactions only
         function toggleDropdown() {

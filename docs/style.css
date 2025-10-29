@@ -1,80 +1,417 @@
 @import url('https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css');
-body.light {
-    --primary: #6750a4;
-    --on-primary: #ffffff;
-    --primary-container: #e9ddff;
-    --on-primary-container: #22005d;
-    --secondary: #625b71;
-    --on-secondary: #ffffff;
-    --secondary-container: #e8def8;
-    --on-secondary-container: #1e192b;
-    --tertiary: #7e5260;
-    --on-tertiary: #ffffff;
-    --tertiary-container: #ffd9e3;
-    --on-tertiary-container: #31101d;
-    --error: #ba1a1a;
-    --on-error: #ffffff;
-    --error-container: #ffdad6;
-    --on-error-container: #410002;
-    --background: #fffbff;
-    --on-background: #1c1b1e;
-    --surface: #fdf8fd;
-    --on-surface: #1c1b1e;
-    --surface-variant: #e7e0eb;
-    --on-surface-variant: #49454e;
-    --outline: #7a757f;
-    --outline-variant: #cac4cf;
-    --shadow: #000000;
-    --scrim: #000000;
-    --inverse-surface: #313033;
-    --inverse-on-surface: #f4eff4;
-    --inverse-primary: #cfbcff;
-    --surface-dim: #ddd8dd;
-    --surface-bright: #fdf8fd;
-    --surface-container-lowest: #ffffff;
-    --surface-container-low: #f7f2f7;
-    --surface-container: #f2ecf1;
-    --surface-container-high: #ece7eb;
-    --surface-container-highest: #e6e1e6;
+
+/* Theme System - Using Simple Light/Dark Classes */
+
+/* Light Theme (Default) */
+body {
+  background-color: #fffbff;
+  color: #1c1b1e;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Theme */
+body.dark {
+  background-color: #1c1b1e;
+  color: #e6e1e6;
+}
+
+body.dark .card {
+  background-color: #141316;
+  color: #e6e1e6;
+}
+
+body.dark .bottom-nav {
+  background-color: #201f22;
+  border-top-color: #49454e;
+}
+
+body.dark .bottom-nav .nav-item {
+  color: #e6e1e6;
+}
+
+body.dark .bottom-nav .nav-item:hover {
+  background-color: #2b292d;
+}
+
+body.dark .theme-toggle {
+  background-color: #201f22;
+  border-color: #49454e;
+}
+
+body.dark .theme-toggle i {
+  color: #e6e1e6;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1002;
+  background-color: #f2ecf1;
+  border: 1px solid #cac4cf;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:hover {
+  background-color: #ece7eb;
+  transform: scale(1.05);
+}
+
+.theme-toggle i {
+  font-size: 1.5rem;
+  color: #1c1b1e;
+  transition: all 0.3s ease;
+}
+
+/* Mobile adjustments for theme toggle */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 44px;
+    height: 44px;
   }
   
-  body.dark {
-    --primary: #fff9e2;
-    --on-primary: #1c1b1e;
-    --primary-container: #fff9e2;
-    --on-primary-container: #1c1b1e;
-    --secondary: #cbc2db;
-    --on-secondary: #332d41;
-    --secondary-container: #4a4458;
-    --on-secondary-container: #e8def8;
-    --tertiary: #efb8c8;
-    --on-tertiary: #4a2532;
-    --tertiary-container: #633b48;
-    --on-tertiary-container: #ffd9e3;
-    --error: #ffb4ab;
-    --on-error: #690005;
-    --error-container: #93000a;
-    --on-error-container: #ffb4ab;
-    --background: #1c1b1e;
-    --on-background: #e6e1e6;
-    --surface: #141316;
-    --on-surface: #e6e1e6;
-    --surface-variant: #49454e;
-    --on-surface-variant: #cac4cf;
-    --outline: #948f99;
-    --outline-variant: #49454e;
-    --shadow: #000000;
-    --scrim: #000000;
-    --inverse-surface: #e6e1e6;
-    --inverse-on-surface: #313033;
-    --inverse-primary: #6750a4;
-    --surface-dim: #141316;
-    --surface-bright: #3a383c;
-    --surface-container-lowest: #0f0e11;
-    --surface-container-low: #1c1b1e;
-    --surface-container: #201f22;
-    --surface-container-high: #2b292d;
-    --surface-container-highest: #363438;
+  .theme-toggle i {
+    font-size: 1.3rem;
+  }
+}
+
+  /* Create Event Page Styles */
+  .events-hero {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  /* Event Title Overlay Styles */
+  .hero-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .event-title-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+    padding: 1rem;
+    z-index: 2;
+  }
+
+  .event-title-overlay h1 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Mobile adjustments for event title overlay */
+  @media (max-width: 768px) {
+    .event-title-overlay h1 {
+      font-size: 1.5rem;
+    }
+    
+    .event-title-overlay {
+      padding: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .event-title-overlay h1 {
+      font-size: 1.3rem;
+    }
+    
+    .event-title-overlay {
+      padding: 0.5rem;
+    }
+  }
+
+  .hero-banner img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-content {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--on-surface);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--on-surface-variant);
+    margin: 0;
+  }
+
+  .create-event-section {
+    padding: 2rem 0;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Ensure it doesn't cover navigation */
+    margin-bottom: 70px;
+  }
+
+  .form-container {
+    background: var(--surface-container);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--outline-variant);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .form-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--outline-variant);
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--on-surface);
+  }
+
+  .form-subtitle {
+    font-size: 1rem;
+    color: var(--on-surface-variant);
+    margin: 0;
+  }
+
+  .form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--surface-container-low);
+    border-radius: 12px;
+    border: 1px solid var(--outline-variant);
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--on-surface);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    color: var(--on-surface);
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--outline-variant);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--on-surface);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.2);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .upload-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.6rem;
+    border: 2px dashed var(--outline);
+    background: transparent;
+    color: var(--on-surface-variant);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+  }
+
+  .upload-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-container);
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--outline-variant);
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    background: var(--primary);
+    color: var(--on-primary);
+    border: none;
+  }
+
+  .submit-btn:hover {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+  }
+
+  .cancel-btn {
+    background: transparent;
+    color: var(--on-surface-variant);
+    border: 1px solid var(--outline);
+  }
+
+  .cancel-btn:hover {
+    background: var(--surface-container);
+    color: var(--on-surface);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .form-container {
+      max-width: 1000px;
+      padding: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .create-event-section {
+      padding: 1rem 0 80px 0;
+      min-height: calc(100vh - 150px);
+    }
+
+    .form-container {
+      padding: 1.5rem;
+      margin: 0 1rem;
+      max-width: calc(100% - 2rem);
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .form-section {
+      padding: 1rem;
+    }
+
+    .form-actions {
+      flex-direction: column;
+    }
+
+    .form-actions .btn {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .form-container {
+      padding: 1rem;
+      margin: 0 0.5rem;
+      max-width: calc(100% - 1rem);
+    }
+
+    .hero-title {
+      font-size: 1.8rem;
+    }
+
+    .create-event-section {
+      padding: 0.5rem 0;
+    }
+
+    .form-actions {
+      margin-top: 1rem !important;
+      padding-top: 0.75rem !important;
+    }
+
+    .form-actions .btn {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0.6rem 0.8rem !important;
+      font-size: 0.85rem !important;
+      box-sizing: border-box !important;
+    }
   }
 
   /* Mobile Menu Styles */
@@ -578,6 +915,38 @@ body.light {
       font-size: 0.9rem !important;
     }
     
+    /* Event page mobile button styling */
+    .profile-actions {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.3rem !important;
+    }
+    
+    .profile-actions .btn {
+      padding: 0.2rem 0.4rem !important;
+      font-size: 0.85rem !important;
+      min-height: auto !important;
+      height: auto !important;
+    }
+    
+    .profile-actions .btn i {
+      font-size: 1rem !important;
+    }
+    
+    .profile-actions .btn-text {
+      font-size: 0.8rem !important;
+    }
+    
+    .profile-actions .btn-row {
+      display: flex !important;
+      gap: 0.3rem !important;
+      width: 100% !important;
+    }
+    
+    .profile-actions .btn-row .btn {
+      flex: 1 !important;
+    }
+    
     /* Text size adjustments */
     h2 {
       font-size: 1.5rem !important;
@@ -1064,10 +1433,60 @@ body.light {
     font-size: 24px;
   }
 
-  /* Mobile navigation responsive adjustments */
+  /* Mobile navigation - ensure it's always visible and clickable */
   @media (max-width: 768px) {
     .bottom-nav {
       display: flex !important;
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 1000 !important;
+      background-color: var(--surface-container) !important;
+      border-top: 1px solid var(--outline-variant) !important;
+      height: 60px !important;
+      pointer-events: auto !important;
+      /* Force visibility */
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    .bottom-nav .nav-item {
+      padding: 12px 8px !important;
+      flex: 1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+      color: var(--on-surface) !important;
+      transition: background-color 0.2s ease !important;
+      border-radius: 8px !important;
+      margin: 2px !important;
+      min-height: 48px !important;
+      cursor: pointer !important;
+      pointer-events: auto !important;
+      touch-action: manipulation !important;
+    }
+    
+    .bottom-nav .nav-item:hover {
+      background-color: var(--surface-container-high) !important;
+    }
+    
+    .bottom-nav .nav-item i {
+      font-size: 24px !important;
+      pointer-events: none !important;
+    }
+    
+    /* Ensure main content doesn't cover navigation */
+    main.responsive {
+      padding-bottom: 70px !important;
+      margin-bottom: 0 !important;
+    }
+    
+    /* Ensure form doesn't cover navigation */
+    .create-event-section {
+      margin-bottom: 70px !important;
+      padding-bottom: 70px !important;
     }
     
     .top-nav {
@@ -1082,5 +1501,77 @@ body.light {
     
     .top-nav {
       display: block !important;
+    }
+  }
+
+  /* Beer Event Page Mobile Optimization */
+  @media (max-width: 600px) {
+    /* Event Hero Section Mobile Styles */
+    .event-hero {
+      overflow-x: hidden;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .event-profile {
+      padding: 0.5rem;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .profile-content {
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    /* Additional Button Refinements for Mobile */
+    .event-hero .profile-actions .btn.small {
+      padding: 0.4rem 0.6rem !important;
+      font-size: 0.75rem !important;
+      min-height: auto !important;
+      height: auto !important;
+    }
+
+    .event-hero .profile-actions .btn.small i {
+      font-size: 1rem !important;
+    }
+
+    .event-hero .profile-actions .btn.small .btn-text {
+      font-size: 0.75rem !important;
+    }
+
+    /* Dropdown Constraints */
+    .event-info-content {
+      max-width: 90vw !important;
+      left: 5vw !important;
+      right: 5vw !important;
+      box-sizing: border-box;
+    }
+
+    /* Section Width Constraints */
+    .event-quick-info,
+    .event-description-section {
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .event-quick-info .container,
+    .event-description-section .container {
+      max-width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .event-quick-info-content {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .event-details,
+    .event-sidebar {
+      max-width: 100%;
+      box-sizing: border-box;
     }
   }

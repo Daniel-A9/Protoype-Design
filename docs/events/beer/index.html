@@ -8,54 +8,23 @@
     <title>Summer Craft Beer Tasting - Brewery Central</title>
     <link href="../../style.css" rel="stylesheet">
   </head>
-  <body class="dark">
-    <!-- Top Navigation (Desktop/Tablet) -->
-    <nav class="top s hide-s hide-m">
-        <div class="container">
-            <div class="row no-gap">
-                <div class="col s12">
-                    <div class="nav-content">
-                        <div class="nav-brand">
-                            <img src="https://www.beercss.com/favicon.png" class="circle small">
-                            <span>Brewery Central</span>
-                        </div>
-                        <div class="nav-links">
-                            <a href="../../" class="nav-link" data-testid="nav-home">Home</a>
-                            <a href="../new/" class="nav-link" data-testid="nav-events">Events</a>
-                            <a href="../../vendors/brewery/" class="nav-link" data-testid="nav-vendors">Vendors</a>
-                            <a href="#about" class="nav-link" data-testid="nav-about">About</a>
-                        </div>
-                        <div class="nav-actions">
-                            <button class="btn circle small" data-testid="nav-search-btn">
-                                <i>search</i>
-                            </button>
-                            <button class="btn circle small" data-testid="nav-favorite-btn">
-                                <i>favorite_border</i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+  <body>
     <!-- Bottom Navigation (Mobile) -->
-    <nav class="bottom s show-s hide-l">
-        <a href="../../" class="nav-item" data-testid="mobile-nav-home">
+    <nav class="bottom-nav show-s hide-l">
+        <a href="../../index.html" class="nav-item" data-testid="mobile-nav-home">
             <i>home</i>
-            <span>Home</span>
         </a>
-        <a href="../new/" class="nav-item active" data-testid="mobile-nav-events">
-            <i>event</i>
-            <span>Events</span>
+        <a href="../../index.html" class="nav-item" data-testid="mobile-nav-search">
+            <i>search</i>
         </a>
-        <a href="../../vendors/brewery/" class="nav-item" data-testid="mobile-nav-vendors">
-            <i>store</i>
-            <span>Vendors</span>
+        <a href="../../discussions/forums/index.html" class="nav-item" data-testid="mobile-nav-discussions">
+            <i>group</i>
         </a>
-        <a href="#about" class="nav-item" data-testid="mobile-nav-about">
-            <i>info</i>
-            <span>About</span>
+        <a href="#" class="nav-item" data-testid="mobile-nav-cart">
+            <i>shopping_cart</i>
+        </a>
+        <a href="#" class="nav-item" data-testid="mobile-nav-profile">
+            <i>person</i>
         </a>
     </nav>
 
@@ -65,6 +34,10 @@
             <div class="hero-banner">
                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
                      alt="Summer Craft Beer Tasting" class="responsive round">
+                <!-- Event Title Overlay -->
+                <div class="event-title-overlay">
+                    <h1>Summer Craft Beer Tasting</h1>
+                </div>
             </div>
             
             <div class="event-profile">
@@ -72,21 +45,9 @@
                     <div class="row">
                         <div class="col s12">
                             <div class="profile-content">
-                                <div class="profile-avatar">
-                                    <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=200&h=200&fit=crop" class="circle large">
-                                    <div class="verified-badge">
-                                        <i>verified</i>
-                                    </div>
-                                </div>
-                                
                                 <div class="profile-info">
-                                    <h2>Summer Craft Beer Tasting</h2>
                                     <p class="profile-tagline">Exclusive seasonal craft beer tasting experience</p>
                                     <div class="profile-stats">
-                                        <div class="stat">
-                                            <span class="stat-number">4.9</span>
-                                            <span class="stat-label">Rating</span>
-                                        </div>
                                         <div class="stat">
                                             <span class="stat-number">127</span>
                                             <span class="stat-label">Following</span>
@@ -99,15 +60,51 @@
                                 </div>
                                 
                                 <div class="profile-actions">
-                                    <button class="btn large follow-btn" 
-                                            hx-post="/api/follow-event" 
-                                            hx-target="this" 
-                                            hx-swap="outerHTML"
-                                            data-testid="follow-event-btn">
-                                        <i>person_add</i>
-                                        <span class="btn-text">Follow</span>
-                                    </button>
-                                    <button class="btn large primary buy-tickets-btn" 
+                                    <div class="btn-row" style="gap: 0.3rem">
+                                        <button class="btn small follow-btn" 
+                                                hx-post="/api/follow-event" 
+                                                hx-target="this" 
+                                                hx-swap="outerHTML"
+                                                data-testid="follow-event-btn">
+                                            <i>person_add</i>
+                                            <span class="btn-text">Follow</span>
+                                        </button>
+                                        <div class="dropdown-container">
+                                            <button class="btn small outline info-btn" 
+                                                    onclick="toggleInfoDropdown()"
+                                                    data-testid="info-dropdown-btn">
+                                                <i>info</i>
+                                                <span class="btn-text">Info</span>
+                                            </button>
+                                            <div class="dropdown-content event-info-content" style="display: none;">
+                                                <div class="event-info">
+                                                    <h6>Event Details</h6>
+                                                    <div class="info-item">
+                                                        <i>schedule</i>
+                                                        <div>
+                                                            <strong>Date & Time</strong>
+                                                            <p>July 15, 2024<br>6:00 PM - 9:00 PM</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-item">
+                                                        <i>location_on</i>
+                                                        <div>
+                                                            <strong>Venue</strong>
+                                                            <p>Downtown Brewery<br>123 Main Street, City</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info-item">
+                                                        <i>attach_money</i>
+                                                        <div>
+                                                            <strong>Price</strong>
+                                                            <p>$45 per person</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn small primary buy-tickets-btn" 
                                             hx-get="https://example.com/tickets"
                                             hx-trigger="click"
                                             hx-target="body"
@@ -116,40 +113,6 @@
                                         <i>local_activity</i>
                                         <span class="btn-text">Buy Tickets</span>
                                     </button>
-                                    <div class="dropdown-container">
-                                        <button class="btn large outline info-btn" 
-                                                onclick="toggleInfoDropdown()"
-                                                data-testid="info-dropdown-btn">
-                                            <i>info</i>
-                                            <span class="btn-text">Info</span>
-                                        </button>
-                                        <div class="dropdown-content event-info-content" style="display: none;">
-                                            <div class="event-info">
-                                                <h6>Event Details</h6>
-                                                <div class="info-item">
-                                                    <i>schedule</i>
-                                                    <div>
-                                                        <strong>Date & Time</strong>
-                                                        <p>July 15, 2024<br>6:00 PM - 9:00 PM</p>
-                                                    </div>
-                                                </div>
-                                                <div class="info-item">
-                                                    <i>location_on</i>
-                                                    <div>
-                                                        <strong>Venue</strong>
-                                                        <p>Downtown Brewery<br>123 Main Street, City</p>
-                                                    </div>
-                                                </div>
-                                                <div class="info-item">
-                                                    <i>attach_money</i>
-                                                    <div>
-                                                        <strong>Price</strong>
-                                                        <p>$45 per person</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -310,5 +273,36 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+    </script>
   </body>
 </html>

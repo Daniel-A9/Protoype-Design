@@ -8,71 +8,68 @@
     <title>Create Event - Brewery Central</title>
     <link href="../../style.css" rel="stylesheet">
   </head>
-  <body class="dark">
-    <!-- Top Navigation (Desktop/Tablet) -->
-    <nav class="top s hide-s hide-m">
-        <div class="container">
-            <div class="row no-gap">
-                <div class="col s12">
-                    <div class="nav-content">
-                        <div class="nav-brand">
-                            <img src="https://www.beercss.com/favicon.png" class="circle small">
-                            <span>Brewery Central</span>
-                        </div>
-                        <div class="nav-links">
-                            <a href="../../" class="nav-link" data-testid="nav-home">Home</a>
-                            <a href="./" class="nav-link active" data-testid="nav-create-event">Create Event</a>
-                            <a href="../../vendors/brewery/" class="nav-link" data-testid="nav-vendors">Vendors</a>
-                            <a href="#about" class="nav-link" data-testid="nav-about">About</a>
-                        </div>
-                        <div class="nav-actions">
-                            <button class="btn circle small" data-testid="nav-search-btn">
-                                <i>search</i>
-                            </button>
-                            <button class="btn circle small" data-testid="nav-favorite-btn">
-                                <i>favorite_border</i>
-                            </button>
-                        </div>
-                    </div>
+  <body>
+    <!-- Desktop Top Navigation -->
+    <nav class="top desktop-nav" style="display: none;">
+      <div class="container">
+        <div class="row no-gap">
+          <div class="col s12">
+            <div class="nav-content">
+              <div class="nav-logo">
+                <h4 class="brand-title">LocalMarket</h4>
+                <div class="logo-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#F59E0B"/>
+                    <path d="M12 6L12.5 8.5L15 9L12.5 9.5L12 12L11.5 9.5L9 9L11.5 8.5L12 6Z" fill="#FCD34D"/>
+                  </svg>
                 </div>
+              </div>
+              <div class="nav-links">
+                <a href="../../" class="nav-link" data-testid="nav-home"><i>home</i></a>
+                <a href="../../" class="nav-link" data-testid="nav-search"><i>search</i></a>
+                <a href="../../discussions/forums/" class="nav-link" data-testid="nav-discussions"><i>group</i></a>
+                <a href="#" class="nav-link" data-testid="nav-cart"><i>shopping_cart</i></a>
+                <a href="#" class="nav-link" data-testid="nav-profile"><i>person</i></a>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </nav>
 
-    <!-- Bottom Navigation (Mobile) -->
-    <nav class="bottom s show-s hide-l">
-        <a href="../../" class="nav-item" data-testid="mobile-nav-home">
-            <i>home</i>
-            <span>Home</span>
-        </a>
-        <a href="./" class="nav-item active" data-testid="mobile-nav-create-event">
-            <i>add</i>
-            <span>Create Event</span>
-        </a>
-        <a href="../../vendors/brewery/" class="nav-item" data-testid="mobile-nav-vendors">
-            <i>store</i>
-            <span>Vendors</span>
-        </a>
-        <a href="#about" class="nav-item" data-testid="mobile-nav-about">
-            <i>info</i>
-            <span>About</span>
-        </a>
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav" style="display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; background-color: var(--surface-container); border-top: 1px solid var(--outline-variant); height: 60px;">
+      <a href="../../index.html" class="nav-item" data-testid="mobile-nav-home" style="padding: 12px 8px; flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--on-surface);">
+        <i>home</i>
+      </a>
+      <a href="../../index.html" class="nav-item" data-testid="mobile-nav-search" style="padding: 12px 8px; flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--on-surface);">
+        <i>search</i>
+      </a>
+      <a href="../../discussions/forums/index.html" class="nav-item" data-testid="mobile-nav-discussions" style="padding: 12px 8px; flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--on-surface);">
+        <i>group</i>
+      </a>
+      <a href="#" class="nav-item" data-testid="mobile-nav-cart" style="padding: 12px 8px; flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--on-surface);">
+        <i>shopping_cart</i>
+      </a>
+      <a href="#" class="nav-item" data-testid="mobile-nav-profile" style="padding: 12px 8px; flex: 1; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--on-surface);">
+        <i>person</i>
+      </a>
     </nav>
 
-    <main class="responsive">
+    <main class="responsive" style="padding-bottom: 70px;">
         <!-- Create Event Hero Section -->
         <section class="events-hero">
             <div class="hero-banner">
                 <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=400&fit=crop" 
-                     alt="Create Event Banner" class="responsive round">
+                     alt="Fair Banner" class="responsive round">
             </div>
             
             <div class="hero-content">
                 <div class="container">
                     <div class="row">
-                        <div class="col s12">
-                            <h1>Create New Event</h1>
-                            <p>Share your event with the community</p>
+                        <div class="col s12 center">
+                            <h1 class="hero-title">Create New Event</h1>
+                            <p class="hero-subtitle">Share your event with the community</p>
                         </div>
                     </div>
                 </div>
@@ -83,97 +80,111 @@
         <section class="create-event-section">
             <div class="container">
                 <div class="form-container">
-                    <div class="form-header">
-                        <h2>Event Details</h2>
-                        <p>Fill out the information below to create your event</p>
-                    </div>
+                            <div class="form-header center">
+                                <h2 class="form-title">Event Details</h2>
+                                <p class="form-subtitle">Fill out the information below to create your event</p>
+                            </div>
                     
-                    <form class="event-form" hx-post="/api/create-event" hx-target="#form-result" hx-swap="innerHTML" data-testid="create-event-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="event-title">Event Title *</label>
-                                <input type="text" id="event-title" name="title" required data-testid="event-title-input">
-                            </div>
-                            <div class="form-group">
-                                <label for="event-category">Category *</label>
-                                <select id="event-category" name="category" required data-testid="event-category-select">
-                                    <option value="">Select Category</option>
-                                    <option value="tasting">Tasting</option>
-                                    <option value="festival">Festival</option>
-                                    <option value="workshop">Workshop</option>
-                                    <option value="tour">Brewery Tour</option>
-                                    <option value="meetup">Meetup</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="event-date">Date *</label>
-                                <input type="date" id="event-date" name="date" required data-testid="event-date-input">
-                            </div>
-                            <div class="form-row-time">
-                                <div class="form-group">
-                                    <label for="start-time">Start Time *</label>
-                                    <input type="time" id="start-time" name="start_time" required data-testid="start-time-input">
+                            <form class="event-form" hx-post="/api/create-event" hx-target="#form-result" hx-swap="innerHTML" data-testid="create-event-form">
+                                <!-- Basic Information -->
+                                <div class="form-section">
+                                    <h3 class="section-title">Basic Information</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="event-title">Event Title *</label>
+                                            <input type="text" id="event-title" name="title" required data-testid="event-title-input" placeholder="Enter event title">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="event-category">Category *</label>
+                                            <select id="event-category" name="category" required data-testid="event-category-select">
+                                                <option value="">Select Category</option>
+                                                <option value="tasting">Tasting</option>
+                                                <option value="festival">Festival</option>
+                                                <option value="workshop">Workshop</option>
+                                                <option value="tour">Brewery Tour</option>
+                                                <option value="meetup">Meetup</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="event-description">Description *</label>
+                                        <textarea id="event-description" name="description" rows="4" required placeholder="Describe your event, what attendees can expect, and any special details..." data-testid="event-description-textarea"></textarea>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="end-time">End Time *</label>
-                                    <input type="time" id="end-time" name="end_time" required data-testid="end-time-input">
+
+                                <!-- Date & Time -->
+                                <div class="form-section">
+                                    <h3 class="section-title">Date & Time</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="event-date">Date *</label>
+                                            <input type="date" id="event-date" name="date" required data-testid="event-date-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="start-time">Start Time *</label>
+                                            <input type="time" id="start-time" name="start_time" required data-testid="start-time-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="end-time">End Time *</label>
+                                            <input type="time" id="end-time" name="end_time" required data-testid="end-time-input">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="event-location">Location *</label>
-                                <input type="text" id="event-location" name="location" required data-testid="event-location-input">
-                            </div>
-                            <div class="form-group">
-                                <label for="event-price">Price</label>
-                                <input type="number" id="event-price" name="price" min="0" step="0.01" placeholder="0.00" data-testid="event-price-input">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="event-description">Description *</label>
-                            <textarea id="event-description" name="description" rows="4" required placeholder="Describe your event, what attendees can expect, and any special details..." data-testid="event-description-textarea"></textarea>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="event-image">Upload Event Image</label>
-                                <div class="upload-container">
-                                    <input type="file" id="event-image" name="event_image" accept="image/*" style="display: none;" data-testid="event-image-input">
-                                    <button type="button" class="btn outline upload-btn" onclick="document.getElementById('event-image').click()" data-testid="upload-image-btn">
-                                        <i>cloud_upload</i>
-                                        <span>Choose Image</span>
-                                    </button>
+                                <!-- Location & Pricing -->
+                                <div class="form-section">
+                                    <h3 class="section-title">Location & Pricing</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="event-location">Location *</label>
+                                            <input type="text" id="event-location" name="location" required data-testid="event-location-input" placeholder="Enter venue address">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="event-price">Price</label>
+                                            <input type="number" id="event-price" name="price" min="0" step="0.01" placeholder="0.00" data-testid="event-price-input">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="ticket-link">Ticket Purchase Link</label>
+                                        <input type="url" id="ticket-link" name="ticket_link" placeholder="https://example.com/tickets" data-testid="ticket-link-input">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="capacity">Capacity</label>
-                                <input type="number" id="capacity" name="capacity" min="1" placeholder="Unlimited" data-testid="capacity-input">
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="ticket-link">Ticket Purchase Link</label>
-                            <input type="url" id="ticket-link" name="ticket_link" placeholder="https://example.com/tickets" data-testid="ticket-link-input">
-                        </div>
+                                <!-- Additional Details -->
+                                <div class="form-section">
+                                    <h3 class="section-title">Additional Details</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="capacity">Capacity</label>
+                                            <input type="number" id="capacity" name="capacity" min="1" placeholder="Unlimited" data-testid="capacity-input">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contact-email">Contact Email *</label>
+                                            <input type="email" id="contact-email" name="contact_email" required data-testid="contact-email-input" placeholder="your@email.com">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="event-image">Upload Event Image</label>
+                                        <div class="upload-container">
+                                            <input type="file" id="event-image" name="event_image" accept="image/*" style="display: none;" data-testid="event-image-input">
+                                            <button type="button" class="btn outline upload-btn" onclick="document.getElementById('event-image').click()" data-testid="upload-image-btn">
+                                                <i>cloud_upload</i>
+                                                <span>Choose Image</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="contact-email">Contact Email *</label>
-                            <input type="email" id="contact-email" name="contact_email" required data-testid="contact-email-input">
-                        </div>
+                                <!-- Form Actions -->
+                                <div class="form-actions center">
+                                    <button type="submit" class="btn primary submit-btn" data-testid="submit-btn">Create Event</button>
+                                </div>
 
-                        <div class="form-actions">
-                            <button type="button" class="btn outline cancel-btn" data-testid="cancel-btn">Cancel</button>
-                            <button type="submit" class="btn outline submit-btn" data-testid="submit-btn">Create Event</button>
-                        </div>
-
-                        <div id="form-result"></div>
-                    </form>
+                                <div id="form-result"></div>
+                            </form>
                 </div>
             </div>
         </section>
@@ -299,5 +310,36 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+    </script>
   </body>
 </html>

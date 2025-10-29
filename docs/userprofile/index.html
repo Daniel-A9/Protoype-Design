@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>My Vendor Profile - Brewery Central</title>
+   
+   
+<link href="../style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Hamburger Menu Button (Top Right) -->
+    <button class="circle transparent" style="position: fixed; top: 4.5rem; right: 1rem; z-index: 1001;" onclick="toggleHamburgerMenu()" data-testid="hamburger-menu-btn">
+      <i>menu</i>
+    </button>
+
+    <!-- Hamburger Menu Overlay -->
+    <div id="hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    
+    <!-- Hamburger Menu Sidebar -->
+    <div id="hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
+      <div style="padding: 1rem;">
+        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+          <i>close</i>
+        </button>
+        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+        
+        <!-- Edit Vendor Button -->
+        <button id="edit-vendor-btn" class="responsive small" onclick="startEditMode()" data-testid="edit-vendor-btn" style="width: 100%; padding: 0.5rem;">
+          <i>edit</i>
+          <span>Edit Vendor</span>
+        </button>
+        
+        <hr style="margin: 0.75rem 0;">
+        
+        <!-- Menu Items -->
+        <a href="#" onclick="switchToPersonalProfile(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">person_outline</i>
+          <span style="font-size: 0.9rem;">Personal Profile</span>
+        </a>
+        
+        <a href="../discussions/forums/index.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">groups</i>
+          <span style="font-size: 0.9rem;">Groups</span>
+        </a>
+        
+        <a href="#" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">settings</i>
+          <span style="font-size: 0.9rem;">Settings</span>
+        </a>
+        
+        <hr style="margin: 0.75rem 0;">
+        
+        <!-- Create Category -->
+        <div style="font-size: 0.7rem; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; font-weight: 600;">Create</div>
+        
+        <a href="../newproduct/index.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">add_box</i>
+          <span style="font-size: 0.9rem;">Add Product</span>
+        </a>
+        
+        <a href="#" onclick="createNewPost(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">post_add</i>
+          <span style="font-size: 0.9rem;">New Post</span>
+        </a>
+        
+        <a href="../events/new/index.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">event</i>
+          <span style="font-size: 0.9rem;">Add Event</span>
+        </a>
+        
+        <!-- Publish Button (hidden by default) -->
+        <button id="publish-btn" class="responsive primary small" onclick="publishChanges()" data-testid="publish-btn" style="width: 100%; display: none; margin-top: 1rem; padding: 0.5rem;">
+          <i>publish</i>
+          <span>Publish</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Edit Mode Indicator Banner -->
+    <div id="edit-mode-banner" class="fixed top" style="display: none; background-color: #ffd700; color: #000; padding: 0.5rem; text-align: center; z-index: 999; top: 60px;">
+      <strong>Edit Mode Active</strong> - Click edit buttons to modify content
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="../index.html" class="nav-item" data-testid="nav-home">
+        <i>home</i>
+      </a>
+      <a href="../index.html" class="nav-item" data-testid="nav-search">
+        <i>search</i>
+      </a>
+      <a href="../discussions/forums/index.html" class="nav-item" data-testid="nav-discussions">
+        <i>group</i>
+      </a>
+      <a href="#" class="nav-item" data-testid="nav-cart">
+        <i>shopping_cart</i>
+      </a>
+      <a href="#" class="nav-item active" data-testid="nav-profile">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive" style="padding-bottom: 70px;">
+        <!-- Vendor Profile Hero Section -->
+        <section id="home" class="margin-bottom-large">
+            <div class="margin-bottom-negative-large">
+                <img id="cover-image" src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
+                     alt="Brewery Interior with Copper Vessels" class="responsive round" style="height: 300px; object-fit: cover;">
+                
+                <!-- Edit Cover Image Button -->
+                <button class="edit-control circle small primary" style="position: absolute; top: 10px; right: 10px;" onclick="editCoverImage()" data-testid="edit-cover-btn">
+                  <i>edit</i>
+                </button>
+            </div>
+            
+            <div class="card surface-container margin-horizontal-small" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row no-gap middle-align">
+                                <div class="col s12 m6">
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s2" style="position: relative;">
+                                            <img id="profile-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" class="circle small">
+                                            
+                                            <!-- Edit Profile Image Button -->
+                                            <button class="edit-control circle extra-small primary" style="position: absolute; bottom: 0; right: 0;" onclick="editProfileImage()" data-testid="edit-profile-image-btn">
+                                              <i class="small">edit</i>
+                                            </button>
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="row middle-align">
+                                              <h2 id="vendor-name" class="left-align">Brewery Central</h2>
+                                              <button class="edit-control circle transparent small" onclick="editVendorName()" data-testid="edit-name-btn">
+                                                <i>edit</i>
+                                              </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row middle-align">
+                                      <p id="vendor-tagline" class="text-left text-grey">Crafting exceptional beers since 2015</p>
+                                      <button class="edit-control circle transparent small" onclick="editVendorTagline()" data-testid="edit-tagline-btn">
+                                        <i>edit</i>
+                                      </button>
+                                    </div>
+                                    
+                                    <!-- Upcoming Event Link -->
+                                    <div class="margin-top-medium">
+                                        <a href="../events/beer/index.html" class="btn primary" style="width: 100%; text-align: center;">
+                                            <i>local_activity</i>
+                                            <span>Join Our Beer Tasting Event</span>
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="row no-gap middle-align margin-top-small">
+                                        <div class="col s4">
+                                            <div class="text-left">
+                                                <span class="text-bold text-large">2.3k</span>
+                                                <div class="text-small text-grey">Followers</div>
+                                            </div>
+                                        </div>
+                                        <div class="col s4">
+                                            <div class="text-left">
+                                                <span class="text-bold text-large">156</span>
+                                                <div class="text-small text-grey">Connections</div>
+                                            </div>
+                                        </div>
+                                        <div class="col s4">
+                                            <div class="row no-gap right-align">
+                                                <button class="btn tiny primary border" data-testid="view-as-visitor-btn">
+                                                    <i>visibility</i>
+                                                    <span>View as Visitor</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="padding-vertical-large">
+            <div class="container">
+                <div class="row no-gap middle-align margin-bottom-large">
+                    <div class="col s12">
+                        <div class="row middle-align">
+                          <h3>Featured Products</h3>
+                          <button class="edit-control btn circle primary margin-left-small" onclick="addProduct()" data-testid="add-product-btn">
+                            <i>add</i>
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products Grid - Full Width for Horizontal Scroll -->
+            <div id="products-grid" class="row scroll" style="padding: 0.5rem 0; gap: 1rem; padding-left: 0.5rem; padding-right: 0.5rem;">
+                            <!-- Product Card 1 -->
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px; position: relative;">
+                                <!-- Edit Controls -->
+                                <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                                  <button class="circle small primary" onclick="editProduct('citrus-ipa')" data-testid="edit-product-citrus-ipa">
+                                    <i>edit</i>
+                                  </button>
+                                  <button class="circle small error" onclick="deleteProduct('citrus-ipa')" data-testid="delete-product-citrus-ipa">
+                                    <i>delete</i>
+                                  </button>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
+                                         alt="Citrus IPA" class="responsive round" style="height: 220px; object-fit: cover;">
+                                    <div class="padding-vertical-medium">
+                                        <h5>Citrus IPA</h5>
+                                        <p class="text-grey margin-vertical-small">Perfectly balanced hops with refreshing citrus notes</p>
+                                        <div class="row no-gap middle-align margin-top-medium">
+                                            <div class="col s6">
+                                                <span class="text-bold text-large primary">$8.99</span>
+                                            </div>
+                                            <div class="col s6">
+                                                <span class="text-small text-grey">per bottle</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2 -->
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px; position: relative;">
+                                <!-- Edit Controls -->
+                                <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                                  <button class="circle small primary" onclick="editProduct('chocolate-stout')" data-testid="edit-product-chocolate-stout">
+                                    <i>edit</i>
+                                  </button>
+                                  <button class="circle small error" onclick="deleteProduct('chocolate-stout')" data-testid="delete-product-chocolate-stout">
+                                    <i>delete</i>
+                                  </button>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
+                                         alt="Chocolate Stout" class="responsive round" style="height: 220px; object-fit: cover;">
+                                    <div class="padding-vertical-medium">
+                                        <h5>Chocolate Stout</h5>
+                                        <p class="text-grey margin-vertical-small">Rich chocolate and coffee flavors with smooth finish</p>
+                                        <div class="row no-gap middle-align margin-top-medium">
+                                            <div class="col s6">
+                                                <span class="text-bold text-large primary">$9.99</span>
+                                            </div>
+                                            <div class="col s6">
+                                                <span class="text-small text-grey">per bottle</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3 -->
+                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px; position: relative;">
+                                <!-- Edit Controls -->
+                                <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                                  <button class="circle small primary" onclick="editProduct('golden-lager')" data-testid="edit-product-golden-lager">
+                                    <i>edit</i>
+                                  </button>
+                                  <button class="circle small error" onclick="deleteProduct('golden-lager')" data-testid="delete-product-golden-lager">
+                                    <i>delete</i>
+                                  </button>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
+                                         alt="Golden Lager" class="responsive round" style="height: 220px; object-fit: cover;">
+                                    <div class="padding-vertical-medium">
+                                        <h5>Golden Lager</h5>
+                                        <p class="text-grey margin-vertical-small">Crisp and refreshing with clean finish</p>
+                                        <div class="row no-gap middle-align margin-top-medium">
+                                            <div class="col s6">
+                                                <span class="text-bold text-large primary">$7.99</span>
+                                            </div>
+                                            <div class="col s6">
+                                                <span class="text-small text-grey">per bottle</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </section>
+
+
+        <!-- Vendor Posts Section -->
+        <section id="posts" class="padding-vertical-large surface-container-low">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="row middle-align margin-bottom-medium">
+                          <h3>Latest Posts</h3>
+                          <button class="edit-control btn circle primary margin-left-small" onclick="createPost()" data-testid="create-post-btn">
+                            <i>add</i>
+                          </button>
+                        </div>
+                        
+                        <!-- Post Card 1 -->
+                        <div class="card medium margin-bottom-large" style="position: relative;">
+                            <!-- Edit Controls -->
+                            <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                              <button class="circle small primary" onclick="editPost('brewing-post')" data-testid="edit-post-brewing">
+                                <i>edit</i>
+                              </button>
+                              <button class="circle small error" onclick="deletePost('brewing-post')" data-testid="delete-post-brewing">
+                                <i>delete</i>
+                              </button>
+                            </div>
+                            
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Brewery Central</h6>
+                                        <small class="text-grey">2 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop" 
+                                     alt="Brewing Process" class="responsive round" style="height: 300px; object-fit: cover;">
+                                <p>Just finished brewing our latest batch of Citrus IPA! The hops are perfectly balanced with refreshing citrus notes. Can't wait to share this with our community. The brewing process took 3 weeks of careful fermentation and conditioning. 🍺</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">24</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">8</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post Card 2 -->
+                        <div class="card medium margin-bottom-large" style="position: relative;">
+                            <!-- Edit Controls -->
+                            <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                              <button class="circle small primary" onclick="editPost('festival-post')" data-testid="edit-post-festival">
+                                <i>edit</i>
+                              </button>
+                              <button class="circle small error" onclick="deletePost('festival-post')" data-testid="delete-post-festival">
+                                <i>delete</i>
+                              </button>
+                            </div>
+                            
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Brewery Central</h6>
+                                        <small class="text-grey">1 day ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
+                                     alt="Chocolate Stout" class="responsive round" style="height: 300px; object-fit: cover;">
+                                <p>Our seasonal Chocolate Stout is back! Rich chocolate and coffee flavors with a smooth finish. Perfect for these cooler evenings. Limited batch available - get yours before it's gone! ☕</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">31</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">12</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post Card 3 -->
+                        <div class="card medium margin-bottom-large" style="position: relative;">
+                            <!-- Edit Controls -->
+                            <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                              <button class="circle small primary" onclick="editPost('tasting-post')" data-testid="edit-post-tasting">
+                                <i>edit</i>
+                              </button>
+                              <button class="circle small error" onclick="deletePost('tasting-post')" data-testid="delete-post-tasting">
+                                <i>delete</i>
+                              </button>
+                            </div>
+                            
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Brewery Central</h6>
+                                        <small class="text-grey">3 days ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
+                                     alt="Brewery Tour" class="responsive round" style="height: 300px; object-fit: cover;">
+                                <p>New brewery tour dates are live! Come see how we craft our signature beers. Includes tasting flight and take-home growler. Book your spot today! Limited to 15 people per tour. 🏭</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">18</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+
+      // Edit Mode Functionality
+      (function() {
+        // Get stored edit mode state or default to false
+        const storedEditMode = localStorage.getItem('editMode') === 'true';
+        
+        // Apply edit mode on page load
+        if (storedEditMode) {
+          showEditControls();
+          document.getElementById('publish-btn').style.display = 'block';
+          document.getElementById('edit-vendor-btn').style.display = 'none';
+        } else {
+          hideEditControls();
+        }
+      })();
+
+      function startEditMode() {
+        // Save to localStorage
+        localStorage.setItem('editMode', 'true');
+        
+        // Show edit controls
+        showEditControls();
+        
+        // Hide Edit Vendor button and show Publish button
+        document.getElementById('edit-vendor-btn').style.display = 'none';
+        document.getElementById('publish-btn').style.display = 'block';
+        
+        // Close menu
+        toggleHamburgerMenu();
+      }
+
+      function publishChanges() {
+        // In real implementation, this would save changes to backend
+        if (confirm('Publish all changes to your vendor page?')) {
+          alert('Changes published successfully!');
+          
+          // Exit edit mode
+          localStorage.setItem('editMode', 'false');
+          hideEditControls();
+          
+          // Show Edit Vendor button and hide Publish button
+          document.getElementById('edit-vendor-btn').style.display = 'block';
+          document.getElementById('publish-btn').style.display = 'none';
+          
+          // Close menu
+          toggleHamburgerMenu();
+        }
+      }
+
+      function showEditControls() {
+        // Show all elements with class 'edit-control'
+        const editControls = document.querySelectorAll('.edit-control');
+        editControls.forEach(control => {
+          control.style.display = 'flex';
+        });
+        
+        // Show edit mode banner
+        document.getElementById('edit-mode-banner').style.display = 'block';
+      }
+
+      function hideEditControls() {
+        // Hide all elements with class 'edit-control'
+        const editControls = document.querySelectorAll('.edit-control');
+        editControls.forEach(control => {
+          control.style.display = 'none';
+        });
+        
+        // Hide edit mode banner
+        document.getElementById('edit-mode-banner').style.display = 'none';
+      }
+
+      // Hamburger Menu Functions
+      function toggleHamburgerMenu() {
+        const menu = document.getElementById('hamburger-menu');
+        const overlay = document.getElementById('hamburger-menu-overlay');
+        
+        if (menu.style.right === '0px') {
+          // Close menu - slide out
+          menu.style.right = '-240px';
+          overlay.style.display = 'none';
+        } else {
+          // Open menu - slide in
+          menu.style.right = '0px';
+          overlay.style.display = 'block';
+        }
+      }
+
+      // Profile Navigation Functions
+      function switchToPersonalProfile() {
+        alert('Switching to Personal Profile (not yet implemented)');
+        toggleHamburgerMenu();
+      }
+
+      // Edit Functions for Header
+      function editCoverImage() {
+        const newImageUrl = prompt('Enter new cover image URL:', document.getElementById('cover-image').src);
+        if (newImageUrl) {
+          document.getElementById('cover-image').src = newImageUrl;
+        }
+      }
+
+      function editProfileImage() {
+        const newImageUrl = prompt('Enter new profile image URL:', document.getElementById('profile-image').src);
+        if (newImageUrl) {
+          document.getElementById('profile-image').src = newImageUrl;
+        }
+      }
+
+      function editVendorName() {
+        const newName = prompt('Enter new vendor name:', document.getElementById('vendor-name').textContent);
+        if (newName) {
+          document.getElementById('vendor-name').textContent = newName;
+        }
+      }
+
+      function editVendorTagline() {
+        const newTagline = prompt('Enter new tagline:', document.getElementById('vendor-tagline').textContent);
+        if (newTagline) {
+          document.getElementById('vendor-tagline').textContent = newTagline;
+        }
+      }
+
+      // Product Functions
+      function addProduct() {
+        alert('Add Product functionality - would navigate to product creation form');
+        window.location.href = '../newproduct/index.html';
+      }
+
+      function editProduct(productId) {
+        alert('Edit Product: ' + productId + '\n\nWould open product edit form');
+      }
+
+      function deleteProduct(productId) {
+        if (confirm('Are you sure you want to delete this product?')) {
+          alert('Product ' + productId + ' would be deleted');
+          // In real implementation, would remove the product card from DOM
+        }
+      }
+
+      // Post Functions
+      function createPost() {
+        alert('Create Post functionality - would open post creation form');
+      }
+
+      function createNewPost() {
+        alert('New Post functionality - would open post creation form');
+        toggleHamburgerMenu();
+      }
+
+      function editPost(postId) {
+        alert('Edit Post: ' + postId + '\n\nWould open post edit form');
+      }
+
+      function deletePost(postId) {
+        if (confirm('Are you sure you want to delete this post?')) {
+          alert('Post ' + postId + ' would be deleted');
+          // In real implementation, would remove the post card from DOM
+        }
+      }
+
+      // Initialize edit controls visibility on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        const storedEditMode = localStorage.getItem('editMode') === 'true';
+        if (!storedEditMode) {
+          hideEditControls();
+        }
+      });
+    </script>
+  </body>
+</html>
+

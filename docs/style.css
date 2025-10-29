@@ -16,7 +16,7 @@ body.dark {
 }
 
 body.dark .card {
-  background-color: #49554e;
+  background-color: #393e3b;
   color: #e6e1e6;
 }
 
@@ -1561,6 +1561,14 @@ body.dark {
     }
   }
 
+  /* Event Page Padding */
+  .event-details,
+  .host-info,
+  .event-highlights,
+  .quick-info-content {
+    padding: 1.5rem;
+  }
+
   /* Beer Event Page Mobile Optimization */
   @media (max-width: 600px) {
     /* Event Hero Section Mobile Styles */
@@ -1630,5 +1638,13 @@ body.dark {
     .event-sidebar {
       max-width: 100%;
       box-sizing: border-box;
+    }
+
+    /* Mobile padding adjustments */
+    .event-details,
+    .host-info,
+    .event-highlights,
+    .quick-info-content {
+      padding: 1rem;
     }
   }

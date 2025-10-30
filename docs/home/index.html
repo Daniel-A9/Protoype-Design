@@ -1,0 +1,205 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Home • Your Feed</title>
+    <link href="../style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+      <a href="index.html" class="nav-item active" data-testid="mobile-nav-home">
+        <i>home</i>
+      </a>
+      <a href="../index.html" class="nav-item" data-testid="mobile-nav-search">
+        <i>search</i>
+      </a>
+      <a href="../discussions/forums/index.html" class="nav-item" data-testid="mobile-nav-discussions">
+        <i>groups</i>
+      </a>
+      <a href="#" class="nav-item" data-testid="mobile-nav-cart">
+        <i>shopping_cart</i>
+      </a>
+      <a href="../userprofile/index.html" class="nav-item" data-testid="mobile-nav-profile">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive" style="height: calc(100vh - 60px); overflow-y: auto; padding-bottom: 70px;">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            
+            <!-- Header: Feed Filters -->
+            <div class="header-section">
+              <div class="row no-gap middle-align" style="justify-content: center;">
+                <nav class="group" role="tablist" aria-label="Feed filters" id="feedToggle" style="max-width: 600px;">
+                  <button class="left-round" data-filter="all" aria-pressed="true" role="tab">All</button>
+                  <button class="no-round" data-filter="following" aria-pressed="false" role="tab">Following</button>
+                  <button class="no-round" data-filter="events" aria-pressed="false" role="tab">Events</button>
+                  <button class="right-round" data-filter="discussions" aria-pressed="false" role="tab">Discussions</button>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Unified Feed -->
+            <div class="feed-container" id="homeFeed">
+
+              <!-- Following: Vendor post -->
+              <div class="row">
+                <div class="col s12 m10 l8 auto-margin">
+                  <div class="card large" data-category="following">
+                    <div class="card-header">
+                      <div class="row no-gap middle-align">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle small">
+                        </div>
+                        <div class="col s10">
+                          <h6>Brewery Central</h6>
+                          <small class="text-grey">New post • 15m</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=400&fit=crop" class="responsive round" style="height: 300px; object-fit: cover;">
+                      <p>Fresh Citrus IPA pouring this weekend. Stop by the taproom for a tasting flight and live music.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Events: Reminder -->
+              <div class="row">
+                <div class="col s12 m10 l8 auto-margin">
+                  <div class="card large" data-category="events">
+                    <div class="card-header">
+                      <div class="row no-gap middle-align">
+                        <div class="col s2">
+                          <i class="large text-primary">event</i>
+                        </div>
+                        <div class="col s10">
+                          <h6>Tomorrow • Summer Craft Beer Tasting</h6>
+                          <small class="text-grey">Reminder from events you follow</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <p>Doors at 6:00 PM • Downtown Brewery • Tickets available at the door.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Discussions: Followed category post -->
+              <div class="row">
+                <div class="col s12 m10 l8 auto-margin">
+                  <div class="card large" data-category="discussions">
+                    <div class="card-header">
+                      <div class="row no-gap middle-align">
+                        <div class="col s2">
+                          <i class="large">forum</i>
+                        </div>
+                        <div class="col s10">
+                          <h6>Local Discussions • New thread</h6>
+                          <small class="text-grey">45m</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <p>Favorite farmers markets this month? Share recommendations and vendor tips.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- More feed samples (mixed) -->
+              <div class="row">
+                <div class="col s12 m10 l8 auto-margin">
+                  <div class="card medium" data-category="following">
+                    <div class="card-content">
+                      <h5>Sunny Acres Farm</h5>
+                      <p>First strawberries of the season are in! Pick-your-own starts Saturday.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12 m10 l8 auto-margin">
+                  <div class="card medium" data-category="events">
+                    <div class="card-content">
+                      <h5>Craft Fair Countdown</h5>
+                      <p>2 days left • Vendor map published. See you on Main Street!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12 m10 l8 auto-margin">
+                  <div class="card medium" data-category="discussions">
+                    <div class="card-content">
+                      <h5>Tips & Resources</h5>
+                      <p>Best packaging for shipping pottery—looking for lightweight, eco options.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script>
+      // Theme Toggle (same as other pages)
+      (function() {
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        document.body.appendChild(toggleButton);
+      })();
+
+      // Minimal filter toggle logic (no external JS)
+      const toggleNav = document.getElementById('feedToggle');
+      const cards = Array.from(document.querySelectorAll('[data-category]'));
+      function applyFilter(filter) {
+        cards.forEach(card => {
+          const show = filter === 'all' || card.getAttribute('data-category') === filter;
+          if (show) {
+            card.removeAttribute('hidden');
+          } else {
+            card.setAttribute('hidden', '');
+          }
+        });
+      }
+      toggleNav?.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-filter]');
+        if (!btn) return;
+        toggleNav.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        applyFilter(btn.getAttribute('data-filter'));
+      });
+    </script>
+  </body>
+</html>
+
+

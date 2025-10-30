@@ -755,7 +755,7 @@ body.dark {
   }
 
   .card {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     background-color: var(--surface-container-low);
     border-radius: 12px;
     overflow: hidden;
@@ -1188,7 +1188,7 @@ body.dark {
     
     /* Mobile Card Optimization */
     .card {
-      margin-bottom: 1.5rem !important;
+      margin-bottom: 2rem !important;
       margin-left: 0.125rem !important;
       margin-right: 0.125rem !important;
       max-width: calc(100% - 0.25rem) !important;

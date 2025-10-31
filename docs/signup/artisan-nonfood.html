@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Details • LocalMarket</title>
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
+    .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 600px; width: 100%; border: 2px solid var(--outline-variant); }
+    .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1rem; }
+    .illustration-top { width: 100px; height: 100px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-container); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .illustration-top img { width: 100%; height: 100%; object-fit: cover; }
+    .page-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--on-surface); }
+    .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2rem; font-size: 1rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="signup-card">
+      <a href="artisan-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+      <div class="step-indicator">Step 7 of 8</div>
+      <div class="illustration-top"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop" alt="Artisan"></div>
+      <h1 class="page-title">Complete Your Profile! 🎨</h1>
+      <p class="page-subtitle">A few more details about your business</p>
+      <form id="nonfoodForm">
+        <div class="field label border round">
+          <input type="text" id="business-address" required>
+          <label>Business Address *</label>
+        </div>
+        <div class="field label border round" style="margin-top: 1rem;">
+          <input type="url" id="website" placeholder="https://yourwebsite.com">
+          <label>Website (optional)</label>
+        </div>
+        <div class="field label border round" style="margin-top: 1rem;">
+          <textarea id="description" rows="4" required placeholder="Tell us about your products and what makes them special..."></textarea>
+          <label>Business Description *</label>
+        </div>
+        <button type="submit" class="btn primary round max" style="margin-top: 2rem; padding: 1rem;"><span>Complete Sign Up</span><i>check</i></button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+  <script>
+    (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    document.getElementById('nonfoodForm').addEventListener('submit',function(e){e.preventDefault();alert('Welcome! Your account has been created.');window.location.href='../home/index.html';});
+  </script>
+</body>
+</html>
+

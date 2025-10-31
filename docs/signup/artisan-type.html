@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food or Non-Food • LocalMarket</title>
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
+    .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 600px; width: 100%; border: 2px solid var(--outline-variant); }
+    .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1rem; }
+    .page-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--on-surface); }
+    .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2.5rem; font-size: 1rem; }
+    .type-cards { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    @media (min-width: 600px) { .type-cards { grid-template-columns: 1fr 1fr; } }
+    .type-card { background: var(--surface-container-low); border: 2px solid var(--outline-variant); border-radius: 20px; padding: 2rem; cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: var(--on-surface); display: block; }
+    .type-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .type-card .icon-wrapper { width: 80px; height: 80px; margin: 0 auto 1rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-container); }
+    .type-card .icon-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .type-card h3 { text-align: center; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .type-card p { text-align: center; color: var(--on-surface-variant); font-size: 0.95rem; margin: 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="signup-card">
+      <a href="vendor-category.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+      <div class="step-indicator">Step 6 of 8</div>
+      <h1 class="page-title">Do you sell food products? 🍞</h1>
+      <p class="page-subtitle">This helps us customize your experience</p>
+      <div class="type-cards">
+        <a href="artisan-nonfood.html" class="type-card" onclick="sessionStorage.setItem('artisan_type', 'nonfood'); return true;">
+          <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Non-Food"></div>
+          <h3>Non-Food</h3>
+          <p>I sell handmade crafts, art, or other non-food items</p>
+        </a>
+        <a href="artisan-food-type.html" class="type-card" onclick="sessionStorage.setItem('artisan_type', 'food'); return true;">
+          <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Food"></div>
+          <h3>Food</h3>
+          <p>I sell food products or prepared foods</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+  <script>
+    (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+  </script>
+</body>
+</html>
+

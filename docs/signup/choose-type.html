@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Choose Your Path • LocalMarket</title>
+    <link href="../style.css" rel="stylesheet">
+    <style>
+      .signup-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%);
+      }
+      
+      .signup-card {
+        background: var(--surface-container);
+        border-radius: 24px;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        border: 2px solid var(--outline-variant);
+      }
+      
+      .step-indicator {
+        text-align: center;
+        color: var(--on-surface-variant);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      
+      .page-title {
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--on-surface);
+      }
+      
+      .page-subtitle {
+        text-align: center;
+        color: var(--on-surface-variant);
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+      }
+      
+      .type-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      .type-card {
+        background: var(--surface-container-low);
+        border: 2px solid var(--outline-variant);
+        border-radius: 20px;
+        padding: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: var(--on-surface);
+        display: block;
+      }
+      
+      .type-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+      
+      .type-card .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--primary-container);
+      }
+      
+      .type-card .icon-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .type-card h3 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .type-card p {
+        text-align: center;
+        color: var(--on-surface-variant);
+        font-size: 0.95rem;
+        margin: 0;
+      }
+      
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        text-decoration: none;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+      
+      .back-link:hover {
+        text-decoration: underline;
+      }
+      
+      @media (min-width: 600px) {
+        .type-cards {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <div class="signup-card">
+        <a href="verify-code.html" class="back-link">
+          <i>arrow_back</i>
+          <span>Back</span>
+        </a>
+        
+        <div class="step-indicator">Step 3 of 4</div>
+        
+        <h1 class="page-title">What brings you here? 🎯</h1>
+        <p class="page-subtitle">Choose the option that best describes you</p>
+        
+        <div class="type-cards">
+          <a href="shopper-info.html" class="type-card" onclick="sessionStorage.setItem('account_type', 'shopper'); return true;">
+            <div class="icon-wrapper">
+              <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Shopper">
+            </div>
+            <h3>Shopper</h3>
+            <p>I want to discover local products, events, and connect with my community</p>
+          </a>
+          
+          <a href="vendor-details.html" class="type-card" onclick="sessionStorage.setItem('account_type', 'vendor'); return true;">
+            <div class="icon-wrapper">
+              <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=200&h=200&fit=crop" alt="Vendor">
+            </div>
+            <h3>Vendor</h3>
+            <p>I have products to sell or services to offer to the local community</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script>
+      // Theme toggle
+      (function() {
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        document.body.appendChild(toggleButton);
+      })();
+    </script>
+  </body>
+</html>
+

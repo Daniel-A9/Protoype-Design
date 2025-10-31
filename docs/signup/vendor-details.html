@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Details • LocalMarket</title>
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
+    .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 600px; width: 100%; border: 2px solid var(--outline-variant); }
+    .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1rem; }
+    .illustration-top { width: 100px; height: 100px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-container); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .illustration-top img { width: 100%; height: 100%; object-fit: cover; }
+    .page-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--on-surface); }
+    .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2rem; font-size: 1rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; }
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="signup-card">
+      <a href="choose-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+      <div class="step-indicator">Step 4 of 8</div>
+      <div class="illustration-top"><img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop" alt="Vendor"></div>
+      <h1 class="page-title">Tell Us About Your Business 🏪</h1>
+      <p class="page-subtitle">We need some basic information to get started</p>
+      <form id="vendorForm">
+        <div class="field label border round">
+          <input type="text" id="company-name" required>
+          <label>Company/Business Name *</label>
+        </div>
+        <div class="field label border round" style="margin-top: 1rem;">
+          <textarea id="product-types" rows="3" required placeholder="What types of products do you sell?"></textarea>
+          <label>Product Types *</label>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Are you licensed? *</label>
+          <div class="checkbox-group">
+            <label class="radio"><input type="radio" name="licensed" value="yes" required><span>Yes, I am licensed</span></label>
+            <label class="radio"><input type="radio" name="licensed" value="no"><span>No, I am not licensed</span></label>
+          </div>
+        </div>
+        <button type="submit" class="btn primary round max" style="margin-top: 2rem; padding: 1rem;"><span>Continue</span><i>arrow_forward</i></button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+  <script>
+    (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    document.getElementById('vendorForm').addEventListener('submit',function(e){e.preventDefault();sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);sessionStorage.setItem('vendor_products',document.getElementById('product-types').value);sessionStorage.setItem('vendor_licensed',document.querySelector('input[name="licensed"]:checked').value);window.location.href='vendor-category.html';});
+  </script>
+</body>
+</html>
+

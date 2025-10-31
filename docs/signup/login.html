@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Welcome to LocalMarket</title>
+    <link href="../style.css" rel="stylesheet">
+    <style>
+      .auth-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%);
+      }
+      
+      .auth-card {
+        background: var(--surface-container);
+        border-radius: 24px;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        max-width: 480px;
+        width: 100%;
+        border: 2px solid var(--outline-variant);
+      }
+      
+      .welcome-illustration {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 2rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid var(--primary-container);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+      
+      .welcome-illustration img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .auth-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--on-surface);
+      }
+      
+      .auth-subtitle {
+        text-align: center;
+        color: var(--on-surface-variant);
+        margin-bottom: 2rem;
+        font-size: 1rem;
+      }
+      
+      .divider-text {
+        text-align: center;
+        margin: 1.5rem 0;
+        color: var(--on-surface-variant);
+        font-size: 0.9rem;
+        position: relative;
+      }
+      
+      .divider-text::before,
+      .divider-text::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: var(--outline-variant);
+      }
+      
+      .divider-text::before {
+        left: 0;
+      }
+      
+      .divider-text::after {
+        right: 0;
+      }
+      
+      .signup-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--outline-variant);
+      }
+      
+      .signup-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      
+      .signup-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <!-- Welcome Illustration -->
+        <div class="welcome-illustration">
+          <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=300&h=300&fit=crop" alt="Farm illustration">
+        </div>
+        
+        <h1 class="auth-title">Welcome Back! 🌾</h1>
+        <p class="auth-subtitle">Sign in to your LocalMarket account</p>
+        
+        <form id="loginForm" style="margin-bottom: 0;">
+          <div class="field label border round">
+            <input type="email" id="email" required>
+            <label>Email</label>
+          </div>
+          
+          <div class="field label border round" style="margin-top: 1rem;">
+            <input type="password" id="password" required>
+            <label>Password</label>
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0;">
+            <label class="checkbox">
+              <input type="checkbox">
+              <span>Remember me</span>
+            </label>
+            <a href="#" style="font-size: 0.9rem; color: var(--primary); text-decoration: none;">Forgot password?</a>
+          </div>
+          
+          <button type="submit" class="btn primary round max" style="margin-top: 1.5rem; padding: 1rem;">
+            <span>Sign In</span>
+          </button>
+        </form>
+        
+        <div class="divider-text">or</div>
+        
+        <div class="signup-link">
+          <p>Don't have an account? <a href="email-password.html">Sign up here</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script>
+      // Theme toggle
+      (function() {
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        document.body.appendChild(toggleButton);
+      })();
+      
+      // Form submission
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Simulate login - in real app would validate and redirect
+        window.location.href = '../home/index.html';
+      });
+    </script>
+  </body>
+</html>
+

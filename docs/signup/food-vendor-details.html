@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Vendor Details • LocalMarket</title>
+    <link href="../style.css" rel="stylesheet">
+    <style>
+      .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
+      .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 700px; width: 100%; border: 2px solid var(--outline-variant); }
+      .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1.5rem; }
+      .illustration-top { width: 100px; height: 100px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-container); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+      .illustration-top img { width: 100%; height: 100%; object-fit: cover; }
+      .page-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--on-surface); }
+      .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2.5rem; font-size: 1rem; }
+      .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1.5rem; font-weight: 500; }
+      .back-link:hover { text-decoration: underline; }
+      .form-field { margin-bottom: 1.5rem; }
+      .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem 0; }
+      .cert-checkbox { display: none; }
+      .cert-label { display: flex; align-items: center; padding: 1rem; border: 2px solid var(--outline-variant); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; background: var(--surface-container-low); min-height: 48px; }
+      .cert-label:hover { border-color: var(--primary); transform: translateY(-2px); }
+      .cert-checkbox:checked + .cert-label { border-color: var(--primary); background: var(--primary-container); }
+      .section-divider { margin: 2.5rem 0; border-top: 1px solid var(--outline-variant); padding-top: 2rem; }
+      .section-divider label { margin-bottom: 1.5rem !important; }
+      .button-wrapper { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--outline-variant); }
+      .submit-button { width: 100%; display: block; }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <div class="signup-card">
+        <a href="artisan-food-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+        <div class="step-indicator">Step 8 of 8 - Final Step!</div>
+        <div class="illustration-top"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=300&h=300&fit=crop" alt="Farm"></div>
+        <h1 class="page-title">Almost Done! 🎉</h1>
+        <p class="page-subtitle">Tell us about your licenses and certifications</p>
+        <form id="foodDetailsForm">
+          <div class="form-field">
+            <div class="field label border round">
+              <input type="text" id="license-number" placeholder="Enter license number if applicable">
+              <label>License Number (optional)</label>
+            </div>
+          </div>
+          
+          <div class="form-field">
+            <div class="field label border round">
+              <input type="file" id="license-file" accept=".pdf,.jpg,.jpeg,.png">
+              <label>Upload License Document (optional)</label>
+            </div>
+          </div>
+          
+          <div class="section-divider">
+            <label style="display: block; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.1rem;">Certifications (Select all that apply)</label>
+            <div class="cert-grid">
+              <input type="checkbox" id="usda-organic" name="certifications" value="usda-organic" class="cert-checkbox">
+              <label for="usda-organic" class="cert-label">
+                <i style="margin-right: 0.5rem;">eco</i>
+                <span>USDA Organic</span>
+              </label>
+              
+              <input type="checkbox" id="gmo-free" name="certifications" value="gmo-free" class="cert-checkbox">
+              <label for="gmo-free" class="cert-label">
+                <i style="margin-right: 0.5rem;">check_circle</i>
+                <span>GMO Free</span>
+              </label>
+              
+              <input type="checkbox" id="local" name="certifications" value="local" class="cert-checkbox">
+              <label for="local" class="cert-label">
+                <i style="margin-right: 0.5rem;">place</i>
+                <span>Local</span>
+              </label>
+              
+              <input type="checkbox" id="grass-fed" name="certifications" value="grass-fed" class="cert-checkbox">
+              <label for="grass-fed" class="cert-label">
+                <i style="margin-right: 0.5rem;">pets</i>
+                <span>Grass-Fed</span>
+              </label>
+              
+              <input type="checkbox" id="free-range" name="certifications" value="free-range" class="cert-checkbox">
+              <label for="free-range" class="cert-label">
+                <i style="margin-right: 0.5rem;">outdoor_garden</i>
+                <span>Free-Range</span>
+              </label>
+              
+              <input type="checkbox" id="cage-free" name="certifications" value="cage-free" class="cert-checkbox">
+              <label for="cage-free" class="cert-label">
+                <i style="margin-right: 0.5rem;">home</i>
+                <span>Cage-Free</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-field">
+            <div class="field label border round">
+              <textarea id="additional-info" rows="4" placeholder="Any additional information about your products or certifications..."></textarea>
+              <label>Additional Information (optional)</label>
+            </div>
+          </div>
+          
+          <div class="button-wrapper">
+            <button type="submit" class="btn primary round max submit-button" style="padding: 1rem;"><span>Complete Sign Up</span><i>check</i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script>
+      (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+      document.getElementById('foodDetailsForm').addEventListener('submit',function(e){e.preventDefault();const certs=Array.from(document.querySelectorAll('input[name="certifications"]:checked')).map(cb=>cb.value);sessionStorage.setItem('license_number',document.getElementById('license-number').value);sessionStorage.setItem('certifications',JSON.stringify(certs));sessionStorage.setItem('additional_info',document.getElementById('additional-info').value);const email=sessionStorage.getItem('signup_email');const name=email?email.split('@')[0]:'Friend';alert('Welcome '+name+'! Your vendor account has been created.');sessionStorage.clear();window.location.href='../index.html';});
+    </script>
+  </body>
+</html>

@@ -46,7 +46,7 @@
   <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
   <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
-    document.getElementById('nonfoodForm').addEventListener('submit',function(e){e.preventDefault();alert('Welcome! Your account has been created.');window.location.href='../home/index.html';});
+    document.getElementById('nonfoodForm').addEventListener('submit',function(e){e.preventDefault();alert('Welcome! Your account has been created.');window.location.href='../index.html';});
   </script>
 </body>
 </html>

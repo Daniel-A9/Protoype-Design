@@ -16,6 +16,14 @@
     .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
     .back-link:hover { text-decoration: underline; }
     .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; margin: 1rem 0; }
+    .dropdown-card { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding: 1rem; border: 2px solid var(--outline-variant); border-radius: 12px; background: transparent; }
+    .dropdown-card select { flex: 1; color: var(--on-surface); background-color: var(--surface); }
+    .dropdown-card select option { color: var(--on-surface); background-color: var(--surface); }
+    .remove-btn { background: none; border: none; color: var(--error, #b3261e); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; }
+    .remove-btn:hover { background: var(--error-container, rgba(179, 38, 30, 0.1)); }
+    .add-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1rem; border: 2px dashed var(--outline-variant); border-radius: 12px; background: transparent; color: var(--primary); cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
+    .add-btn:hover { border-color: var(--primary); background: var(--primary-container); }
+    .button-wrapper { margin-top: 2rem; display: flex; justify-content: center; }
   </style>
 </head>
 <body>
@@ -31,9 +39,32 @@
           <input type="text" id="company-name" required>
           <label>Company/Business Name *</label>
         </div>
-        <div class="field label border round" style="margin-top: 1rem;">
-          <textarea id="product-types" rows="3" required placeholder="What types of products do you sell?"></textarea>
-          <label>Product Types *</label>
+        <div style="margin-top: 1rem;">
+          <label style="display: block; margin-bottom: 1rem; font-weight: 600;">Product Types *</label>
+          <div id="product-types-container">
+            <div class="dropdown-card">
+              <select class="product-select" name="product-types" required>
+                <option value="">Select a product type</option>
+                <option value="produce">Produce</option>
+                <option value="dairy">Dairy</option>
+                <option value="eggs">Eggs</option>
+                <option value="meat">Meat</option>
+                <option value="bakery">Bakery</option>
+                <option value="beverages">Beverages</option>
+                <option value="prepared-foods">Prepared Foods</option>
+                <option value="handmade-crafts">Handmade Crafts</option>
+                <option value="art">Art</option>
+                <option value="jewelry">Jewelry</option>
+                <option value="clothing">Clothing</option>
+                <option value="other">Other</option>
+              </select>
+              <button type="button" class="remove-btn" onclick="removeProductDropdown(this)" style="display: none;"><i>close</i></button>
+            </div>
+          </div>
+          <button type="button" class="add-btn" onclick="addProductDropdown()">
+            <i>add</i>
+            <span>Add Another Product Type</span>
+          </button>
         </div>
         <div style="margin-top: 1.5rem;">
           <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Are you licensed? *</label>
@@ -42,7 +73,9 @@
             <label class="radio"><input type="radio" name="licensed" value="no"><span>No, I am not licensed</span></label>
           </div>
         </div>
-        <button type="submit" class="btn primary round max" style="margin-top: 2rem; padding: 1rem;"><span>Continue</span><i>arrow_forward</i></button>
+        <div class="button-wrapper">
+          <button type="submit" class="btn primary round medium"><span>Continue</span><i>arrow_forward</i></button>
+        </div>
       </form>
     </div>
   </div>
@@ -50,7 +83,50 @@
   <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
   <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
-    document.getElementById('vendorForm').addEventListener('submit',function(e){e.preventDefault();sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);sessionStorage.setItem('vendor_products',document.getElementById('product-types').value);sessionStorage.setItem('vendor_licensed',document.querySelector('input[name="licensed"]:checked').value);window.location.href='vendor-category.html';});
+    function addProductDropdown() {
+      const container = document.getElementById('product-types-container');
+      const newCard = document.createElement('div');
+      newCard.className = 'dropdown-card';
+      newCard.innerHTML = `
+        <select class="product-select" name="product-types">
+          <option value="">Select a product type</option>
+          <option value="produce">Produce</option>
+          <option value="dairy">Dairy</option>
+          <option value="eggs">Eggs</option>
+          <option value="meat">Meat</option>
+          <option value="bakery">Bakery</option>
+          <option value="beverages">Beverages</option>
+          <option value="prepared-foods">Prepared Foods</option>
+          <option value="handmade-crafts">Handmade Crafts</option>
+          <option value="art">Art</option>
+          <option value="jewelry">Jewelry</option>
+          <option value="clothing">Clothing</option>
+          <option value="other">Other</option>
+        </select>
+        <button type="button" class="remove-btn" onclick="removeProductDropdown(this)"><i>close</i></button>
+      `;
+      container.appendChild(newCard);
+      updateProductRemoveButtons();
+    }
+    function removeProductDropdown(btn) {
+      const card = btn.closest('.dropdown-card');
+      if (document.querySelectorAll('.dropdown-card').length > 1) {
+        card.remove();
+        updateProductRemoveButtons();
+      }
+    }
+    function updateProductRemoveButtons() {
+      const cards = document.querySelectorAll('#product-types-container .dropdown-card');
+      cards.forEach((card, index) => {
+        const removeBtn = card.querySelector('.remove-btn');
+        if (cards.length > 1) {
+          removeBtn.style.display = 'flex';
+        } else {
+          removeBtn.style.display = 'none';
+        }
+      });
+    }
+    document.getElementById('vendorForm').addEventListener('submit',function(e){e.preventDefault();const products=Array.from(document.querySelectorAll('.product-select')).map(select=>select.value).filter(v=>v);if(products.length===0){alert('Please select at least one product type');return;}sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);sessionStorage.setItem('vendor_products',JSON.stringify(products));sessionStorage.setItem('vendor_licensed',document.querySelector('input[name="licensed"]:checked').value);window.location.href='vendor-category.html';});
   </script>
 </body>
 </html>

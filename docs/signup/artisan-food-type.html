@@ -15,12 +15,14 @@
       .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2rem; font-size: 1rem; }
       .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
       .back-link:hover { text-decoration: underline; }
-      .food-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-      .food-type-checkbox { display: none; }
-      .food-type-label { display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem; border: 2px solid var(--outline-variant); border-radius: 16px; cursor: pointer; transition: all 0.3s ease; background: var(--surface-container-low); }
-      .food-type-label:hover { border-color: var(--primary); transform: translateY(-2px); }
-      .food-type-checkbox:checked + .food-type-label { border-color: var(--primary); background: var(--primary-container); }
-      .food-type-label i { font-size: 2rem; margin-bottom: 0.5rem; }
+      .dropdown-card { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding: 1rem; border: 2px solid var(--outline-variant); border-radius: 12px; background: transparent; }
+      .dropdown-card select { flex: 1; color: var(--on-surface); background-color: var(--surface); }
+      .dropdown-card select option { color: var(--on-surface); background-color: var(--surface); }
+      .remove-btn { background: none; border: none; color: var(--error, #b3261e); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; }
+      .remove-btn:hover { background: var(--error-container, rgba(179, 38, 30, 0.1)); }
+      .add-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1rem; border: 2px dashed var(--outline-variant); border-radius: 12px; background: transparent; color: var(--primary); cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
+      .add-btn:hover { border-color: var(--primary); background: var(--primary-container); }
+      .button-wrapper { margin-top: 2rem; display: flex; justify-content: center; }
     </style>
   </head>
   <body>
@@ -32,44 +34,27 @@
         <h1 class="page-title">What type of food products? 🥬</h1>
         <p class="page-subtitle">Select all that apply</p>
         <form id="foodTypeForm">
-          <div class="food-types">
-            <input type="checkbox" id="produce" name="food-types" value="produce" class="food-type-checkbox">
-            <label for="produce" class="food-type-label">
-              <i>eco</i>
-              <span>Produce</span>
-            </label>
-            
-            <input type="checkbox" id="dairy" name="food-types" value="dairy" class="food-type-checkbox">
-            <label for="dairy" class="food-type-label">
-              <i>local_drink</i>
-              <span>Dairy</span>
-            </label>
-            
-            <input type="checkbox" id="eggs" name="food-types" value="eggs" class="food-type-checkbox">
-            <label for="eggs" class="food-type-label">
-              <i>egg</i>
-              <span>Eggs</span>
-            </label>
-            
-            <input type="checkbox" id="meat" name="food-types" value="meat" class="food-type-checkbox">
-            <label for="meat" class="food-type-label">
-              <i>restaurant_menu</i>
-              <span>Meat</span>
-            </label>
-            
-            <input type="checkbox" id="cottage" name="food-types" value="cottage" class="food-type-checkbox">
-            <label for="cottage" class="food-type-label">
-              <i>bakery_dining</i>
-              <span>Cottage Foods</span>
-            </label>
-            
-            <input type="checkbox" id="other-food" name="food-types" value="other" class="food-type-checkbox">
-            <label for="other-food" class="food-type-label">
-              <i>more_horiz</i>
-              <span>Other</span>
-            </label>
+          <div id="food-types-container">
+            <div class="dropdown-card">
+              <select class="food-type-select" name="food-types" required>
+                <option value="">Select a food type</option>
+                <option value="produce">Produce</option>
+                <option value="dairy">Dairy</option>
+                <option value="eggs">Eggs</option>
+                <option value="meat">Meat</option>
+                <option value="cottage">Cottage Foods</option>
+                <option value="other">Other</option>
+              </select>
+              <button type="button" class="remove-btn" onclick="removeFoodTypeDropdown(this)" style="display: none;"><i>close</i></button>
+            </div>
           </div>
-          <button type="submit" class="btn primary round max" style="margin-top: 2rem; padding: 1rem;"><span>Continue</span><i>arrow_forward</i></button>
+          <button type="button" class="add-btn" onclick="addFoodTypeDropdown()">
+            <i>add</i>
+            <span>Add Another Food Type</span>
+          </button>
+          <div class="button-wrapper">
+            <button type="submit" class="btn primary round medium"><span>Continue</span><i>arrow_forward</i></button>
+          </div>
         </form>
       </div>
     </div>
@@ -77,7 +62,44 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
       (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
-      document.getElementById('foodTypeForm').addEventListener('submit',function(e){e.preventDefault();const selected=Array.from(document.querySelectorAll('input[name="food-types"]:checked')).map(cb=>cb.value);if(selected.length===0){alert('Please select at least one food type');return;}sessionStorage.setItem('food_types',JSON.stringify(selected));window.location.href='food-vendor-details.html';});
+      function addFoodTypeDropdown() {
+        const container = document.getElementById('food-types-container');
+        const newCard = document.createElement('div');
+        newCard.className = 'dropdown-card';
+        newCard.innerHTML = `
+          <select class="food-type-select" name="food-types">
+            <option value="">Select a food type</option>
+            <option value="produce">Produce</option>
+            <option value="dairy">Dairy</option>
+            <option value="eggs">Eggs</option>
+            <option value="meat">Meat</option>
+            <option value="cottage">Cottage Foods</option>
+            <option value="other">Other</option>
+          </select>
+          <button type="button" class="remove-btn" onclick="removeFoodTypeDropdown(this)"><i>close</i></button>
+        `;
+        container.appendChild(newCard);
+        updateFoodTypeRemoveButtons();
+      }
+      function removeFoodTypeDropdown(btn) {
+        const card = btn.closest('.dropdown-card');
+        if (document.querySelectorAll('.dropdown-card').length > 1) {
+          card.remove();
+          updateFoodTypeRemoveButtons();
+        }
+      }
+      function updateFoodTypeRemoveButtons() {
+        const cards = document.querySelectorAll('#food-types-container .dropdown-card');
+        cards.forEach((card, index) => {
+          const removeBtn = card.querySelector('.remove-btn');
+          if (cards.length > 1) {
+            removeBtn.style.display = 'flex';
+          } else {
+            removeBtn.style.display = 'none';
+          }
+        });
+      }
+      document.getElementById('foodTypeForm').addEventListener('submit',function(e){e.preventDefault();const selected=Array.from(document.querySelectorAll('.food-type-select')).map(select=>select.value).filter(v=>v);if(selected.length===0){alert('Please select at least one food type');return;}sessionStorage.setItem('food_types',JSON.stringify(selected));window.location.href='food-vendor-details.html';});
     </script>
   </body>
 </html>

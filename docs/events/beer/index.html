@@ -50,7 +50,7 @@
                                     <div class="profile-stats">
                                         <div class="stat">
                                             <span class="stat-number">127</span>
-                                            <span class="stat-label">Following</span>
+                                            <span class="stat-label">Followers</span>
                                         </div>
                                         <div class="stat">
                                             <span class="stat-number">45</span>
@@ -60,7 +60,7 @@
                                 </div>
                                 
                                 <div class="profile-actions">
-                                    <div class="btn-row" style="gap: 0.3rem">
+                                    <div class="btn-row center-align" style="gap: 0.3rem">
                                         <button class="btn small follow-btn" 
                                                 hx-post="/api/follow-event" 
                                                 hx-target="this" 
@@ -170,26 +170,32 @@
                             </ul>
 
                             <h4>Event Schedule</h4>
-                            <div class="schedule">
-                                <div class="schedule-item">
-                                    <strong>6:00 PM</strong> - Welcome & Introduction
-                                </div>
-                                <div class="schedule-item">
-                                    <strong>6:15 PM</strong> - First Flight Tasting (3 beers)
-                                </div>
-                                <div class="schedule-item">
-                                    <strong>7:00 PM</strong> - Break & Appetizers
-                                </div>
-                                <div class="schedule-item">
-                                    <strong>7:30 PM</strong> - Second Flight Tasting (3 beers)
-                                </div>
-                                <div class="schedule-item">
-                                    <strong>8:15 PM</strong> - Special Release Tasting (2 beers)
-                                </div>
-                                <div class="schedule-item">
-                                    <strong>9:00 PM</strong> - Event Conclusion
-                                </div>
-                            </div>
+                            <table class="schedule-table">
+                                <tr>
+                                    <td><strong>6:00 PM</strong></td>
+                                    <td>Welcome & Introduction</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6:15 PM</strong></td>
+                                    <td>First Flight Tasting (3 beers)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>7:00 PM</strong></td>
+                                    <td>Break & Appetizers</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>7:30 PM</strong></td>
+                                    <td>Second Flight Tasting (3 beers)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>8:15 PM</strong></td>
+                                    <td>Special Release Tasting (2 beers)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>9:00 PM</strong></td>
+                                    <td>Event Conclusion</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     

@@ -16,8 +16,25 @@ body.dark {
 }
 
 body.dark .card {
-  background-color: #393e3b;
-  color: #e6e1e6;
+  background-color: #393e3b !important;
+  color: #e6e1e6 !important;
+}
+
+body.dark .card-header {
+  background-color: #393e3b !important;
+  color: #e6e1e6 !important;
+}
+
+body.dark .card h6,
+body.dark .card h2,
+body.dark .card h3,
+body.dark .card h4,
+body.dark .card h5 {
+  color: #e6e1e6 !important;
+}
+
+body.dark .card small {
+  color: #cac4cf !important;
 }
 
 body.dark .bottom-nav {
@@ -763,6 +780,19 @@ body.dark {
     border-top: 2px solid rgba(255, 255, 255, 0.3);
   }
 
+  /* Preserve original card margins and padding for followers/connections pages */
+  .card.medium[style*="margin-bottom: 0.5rem"] {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .card.medium[style*="padding: 0"] {
+    padding: 0 !important;
+  }
+
+  .card-header[style*="padding: 0.5rem 1rem"] {
+    padding: 0.5rem 1rem !important;
+  }
+
   .card-header {
     padding: 1rem;
     border-bottom: 1px solid var(--outline-variant);
@@ -1097,6 +1127,14 @@ body.dark {
       margin: 0 !important;
       padding: 0 !important;
     }
+
+    /* Preserve container padding for followers/connections pages to match desktop */
+    main.responsive .container[style*="padding-top: 1rem"] {
+      padding-top: 1rem !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      padding-bottom: 0 !important;
+    }
     
     main.responsive .container .row {
       width: 100% !important;
@@ -1124,6 +1162,14 @@ body.dark {
       max-width: calc(100% - 0.5rem) !important;
       margin-left: 0.25rem !important;
       margin-right: 0.25rem !important;
+    }
+
+    /* Ensure followers/connections cards don't get affected by feed-container rules */
+    main.responsive .container .row .col.s12 .card.medium[style*="margin-bottom: 0.5rem"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
     
     /* Header section width constraints */
@@ -1196,6 +1242,15 @@ body.dark {
       box-sizing: border-box;
       overflow: hidden;
       border-top: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Preserve original card margins and padding for followers/connections pages on mobile */
+    .card.medium[style*="margin-bottom: 0.5rem"] {
+      margin-bottom: 0.5rem !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
     }
 
     .card-header-row {
@@ -1647,4 +1702,65 @@ body.dark {
     .quick-info-content {
       padding: 1rem;
     }
+  }
+
+  /* Beer Event Page Layout Updates */
+
+  /* Profile stats - display followers and attending on same row */
+  .profile-stats {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  /* Center top buttons */
+  .profile-actions .btn-row.center-align {
+    justify-content: center !important;
+    display: flex !important;
+  }
+
+  /* Thinner Buy Tickets button */
+  .buy-tickets-btn {
+    padding: 0.4rem 0.8rem !important;
+    min-width: auto;
+    width: auto;
+  }
+
+  /* Rounded outline around Date & Time and Location section */
+  .quick-info-content {
+    border: 1px solid var(--outline-variant);
+    border-radius: 12px;
+    background-color: var(--surface);
+  }
+
+  body.dark .quick-info-content {
+    border-color: var(--outline-variant);
+    background-color: var(--surface);
+  }
+
+  /* Schedule table - Excel-like borders with larger text */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+  }
+
+  .schedule-table td {
+    border: 1px solid var(--outline-variant);
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+
+  body.dark .schedule-table td {
+    border-color: var(--outline-variant);
+  }
+
+  .schedule-table td:first-child {
+    width: 30%;
+    font-weight: 600;
+  }
+
+  .schedule-table td:last-child {
+    width: 70%;
   }

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Shopper Profile - LocalMarket</title>
+   
+    <link href="../style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="../home/index.html" class="nav-item" data-testid="nav-home">
+        <i>home</i>
+      </a>
+      <a href="../index.html" class="nav-item" data-testid="nav-search">
+        <i>search</i>
+      </a>
+      <a href="../discussions/forums/index.html" class="nav-item" data-testid="nav-discussions">
+        <i>groups</i>
+      </a>
+      <a href="#" class="nav-item" data-testid="nav-cart">
+        <i>shopping_cart</i>
+      </a>
+      <a href="shopper.html" class="nav-item active" data-testid="nav-profile">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive" style="padding-bottom: 70px;">
+        <!-- Shopper Profile Hero Section -->
+        <section id="home" class="margin-bottom-large">
+            <div class="card surface-container margin-horizontal-small" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2; margin-top: 1rem;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row no-gap middle-align">
+                                <div class="col s12 m6">
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s2">
+                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" class="circle small">
+                                        </div>
+                                        <div class="col s10">
+                                            <h2 class="left-align">Sarah Johnson</h2>
+                                        </div>
+                                    </div>
+                                    <p class="text-left text-grey">Local food enthusiast and craft beer lover</p>
+                                    
+                                    <div class="row no-gap middle-align margin-top-small">
+                                        <div class="col s6">
+                                            <a href="following.html" style="text-decoration: none; color: inherit; display: block;">
+                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                                    <span class="text-bold text-large">24</span>
+                                                    <div class="text-small text-grey">Following</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col s6">
+                                            <div class="row no-gap right-align">
+                                                <a href="messages.html" style="text-decoration: none; color: inherit;">
+                                                    <button class="btn tiny primary border circle" data-testid="message-btn">
+                                                        <i>mail</i>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="padding-vertical-large">
+            <div class="container">
+                <div class="row no-gap margin-bottom-large">
+                    <div class="col s12">
+                        <h3>Dashboard</h3>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col s12">
+                        <!-- Saved Products Card -->
+                        <a href="saved-products.html" style="text-decoration: none; color: inherit;">
+                            <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                                <div class="card-header" style="padding: 0.75rem 1rem;">
+                                    <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                        <div style="flex-shrink: 0; margin-right: 1rem;">
+                                            <i class="material-icons" style="font-size: 1.5rem; color: var(--primary);">favorite</i>
+                                        </div>
+                                        <div style="flex: 1; min-width: 0;">
+                                            <h6 style="margin: 0; font-weight: 600; font-size: 0.95rem;">Saved Products</h6>
+                                            <small class="text-grey" style="display: block; line-height: 1.2;">12 items</small>
+                                        </div>
+                                        <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                                            <i class="material-icons" style="font-size: 1.2rem; color: var(--on-surface-variant);">chevron_right</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <!-- Groups Card -->
+                        <a href="groups.html" style="text-decoration: none; color: inherit;">
+                            <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                                <div class="card-header" style="padding: 0.75rem 1rem;">
+                                    <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                        <div style="flex-shrink: 0; margin-right: 1rem;">
+                                            <i class="material-icons" style="font-size: 1.5rem; color: var(--primary);">groups</i>
+                                        </div>
+                                        <div style="flex: 1; min-width: 0;">
+                                            <h6 style="margin: 0; font-weight: 600; font-size: 0.95rem;">Groups</h6>
+                                            <small class="text-grey" style="display: block; line-height: 1.2;">5 groups</small>
+                                        </div>
+                                        <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                                            <i class="material-icons" style="font-size: 1.2rem; color: var(--on-surface-variant);">chevron_right</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <!-- Recently Purchased Card -->
+                        <a href="recently-purchased.html" style="text-decoration: none; color: inherit;">
+                            <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                                <div class="card-header" style="padding: 0.75rem 1rem;">
+                                    <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                        <div style="flex-shrink: 0; margin-right: 1rem;">
+                                            <i class="material-icons" style="font-size: 1.5rem; color: var(--primary);">history</i>
+                                        </div>
+                                        <div style="flex: 1; min-width: 0;">
+                                            <h6 style="margin: 0; font-weight: 600; font-size: 0.95rem;">Recently Purchased</h6>
+                                            <small class="text-grey" style="display: block; line-height: 1.2;">8 items</small>
+                                        </div>
+                                        <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                                            <i class="material-icons" style="font-size: 1.2rem; color: var(--on-surface-variant);">chevron_right</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Discussions Section -->
+        <section id="discussions" class="padding-vertical-large surface-container-low">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h3>Latest Discussions</h3>
+                        
+                        <!-- Discussion Card 1 -->
+                        <div class="card medium margin-bottom-large">
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Sarah Johnson</h6>
+                                        <small class="text-grey">2 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=300&fit=crop" 
+                                     alt="Discussion Topic" class="responsive round" style="height: 300px; object-fit: cover;">
+                                <p>Has anyone tried the new IPA from Brewery Central? Looking for recommendations on what to pair it with. Thinking about making some grilled salmon tonight! 🍺</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">15</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">6</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Comments Section -->
+                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                <div class="margin-bottom-medium">
+                                    <div class="row no-gap margin-bottom-medium">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <strong>BeerLover42</strong>
+                                            <p class="margin-vertical-small">Grilled salmon sounds perfect! Try adding some lemon and herbs.</p>
+                                            <small class="text-grey">1 hour ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="row no-gap margin-bottom-medium">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <strong>HopHead</strong>
+                                            <p class="margin-vertical-small">That IPA pairs great with spicy foods too!</p>
+                                            <small class="text-grey">45 minutes ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add Comment Form -->
+                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="row no-gap middle-align">
+                                                <div class="col s10">
+                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input">
+                                                </div>
+                                                <div class="col s2">
+                                                    <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit">Post</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Discussion Card 2 -->
+                        <div class="card medium margin-bottom-large">
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Sarah Johnson</h6>
+                                        <small class="text-grey">1 day ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
+                                     alt="Discussion Topic" class="responsive round" style="height: 300px; object-fit: cover;">
+                                <p>Looking for recommendations on local farmers markets in the area. Which ones have the best organic produce? Planning my weekend shopping! 🥬</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn-2" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">22</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn-2" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Comments Section -->
+                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                <div class="margin-bottom-medium">
+                                    <div class="row no-gap margin-bottom-medium">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <strong>FarmFresh</strong>
+                                            <p class="margin-vertical-small">The downtown market on Saturdays is amazing!</p>
+                                            <small class="text-grey">3 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add Comment Form -->
+                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="row no-gap middle-align">
+                                                <div class="col s10">
+                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input-2">
+                                                </div>
+                                                <div class="col s2">
+                                                    <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit-2">Post</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Discussion Card 3 -->
+                        <div class="card medium margin-bottom-large">
+                            <div class="card-header">
+                                <div class="row no-gap">
+                                    <div class="col s2">
+                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                    </div>
+                                    <div class="col s10">
+                                        <h6>Sarah Johnson</h6>
+                                        <small class="text-grey">3 days ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
+                                     alt="Discussion Topic" class="responsive round" style="height: 300px; object-fit: cover;">
+                                <p>Has anyone been to the new craft beer festival downtown? Thinking about going this weekend. Would love to meet up with fellow beer enthusiasts! 🍻</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row no-gap">
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn-3" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                            <i class="material-icons">favorite_border</i>
+                                            <span class="like-text">Like</span>
+                                            <span class="like-count">18</span>
+                                        </div>
+                                    </div>
+                                    <div class="col s6">
+                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn-3" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                            <i class="material-icons">chat_bubble_outline</i>
+                                            <span class="comment-text">Comment</span>
+                                            <span class="comment-count">7</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Comments Section -->
+                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                <div class="margin-bottom-medium">
+                                    <div class="row no-gap margin-bottom-medium">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <strong>BeerFestFan</strong>
+                                            <p class="margin-vertical-small">Went last weekend! It was incredible, definitely worth going!</p>
+                                            <small class="text-grey">1 day ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Add Comment Form -->
+                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <div class="row no-gap middle-align">
+                                                <div class="col s10">
+                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input-3">
+                                                </div>
+                                                <div class="col s2">
+                                                    <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit-3">Post</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+
+      function toggleLike(element) {
+          const icon = element.querySelector('i');
+          const likeText = element.querySelector('.like-text');
+          const likeCount = element.querySelector('.like-count');
+          
+          if (element.classList.contains('liked')) {
+              // Unlike
+              element.classList.remove('liked');
+              icon.textContent = 'favorite_border';
+              icon.className = 'material-icons';
+              likeText.textContent = 'Like';
+              likeCount.textContent = parseInt(likeCount.textContent) - 1;
+          } else {
+              // Like
+              element.classList.add('liked');
+              icon.textContent = 'favorite';
+              icon.className = 'material-icons error';
+              likeText.textContent = 'Liked';
+              likeText.className = 'like-text error';
+              likeCount.textContent = parseInt(likeCount.textContent) + 1;
+          }
+      }
+      
+      function toggleComments(element) {
+          const postCard = element.closest('.card');
+          const commentsSection = postCard.querySelector('.card-footer');
+          
+          if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+              commentsSection.style.display = 'block';
+              element.querySelector('.comment-text').textContent = 'Hide Comments';
+          } else {
+              commentsSection.style.display = 'none';
+              element.querySelector('.comment-text').textContent = 'Comment';
+          }
+      }
+      
+      function addComment(element) {
+          const postCard = element.closest('.card');
+          const commentInput = postCard.querySelector('input[type="text"]');
+          const commentsContainer = postCard.querySelector('.margin-bottom-medium');
+          const commentCount = postCard.querySelector('.comment-count');
+          
+          if (commentInput.value.trim() === '') return;
+          
+          // Create new comment element
+          const newComment = document.createElement('div');
+          newComment.className = 'row no-gap margin-bottom-medium';
+          newComment.innerHTML = `
+              <div class="col s2">
+                  <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+              </div>
+              <div class="col s10">
+                  <strong>You</strong>
+                  <p class="margin-vertical-small">${commentInput.value}</p>
+                  <small class="text-grey">Just now</small>
+              </div>
+          `;
+          
+          // Add to comments container
+          commentsContainer.appendChild(newComment);
+          
+          // Update comment count
+          commentCount.textContent = parseInt(commentCount.textContent) + 1;
+          
+          // Clear input
+          commentInput.value = '';
+          
+          // Scroll to new comment
+          newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    </script>
+  </body>
+</html>
+

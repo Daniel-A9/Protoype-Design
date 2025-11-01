@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Saved Products - Shopper Profile</title>
+   
+    <link href="../style.css" rel="stylesheet">
+    <style>
+      .remove-product-btn {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        padding: 0 !important;
+        font-size: 12px !important;
+      }
+      
+      .remove-product-btn i {
+        font-size: 14px !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="../home/index.html" class="nav-item" data-testid="nav-home">
+        <i>home</i>
+      </a>
+      <a href="../index.html" class="nav-item" data-testid="nav-search">
+        <i>search</i>
+      </a>
+      <a href="../discussions/forums/index.html" class="nav-item" data-testid="nav-discussions">
+        <i>groups</i>
+      </a>
+      <a href="#" class="nav-item" data-testid="nav-cart">
+        <i>shopping_cart</i>
+      </a>
+      <a href="shopper.html" class="nav-item active" data-testid="nav-profile">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive" style="padding-bottom: 70px;">
+        <section>
+            <div class="container" style="padding-top: 1rem;">
+                <div class="row">
+                    <div class="col s12">
+                        <a href="shopper.html" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit; margin-bottom: 0;">
+                            <button class="circle transparent">
+                                <i>arrow_back</i>
+                            </button>
+                        </a>
+                        <h2 style="margin-bottom: 1rem;">Saved Products</h2>
+                        
+                        <!-- Product Card 1 -->
+                        <div class="card medium margin-bottom-large" id="product-citrus-ipa">
+                            <div class="card-content product-card-clickable" onclick="openProduct('citrus-ipa')" style="cursor: pointer;">
+                                <div style="position: relative;">
+                                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
+                                         alt="Citrus IPA" class="responsive round" style="height: 280px; object-fit: cover;">
+                                    <button class="btn circle small error remove-product-btn" style="position: absolute; top: 10px; right: 10px; z-index: 10;" onclick="event.stopPropagation(); removeProduct('citrus-ipa')" data-testid="remove-citrus-ipa">
+                                        <i>close</i>
+                                    </button>
+                                </div>
+                                <div class="padding-vertical-medium">
+                                    <h5>Citrus IPA</h5>
+                                    <p class="text-grey margin-vertical-small">Perfectly balanced hops with refreshing citrus notes</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$8.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="card medium margin-bottom-large" id="product-chocolate-stout">
+                            <div class="card-content product-card-clickable" onclick="openProduct('chocolate-stout')" style="cursor: pointer;">
+                                <div style="position: relative;">
+                                    <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
+                                         alt="Chocolate Stout" class="responsive round" style="height: 280px; object-fit: cover;">
+                                    <button class="btn circle small error remove-product-btn" style="position: absolute; top: 10px; right: 10px; z-index: 10;" onclick="event.stopPropagation(); removeProduct('chocolate-stout')" data-testid="remove-chocolate-stout">
+                                        <i>close</i>
+                                    </button>
+                                </div>
+                                <div class="padding-vertical-medium">
+                                    <h5>Chocolate Stout</h5>
+                                    <p class="text-grey margin-vertical-small">Rich chocolate and coffee flavors with smooth finish</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$9.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="card medium margin-bottom-large" id="product-golden-lager">
+                            <div class="card-content product-card-clickable" onclick="openProduct('golden-lager')" style="cursor: pointer;">
+                                <div style="position: relative;">
+                                    <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
+                                         alt="Golden Lager" class="responsive round" style="height: 280px; object-fit: cover;">
+                                    <button class="btn circle small error remove-product-btn" style="position: absolute; top: 10px; right: 10px; z-index: 10;" onclick="event.stopPropagation(); removeProduct('golden-lager')" data-testid="remove-golden-lager">
+                                        <i>close</i>
+                                    </button>
+                                </div>
+                                <div class="padding-vertical-medium">
+                                    <h5>Golden Lager</h5>
+                                    <p class="text-grey margin-vertical-small">Crisp and refreshing with clean finish</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$7.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="card medium margin-bottom-large" id="product-hefeweizen">
+                            <div class="card-content product-card-clickable" onclick="openProduct('hefeweizen')" style="cursor: pointer;">
+                                <div style="position: relative;">
+                                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" 
+                                         alt="Hefeweizen" class="responsive round" style="height: 280px; object-fit: cover;">
+                                    <button class="btn circle small error remove-product-btn" style="position: absolute; top: 10px; right: 10px; z-index: 10;" onclick="event.stopPropagation(); removeProduct('hefeweizen')" data-testid="remove-hefeweizen">
+                                        <i>close</i>
+                                    </button>
+                                </div>
+                                <div class="padding-vertical-medium">
+                                    <h5>Hefeweizen</h5>
+                                    <p class="text-grey margin-vertical-small">Traditional German wheat beer with banana and clove notes</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$8.49</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Detail Dialog -->
+    <dialog id="product-dialog" class="modal medium" style="max-height: calc(100vh - 108px); height: calc(100vh - 108px);">
+        <button data-ui="#product-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+            <i>close</i>
+        </button>
+        
+        <div style="max-height: 100%; overflow-y: auto; padding-bottom: 1rem;">
+            <!-- Product Image -->
+            <img id="dialog-product-image" src="" alt="" class="responsive round" style="height: 300px; object-fit: cover; width: 100%;">
+            
+            <!-- Action Buttons -->
+            <div class="row no-gap margin-top-medium" style="gap: 0.5rem;">
+                <div class="col s8">
+                    <button id="dialog-add-to-cart-btn" class="btn primary" style="width: 100%;" onclick="addToCartWithAnimation(this)">
+                        <i>add_shopping_cart</i>
+                        <span>Add to Cart</span>
+                    </button>
+                </div>
+                <div class="col s4">
+                    <button id="dialog-favorite-btn" class="btn outline" style="width: 100%;" onclick="toggleFavoriteWithAnimation(this)">
+                        <i>favorite</i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Product Info -->
+            <div class="padding-medium">
+                <div class="row no-gap middle-align margin-bottom-small">
+                    <div class="col s8">
+                        <h4 id="dialog-product-name"></h4>
+                    </div>
+                    <div class="col s4 right-align">
+                        <span id="dialog-product-price" class="text-bold text-large"></span>
+                    </div>
+                </div>
+                
+                <!-- Full Description -->
+                <div class="margin-vertical-medium">
+                    <h6 class="text-bold">Description</h6>
+                    <p id="dialog-product-description" class="text-grey"></p>
+                </div>
+                
+                <!-- Ingredients -->
+                <div class="margin-vertical-medium">
+                    <h6 class="text-bold">Ingredients</h6>
+                    <p id="dialog-product-ingredients" class="text-grey"></p>
+                </div>
+                
+                <!-- Additional Notes -->
+                <div class="margin-vertical-medium">
+                    <h6 class="text-bold">Additional Notes</h6>
+                    <p id="dialog-product-notes" class="text-grey"></p>
+                </div>
+                
+                <!-- Delivery Options -->
+                <div class="margin-vertical-medium">
+                    <h6 class="text-bold">Delivery Options</h6>
+                    <div id="dialog-product-delivery" class="text-grey"></div>
+                </div>
+                
+                <!-- Refund Policy -->
+                <div class="margin-vertical-medium">
+                    <h6 class="text-bold">Refund Policy</h6>
+                    <p id="dialog-product-refunds" class="text-grey"></p>
+                </div>
+                
+                <!-- Payment Methods -->
+                <div class="margin-vertical-medium">
+                    <h6 class="text-bold">Accepted Payment Methods</h6>
+                    <div class="row no-gap middle-align" style="gap: 1rem; margin-top: 0.5rem;">
+                        <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <i class="text-primary">credit_card</i>
+                            <small>Stripe</small>
+                        </div>
+                        <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <i class="text-primary">account_balance</i>
+                            <small>PayPal</small>
+                        </div>
+                        <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <i class="text-primary">payment</i>
+                            <small>Venmo</small>
+                        </div>
+                        <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <i class="text-primary">attach_money</i>
+                            <small>Cash</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+
+      // Product Modal Functionality
+      const productData = {
+          'citrus-ipa': {
+              name: 'Citrus IPA',
+              price: '$8.99',
+              image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop',
+              description: 'Our signature Citrus IPA is perfectly balanced with a blend of cascade and citra hops, delivering refreshing citrus notes of grapefruit, orange, and lemon. This American-style IPA features a golden amber color with a crisp, clean finish that makes it incredibly sessionable. Best enjoyed fresh and cold.',
+              ingredients: 'Water, Malted Barley (Pale Malt, Crystal Malt), Hops (Cascade, Citra, Centennial), Yeast, Citrus Zest',
+              notes: 'ABV: 6.5% | IBU: 65 | Serving Temperature: 45-50°F. Pairs excellently with spicy foods, fish tacos, and citrus-based desserts.',
+              delivery: '<p><i>local_shipping</i> <strong>Delivery:</strong> Available within 10-mile radius. $5 delivery fee.</p><p><i>store</i> <strong>Pick-up:</strong> Available at our brewery location - 123 Craft Beer Lane, Downtown. Pick-up hours: Mon-Fri 2pm-8pm, Sat-Sun 12pm-9pm</p>',
+              refunds: 'Full refunds accepted within 24 hours of purchase for unopened products. Please contact us if you experience any quality issues.'
+          },
+          'chocolate-stout': {
+              name: 'Chocolate Stout',
+              price: '$9.99',
+              image: 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop',
+              description: 'Our rich and decadent Chocolate Stout is brewed with premium cocoa nibs and dark roasted malts, creating layers of chocolate and coffee flavors. This full-bodied stout has a smooth, creamy texture with subtle hints of vanilla and a velvety finish. Perfect for chocolate lovers and those seeking a dessert-like beer experience.',
+              ingredients: 'Water, Malted Barley (Pale Malt, Chocolate Malt, Roasted Barley), Hops (Fuggle), Cocoa Nibs, Yeast, Natural Vanilla Extract',
+              notes: 'ABV: 7.2% | IBU: 35 | Serving Temperature: 50-55°F. Pairs wonderfully with chocolate desserts, BBQ ribs, and aged cheeses.',
+              delivery: '<p><i>local_shipping</i> <strong>Delivery:</strong> Available within 10-mile radius. $5 delivery fee.</p><p><i>store</i> <strong>Pick-up:</strong> Available at our brewery location - 123 Craft Beer Lane, Downtown. Pick-up hours: Mon-Fri 2pm-8pm, Sat-Sun 12pm-9pm</p>',
+              refunds: 'Full refunds accepted within 24 hours of purchase for unopened products. Please contact us if you experience any quality issues.'
+          },
+          'golden-lager': {
+              name: 'Golden Lager',
+              price: '$7.99',
+              image: 'https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop',
+              description: 'A classic German-style lager with a beautiful golden color and crystal-clear appearance. Crisp and refreshing with a delicate balance of malt sweetness and subtle hop bitterness. This lager undergoes extended cold fermentation for a clean, smooth finish that\'s incredibly drinkable.',
+              ingredients: 'Water, Malted Barley (Pilsner Malt, Vienna Malt), Hops (Hallertau, Saaz), Lager Yeast',
+              notes: 'ABV: 5.0% | IBU: 22 | Serving Temperature: 38-45°F. Perfect for hot summer days, pairs well with grilled chicken, salads, and light seafood.',
+              delivery: '<p><i>local_shipping</i> <strong>Delivery:</strong> Available within 10-mile radius. $5 delivery fee.</p><p><i>store</i> <strong>Pick-up:</strong> Available at our brewery location - 123 Craft Beer Lane, Downtown. Pick-up hours: Mon-Fri 2pm-8pm, Sat-Sun 12pm-9pm</p>',
+              refunds: 'Full refunds accepted within 24 hours of purchase for unopened products. Please contact us if you experience any quality issues.'
+          },
+          'hefeweizen': {
+              name: 'Hefeweizen',
+              price: '$8.49',
+              image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop',
+              description: 'An authentic Bavarian-style wheat beer showcasing the traditional banana and clove character derived from our special hefeweizen yeast strain. Naturally cloudy with a fluffy white head, this unfiltered wheat beer offers a refreshing, slightly sweet flavor profile with a smooth, creamy mouthfeel.',
+              ingredients: 'Water, Malted Wheat (50%), Malted Barley (50%), Hops (Hallertau), Bavarian Hefeweizen Yeast',
+              notes: 'ABV: 5.4% | IBU: 15 | Serving Temperature: 45-50°F. Best served in a traditional weizen glass. Pairs excellently with Bavarian pretzels, white sausage, and fruit salads.',
+              delivery: '<p><i>local_shipping</i> <strong>Delivery:</strong> Available within 10-mile radius. $5 delivery fee.</p><p><i>store</i> <strong>Pick-up:</strong> Available at our brewery location - 123 Craft Beer Lane, Downtown. Pick-up hours: Mon-Fri 2pm-8pm, Sat-Sun 12pm-9pm</p>',
+              refunds: 'Full refunds accepted within 24 hours of purchase for unopened products. Please contact us if you experience any quality issues.'
+          }
+      };
+
+      function openProduct(productId) {
+          const product = productData[productId];
+          if (!product) return;
+
+          // Populate dialog with product data
+          document.getElementById('dialog-product-image').src = product.image;
+          document.getElementById('dialog-product-image').alt = product.name;
+          document.getElementById('dialog-product-name').textContent = product.name;
+          document.getElementById('dialog-product-price').textContent = product.price;
+          document.getElementById('dialog-product-description').textContent = product.description;
+          document.getElementById('dialog-product-ingredients').textContent = product.ingredients;
+          document.getElementById('dialog-product-notes').textContent = product.notes;
+          document.getElementById('dialog-product-delivery').innerHTML = product.delivery;
+          document.getElementById('dialog-product-refunds').textContent = product.refunds;
+
+          // Store product ID for cart action
+          document.getElementById('dialog-add-to-cart-btn').setAttribute('data-product-id', productId);
+
+          // Set favorite button to filled (since it's saved)
+          const favoriteBtn = document.getElementById('dialog-favorite-btn');
+          favoriteBtn.querySelector('i').textContent = 'favorite';
+          favoriteBtn.classList.add('error');
+
+          // Open dialog using BeerCSS ui function
+          ui('#product-dialog');
+      }
+
+      function addToCartWithAnimation(button) {
+          const productId = button.getAttribute('data-product-id');
+          
+          // Add firework animation
+          button.classList.add('firework-effect');
+          
+          // Simulate adding to cart (in real app, this would make an API call)
+          console.log('Adding to cart:', productId);
+          
+          // Show temporary success feedback
+          const originalText = button.querySelector('span').textContent;
+          button.querySelector('span').textContent = 'Added!';
+          
+          // Remove animation class and reset text after animation
+          setTimeout(() => {
+              button.classList.remove('firework-effect');
+              button.querySelector('span').textContent = originalText;
+          }, 800);
+      }
+
+      function toggleFavoriteWithAnimation(button) {
+          const icon = button.querySelector('i');
+          
+          // Since it's already saved, remove it
+          if (icon.textContent === 'favorite') {
+              icon.textContent = 'favorite_border';
+              icon.classList.remove('error');
+              // Also remove from saved products list
+              const productId = document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id');
+              removeProduct(productId);
+              ui('#product-dialog'); // Close dialog
+          }
+      }
+
+      function removeProduct(productId) {
+          if (confirm('Remove this product from your saved list?')) {
+              const productCard = document.getElementById('product-' + productId);
+              if (productCard) {
+                  productCard.style.transition = 'opacity 0.3s, transform 0.3s';
+                  productCard.style.opacity = '0';
+                  productCard.style.transform = 'translateX(-100%)';
+                  setTimeout(() => {
+                      productCard.remove();
+                  }, 300);
+              }
+          }
+      }
+    </script>
+  </body>
+</html>
+

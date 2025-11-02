@@ -11,6 +11,40 @@
   </head>
   <body>
 
+    <!-- Hamburger Menu Button (Top Right) -->
+    <button class="circle transparent" style="position: fixed; top: 4.5rem; right: 1rem; z-index: 1001;" onclick="toggleHamburgerMenu()" data-testid="hamburger-menu-btn">
+      <i>menu</i>
+    </button>
+
+    <!-- Hamburger Menu Overlay -->
+    <div id="hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    
+    <!-- Hamburger Menu Sidebar -->
+    <div id="hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
+      <div style="padding: 1rem;">
+        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+          <i>close</i>
+        </button>
+        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+        
+        <!-- Menu Items -->
+        <a href="index.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">store</i>
+          <span style="font-size: 0.9rem;">Vendor Profile</span>
+        </a>
+        
+        <a href="#" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">settings</i>
+          <span style="font-size: 0.9rem;">Settings</span>
+        </a>
+        
+        <a href="#" onclick="logout(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">logout</i>
+          <span style="font-size: 0.9rem;">Log Out</span>
+        </a>
+      </div>
+    </div>
+
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
       <a href="../home/index.html" class="nav-item" data-testid="nav-home">
@@ -127,17 +161,17 @@
                             </div>
                         </a>
                         
-                        <!-- Recently Purchased Card -->
-                        <a href="recently-purchased.html" style="text-decoration: none; color: inherit;">
+                        <!-- My Orders Card -->
+                        <a href="my-orders.html" style="text-decoration: none; color: inherit;">
                             <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
                                 <div class="card-header" style="padding: 0.75rem 1rem;">
                                     <div class="row no-gap middle-align" style="display: flex; align-items: center;">
                                         <div style="flex-shrink: 0; margin-right: 1rem;">
-                                            <i class="material-icons" style="font-size: 1.5rem; color: var(--primary);">history</i>
+                                            <i class="material-icons" style="font-size: 1.5rem; color: var(--primary);">shopping_bag</i>
                                         </div>
                                         <div style="flex: 1; min-width: 0;">
-                                            <h6 style="margin: 0; font-weight: 600; font-size: 0.95rem;">Recently Purchased</h6>
-                                            <small class="text-grey" style="display: block; line-height: 1.2;">8 items</small>
+                                            <h6 style="margin: 0; font-weight: 600; font-size: 0.95rem;">My Orders</h6>
+                                            <small class="text-grey" style="display: block; line-height: 1.2;">Manage orders & payments</small>
                                         </div>
                                         <div style="flex-shrink: 0; margin-left: 0.75rem;">
                                             <i class="material-icons" style="font-size: 1.2rem; color: var(--on-surface-variant);">chevron_right</i>
@@ -495,6 +529,31 @@
           
           // Scroll to new comment
           newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Hamburger Menu Functions
+      function toggleHamburgerMenu() {
+          const menu = document.getElementById('hamburger-menu');
+          const overlay = document.getElementById('hamburger-menu-overlay');
+          
+          if (menu.style.right === '0px') {
+              // Close menu - slide out
+              menu.style.right = '-240px';
+              overlay.style.display = 'none';
+          } else {
+              // Open menu - slide in
+              menu.style.right = '0px';
+              overlay.style.display = 'block';
+          }
+      }
+
+      function logout() {
+          if (confirm('Are you sure you want to log out?')) {
+              // In real implementation, this would clear session and redirect
+              alert('Logged out successfully');
+              window.location.href = '../index.html';
+          }
+          toggleHamburgerMenu();
       }
     </script>
   </body>

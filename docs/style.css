@@ -798,6 +798,14 @@ body.dark {
     border-bottom: 1px solid var(--outline-variant);
   }
 
+  .card-header .col h6 {
+    text-align: left !important;
+  }
+
+  .card-header .col {
+    text-align: left !important;
+  }
+
   .card-content {
     padding: 1rem;
     text-align: center;

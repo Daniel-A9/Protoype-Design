@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Conversation - Messages</title>
+   
+    <link href="../style.css" rel="stylesheet">
+    <style>
+      /* Conversation container - hide all by default */
+      .conversation-container {
+        display: none;
+      }
+
+      /* Show conversation when hash matches */
+      .conversation-container:target {
+        display: block;
+      }
+
+      /* Show brewery-central by default (when no hash) */
+      #brewery-central {
+        display: block;
+      }
+
+      /* Hide brewery when farm-fresh is targeted (can't use ~ for previous sibling, so hide all non-targeted) */
+      #farm-fresh-produce:target ~ #brewery-central {
+        display: none;
+      }
+
+      /* Hide farm when brewery is targeted (brewery is first, so ~ works for farm) */
+      #brewery-central:target ~ #farm-fresh-produce {
+        display: none;
+      }
+
+      /* When farm is targeted, hide brewery by using a different approach */
+      body:has(#farm-fresh-produce:target) #brewery-central:not(:target) {
+        display: none;
+      }
+
+      /* Header styles */
+      .conversation-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: var(--surface-container);
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--outline-variant);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .conversation-header .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .conversation-header .header-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .conversation-header .header-info h6 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .conversation-header .menu-button {
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      /* Message area */
+      .messages-container {
+        padding: 1rem;
+        padding-bottom: 100px;
+        min-height: calc(100vh - 200px);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      /* Message bubble styles */
+      .message {
+        display: flex;
+        flex-direction: column;
+        max-width: 75%;
+        word-wrap: break-word;
+      }
+
+      .message.sent {
+        align-self: flex-end;
+        align-items: flex-end;
+      }
+
+      .message.received {
+        align-self: flex-start;
+        align-items: flex-start;
+      }
+
+      .message-bubble {
+        padding: 0.75rem 1rem;
+        border-radius: 18px;
+        margin-bottom: 0.25rem;
+        line-height: 1.4;
+        font-size: 0.9rem;
+      }
+
+      .message.sent .message-bubble {
+        background-color: var(--primary);
+        color: var(--on-primary);
+        border-bottom-right-radius: 4px;
+      }
+
+      .message.received .message-bubble {
+        background-color: var(--surface-container-high);
+        color: var(--on-surface);
+        border-bottom-left-radius: 4px;
+      }
+
+      .message-time {
+        font-size: 0.65rem;
+        color: var(--on-surface-variant);
+        padding: 0 0.5rem;
+      }
+
+      /* Input section */
+      .input-section {
+        position: fixed;
+        bottom: 56px;
+        left: 0;
+        right: 0;
+        background-color: var(--surface-container);
+        border-top: 1px solid var(--outline-variant);
+        padding: 0.4rem 0.75rem;
+        z-index: 100;
+      }
+
+      .input-wrapper {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        height: 40px;
+      }
+
+      .input-wrapper .field {
+        flex: 1;
+        margin: 0;
+        height: 36px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .send-button {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        height: 36px;
+        width: 36px;
+        min-width: 36px;
+        padding: 0;
+      }
+
+      /* Menu dropdown */
+      .menu-red {
+        color: red;
+      }
+
+      @media (max-width: 768px) {
+        .message {
+          max-width: 85%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="../home/index.html" class="nav-item" data-testid="nav-home">
+        <i>home</i>
+      </a>
+      <a href="../index.html" class="nav-item" data-testid="nav-search">
+        <i>search</i>
+      </a>
+      <a href="../discussions/forums/index.html" class="nav-item" data-testid="nav-discussions">
+        <i>groups</i>
+      </a>
+      <a href="#" class="nav-item" data-testid="nav-cart">
+        <i>shopping_cart</i>
+      </a>
+      <a href="shopper.html" class="nav-item active" data-testid="nav-profile">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive">
+      <!-- Brewery Central Conversation (default, shown when no hash) -->
+      <div id="brewery-central" class="conversation-container">
+        <!-- Header -->
+        <div class="conversation-header">
+          <a href="messages.html" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit;">
+            <button class="circle transparent">
+              <i>arrow_back</i>
+            </button>
+          </a>
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=100&h=100&fit=crop" alt="Brewery Central" class="avatar">
+          <div class="header-info">
+            <h6>Brewery Central</h6>
+          </div>
+          <div class="menu-button">
+            <button class="circle transparent" data-ui="#brewery-menu">
+              <i>more_vert</i>
+            </button>
+            <menu id="brewery-menu" class="top right">
+              <li><a href="#" class="menu-red">Report</a></li>
+              <li><a href="#" class="menu-red">Block</a></li>
+            </menu>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages-container">
+          <div class="message received">
+            <div class="message-bubble">
+              Hi! Thanks for your order. Your Citrus IPA will be ready for pickup tomorrow between 2-6 PM.
+            </div>
+            <div class="message-time">Yesterday, 3:45 PM</div>
+          </div>
+
+          <div class="message sent">
+            <div class="message-bubble">
+              Perfect! I'll be there around 3 PM. Thanks!
+            </div>
+            <div class="message-time">Yesterday, 4:12 PM</div>
+          </div>
+
+          <div class="message received">
+            <div class="message-bubble">
+              Great! We also just released a new batch of our Hazy IPA. Would you like to add one to your order?
+            </div>
+            <div class="message-time">Yesterday, 4:30 PM</div>
+          </div>
+
+          <div class="message sent">
+            <div class="message-bubble">
+              Oh that sounds amazing! Yes, please add one Hazy IPA to my order.
+            </div>
+            <div class="message-time">Yesterday, 4:45 PM</div>
+          </div>
+
+          <div class="message received">
+            <div class="message-bubble">
+              Done! Your updated order includes: 1x Citrus IPA and 1x Hazy IPA. See you tomorrow!
+            </div>
+            <div class="message-time">Yesterday, 4:46 PM</div>
+          </div>
+
+          <div class="message received">
+            <div class="message-bubble">
+              Thanks for your order! Your Citrus IPA will be ready for pickup tomorrow...
+            </div>
+            <div class="message-time">2 hours ago</div>
+          </div>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+          <div class="input-wrapper">
+            <input type="text" class="field border" placeholder="Type a message..." autocomplete="off">
+            <button class="btn primary small send-button">
+              <i>send</i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Farm Fresh Produce Conversation -->
+      <div id="farm-fresh-produce" class="conversation-container">
+        <!-- Header -->
+        <div class="conversation-header">
+          <a href="messages.html" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit;">
+            <button class="circle transparent">
+              <i>arrow_back</i>
+            </button>
+          </a>
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop" alt="Farm Fresh Produce" class="avatar">
+          <div class="header-info">
+            <h6>Farm Fresh Produce</h6>
+          </div>
+          <div class="menu-button">
+            <button class="circle transparent" data-ui="#farm-menu">
+              <i>more_vert</i>
+            </button>
+            <menu id="farm-menu" class="top right">
+              <li><a href="#" class="menu-red">Report</a></li>
+              <li><a href="#" class="menu-red">Block</a></li>
+            </menu>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages-container">
+          <div class="message received">
+            <div class="message-bubble">
+              Hello! We have fresh organic vegetables available this week. Would you like to see what's in season?
+            </div>
+            <div class="message-time">2 days ago, 10:30 AM</div>
+          </div>
+
+          <div class="message sent">
+            <div class="message-bubble">
+              Yes, I'd love to! What do you have available?
+            </div>
+            <div class="message-time">2 days ago, 11:15 AM</div>
+          </div>
+
+          <div class="message received">
+            <div class="message-bubble">
+              This week we have: organic tomatoes, bell peppers, cucumbers, zucchini, and fresh herbs. All picked this morning!
+            </div>
+            <div class="message-time">2 days ago, 11:20 AM</div>
+          </div>
+
+          <div class="message sent">
+            <div class="message-bubble">
+              That sounds perfect! Can I get 2 lbs of tomatoes, 1 lb of bell peppers, and a bunch of fresh basil?
+            </div>
+            <div class="message-time">2 days ago, 11:45 AM</div>
+          </div>
+
+          <div class="message received">
+            <div class="message-bubble">
+              Absolutely! Your order is ready. You can pick it up anytime today or tomorrow. We're open 8 AM - 6 PM.
+            </div>
+            <div class="message-time">2 days ago, 12:00 PM</div>
+          </div>
+
+          <div class="message sent">
+            <div class="message-bubble">
+              Great! I'll stop by this afternoon. Thanks!
+            </div>
+            <div class="message-time">2 days ago, 12:15 PM</div>
+          </div>
+
+          <div class="message received">
+            <div class="message-bubble">
+              New organic vegetables available this week. Would you like...
+            </div>
+            <div class="message-time">1 day ago</div>
+          </div>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+          <div class="input-wrapper">
+            <input type="text" class="field border" placeholder="Type a message..." autocomplete="off">
+            <button class="btn primary small send-button">
+              <i>send</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+
+      // Handle hash changes to show correct conversation
+      window.addEventListener('hashchange', function() {
+        // Force scroll to top when switching conversations
+        document.querySelector('.messages-container').scrollTop = 0;
+      });
+    </script>
+  </body>
+</html>
+

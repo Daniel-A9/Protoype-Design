@@ -191,233 +191,252 @@
                 <div class="row">
                     <div class="col s12">
                         <h3>Latest Discussions</h3>
-                        
-                        <!-- Discussion Card 1 -->
-                        <div class="card medium margin-bottom-large">
-                            <div class="card-header">
-                                <div class="row no-gap">
-                                    <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                    </div>
-                                    <div class="col s10">
-                                        <h6>Sarah Johnson</h6>
-                                        <small class="text-grey">2 hours ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=300&fit=crop" 
-                                     alt="Discussion Topic" class="responsive round" style="height: 300px; object-fit: cover;">
-                                <p>Has anyone tried the new IPA from Brewery Central? Looking for recommendations on what to pair it with. Thinking about making some grilled salmon tonight! 🍺</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row no-gap">
-                                    <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
-                                            <i class="material-icons">favorite_border</i>
-                                            <span class="like-text">Like</span>
-                                            <span class="like-count">15</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="feed-container">
+                            <!-- Discussion Card 1 -->
+                            <div class="card small">
+                                <div class="card-header">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle small">
                                         </div>
-                                    </div>
-                                    <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
-                                            <i class="material-icons">chat_bubble_outline</i>
-                                            <span class="comment-text">Comment</span>
-                                            <span class="comment-count">6</span>
+                                        <div class="col s10">
+                                            <h6>Sarah Johnson</h6>
+                                            <small class="text-grey">2 hours ago</small>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=300&fit=crop" 
+                                         alt="Discussion Topic" class="responsive">
+                                </div>
+                                <div class="card-content">
+                                    <p>Has anyone tried the new IPA from Brewery Central? Looking for recommendations on what to pair it with. Thinking about making some grilled salmon tonight! 🍺</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row no-gap">
+                                        <div class="col s6">
+                                            <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                                <i class="material-icons">favorite_border</i>
+                                                <span class="like-text">Like</span>
+                                                <span class="like-count">15</span>
+                                            </div>
                                         </div>
-                                        <div class="col s10">
-                                            <strong>BeerLover42</strong>
-                                            <p class="margin-vertical-small">Grilled salmon sounds perfect! Try adding some lemon and herbs.</p>
-                                            <small class="text-grey">1 hour ago</small>
-                                        </div>
-                                    </div>
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>HopHead</strong>
-                                            <p class="margin-vertical-small">That IPA pairs great with spicy foods too!</p>
-                                            <small class="text-grey">45 minutes ago</small>
+                                        <div class="col s6">
+                                            <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                                <i class="material-icons">chat_bubble_outline</i>
+                                                <span class="comment-text">Comment</span>
+                                                <span class="comment-count">6</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
-                                    <div class="row no-gap">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                <!-- Comments Section -->
+                                <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                    <div class="margin-bottom-medium">
+                                        <div class="row no-gap margin-bottom-medium">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BeerLover42</strong>
+                                                <p class="margin-vertical-small">Grilled salmon sounds perfect! Try adding some lemon and herbs.</p>
+                                                <small class="text-grey">1 hour ago</small>
+                                            </div>
                                         </div>
-                                        <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input">
-                                                </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit">Post</button>
+                                        <div class="row no-gap margin-bottom-medium">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>HopHead</strong>
+                                                <p class="margin-vertical-small">That IPA pairs great with spicy foods too!</p>
+                                                <small class="text-grey">45 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Add Comment Form -->
+                                    <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <div class="row no-gap middle-align">
+                                                    <div class="col s10">
+                                                        <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input">
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit">Post</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Discussion Card 2 -->
-                        <div class="card medium margin-bottom-large">
-                            <div class="card-header">
-                                <div class="row no-gap">
-                                    <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                    </div>
-                                    <div class="col s10">
-                                        <h6>Sarah Johnson</h6>
-                                        <small class="text-grey">1 day ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
-                                     alt="Discussion Topic" class="responsive round" style="height: 300px; object-fit: cover;">
-                                <p>Looking for recommendations on local farmers markets in the area. Which ones have the best organic produce? Planning my weekend shopping! 🥬</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row no-gap">
-                                    <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn-2" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
-                                            <i class="material-icons">favorite_border</i>
-                                            <span class="like-text">Like</span>
-                                            <span class="like-count">22</span>
-                                        </div>
-                                    </div>
-                                    <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn-2" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
-                                            <i class="material-icons">chat_bubble_outline</i>
-                                            <span class="comment-text">Comment</span>
-                                            <span class="comment-count">9</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>FarmFresh</strong>
-                                            <p class="margin-vertical-small">The downtown market on Saturdays is amazing!</p>
-                                            <small class="text-grey">3 hours ago</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                            <!-- Discussion Card 2 -->
+                            <div class="card small">
+                                <div class="card-header">
                                     <div class="row no-gap">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input-2">
-                                                </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit-2">Post</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Discussion Card 3 -->
-                        <div class="card medium margin-bottom-large">
-                            <div class="card-header">
-                                <div class="row no-gap">
-                                    <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                    </div>
-                                    <div class="col s10">
-                                        <h6>Sarah Johnson</h6>
-                                        <small class="text-grey">3 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
-                                     alt="Discussion Topic" class="responsive round" style="height: 300px; object-fit: cover;">
-                                <p>Has anyone been to the new craft beer festival downtown? Thinking about going this weekend. Would love to meet up with fellow beer enthusiasts! 🍻</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row no-gap">
-                                    <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn-3" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
-                                            <i class="material-icons">favorite_border</i>
-                                            <span class="like-text">Like</span>
-                                            <span class="like-count">18</span>
-                                        </div>
-                                    </div>
-                                    <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn-3" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
-                                            <i class="material-icons">chat_bubble_outline</i>
-                                            <span class="comment-text">Comment</span>
-                                            <span class="comment-count">7</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>BeerFestFan</strong>
-                                            <p class="margin-vertical-small">Went last weekend! It was incredible, definitely worth going!</p>
+                                            <h6>Sarah Johnson</h6>
                                             <small class="text-grey">1 day ago</small>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
+                                         alt="Discussion Topic" class="responsive">
+                                </div>
+                                <div class="card-content">
+                                    <p>Looking for recommendations on local farmers markets in the area. Which ones have the best organic produce? Planning my weekend shopping! 🥬</p>
+                                </div>
+                                <div class="card-footer">
                                     <div class="row no-gap">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                        <div class="col s6">
+                                            <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn-2" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                                <i class="material-icons">favorite_border</i>
+                                                <span class="like-text">Like</span>
+                                                <span class="like-count">22</span>
+                                            </div>
                                         </div>
-                                        <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input-3">
-                                                </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit-3">Post</button>
+                                        <div class="col s6">
+                                            <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn-2" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                                <i class="material-icons">chat_bubble_outline</i>
+                                                <span class="comment-text">Comment</span>
+                                                <span class="comment-count">9</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Comments Section -->
+                                <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                    <div class="margin-bottom-medium">
+                                        <div class="row no-gap margin-bottom-medium">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>FarmFresh</strong>
+                                                <p class="margin-vertical-small">The downtown market on Saturdays is amazing!</p>
+                                                <small class="text-grey">3 hours ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Add Comment Form -->
+                                    <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <div class="row no-gap middle-align">
+                                                    <div class="col s10">
+                                                        <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input-2">
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit-2">Post</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Discussion Card 3 -->
+                            <div class="card small">
+                                <div class="card-header">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        </div>
+                                        <div class="col s10">
+                                            <h6>Sarah Johnson</h6>
+                                            <small class="text-grey">3 days ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
+                                         alt="Discussion Topic" class="responsive">
+                                </div>
+                                <div class="card-content">
+                                    <p>Has anyone been to the new craft beer festival downtown? Thinking about going this weekend. Would love to meet up with fellow beer enthusiasts! 🍻</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row no-gap">
+                                        <div class="col s6">
+                                            <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="discussion-like-btn-3" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                                <i class="material-icons">favorite_border</i>
+                                                <span class="like-text">Like</span>
+                                                <span class="like-count">18</span>
+                                            </div>
+                                        </div>
+                                        <div class="col s6">
+                                            <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="discussion-comment-btn-3" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                                <i class="material-icons">chat_bubble_outline</i>
+                                                <span class="comment-text">Comment</span>
+                                                <span class="comment-count">7</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Comments Section -->
+                                <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                    <div class="margin-bottom-medium">
+                                        <div class="row no-gap margin-bottom-medium">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BeerFestFan</strong>
+                                                <p class="margin-vertical-small">Went last weekend! It was incredible, definitely worth going!</p>
+                                                <small class="text-grey">1 day ago</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Add Comment Form -->
+                                    <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <div class="row no-gap middle-align">
+                                                    <div class="col s10">
+                                                        <input type="text" class="field border" placeholder="Write a comment..." data-testid="discussion-comment-input-3">
+                                                    </div>
+                                                    <div class="col s2">
+                                                        <button class="btn small" onclick="addComment(this)" data-testid="discussion-comment-submit-3">Post</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- See All Link -->
+                            <div style="text-align: center; margin-top: 1.5rem; margin-bottom: 1rem;">
+                                <a href="../discussions/forums/index.html" style="color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 500;">see all</a>
                             </div>
                         </div>
                     </div>

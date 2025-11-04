@@ -116,12 +116,144 @@ body.dark {
   --outline-variant: #49454e;
 }
 
+/* Fixed Top Header Container */
+.top-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  height: 52px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background);
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(0);
+}
+
+/* Light mode: beige header background */
+body:not(.dark) .top-header {
+  background-color: #F5F0E8;
+}
+
+/* Hide header when scrolling down */
+.top-header.header-hidden {
+  transform: translateY(-100%);
+}
+
+.top-header > * {
+  pointer-events: auto;
+}
+
+/* Site Logo Styles - Default to fixed (won't scroll) */
+.site-logo {
+  position: fixed !important;
+  top: 0.5rem !important;
+  left: 1rem !important;
+  z-index: 1002 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  /* Base dimensions for desktop - adjusted for shorter header */
+  width: 56px;
+  height: 56px;
+  right: auto !important;
+  bottom: auto !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hide logo when scrolling down */
+.site-logo.logo-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Logo inside header should hide with header */
+.top-header.header-hidden .site-logo {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Override: Logo inside top-header should be relative (header is fixed) */
+.top-header .site-logo {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Header right side container for logo and hamburger menu */
+.top-header .header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.site-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Mobile: Logo at top right, small */
+@media (max-width: 768px) {
+  .site-logo {
+    width: 40px;
+    height: 40px;
+    top: 0.5rem !important;
+    right: 1rem !important;
+    left: auto !important;
+  }
+  
+  /* Logo hidden state on mobile */
+  .site-logo.logo-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  
+  /* Override for mobile: logo inside top-header */
+  .top-header .site-logo {
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: 0;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+  }
+  
+  .top-header {
+    background-color: var(--background);
+  }
+  
+  /* Light mode: beige header background on mobile */
+  body:not(.dark) .top-header {
+    background-color: #F5F0E8;
+  }
+}
+
 /* Theme Toggle Button Styles */
 .theme-toggle {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 1002;
+  z-index: 1003;
   background-color: #f2ecf1;
   border: 1px solid #cac4cf;
   border-radius: 50%;
@@ -146,11 +278,12 @@ body.dark {
   transition: all 0.3s ease;
 }
 
-/* Mobile adjustments for theme toggle */
+/* Mobile adjustments for theme toggle - position above bottom nav */
 @media (max-width: 768px) {
   .theme-toggle {
-    top: 0.5rem;
-    right: 0.5rem;
+    top: auto;
+    bottom: 70px;
+    right: 1rem;
     width: 44px;
     height: 44px;
   }
@@ -490,14 +623,12 @@ body.dark {
 
   /* Mobile Menu Styles */
   .mobile-menu-btn {
-    position: fixed !important;
-    top: 1rem !important;
-    right: 1rem !important;
+    position: relative !important;
     z-index: 1001 !important;
     background-color: var(--surface-container);
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     display: none;
     align-items: center;
     justify-content: center;
@@ -505,6 +636,60 @@ body.dark {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     margin: 0 !important;
     padding: 0 !important;
+    margin-left: 0.5rem !important;
+  }
+  
+  /* Feed hamburger menu styles */
+  .feed-menu-btn {
+    position: relative !important;
+    z-index: 1001 !important;
+    background-color: var(--surface-container);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: 0.5rem !important;
+  }
+  
+  .feed-menu-btn i {
+    color: var(--on-surface);
+    font-size: 1.5rem;
+  }
+  
+  /* Feed menu dropdown */
+  .feed-menu-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background-color: var(--surface-container);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 180px;
+    z-index: 1002;
+    overflow: hidden;
+  }
+  
+  .feed-menu-dropdown.active {
+    display: block;
+  }
+  
+  .feed-menu-dropdown a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--on-surface);
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  
+  .feed-menu-dropdown a:hover {
+    background-color: var(--surface-container-high);
   }
 
   .mobile-menu-btn i {
@@ -625,10 +810,10 @@ body.dark {
     background-color: transparent;
     border: 2px solid #F5F0E8;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     margin-bottom: 1.5rem;
-    max-width: 800px;
-    margin-left: auto;
+    max-width: 700px;
+    margin-left: 1rem;
     margin-right: auto;
   }
 
@@ -651,8 +836,8 @@ body.dark {
 
   .location-pin-icon {
     color: #654321;
-    font-size: 1.2rem;
-    padding: 0 0.5rem;
+    font-size: 1rem;
+    padding: 0 0.4rem;
     display: flex;
     align-items: center;
   }
@@ -660,24 +845,24 @@ body.dark {
   .zip-input {
     color: #654321;
     font-weight: 500;
-    width: 80px;
+    width: 70px;
     border: none;
-    padding: 0.75rem 0.5rem;
-    font-size: 1rem;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.9rem;
   }
 
   .input-divider {
     width: 1px;
     background: #8B4513;
-    height: 60%;
-    margin: 0 0.5rem;
+    height: 50%;
+    margin: 0 0.4rem;
   }
 
   .search-input {
     flex: 1;
     border: none;
-    padding: 0.75rem 0.5rem;
-    font-size: 1rem;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.9rem;
     color: #654321;
   }
 
@@ -686,7 +871,7 @@ body.dark {
   }
 
   .filter-toggle-btn {
-    padding: 0.5rem;
+    padding: 0.3rem;
     background-color: #F5F0E8;
     border: 1px solid #8B4513;
     border-radius: 8px;
@@ -696,9 +881,9 @@ body.dark {
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s;
-    min-width: 40px;
-    width: 40px;
-    height: 40px;
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
     flex-shrink: 0;
   }
 
@@ -707,7 +892,7 @@ body.dark {
   }
 
   .filter-toggle-btn i {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .filter-dropdown-menu {
@@ -742,10 +927,32 @@ body.dark {
 
   /* Main Content and Feed Container Styles */
   main.responsive {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 52px);
     overflow-y: auto;
     overflow-x: hidden;
     padding: 1rem;
+    padding-top: calc(52px + 1rem);
+  }
+  
+  /* Ensure all pages with fixed header have proper content spacing */
+  body > main:first-of-type,
+  body > .container:first-of-type:not(.top-header) {
+    padding-top: calc(52px + 1rem);
+  }
+  
+  /* Adjust for pages that don't use main.responsive */
+  body:has(.top-header) > main:not(.responsive) {
+    padding-top: calc(52px + 1rem);
+  }
+  
+  /* Mobile: Ensure all content starts below header */
+  @media (max-width: 768px) {
+    body > main:first-of-type,
+    body > .container:first-of-type:not(.top-header),
+    body:has(.top-header) > main:not(.responsive),
+    main.responsive {
+      padding-top: calc(52px + 0.5rem);
+    }
   }
   
   /* Desktop Layout - Align with sidebar */
@@ -1077,12 +1284,11 @@ body.dark {
     
     .mobile-menu-btn {
       display: flex !important;
-      position: fixed !important;
-      top: 1rem !important;
-      right: 1rem !important;
+      position: relative !important;
       z-index: 1001 !important;
       margin: 0 !important;
       padding: 0 !important;
+      margin-left: 0.5rem !important;
     }
     
     .mobile-categories-overlay {
@@ -1094,7 +1300,7 @@ body.dark {
     }
     
     main.responsive {
-      height: calc(100vh - 60px);
+      height: calc(100vh - 52px);
       padding: 0 !important;
       margin: 0 !important;
       overflow-x: hidden;
@@ -1213,15 +1419,15 @@ body.dark {
     }
     
     .filter-toggle-btn {
-      min-width: 36px;
-      max-width: 36px;
-      width: 36px;
-      height: 36px;
-      padding: 0.4rem;
+      min-width: 32px;
+      max-width: 32px;
+      width: 32px;
+      height: 32px;
+      padding: 0.3rem;
     }
 
     .filter-toggle-btn i {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     
     /* Filter dropdown menu */
@@ -1601,6 +1807,14 @@ body.dark {
     main.responsive {
       padding-bottom: 70px !important;
       margin-bottom: 0 !important;
+      padding-top: calc(52px + 0.5rem) !important;
+    }
+    
+    /* Ensure all content containers start below header on mobile */
+    body > .container:first-of-type:not(.top-header),
+    body > main:first-of-type,
+    body > section:first-of-type {
+      padding-top: calc(52px + 0.5rem) !important;
     }
     
     /* Ensure form doesn't cover navigation */

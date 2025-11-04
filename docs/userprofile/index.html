@@ -12,10 +12,23 @@
   </head>
   <body>
 
-    <!-- Hamburger Menu Button (Top Right) -->
-    <button class="circle transparent" style="position: fixed; top: 4.5rem; right: 1rem; z-index: 1001;" onclick="toggleHamburgerMenu()" data-testid="hamburger-menu-btn">
-      <i>menu</i>
-    </button>
+    <!-- Fixed Top Header -->
+    <div class="top-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <!-- Left side empty for now -->
+      </div>
+      <!-- Right side: Logo and hamburger menu -->
+      <div class="header-right">
+        <!-- Site Logo -->
+        <a href="../index.html" class="site-logo">
+          <img src="../Logo 333.png" alt="LocalMarket Logo">
+        </a>
+        <!-- Hamburger Menu Button -->
+        <div class="mobile-menu-btn" onclick="toggleHamburgerMenu()" data-testid="hamburger-menu-btn">
+          <i>menu</i>
+        </div>
+      </div>
+    </div>
 
     <!-- Hamburger Menu Overlay -->
     <div id="hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>

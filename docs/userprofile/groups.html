@@ -11,6 +11,20 @@
   </head>
   <body>
 
+    <!-- Fixed Top Header -->
+    <div class="top-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <!-- Left side empty for now -->
+      </div>
+      <!-- Right side: Logo and hamburger menu -->
+      <div class="header-right">
+        <!-- Site Logo -->
+        <a href="../index.html" class="site-logo">
+          <img src="../Logo 333.png" alt="LocalMarket Logo">
+        </a>
+      </div>
+    </div>
+
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
       <a href="../home/index.html" class="nav-item" data-testid="nav-home">
@@ -148,6 +162,49 @@
         });
         
         document.body.appendChild(toggleButton);
+      })();
+      
+      // Hide header and logo when scrolling down
+      (function() {
+        let lastScrollTop = 0;
+        const scrollThreshold = 10;
+        const topHeader = document.querySelector('.top-header');
+        const siteLogo = document.querySelector('.site-logo');
+        const mainContent = document.querySelector('main.responsive') || document.querySelector('main');
+        
+        let ticking = false;
+        
+        function handleScroll() {
+          const scrollTop = mainContent ? mainContent.scrollTop : (window.pageYOffset || document.documentElement.scrollTop);
+          
+          if (Math.abs(lastScrollTop - scrollTop) < scrollThreshold) {
+            ticking = false;
+            return;
+          }
+          
+          if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+            if (topHeader) topHeader.classList.add('header-hidden');
+            if (siteLogo) siteLogo.classList.add('logo-hidden');
+          } else if (scrollTop < lastScrollTop) {
+            if (topHeader) topHeader.classList.remove('header-hidden');
+            if (siteLogo) siteLogo.classList.remove('logo-hidden');
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+          ticking = false;
+        }
+        
+        function onScroll() {
+          if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+          }
+        }
+        
+        if (mainContent) {
+          mainContent.addEventListener('scroll', onScroll, { passive: true });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
       })();
     </script>
   </body>

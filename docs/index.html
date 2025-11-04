@@ -9,6 +9,27 @@
   </head>
   <body>
 
+    <!-- Fixed Top Header -->
+    <div class="top-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <!-- Left side empty for now -->
+      </div>
+      <!-- Right side: Logo and hamburger menu -->
+      <div class="header-right">
+        <!-- Site Logo -->
+        <a href="index.html" class="site-logo">
+          <img src="Logo 333.png" alt="LocalMarket Logo">
+        </a>
+        <!-- Search Feed Hamburger Menu -->
+        <div class="feed-menu-btn" style="position: relative;" onclick="document.getElementById('searchFeedMenu').classList.toggle('active')">
+          <i>menu</i>
+          <div class="feed-menu-dropdown" id="searchFeedMenu">
+            <a href="#" onclick="event.preventDefault(); document.getElementById('searchFeedMenu').classList.remove('active');">Search Settings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Desktop Top Navigation -->
     <nav class="top desktop-nav" style="display: none;">
       <div class="container">
@@ -56,22 +77,22 @@
       </a>
     </nav>
 
-    <main class="responsive" style="height: calc(100vh - 60px); overflow-y: auto;">
+    <main class="responsive" style="height: calc(100vh - 52px); overflow-y: auto;">
       <div class="container">
         <div class="row">
           <div class="col s12">
             <!-- Header Section -->
             <div class="header-section">
               <div class="search-bar">
+                <button class="filter-toggle-btn" onclick="document.getElementById('filterDropdown').classList.toggle('show')" data-testid="filter-btn">
+                  <i class="material-icons">tune</i>
+                </button>
                 <div class="search-input-container">
                   <i class="material-icons location-pin-icon">location_on</i>
                   <input type="text" value="15235" class="zip-input" data-testid="zip-input">
                   <div class="input-divider"></div>
                   <input type="text" placeholder="Search near me" class="search-input" data-testid="search-input">
                 </div>
-                <button class="filter-toggle-btn" onclick="document.getElementById('filterDropdown').classList.toggle('show')" data-testid="filter-btn">
-                  <i class="material-icons">tune</i>
-                </button>
               </div>
               
               <div id="filterDropdown" class="filter-dropdown-menu">
@@ -570,6 +591,52 @@
           }
         }
       });
+      
+      // Hide header and logo when scrolling down
+      (function() {
+        let lastScrollTop = 0;
+        const scrollThreshold = 10; // Minimum scroll distance to trigger hide/show
+        const topHeader = document.querySelector('.top-header');
+        const siteLogo = document.querySelector('.site-logo');
+        const mainContent = document.querySelector('main.responsive') || document.querySelector('main');
+        
+        let ticking = false;
+        
+        function handleScroll() {
+          const scrollTop = mainContent ? mainContent.scrollTop : (window.pageYOffset || document.documentElement.scrollTop);
+          
+          if (Math.abs(lastScrollTop - scrollTop) < scrollThreshold) {
+            ticking = false;
+            return;
+          }
+          
+          if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+            // Scrolling down - hide header and logo
+            if (topHeader) topHeader.classList.add('header-hidden');
+            if (siteLogo) siteLogo.classList.add('logo-hidden');
+          } else if (scrollTop < lastScrollTop) {
+            // Scrolling up - show header and logo
+            if (topHeader) topHeader.classList.remove('header-hidden');
+            if (siteLogo) siteLogo.classList.remove('logo-hidden');
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scroll
+          ticking = false;
+        }
+        
+        function onScroll() {
+          if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+          }
+        }
+        
+        // Listen to scroll events on main content or window
+        if (mainContent) {
+          mainContent.addEventListener('scroll', onScroll, { passive: true });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
     </script>
   </body>
 </html>

@@ -9,6 +9,24 @@
   </head>
   <body class="dark">
 
+    <!-- Fixed Top Header -->
+    <div class="top-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <!-- Left side empty for now -->
+      </div>
+      <!-- Right side: Logo and hamburger menu -->
+      <div class="header-right">
+        <!-- Site Logo -->
+        <a href="../../index.html" class="site-logo">
+          <img src="../../Logo 333.png" alt="LocalMarket Logo">
+        </a>
+        <!-- Mobile Hamburger Menu Button -->
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <i>menu</i>
+        </div>
+      </div>
+    </div>
+
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
       <a href="../../home/index.html" class="nav-item" data-testid="nav-home">
@@ -27,11 +45,6 @@
         <i>person</i>
       </a>
     </nav>
-
-    <!-- Mobile Hamburger Menu Button -->
-    <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
-      <i>menu</i>
-    </div>
 
     <!-- Mobile Categories Overlay -->
     <div class="mobile-categories-overlay" id="mobileCategoriesOverlay">

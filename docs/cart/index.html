@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Shopping Cart - LocalMarket</title>
+   
+    <link href="../style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Fixed Top Header -->
+    <div class="top-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <!-- Left side empty for now -->
+      </div>
+      <!-- Right side: Logo -->
+      <div class="header-right">
+        <!-- Site Logo -->
+        <a href="../index.html" class="site-logo">
+          <img src="../Logo 333.png" alt="LocalMarket Logo">
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <a href="../home/index.html" class="nav-item" data-testid="nav-home">
+        <i>home</i>
+      </a>
+      <a href="../index.html" class="nav-item" data-testid="nav-search">
+        <i>search</i>
+      </a>
+      <a href="../discussions/forums/index.html" class="nav-item" data-testid="nav-discussions">
+        <i>groups</i>
+      </a>
+      <a href="index.html" class="nav-item active" data-testid="nav-cart">
+        <i>shopping_cart</i>
+      </a>
+      <a href="../userprofile/index.html" class="nav-item" data-testid="nav-profile">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive" style="padding-bottom: 70px;">
+        <section>
+            <div class="container" style="padding-top: 1rem;">
+                <div class="row">
+                    <div class="col s12">
+                        <h2 style="margin-bottom: 1rem;">Shopping Cart</h2>
+                        
+                        <!-- Vendor Group 1: Brewery Central -->
+                        <h6 style="margin: 1rem 0 0.5rem 0; font-size: 0.7rem; font-weight: 600; color: var(--on-surface-variant);">Brewery Central</h6>
+                        
+                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; cursor: pointer;" onclick="openPurchaseModal('brewery-central')">
+                            <div class="card-header" style="padding: 0.5rem 1rem;">
+                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                    <div style="width: 32px; height: 32px; flex-shrink: 0; margin-right: 0.5rem;">
+                                        <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                    </div>
+                                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.25rem; font-size: 0.5rem; overflow: hidden;">
+                                        <div style="flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span style="font-weight: 500;">Citrus IPA</span>
+                                        </div>
+                                        <div style="flex: 0 0 65px; text-align: center; font-size: 0.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span>Pending Acceptance</span>
+                                        </div>
+                                        <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem;">
+                                            <span>$8.99</span>
+                                        </div>
+                                        <div style="flex: 0 0 0px; text-align: right; font-size: 0.45rem;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; cursor: pointer;" onclick="openPurchaseModal('brewery-central')">
+                            <div class="card-header" style="padding: 0.5rem 1rem;">
+                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                    <div style="width: 32px; height: 32px; flex-shrink: 0; margin-right: 0.5rem;">
+                                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=100&h=100&fit=crop" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                    </div>
+                                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.25rem; font-size: 0.5rem; overflow: hidden;">
+                                        <div style="flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span style="font-weight: 500;">Chocolate Stout</span>
+                                        </div>
+                                        <div style="flex: 0 0 65px; text-align: center; font-size: 0.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span>Awaiting Payment</span>
+                                        </div>
+                                        <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem;">
+                                            <span>$9.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; cursor: pointer;" onclick="openPurchaseModal('brewery-central')">
+                            <div class="card-header" style="padding: 0.5rem 1rem;">
+                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                    <div style="width: 32px; height: 32px; flex-shrink: 0; margin-right: 0.5rem;">
+                                        <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=100&h=100&fit=crop" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                    </div>
+                                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.25rem; font-size: 0.5rem; overflow: hidden;">
+                                        <div style="flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span style="font-weight: 500;">Golden Lager</span>
+                                        </div>
+                                        <div style="flex: 0 0 65px; text-align: center; font-size: 0.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span>Processing</span>
+                                        </div>
+                                        <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem;">
+                                            <span>$7.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vendor Group 1 Footer -->
+                        <div style="display: flex; align-items: center; margin: 0.5rem 0 1rem 0; padding-left: 1rem; padding-right: 1rem; gap: 0.25rem;">
+                            <div style="width: 32px; margin-right: 0.5rem;"></div>
+                            <div style="flex: 1; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.7rem; font-weight: 600; color: var(--on-surface-variant);">Paypal</span>
+                                <div style="display: flex; align-items: center; gap: 0.25rem;">
+                                    <div style="flex: 0 0 65px;"></div>
+                                    <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem; font-weight: 600;">$26.97</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vendor Group 2: Farm Fresh Produce -->
+                        <h6 style="margin: 1rem 0 0.5rem 0; font-size: 0.7rem; font-weight: 600; color: var(--on-surface-variant);">Farm Fresh Produce</h6>
+                        
+                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; cursor: pointer;" onclick="openPurchaseModal('farm-fresh')">
+                            <div class="card-header" style="padding: 0.5rem 1rem;">
+                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                    <div style="width: 32px; height: 32px; flex-shrink: 0; margin-right: 0.5rem;">
+                                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                    </div>
+                                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.25rem; font-size: 0.5rem; overflow: hidden;">
+                                        <div style="flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span style="font-weight: 500;">Organic Tomatoes</span>
+                                        </div>
+                                        <div style="flex: 0 0 65px; text-align: center; font-size: 0.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span>Shipped</span>
+                                        </div>
+                                        <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem;">
+                                            <span>$4.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; cursor: pointer;" onclick="openPurchaseModal('farm-fresh')">
+                            <div class="card-header" style="padding: 0.5rem 1rem;">
+                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                    <div style="width: 32px; height: 32px; flex-shrink: 0; margin-right: 0.5rem;">
+                                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=100&h=100&fit=crop" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                    </div>
+                                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.25rem; font-size: 0.5rem; overflow: hidden;">
+                                        <div style="flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span style="font-weight: 500;">Fresh Carrots</span>
+                                        </div>
+                                        <div style="flex: 0 0 65px; text-align: center; font-size: 0.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span>Processing</span>
+                                        </div>
+                                        <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem;">
+                                            <span>$3.49</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vendor Group 2 Footer -->
+                        <div style="display: flex; align-items: center; margin: 0.5rem 0 1rem 0; padding-left: 1rem; padding-right: 1rem; gap: 0.25rem;">
+                            <div style="width: 32px; margin-right: 0.5rem;"></div>
+                            <div style="flex: 1; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.7rem; font-weight: 600; color: var(--on-surface-variant);">Cash on Pick-up</span>
+                                <div style="display: flex; align-items: center; gap: 0.25rem;">
+                                    <div style="flex: 0 0 65px;"></div>
+                                    <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem; font-weight: 600;">$8.48</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vendor Group 3: Artisan Bread Co. -->
+                        <h6 style="margin: 1rem 0 0.5rem 0; font-size: 0.7rem; font-weight: 600; color: var(--on-surface-variant);">Artisan Bread Co.</h6>
+                        
+                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; cursor: pointer;" onclick="openPurchaseModal('artisan-bread')">
+                            <div class="card-header" style="padding: 0.5rem 1rem;">
+                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                    <div style="width: 32px; height: 32px; flex-shrink: 0; margin-right: 0.5rem;">
+                                        <img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=100&h=100&fit=crop" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                    </div>
+                                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.25rem; font-size: 0.5rem; overflow: hidden;">
+                                        <div style="flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span style="font-weight: 500;">Sourdough Bread</span>
+                                        </div>
+                                        <div style="flex: 0 0 65px; text-align: center; font-size: 0.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span>Awaiting Payment</span>
+                                        </div>
+                                        <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem;">
+                                            <span>$6.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; cursor: pointer;" onclick="openPurchaseModal('artisan-bread')">
+                            <div class="card-header" style="padding: 0.5rem 1rem;">
+                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                                    <div style="width: 32px; height: 32px; flex-shrink: 0; margin-right: 0.5rem;">
+                                        <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=100&h=100&fit=crop" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">
+                                    </div>
+                                    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.25rem; font-size: 0.5rem; overflow: hidden;">
+                                        <div style="flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span style="font-weight: 500;">Rye Bread</span>
+                                        </div>
+                                        <div style="flex: 0 0 65px; text-align: center; font-size: 0.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            <span>Pending Acceptance</span>
+                                        </div>
+                                        <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem;">
+                                            <span>$7.49</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Vendor Group 3 Footer -->
+                        <div style="display: flex; align-items: center; margin: 0.5rem 0 1rem 0; padding-left: 1rem; padding-right: 1rem; gap: 0.25rem;">
+                            <div style="width: 32px; margin-right: 0.5rem;"></div>
+                            <div style="flex: 1; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.7rem; font-weight: 600; color: var(--on-surface-variant);">Stripe</span>
+                                <div style="display: flex; align-items: center; gap: 0.25rem;">
+                                    <div style="flex: 0 0 65px;"></div>
+                                    <div style="flex: 0 0 45px; text-align: right; font-size: 0.45rem; font-weight: 600;">$14.48</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Purchase Modal -->
+    <dialog id="purchase-modal">
+        <div style="padding: 1.5rem; max-width: 500px; width: 90vw;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h5 id="modal-vendor-name" style="margin: 0;">Complete Purchase</h5>
+                <button class="circle transparent" onclick="closePurchaseModal()" style="padding: 0.5rem;">
+                    <i>close</i>
+                </button>
+            </div>
+            <div id="modal-products" style="margin-bottom: 1rem;">
+                <!-- Products will be inserted here -->
+            </div>
+            <hr style="margin: 1rem 0;" />
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span style="font-weight: 600;">Total:</span>
+                <span id="modal-total" style="font-weight: 600; font-size: 1.2rem;">$0.00</span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Payment Method:</label>
+                <div id="modal-payment-method" style="padding: 0.75rem; background-color: var(--surface-container-high); border-radius: 8px; font-size: 0.9rem;">
+                    <!-- Payment method will be inserted here -->
+                </div>
+            </div>
+            <nav style="display: flex; gap: 0.5rem;">
+                <button class="btn outline" onclick="closePurchaseModal()" style="flex: 1;">Cancel</button>
+                <button class="btn primary" onclick="completePurchase()" style="flex: 1;">
+                    <i>check</i>
+                    <span>Complete Purchase</span>
+                </button>
+            </nav>
+        </div>
+    </dialog>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to light
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
+      })();
+      
+      // Hide header and logo when scrolling down
+      (function() {
+        let lastScrollTop = 0;
+        const scrollThreshold = 10;
+        const topHeader = document.querySelector('.top-header');
+        const siteLogo = document.querySelector('.site-logo');
+        const mainContent = document.querySelector('main.responsive') || document.querySelector('main');
+        
+        let ticking = false;
+        
+        function handleScroll() {
+          const scrollTop = mainContent ? mainContent.scrollTop : (window.pageYOffset || document.documentElement.scrollTop);
+          
+          if (Math.abs(lastScrollTop - scrollTop) < scrollThreshold) {
+            ticking = false;
+            return;
+          }
+          
+          if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+            if (topHeader) topHeader.classList.add('header-hidden');
+            if (siteLogo) siteLogo.classList.add('logo-hidden');
+          } else if (scrollTop < lastScrollTop) {
+            if (topHeader) topHeader.classList.remove('header-hidden');
+            if (siteLogo) siteLogo.classList.remove('logo-hidden');
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+          ticking = false;
+        }
+        
+        function onScroll() {
+          if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+          }
+        }
+        
+        if (mainContent) {
+          mainContent.addEventListener('scroll', onScroll, { passive: true });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+
+      // Purchase Modal Functions
+      const vendorData = {
+        'brewery-central': {
+          name: 'Brewery Central',
+          products: [
+            { name: 'Citrus IPA', price: 8.99, image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop' },
+            { name: 'Chocolate Stout', price: 9.99, image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=100&h=100&fit=crop' },
+            { name: 'Golden Lager', price: 7.99, image: 'https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=100&h=100&fit=crop' }
+          ],
+          paymentMethod: 'Paypal'
+        },
+        'farm-fresh': {
+          name: 'Farm Fresh Produce',
+          products: [
+            { name: 'Organic Tomatoes', price: 4.99, image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop' },
+            { name: 'Fresh Carrots', price: 3.49, image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=100&h=100&fit=crop' }
+          ],
+          paymentMethod: 'Cash on Pick-up'
+        },
+        'artisan-bread': {
+          name: 'Artisan Bread Co.',
+          products: [
+            { name: 'Sourdough Bread', price: 6.99, image: 'https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=100&h=100&fit=crop' },
+            { name: 'Rye Bread', price: 7.49, image: 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=100&h=100&fit=crop' }
+          ],
+          paymentMethod: 'Stripe'
+        }
+      };
+
+      function openPurchaseModal(vendorKey) {
+        const vendor = vendorData[vendorKey];
+        if (!vendor) return;
+
+        const modal = document.getElementById('purchase-modal');
+        const vendorNameEl = document.getElementById('modal-vendor-name');
+        const productsEl = document.getElementById('modal-products');
+        const totalEl = document.getElementById('modal-total');
+        const paymentMethodEl = document.getElementById('modal-payment-method');
+
+        vendorNameEl.textContent = vendor.name;
+        paymentMethodEl.textContent = vendor.paymentMethod;
+
+        // Calculate total and build products list
+        let total = 0;
+        productsEl.innerHTML = '';
+        vendor.products.forEach(product => {
+          total += product.price;
+          const productDiv = document.createElement('div');
+          productDiv.style.cssText = 'display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--outline-variant);';
+          productDiv.innerHTML = `
+            <img src="${product.image}" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;" />
+            <div style="flex: 1;">
+              <div style="font-weight: 500; margin-bottom: 0.25rem;">${product.name}</div>
+              <div style="font-size: 0.9rem; color: var(--on-surface-variant);">$${product.price.toFixed(2)}</div>
+            </div>
+          `;
+          productsEl.appendChild(productDiv);
+        });
+
+        // Remove border from last product
+        const lastProduct = productsEl.lastElementChild;
+        if (lastProduct) {
+          lastProduct.style.borderBottom = 'none';
+        }
+
+        totalEl.textContent = '$' + total.toFixed(2);
+
+        // Show modal
+        modal.classList.add('active');
+        modal.showModal();
+      }
+
+      function closePurchaseModal() {
+        const modal = document.getElementById('purchase-modal');
+        modal.classList.remove('active');
+        modal.close();
+      }
+
+      function completePurchase() {
+        // Handle purchase completion
+        alert('Purchase completed successfully!');
+        closePurchaseModal();
+      }
+
+      // Close modal when clicking outside
+      document.getElementById('purchase-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closePurchaseModal();
+        }
+      });
+    </script>
+  </body>
+</html>
+

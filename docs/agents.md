@@ -6,6 +6,7 @@ don't use any custom css or js, instead use beer css settings, helpers, and elem
 never import new js or css files, other than style.css, but never write new css in style.css only edit variables
 you are NOT ALLOWED to create new javascript files or import additional javascript files
 read this entire beercss documentation below when editing
+always use loading='lazy' for images
 
 
 # BeerCSS - Complete Documentation for AI/LLM Systems

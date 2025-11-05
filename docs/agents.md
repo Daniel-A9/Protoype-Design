@@ -2,12 +2,9 @@
 
 ## when editing html files
 
-don't use any custom css, instead use beer css settings, helpers, and elements
-never import new js or css files, other than style.css
+don't use any custom css or js, instead use beer css settings, helpers, and elements
+never import new js or css files, other than style.css, but never write new css in style.css only edit variables
 you are NOT ALLOWED to create new javascript files or import additional javascript files
-all js goes at the bottom of the html file as inline scripts only
-if you need javascript functionality, write it inline in <script> tags within the html file
-do not create separate .js files like theme-toggle.js or any other external javascript files
 read this entire beercss documentation below when editing
 
 

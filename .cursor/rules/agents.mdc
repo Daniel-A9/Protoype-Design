@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+whenever processing a file follow the agents.md rules file found in the current folder or parent folder recursively until one is found

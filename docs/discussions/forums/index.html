@@ -119,10 +119,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "1"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="hiking-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -131,9 +128,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/1" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="hiking-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -223,10 +218,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "2"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="coffee-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -235,9 +227,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/2" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="coffee-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -316,10 +306,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "3"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="cleanup-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -328,9 +315,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/3" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="cleanup-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -396,10 +381,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "4"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="cat-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -408,9 +390,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/4" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="cat-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -489,10 +469,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "5"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="dog-walker-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -501,9 +478,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/5" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="dog-walker-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -569,10 +544,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "6"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="garden-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -581,9 +553,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/6" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="garden-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -650,10 +620,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "7"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="pottery-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -662,9 +629,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/7" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="pottery-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -730,10 +695,7 @@
                   <div class="row no-gap">
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-post="/api/like" 
-                           hx-vals='{"postId": "8"}'
-                           hx-swap="outerHTML"
-                           hx-target="this"
+                           onclick="toggleLike(this)"
                            data-testid="farmers-market-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
@@ -742,9 +704,7 @@
                     </div>
                     <div class="col s6">
                       <div class="clickable-container" 
-                           hx-get="/api/comments/8" 
-                           hx-target=".comments-section"
-                           hx-swap="outerHTML"
+                           onclick="toggleComments(this)"
                            data-testid="farmers-market-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
@@ -865,6 +825,61 @@
           overlay.classList.remove('active');
         }
       });
+
+      // Toggle comments dropdown with smooth animation
+      function toggleComments(button) {
+        const card = button.closest('.card');
+        const commentsSection = card.querySelector('.comments-section');
+        
+        if (!commentsSection) return;
+        
+        // Ensure transition styles are set
+        if (!commentsSection.style.transition) {
+          commentsSection.style.transition = 'opacity 0.3s ease-in-out, max-height 0.3s ease-in-out';
+          commentsSection.style.overflow = 'hidden';
+        }
+        
+        if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+          commentsSection.style.display = 'block';
+          commentsSection.style.opacity = '0';
+          commentsSection.style.maxHeight = '0';
+          // Trigger smooth transition
+          setTimeout(() => {
+            commentsSection.style.opacity = '1';
+            commentsSection.style.maxHeight = commentsSection.scrollHeight + 'px';
+          }, 10);
+        } else {
+          commentsSection.style.opacity = '0';
+          commentsSection.style.maxHeight = '0';
+          setTimeout(() => {
+            commentsSection.style.display = 'none';
+          }, 300);
+        }
+      }
+
+      // Toggle like button with red heart animation
+      function toggleLike(button) {
+        const heartIcon = button.querySelector('.material-icons');
+        const likeCountSpan = button.querySelector('.like-count');
+        
+        if (!heartIcon || !likeCountSpan) return;
+        
+        const currentCount = parseInt(likeCountSpan.textContent) || 0;
+        
+        if (heartIcon.textContent === 'favorite_border') {
+          // Like the post
+          heartIcon.textContent = 'favorite';
+          heartIcon.classList.add('red-text');
+          button.classList.add('liked');
+          likeCountSpan.textContent = currentCount + 1;
+        } else {
+          // Unlike the post
+          heartIcon.textContent = 'favorite_border';
+          heartIcon.classList.remove('red-text');
+          button.classList.remove('liked');
+          likeCountSpan.textContent = currentCount - 1;
+        }
+      }
     </script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>

@@ -94,6 +94,69 @@
                 <div class="card-content">
                   <p>Fresh Citrus IPA pouring this weekend. Stop by the taproom for a tasting flight and live music.</p>
                 </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">18</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleComments(this)">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>BeerLover42</strong>
+                          <p>This looks amazing! When will it be available in stores?</p>
+                          <small class="text-grey">1 hour ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>HopHead</strong>
+                          <p>Love the citrus notes! Perfect for summer 🍺</p>
+                          <small class="text-grey">45 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Events: Reminder -->
@@ -117,26 +180,150 @@
               <!-- Discussions: Followed category post -->
               <div class="card small" data-category="discussions">
                 <div class="card-header">
-                  <div class="row no-gap middle-align">
+                  <div class="row no-gap">
                     <div class="col s2">
-                      <i class="large">forum</i>
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
                     </div>
-                    <div class="col s10" style="text-align: left !important;">
-                      <h6 style="text-align: left !important;">Local Discussions • New thread</h6>
-                      <small class="text-grey">45m</small>
+                    <div class="col s10">
+                      <h6>Sarah M.</h6>
+                      <small class="text-grey">Local Discussions • 45m</small>
                     </div>
                   </div>
                 </div>
                 <div class="card-content">
                   <p>Favorite farmers markets this month? Share recommendations and vendor tips.</p>
                 </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">24</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleComments(this)">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">8</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>MarketLover</strong>
+                          <p>The downtown market on Main Street is fantastic! Great produce selection.</p>
+                          <small class="text-grey">30 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>LocalFoodie</strong>
+                          <p>Try the Riverside market on Saturdays - best organic selection!</p>
+                          <small class="text-grey">20 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- More feed samples (mixed) -->
               <div class="card small" data-category="following">
+                <div class="card-header">
+                  <div class="row no-gap middle-align">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10" style="text-align: left !important;">
+                      <h6 style="text-align: left !important;">Sunny Acres Farm</h6>
+                      <small class="text-grey">New post • 2h</small>
+                    </div>
+                  </div>
+                </div>
                 <div class="card-content">
-                  <h6 style="text-align: left; margin-bottom: 0.5rem;">Sunny Acres Farm</h6>
                   <p>First strawberries of the season are in! Pick-your-own starts Saturday.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">12</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleComments(this)">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">3</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>FarmFresh</strong>
+                          <p>Can't wait! What time do you open on Saturday?</p>
+                          <small class="text-grey">30 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -148,9 +335,70 @@
               </div>
 
               <div class="card small" data-category="discussions">
+                <div class="card-header">
+                  <div class="row no-gap">
+                    <div class="col s2">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                    </div>
+                    <div class="col s10">
+                      <h6>Emma L.</h6>
+                      <small class="text-grey">Tips & Resources • 1h</small>
+                    </div>
+                  </div>
+                </div>
                 <div class="card-content">
-                  <h6 style="text-align: left; margin-bottom: 0.5rem;">Tips & Resources</h6>
                   <p>Best packaging for shipping pottery—looking for lightweight, eco options.</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row no-gap">
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleLike(this)">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="like-text">Like</span>
+                        <span class="like-count">18</span>
+                      </div>
+                    </div>
+                    <div class="col s6">
+                      <div class="clickable-container" onclick="toggleComments(this)">
+                        <i class="material-icons">chat_bubble_outline</i>
+                        <span class="comment-text">Comment</span>
+                        <span class="comment-count">5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section" style="display: none;">
+                  <div class="comments-list">
+                    <div class="comment-item">
+                      <div class="row no-gap">
+                        <div class="col s2">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        </div>
+                        <div class="col s10">
+                          <strong>PotterPro</strong>
+                          <p>I use recycled bubble wrap and cardboard boxes. Very eco-friendly!</p>
+                          <small class="text-grey">45 minutes ago</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment Form -->
+                  <div class="add-comment">
+                    <div class="row no-gap">
+                      <div class="col s2">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                      </div>
+                      <div class="col s10">
+                        <div class="input-field">
+                          <input type="text" class="comment-input" placeholder="Write a comment...">
+                          <button class="btn small" onclick="addComment(this)">Post</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -246,6 +494,77 @@
         }
         window.addEventListener('scroll', onScroll, { passive: true });
       })();
+
+      // Toggle comments dropdown
+      function toggleComments(button) {
+        const card = button.closest('.card');
+        const commentsSection = card.querySelector('.comments-section');
+        
+        if (commentsSection.style.display === 'none') {
+          commentsSection.style.display = 'block';
+        } else {
+          commentsSection.style.display = 'none';
+        }
+      }
+
+      // Toggle like button
+      function toggleLike(button) {
+        const heartIcon = button.querySelector('.material-icons');
+        const likeCountSpan = button.querySelector('.like-count');
+        const currentCount = parseInt(likeCountSpan.textContent);
+        
+        if (heartIcon.textContent === 'favorite_border') {
+          // Like the post
+          heartIcon.textContent = 'favorite';
+          button.classList.add('liked');
+          likeCountSpan.textContent = currentCount + 1;
+        } else {
+          // Unlike the post
+          heartIcon.textContent = 'favorite_border';
+          button.classList.remove('liked');
+          likeCountSpan.textContent = currentCount - 1;
+        }
+      }
+
+      // Add comment function
+      function addComment(element) {
+        const postCard = element.closest('.card');
+        const commentInput = postCard.querySelector('.comment-input');
+        const commentsList = postCard.querySelector('.comments-list');
+        const commentCount = postCard.querySelector('.comment-count');
+        
+        if (!commentInput || !commentsList || commentInput.value.trim() === '') return;
+        
+        // Create new comment element
+        const newComment = document.createElement('div');
+        newComment.className = 'comment-item';
+        newComment.innerHTML = `
+          <div class="row no-gap">
+            <div class="col s2">
+              <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+            </div>
+            <div class="col s10">
+              <strong>You</strong>
+              <p>${commentInput.value}</p>
+              <small class="text-grey">Just now</small>
+            </div>
+          </div>
+        `;
+        
+        // Add to comments list
+        commentsList.appendChild(newComment);
+        
+        // Update comment count
+        if (commentCount) {
+          commentCount.textContent = parseInt(commentCount.textContent) + 1;
+        }
+        
+        // Clear input
+        commentInput.value = '';
+        
+        // Scroll to new comment
+        newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     </script>
   </body>
 </html>

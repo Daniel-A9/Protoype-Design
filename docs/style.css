@@ -1022,7 +1022,7 @@ body:not(.dark) .top-header {
     padding: 0.3rem 1rem;
     border-top: 1px solid var(--outline-variant);
     background-color: var(--surface-container);
-    display: none;
+    display: block;
   }
   
   .follow-btn {

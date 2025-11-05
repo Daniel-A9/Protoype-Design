@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("visitAsHtml", (route) => {
+    cy.request(route)
+      .its("body")
+      .then((html) => {
+        // remove the application code JS bundle
+        html = html.replace(
+          /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+          ""
+        );
+        cy.document().invoke({ log: false }, "open"); // <-- Add This
+        cy.document().invoke({ log: false }, "write", html);
+        cy.document().invoke({ log: false }, "close"); // <-- And this
+      });
+  });

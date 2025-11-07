@@ -44,14 +44,26 @@
             <div class="dropdown-card">
               <select class="food-type-select" name="food-types" required>
                 <option value="">Select a food type</option>
-                <option value="produce">Produce</option>
-                <option value="dairy">Dairy</option>
-                <option value="eggs">Eggs</option>
-                <option value="meat">Meat</option>
-                <option value="cottage">Cottage Foods</option>
+                <option value="cheese">Cheese</option>
+                <option value="baked-goods">Baked Goods</option>
+                <option value="jam-preserves">Jam/Preserves</option>
+                <option value="spices">Spices</option>
+                <option value="tea">Tea</option>
+                <option value="bread">Bread</option>
+                <option value="dressings-condiments">Dressings/Condiments</option>
+                <option value="confections-candies">Confections/Candies</option>
+                <option value="beverages">Beverages</option>
+                <option value="dry-mixes">Dry Mixes</option>
+                <option value="dried-foods">Dried Foods</option>
+                <option value="hot-prepared-foods">Hot Prepared Foods</option>
+                <option value="cold-prepared-foods">Cold Prepared Foods</option>
                 <option value="other">Other</option>
               </select>
               <button type="button" class="remove-btn" onclick="removeFoodTypeDropdown(this)" style="display: none;"><i>close</i></button>
+              <div class="field label border round other-input" style="display: none;">
+                <input type="text" class="other-text" placeholder=" ">
+                <label>Describe your food *</label>
+              </div>
             </div>
           </div>
           <button type="button" class="add-btn" onclick="addFoodTypeDropdown()">
@@ -68,6 +80,26 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
       (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+      function attachFoodTypeSelect(select) {
+        const card = select.closest('.dropdown-card');
+        const otherField = card.querySelector('.other-input');
+        const otherInput = otherField ? otherField.querySelector('input') : null;
+        if (!otherField || !otherInput) {
+          return;
+        }
+        const toggleOther = () => {
+          if (select.value === 'other') {
+            otherField.style.display = 'block';
+            otherInput.required = true;
+          } else {
+            otherField.style.display = 'none';
+            otherInput.required = false;
+            otherInput.value = '';
+          }
+        };
+        select.addEventListener('change', toggleOther);
+        toggleOther();
+      }
       function addFoodTypeDropdown() {
         const container = document.getElementById('food-types-container');
         const newCard = document.createElement('div');
@@ -75,16 +107,30 @@
         newCard.innerHTML = `
           <select class="food-type-select" name="food-types">
             <option value="">Select a food type</option>
-            <option value="produce">Produce</option>
-            <option value="dairy">Dairy</option>
-            <option value="eggs">Eggs</option>
-            <option value="meat">Meat</option>
-            <option value="cottage">Cottage Foods</option>
+            <option value="cheese">Cheese</option>
+            <option value="baked-goods">Baked Goods</option>
+            <option value="jam-preserves">Jam/Preserves</option>
+            <option value="spices">Spices</option>
+            <option value="tea">Tea</option>
+            <option value="bread">Bread</option>
+            <option value="dressings-condiments">Dressings/Condiments</option>
+            <option value="confections-candies">Confections/Candies</option>
+            <option value="beverages">Beverages</option>
+            <option value="dry-mixes">Dry Mixes</option>
+            <option value="dried-foods">Dried Foods</option>
+            <option value="hot-prepared-foods">Hot Prepared Foods</option>
+            <option value="cold-prepared-foods">Cold Prepared Foods</option>
             <option value="other">Other</option>
           </select>
           <button type="button" class="remove-btn" onclick="removeFoodTypeDropdown(this)"><i>close</i></button>
+          <div class="field label border round other-input" style="display: none;">
+            <input type="text" class="other-text" placeholder=" ">
+            <label>Describe your food *</label>
+          </div>
         `;
         container.appendChild(newCard);
+        const select = newCard.querySelector('.food-type-select');
+        attachFoodTypeSelect(select);
         updateFoodTypeRemoveButtons();
       }
       function removeFoodTypeDropdown(btn) {
@@ -105,7 +151,39 @@
           }
         });
       }
-      document.getElementById('foodTypeForm').addEventListener('submit',function(e){e.preventDefault();const selected=Array.from(document.querySelectorAll('.food-type-select')).map(select=>select.value).filter(v=>v);if(selected.length===0){alert('Please select at least one food type');return;}sessionStorage.setItem('food_types',JSON.stringify(selected));window.location.href='food-vendor-details.html';});
+      document.querySelectorAll('.food-type-select').forEach(select => attachFoodTypeSelect(select));
+      document.getElementById('foodTypeForm').addEventListener('submit',function(e){
+        e.preventDefault();
+        const cards = Array.from(document.querySelectorAll('#food-types-container .dropdown-card'));
+        const selected = [];
+        let otherMissing = false;
+        cards.forEach(card => {
+          const select = card.querySelector('.food-type-select');
+          const value = select.value;
+          if (value === 'other') {
+            const otherInput = card.querySelector('.other-input input');
+            const customValue = otherInput.value.trim();
+            if (!customValue) {
+              otherMissing = true;
+              otherInput.focus();
+            } else {
+              selected.push(customValue);
+            }
+          } else if (value) {
+            selected.push(value);
+          }
+        });
+        if (otherMissing) {
+          alert('Please describe your "Other" food type');
+          return;
+        }
+        if (selected.length===0){
+          alert('Please select at least one food type');
+          return;
+        }
+        sessionStorage.setItem('food_types',JSON.stringify(selected));
+        window.location.href='food-vendor-details.html';
+      });
     </script>
   </body>
 </html>

@@ -6,118 +6,137 @@
     <title>Food Vendor Details • LocalMarket</title>
     <link href="../style.css" rel="stylesheet">
     <style>
-      .signup-container { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
-      .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 700px; width: 100%; border: 2px solid var(--outline-variant); margin: 2rem auto; min-height: auto; }
-      .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1.5rem; }
-      .illustration-top { width: 100px; height: 100px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-container); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-      .illustration-top img { width: 100%; height: 100%; object-fit: cover; }
-      .page-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--on-surface); }
-      .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2.5rem; font-size: 1rem; }
-      .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1.5rem; font-weight: 500; }
-      .back-link:hover { text-decoration: underline; }
-      form { position: relative; display: block; }
-      .form-field { margin-bottom: 1.5rem; position: relative; min-height: 56px; }
-      .section-divider { margin-top: 2.5rem; margin-bottom: 1.5rem; padding-top: 0; padding-bottom: 0; position: relative; display: block; min-height: 200px; background: transparent !important; border: none !important; z-index: 0; }
-      .section-divider label { margin-bottom: 1.5rem !important; display: block; position: relative; }
-      #certifications-container { margin-bottom: 1.5rem; position: relative; display: block; min-height: 80px; background: transparent !important; }
-      .dropdown-card { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem; padding: 0.5rem 0; border: none !important; border-radius: 0; background: transparent !important; position: relative; }
-      .dropdown-card-header { display: flex; align-items: center; gap: 1rem; width: 100%; }
-      .dropdown-card select { flex: 1; color: var(--on-surface); background-color: var(--surface); }
-      .dropdown-card select option { color: var(--on-surface); background-color: var(--surface); }
-      .cert-details-row { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-top: 0.75rem; width: 100%; }
-      .cert-details-row .field { margin: 0; position: relative !important; }
-      .cert-details-row .field.label { position: relative !important; }
-      .cert-details-row .field.label label { position: absolute !important; top: 0.75rem !important; left: 0.75rem !important; transform: none !important; transition: all 0.2s; pointer-events: none; z-index: 1; }
-      .cert-details-row .field.label input:focus + label,
-      .cert-details-row .field.label input:not(:placeholder-shown) + label,
-      .cert-details-row .field.label input:not([value=""]) + label,
-      .cert-details-row .field.label input[type="date"]:valid + label,
-      .cert-details-row .field.label input[type="date"]:focus + label { top: 0.25rem !important; font-size: 0.75rem !important; }
-      .field label { line-height: 1.2; align-items: center; }
-      .field.label { position: relative; }
-      .field.label input, .field.label textarea, .field.label select { padding-top: 1.5rem; padding-bottom: 0.5rem; }
-      .field.label label { position: absolute; top: 0.75rem; left: 0.75rem; transform: none; transition: all 0.2s; pointer-events: none; }
-      .field.label input:focus + label, .field.label input:not(:placeholder-shown) + label,
-      .field.label input:not([value=""]) + label,
-      .field.label textarea:focus + label, .field.label textarea:not(:placeholder-shown) + label,
-      .field.label select:focus + label, .field.label select:not([value=""]) + label,
-      .field.label input[type="date"]:valid + label { top: 0.25rem; font-size: 0.75rem; }
-      .field.label input[type="date"] { color-scheme: light dark; }
-      .field.label input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; }
-      .field.label input[type="file"] { padding-top: 1.5rem; padding-bottom: 0.5rem; color: var(--on-surface); cursor: pointer; }
-      .field.label input[type="file"]::-webkit-file-upload-button { padding: 0.5rem 1rem; background: var(--primary-container); color: var(--on-primary-container); border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem; margin-right: 0.5rem; }
-      .remove-btn { background: none !important; border: none; color: var(--error, #b3261e); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; position: relative; }
-      .remove-btn:hover { background: var(--error-container, rgba(179, 38, 30, 0.1)); }
-      .add-btn { display: flex; align-items: center; justify-content: flex-start; gap: 0.5rem; padding: 0.5rem 0.75rem; border: 2px dashed var(--outline-variant); border-radius: 12px; background: transparent !important; color: var(--primary); cursor: pointer; transition: all 0.3s; margin-top: 0.75rem; margin-bottom: 1.5rem; width: auto; position: relative; min-height: 36px; font-size: 0.875rem; }
-      .add-btn:hover { border-color: var(--primary); background: var(--primary-container); }
-      .additional-info-section { margin-top: 1.5rem; margin-bottom: 3rem; position: relative; display: block; min-height: 120px; z-index: 1; }
-      .additional-info-section .field { position: relative; min-height: 120px; }
-      .additional-info-section .field label { position: absolute !important; }
-      .button-wrapper { margin-top: 3rem; margin-bottom: 1rem; padding-top: 2rem; padding-bottom: 1rem; border-top: 1px solid var(--outline-variant); display: flex; justify-content: center; position: relative; min-height: 80px; z-index: 2; }
-      .submit-button { display: inline-block; position: relative; }
-      
-      @media (max-width: 768px) {
-        * { box-sizing: border-box; }
-        .signup-container { padding: 1rem 0.5rem; align-items: flex-start; min-height: 100vh; }
-        .signup-card { padding: 1.5rem 1rem; margin: 1rem auto; border-radius: 16px; max-width: 100%; }
-        .page-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .page-subtitle { font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .step-indicator { font-size: 0.85rem; margin-bottom: 1rem; }
-        .illustration-top { width: 80px; height: 80px; margin-bottom: 1rem; }
-        .back-link { margin-bottom: 1rem; font-size: 0.9rem; }
-        form { position: static !important; }
-        .form-field { margin-bottom: 1rem; min-height: auto; position: static !important; }
-        .form-field .field { position: relative !important; }
-        .form-field .field label { position: absolute !important; top: 0 !important; left: 0 !important; }
-        .section-divider { margin-top: 2rem; margin-bottom: 0 !important; min-height: auto !important; padding: 0 !important; padding-bottom: 0 !important; position: static !important; display: block !important; height: auto !important; }
-        .section-divider label { font-size: 1rem; margin-bottom: 1rem !important; display: block !important; position: static !important; top: auto !important; left: auto !important; }
-        #certifications-container { margin-bottom: 1.5rem; min-height: auto !important; position: static !important; height: auto !important; }
-        .dropdown-card { margin-bottom: 1rem; padding: 0.5rem 0; gap: 0.75rem; min-height: auto !important; position: static !important; height: auto !important; }
-        .dropdown-card-header { flex-wrap: wrap; gap: 0.75rem; }
-        .dropdown-card select { min-width: 0; font-size: 0.9rem; flex: 1; }
-        .cert-details-row { grid-template-columns: 1fr; gap: 0.75rem; margin-top: 0.75rem; }
-        .cert-details-row .field.label { position: relative !important; }
-        .cert-details-row .field.label label { position: absolute !important; top: 0.75rem !important; left: 0.75rem !important; }
-        .cert-details-row .field.label input:focus + label,
-        .cert-details-row .field.label input:not(:placeholder-shown) + label,
-        .cert-details-row .field.label input:not([value=""]) + label,
-        .cert-details-row .field.label input[type="date"]:valid + label,
-        .cert-details-row .field.label input[type="date"]:focus + label { top: 0.25rem !important; font-size: 0.75rem !important; }
-        .remove-btn { padding: 0.4rem; flex-shrink: 0; position: static !important; }
-        .add-btn { padding: 0.5rem 0.75rem; font-size: 0.875rem; margin-top: 0.75rem; margin-bottom: 1.5rem !important; position: static !important; display: flex !important; justify-content: flex-start !important; top: auto !important; left: auto !important; width: auto !important; min-height: 36px !important; }
-        .add-btn span { font-size: 0.875rem; }
-        .additional-info-section { margin-top: 0 !important; margin-bottom: 3rem; min-height: auto !important; clear: both !important; position: static !important; display: block !important; height: auto !important; top: auto !important; left: auto !important; }
-        .additional-info-section .field { min-height: 100px; margin-top: 0; position: relative !important; }
-        .additional-info-section .field label { position: absolute !important; top: 0 !important; left: 0 !important; }
-        .button-wrapper { margin-top: 3rem !important; padding-top: 2rem; padding-bottom: 1rem; min-height: auto !important; clear: both !important; position: static !important; display: flex !important; height: auto !important; top: auto !important; left: auto !important; }
-        .button-wrapper button { width: 100%; max-width: 100%; }
+      .signup-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%);
       }
-      
+      .signup-card {
+        background: var(--surface-container);
+        border-radius: 24px;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        max-width: 720px;
+        width: 100%;
+        border: 2px solid var(--outline-variant);
+      }
+      .step-indicator {
+        text-align: center;
+        color: var(--on-surface-variant);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+      .illustration-top {
+        width: 110px;
+        height: 110px;
+        margin: 0 auto 1.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--primary-container);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      }
+      .illustration-top img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .page-title {
+        text-align: center;
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        color: var(--on-surface);
+      }
+      .page-subtitle {
+        text-align: center;
+        color: var(--on-surface-variant);
+        margin-bottom: 1rem;
+        font-size: 1rem;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        text-decoration: none;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+      #foodDetailsForm {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+      }
+      #certifications-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        width: 100%;
+      }
+      .cert-card {
+        background: var(--surface-container-low);
+        border: 2px solid var(--outline-variant);
+        border-radius: 20px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+      }
+      .cert-details-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .cert-card .remove-cert {
+        align-self: flex-start;
+      }
+      .other-input[hidden],
+      .cert-details-row[hidden] {
+        display: none !important;
+      }
+      #add-cert {
+        align-self: flex-start;
+        margin-top: 0.25rem;
+      }
+      .bottom-actions {
+        margin-top: 2rem;
+        width: 100%;
+      }
+      .bottom-actions .button-wrapper {
+        margin-top: 1rem;
+      }
+      .button-wrapper {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+      @media (max-width: 768px) {
+        .signup-card {
+          padding: 2rem 1.5rem;
+          border-radius: 18px;
+        }
+        .page-title {
+          font-size: 1.6rem;
+        }
+        .cert-card {
+          padding: 1.25rem;
+        }
+      }
       @media (max-width: 480px) {
-        .signup-container { padding: 0.5rem; min-height: 100vh; }
-        .signup-card { padding: 1rem 0.75rem; margin: 0.5rem auto; }
-        .page-title { font-size: 1.3rem; }
-        .page-subtitle { font-size: 0.85rem; margin-bottom: 1rem; }
-        form { position: static !important; }
-        .form-field { margin-bottom: 0.75rem; position: static !important; }
-        .section-divider { margin-top: 1.5rem; margin-bottom: 0 !important; padding-bottom: 0 !important; position: static !important; height: auto !important; }
-        .section-divider label { font-size: 0.95rem; margin-bottom: 0.75rem !important; position: static !important; top: auto !important; left: auto !important; }
-        #certifications-container { margin-bottom: 1rem; position: static !important; height: auto !important; }
-        .dropdown-card { gap: 0.5rem; margin-bottom: 0.75rem; position: static !important; height: auto !important; }
-        .dropdown-card-header { gap: 0.5rem; }
-        .dropdown-card select { font-size: 0.85rem; padding: 0.5rem; flex: 1; }
-        .cert-details-row { grid-template-columns: 1fr; gap: 0.5rem; }
-        .cert-details-row .field.label { position: relative !important; }
-        .cert-details-row .field.label label { position: absolute !important; top: 0.75rem !important; left: 0.75rem !important; }
-        .cert-details-row .field.label input:focus + label,
-        .cert-details-row .field.label input:not(:placeholder-shown) + label,
-        .cert-details-row .field.label input:not([value=""]) + label,
-        .cert-details-row .field.label input[type="date"]:valid + label,
-        .cert-details-row .field.label input[type="date"]:focus + label { top: 0.25rem !important; font-size: 0.75rem !important; }
-        .add-btn { padding: 0.5rem 0.75rem; font-size: 0.85rem; margin-top: 0.75rem; margin-bottom: 1.5rem !important; position: static !important; top: auto !important; left: auto !important; width: auto !important; min-height: 36px !important; justify-content: flex-start !important; }
-        .add-btn i { font-size: 0.875rem; }
-        .additional-info-section { margin-top: 0 !important; margin-bottom: 2rem; position: static !important; height: auto !important; top: auto !important; left: auto !important; }
-        .button-wrapper { margin-top: 2rem !important; padding-top: 1.5rem; position: static !important; height: auto !important; top: auto !important; left: auto !important; }
+        .signup-card {
+          padding: 1.5rem 1rem;
+        }
+        #foodDetailsForm {
+          gap: 1.25rem;
+        }
       }
     </style>
   </head>
@@ -133,66 +152,25 @@
         <a href="artisan-food-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
         <div class="step-indicator">Step 8 of 8 - Final Step!</div>
         <div class="illustration-top"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=300&h=300&fit=crop" alt="Farm"></div>
-        <h1 class="page-title">Almost Done! 🎉</h1>
-        <p class="page-subtitle">Tell us about your licenses and certifications</p>
+        <h1 class="page-title">Almost Done!</h1>
+        <p class="page-subtitle">Third Party Certifications</p>
+        <p class="page-subtitle small-text">Optional, but highly encouraged!</p>
         <form id="foodDetailsForm">
-          <div class="form-field">
-            <div class="field label border round">
-              <input type="text" id="license-number">
-              <label>License Number (optional)</label>
-            </div>
-          </div>
-          
-          <div class="form-field">
-            <div class="field label border round">
-              <input type="file" id="license-file" accept=".pdf,.jpg,.jpeg,.png">
-              <label>Upload License Document (optional)</label>
-            </div>
-          </div>
-          
-          <div class="section-divider">
-            <label style="display: block; margin-bottom: 1.5rem; font-weight: 600; font-size: 1.1rem;">Certifications (Select all that apply)</label>
-            <div id="certifications-container">
-              <div class="dropdown-card">
-                <div class="dropdown-card-header">
-                  <select class="cert-select field border round" name="certifications" required>
-                    <option value="">Select a certification</option>
-                    <option value="usda-organic">USDA Organic</option>
-                    <option value="gmo-free">GMO Free</option>
-                    <option value="local">Local</option>
-                    <option value="grass-fed">Grass-Fed</option>
-                    <option value="free-range">Free-Range</option>
-                    <option value="cage-free">Cage-Free</option>
-                  </select>
-                  <button type="button" class="remove-btn" onclick="removeCertDropdown(this)" style="display: none;"><i>close</i></button>
-                </div>
-                <div class="cert-details-row" style="display: none;">
-                  <div class="field label border round">
-                    <input type="text" class="cert-number" placeholder=" ">
-                    <label>Certification Number</label>
-                  </div>
-                  <div class="field label border round">
-                    <input type="date" class="cert-expiration">
-                    <label>Expiration Date</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button type="button" class="add-btn" onclick="addCertDropdown()">
-              <i>add</i>
-              <span>Add Another Certification</span>
-            </button>
-          </div>
-          
-          <div class="additional-info-section">
+          <h2 class="h5">Third Party Certifications</h2>
+          <p class="small-text">Select all that apply.</p>
+          <div id="certifications-container"></div>
+          <button type="button" id="add-cert" class="chip border">
+            <i>add</i>
+            <span>Add Another Certification</span>
+          </button>
+          <div class="bottom-actions column small-space">
             <div class="field label border round">
               <textarea id="additional-info" rows="4"></textarea>
               <label>Additional Information (optional)</label>
             </div>
-          </div>
-          
-          <div class="button-wrapper">
-            <button type="submit" class="btn primary round medium submit-button"><span>Complete Sign Up</span><i>check</i></button>
+            <div class="button-wrapper">
+              <button type="submit" class="btn primary round medium submit-button"><span>Complete Sign Up</span><i>check</i></button>
+            </div>
           </div>
         </form>
       </div>
@@ -201,25 +179,51 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
       (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
-      let certCounter = 1;
-      function addCertDropdown() {
-        const container = document.getElementById('certifications-container');
-        const newCard = document.createElement('div');
-        newCard.className = 'dropdown-card';
-        newCard.innerHTML = `
-          <div class="dropdown-card-header">
-            <select class="cert-select field border round" name="certifications">
-              <option value="">Select a certification</option>
-              <option value="usda-organic">USDA Organic</option>
-              <option value="gmo-free">GMO Free</option>
-              <option value="local">Local</option>
-              <option value="grass-fed">Grass-Fed</option>
-              <option value="free-range">Free-Range</option>
-              <option value="cage-free">Cage-Free</option>
+      const certificationOptions = `
+        <option value="">Select a certification</option>
+        <option value="regenerative-organic-certified">Regenerative Organic Certified</option>
+        <option value="usda-organic">USDA Organic</option>
+        <option value="certified-naturally-grown-cng">Certified Naturally Grown (CNG)</option>
+        <option value="demeter-certified-biodynamic">Demeter Certified Biodynamic</option>
+        <option value="ifoam-accreditation">IFOAM Accreditation</option>
+        <option value="regenerative-organic-certified-roc">Regenerative Organic Certified (ROC)</option>
+        <option value="non-gmo-project-verified">Non-GMO Project Verified</option>
+        <option value="certified-naturally-grown">Certified Naturally Grown</option>
+        <option value="seed-savers-exchange">Seed Savers Exchange (Heritage Seed Certification)</option>
+        <option value="certified-humane">Certified Humane&reg;</option>
+        <option value="animal-welfare-approved">Animal Welfare Approved (AWA)</option>
+        <option value="global-animal-partnership">Global Animal Partnership (GAP)</option>
+        <option value="american-grassfed-association">American Grassfed Association (AGA)</option>
+        <option value="poultry-welfare-certification">Poultry Welfare Certification (PAACO)</option>
+        <option value="food-alliance-certified">Food Alliance Certified</option>
+        <option value="rainforest-alliance-certified">Rainforest Alliance Certified</option>
+        <option value="fair-trade-certified">Fair Trade Certified&trade;</option>
+        <option value="leaf-marque">LEAF Marque (Linking Environment and Farming)</option>
+        <option value="sustainable-agriculture-network">Sustainable Agriculture Network (SAN)</option>
+        <option value="certified-grassfed-greener-world">Certified Grassfed by A Greener World</option>
+        <option value="certified-humane-raised-handled">Certified Humane Raised &amp; Handled&reg;</option>
+        <option value="bee-better-certified">Bee Better Certified</option>
+        <option value="salmon-safe">Salmon-Safe</option>
+        <option value="gluten-free-certification-organization">Gluten-Free Certification Organization (GFCO)</option>
+        <option value="other">Other</option>
+      `;
+      const certificationsContainer = document.getElementById('certifications-container');
+      const addCertButton = document.getElementById('add-cert');
+      function createCertificationCard() {
+        const card = document.createElement('article');
+        card.className = 'cert-card';
+        card.innerHTML = `
+          <div class="field label border round">
+            <select class="cert-select">
+              ${certificationOptions}
             </select>
-            <button type="button" class="remove-btn" onclick="removeCertDropdown(this)"><i>close</i></button>
+            <label>Certification *</label>
           </div>
-          <div class="cert-details-row" style="display: none;">
+          <div class="field label border round other-input" hidden>
+            <input type="text" class="other-cert" placeholder=" ">
+            <label>Describe your certification *</label>
+          </div>
+          <div class="grid small-space cert-details-row" hidden>
             <div class="field label border round">
               <input type="text" class="cert-number" placeholder=" ">
               <label>Certification Number</label>
@@ -229,46 +233,92 @@
               <label>Expiration Date</label>
             </div>
           </div>
+          <button type="button" class="chip error-text remove-cert" hidden>
+            <i>close</i>
+            <span>Remove</span>
+          </button>
         `;
-        container.appendChild(newCard);
-        const select = newCard.querySelector('.cert-select');
-        select.addEventListener('change', function() { toggleCertDetails(this); });
-        updateRemoveButtons();
+        return card;
       }
-      function toggleCertDetails(select) {
-        const card = select.closest('.dropdown-card');
+      function attachCertificationCard(card) {
+        const select = card.querySelector('.cert-select');
+        const otherSection = card.querySelector('.other-input');
+        const otherInput = card.querySelector('.other-cert');
         const detailsRow = card.querySelector('.cert-details-row');
-        if (select.value && select.value !== '') {
-          detailsRow.style.display = 'grid';
-        } else {
-          detailsRow.style.display = 'none';
-        }
-      }
-      function removeCertDropdown(btn) {
-        const card = btn.closest('.dropdown-card');
-        const container = document.getElementById('certifications-container');
-        if (container.querySelectorAll('.dropdown-card').length > 1) {
+        const removeBtn = card.querySelector('.remove-cert');
+        const syncState = () => {
+          const value = select.value;
+          const hasValue = value !== '';
+          detailsRow.hidden = !hasValue;
+          if (value === 'other') {
+            otherSection.hidden = false;
+            otherInput.required = true;
+          } else {
+            otherSection.hidden = true;
+            otherInput.required = false;
+            otherInput.value = '';
+          }
+        };
+        select.addEventListener('change', syncState);
+        removeBtn.addEventListener('click', () => {
           card.remove();
           updateRemoveButtons();
-        }
+        });
+        syncState();
       }
       function updateRemoveButtons() {
-        const cards = document.querySelectorAll('#certifications-container .dropdown-card');
-        cards.forEach((card, index) => {
-          const removeBtn = card.querySelector('.remove-btn');
-          if (cards.length > 1) {
-            removeBtn.style.display = 'flex';
-          } else {
-            removeBtn.style.display = 'none';
-          }
+        const cards = certificationsContainer.querySelectorAll('.cert-card');
+        const showRemove = cards.length > 1;
+        cards.forEach(card => {
+          const btn = card.querySelector('.remove-cert');
+          btn.hidden = !showRemove;
         });
       }
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.cert-select').forEach(select => {
-          select.addEventListener('change', function() { toggleCertDetails(this); });
+      function addCertificationCard() {
+        const card = createCertificationCard();
+        certificationsContainer.appendChild(card);
+        attachCertificationCard(card);
+        updateRemoveButtons();
+      }
+      addCertButton.addEventListener('click', addCertificationCard);
+      addCertificationCard();
+      document.getElementById('foodDetailsForm').addEventListener('submit',function(e){
+        e.preventDefault();
+        const cards = Array.from(certificationsContainer.querySelectorAll('.cert-card'));
+        const certifications = [];
+        let missingOther = false;
+        cards.forEach(card => {
+          const select = card.querySelector('.cert-select');
+          const value = select.value;
+          if (!value) {
+            return;
+          }
+          let typeLabel = select.options[select.selectedIndex]?.textContent || '';
+          if (value === 'other') {
+            const otherValue = card.querySelector('.other-cert').value.trim();
+            if (!otherValue) {
+              missingOther = true;
+              card.querySelector('.other-cert').focus();
+              return;
+            }
+            typeLabel = otherValue;
+          }
+          const number = card.querySelector('.cert-number').value.trim();
+          const expiration = card.querySelector('.cert-expiration').value;
+          certifications.push({type:typeLabel,number:number,expiration:expiration});
         });
+        if (missingOther) {
+          alert('Please describe your \"Other\" certification.');
+          return;
+        }
+        sessionStorage.setItem('certifications',JSON.stringify(certifications));
+        sessionStorage.setItem('additional_info',document.getElementById('additional-info').value);
+        const email=sessionStorage.getItem('signup_email');
+        const name=email?email.split('@')[0]:'Friend';
+        alert('Welcome '+name+'! Your vendor account has been created.');
+        sessionStorage.clear();
+        window.location.href='../index.html';
       });
-      document.getElementById('foodDetailsForm').addEventListener('submit',function(e){e.preventDefault();const certs=Array.from(document.querySelectorAll('.cert-select')).map(select=>select.value).filter(v=>v);const certDetails=Array.from(document.querySelectorAll('.dropdown-card')).map(card=>{const select=card.querySelector('.cert-select');const number=card.querySelector('.cert-number')?.value||'';const expiration=card.querySelector('.cert-expiration')?.value||'';return{type:select.value,number:number,expiration:expiration};}).filter(c=>c.type);sessionStorage.setItem('license_number',document.getElementById('license-number').value);sessionStorage.setItem('certifications',JSON.stringify(certDetails));sessionStorage.setItem('additional_info',document.getElementById('additional-info').value);const email=sessionStorage.getItem('signup_email');const name=email?email.split('@')[0]:'Friend';alert('Welcome '+name+'! Your vendor account has been created.');sessionStorage.clear();window.location.href='../index.html';});
     </script>
   </body>
 </html>

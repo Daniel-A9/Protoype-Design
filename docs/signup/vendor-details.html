@@ -38,12 +38,34 @@
       <a href="choose-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
       <div class="step-indicator">Step 4 of 8</div>
       <div class="illustration-top"><img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop" alt="Vendor"></div>
-      <h1 class="page-title">Tell Us About Your Business 🏪</h1>
+      <h1 class="page-title">Tell Us About Your Business</h1>
       <p class="page-subtitle">We need some basic information to get started</p>
       <form id="vendorForm">
         <div class="field label border round">
           <input type="text" id="company-name" required>
           <label>Company/Business Name *</label>
+        </div>
+        <div style="margin-top: 1rem;">
+          <label style="display: block; margin-bottom: 1rem; font-weight: 600;">Vendor Type *</label>
+          <div class="dropdown-card">
+            <select id="vendor-type" required>
+              <option value="">Select a vendor type</option>
+              <option value="small-farm">Small Farm</option>
+              <option value="medium-farm">Medium Farm</option>
+              <option value="food-artisan">Food Artisan</option>
+              <option value="artisan">Artisan</option>
+              <option value="craftsmen">Craftsmen</option>
+              <option value="artist">Artist</option>
+              <option value="cottage-foods">Cottage Foods</option>
+              <option value="brewery">Brewery</option>
+              <option value="winery">Winery</option>
+              <option value="fishery">Fishery</option>
+              <option value="apiary">Apiary</option>
+              <option value="local-food-health-store">Local Food/Health Store</option>
+              <option value="butcher">Butcher</option>
+              <option value="apothecary">Apothecary</option>
+            </select>
+          </div>
         </div>
         <div style="margin-top: 1rem;">
           <label style="display: block; margin-bottom: 1rem; font-weight: 600;">Product Types *</label>
@@ -204,6 +226,7 @@
         return;
       }
       sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);
+      sessionStorage.setItem('vendor_type',document.getElementById('vendor-type').value);
       sessionStorage.setItem('vendor_products',JSON.stringify(products));
       window.location.href='vendor-category.html';
     });

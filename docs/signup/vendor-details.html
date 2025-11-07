@@ -55,29 +55,35 @@
                 <option value="dairy">Dairy</option>
                 <option value="eggs">Eggs</option>
                 <option value="meat">Meat</option>
-                <option value="bakery">Bakery</option>
+                <option value="baked-goods">Baked Goods</option>
                 <option value="beverages">Beverages</option>
                 <option value="prepared-foods">Prepared Foods</option>
                 <option value="handmade-crafts">Handmade Crafts</option>
                 <option value="art">Art</option>
                 <option value="jewelry">Jewelry</option>
                 <option value="clothing">Clothing</option>
+                <option value="soap">Soap</option>
+                <option value="candles">Candles</option>
+                <option value="teas">Teas</option>
+                <option value="herbs">Herbs</option>
+                <option value="spices">Spices</option>
+                <option value="plants">Plants</option>
+                <option value="tinctures">Tinctures</option>
+                <option value="woodworking">Woodworking</option>
+                <option value="ceramics">Ceramics</option>
                 <option value="other">Other</option>
               </select>
               <button type="button" class="remove-btn" onclick="removeProductDropdown(this)" style="display: none;"><i>close</i></button>
+              <div class="field label border round other-input" style="display: none;">
+                <input type="text" class="other-text" placeholder=" ">
+                <label>Describe your product *</label>
+              </div>
             </div>
           </div>
           <button type="button" class="add-btn" onclick="addProductDropdown()">
             <i>add</i>
             <span>Add Another Product Type</span>
           </button>
-        </div>
-        <div style="margin-top: 1.5rem;">
-          <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Are you licensed? *</label>
-          <div class="checkbox-group">
-            <label class="radio"><input type="radio" name="licensed" value="yes" required><span>Yes, I am licensed</span></label>
-            <label class="radio"><input type="radio" name="licensed" value="no"><span>No, I am not licensed</span></label>
-          </div>
         </div>
         <div class="button-wrapper">
           <button type="submit" class="btn primary round medium"><span>Continue</span><i>arrow_forward</i></button>
@@ -89,6 +95,26 @@
   <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
   <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    function attachProductSelect(select) {
+      const card = select.closest('.dropdown-card');
+      const otherField = card.querySelector('.other-input');
+      const otherInput = otherField ? otherField.querySelector('input') : null;
+      if (!otherField || !otherInput) {
+        return;
+      }
+      const toggleOtherField = () => {
+        if (select.value === 'other') {
+          otherField.style.display = 'block';
+          otherInput.required = true;
+        } else {
+          otherField.style.display = 'none';
+          otherInput.required = false;
+          otherInput.value = '';
+        }
+      };
+      select.addEventListener('change', toggleOtherField);
+      toggleOtherField();
+    }
     function addProductDropdown() {
       const container = document.getElementById('product-types-container');
       const newCard = document.createElement('div');
@@ -100,18 +126,33 @@
           <option value="dairy">Dairy</option>
           <option value="eggs">Eggs</option>
           <option value="meat">Meat</option>
-          <option value="bakery">Bakery</option>
+          <option value="baked-goods">Baked Goods</option>
           <option value="beverages">Beverages</option>
           <option value="prepared-foods">Prepared Foods</option>
           <option value="handmade-crafts">Handmade Crafts</option>
           <option value="art">Art</option>
           <option value="jewelry">Jewelry</option>
           <option value="clothing">Clothing</option>
+          <option value="soap">Soap</option>
+          <option value="candles">Candles</option>
+          <option value="teas">Teas</option>
+          <option value="herbs">Herbs</option>
+          <option value="spices">Spices</option>
+          <option value="plants">Plants</option>
+          <option value="tinctures">Tinctures</option>
+          <option value="woodworking">Woodworking</option>
+          <option value="ceramics">Ceramics</option>
           <option value="other">Other</option>
         </select>
         <button type="button" class="remove-btn" onclick="removeProductDropdown(this)"><i>close</i></button>
+        <div class="field label border round other-input" style="display: none;">
+          <input type="text" class="other-text" placeholder=" ">
+          <label>Describe your product *</label>
+        </div>
       `;
       container.appendChild(newCard);
+      const select = newCard.querySelector('.product-select');
+      attachProductSelect(select);
       updateProductRemoveButtons();
     }
     function removeProductDropdown(btn) {
@@ -132,7 +173,40 @@
         }
       });
     }
-    document.getElementById('vendorForm').addEventListener('submit',function(e){e.preventDefault();const products=Array.from(document.querySelectorAll('.product-select')).map(select=>select.value).filter(v=>v);if(products.length===0){alert('Please select at least one product type');return;}sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);sessionStorage.setItem('vendor_products',JSON.stringify(products));sessionStorage.setItem('vendor_licensed',document.querySelector('input[name="licensed"]:checked').value);window.location.href='vendor-category.html';});
+    document.querySelectorAll('.product-select').forEach(select => attachProductSelect(select));
+    document.getElementById('vendorForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const cards = Array.from(document.querySelectorAll('#product-types-container .dropdown-card'));
+      const products = [];
+      let otherMissing = false;
+      cards.forEach(card => {
+        const select = card.querySelector('.product-select');
+        const value = select.value;
+        if (value === 'other') {
+          const otherInput = card.querySelector('.other-input input');
+          const customValue = otherInput.value.trim();
+          if (!customValue) {
+            otherMissing = true;
+            otherInput.focus();
+          } else {
+            products.push(customValue);
+          }
+        } else if (value) {
+          products.push(value);
+        }
+      });
+      if (otherMissing) {
+        alert('Please describe your "Other" product type');
+        return;
+      }
+      if (products.length===0){
+        alert('Please select at least one product type');
+        return;
+      }
+      sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);
+      sessionStorage.setItem('vendor_products',JSON.stringify(products));
+      window.location.href='vendor-category.html';
+    });
   </script>
 </body>
 </html>

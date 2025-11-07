@@ -14,14 +14,26 @@
 
     <!-- Fixed Top Header -->
     <div class="top-header">
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <!-- Left side empty for now -->
+      <div class="header-left" style="display: flex; align-items: center; gap: 0.5rem;">
+        <img src="../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
       </div>
-      <!-- Right side: Logo and hamburger menu -->
+      <nav class="header-nav">
+        <a href="../home/index.html" class="link" data-testid="desktop-nav-home">Home</a>
+        <a href="../index.html" class="link" data-testid="desktop-nav-discovery">Discover</a>
+        <a href="../discussions/forums/index.html" class="link" data-testid="desktop-nav-community">Community</a>
+        <a href="../cart/index.html" class="link" data-testid="desktop-nav-cart">
+          <i>shopping_cart</i>
+          <span>Cart</span>
+        </a>
+      </nav>
+      <!-- Right side: Logo, profile icon, and hamburger menu -->
       <div class="header-right">
         <!-- Site Logo -->
         <a href="../index.html" class="site-logo">
           <img src="../Logo 333.png" alt="LocalMarket Logo">
+        </a>
+        <a href="../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
         <!-- Hamburger Menu Button -->
         <div class="mobile-menu-btn" onclick="toggleHamburgerMenu()" data-testid="hamburger-menu-btn">
@@ -369,116 +381,6 @@
                 </form>
             </div>
         </dialog>
-
-        <!-- Products Section -->
-        <section id="products" class="padding-vertical-large">
-            <div class="container">
-                <div class="row no-gap middle-align margin-bottom-large">
-                    <div class="col s12">
-                        <div class="row middle-align">
-                          <h3>Featured Products</h3>
-                          <button class="edit-control btn circle primary margin-left-small" onclick="addProduct()" data-testid="add-product-btn">
-                            <i>add</i>
-                          </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Products Grid - Full Width for Horizontal Scroll -->
-            <div id="products-grid" class="row scroll" style="padding: 0.5rem 0; gap: 1rem; padding-left: 0.5rem; padding-right: 0.5rem;">
-                            <!-- Product Card 1 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px; position: relative;">
-                                <!-- Edit Controls -->
-                                <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
-                                  <button class="circle small primary" onclick="editProduct('citrus-ipa')" data-testid="edit-product-citrus-ipa">
-                                    <i>edit</i>
-                                  </button>
-                                  <button class="circle small error" onclick="deleteProduct('citrus-ipa')" data-testid="delete-product-citrus-ipa">
-                                    <i>delete</i>
-                                  </button>
-                                </div>
-                                
-                                <div class="card-content">
-                                    <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
-                                         alt="Citrus IPA" class="responsive round" style="height: 220px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Citrus IPA</h5>
-                                        <p class="text-grey margin-vertical-small">Perfectly balanced hops with refreshing citrus notes</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$8.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 2 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px; position: relative;">
-                                <!-- Edit Controls -->
-                                <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
-                                  <button class="circle small primary" onclick="editProduct('chocolate-stout')" data-testid="edit-product-chocolate-stout">
-                                    <i>edit</i>
-                                  </button>
-                                  <button class="circle small error" onclick="deleteProduct('chocolate-stout')" data-testid="delete-product-chocolate-stout">
-                                    <i>delete</i>
-                                  </button>
-                                </div>
-                                
-                                <div class="card-content">
-                                    <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
-                                         alt="Chocolate Stout" class="responsive round" style="height: 220px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Chocolate Stout</h5>
-                                        <p class="text-grey margin-vertical-small">Rich chocolate and coffee flavors with smooth finish</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$9.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Product Card 3 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px; position: relative;">
-                                <!-- Edit Controls -->
-                                <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
-                                  <button class="circle small primary" onclick="editProduct('golden-lager')" data-testid="edit-product-golden-lager">
-                                    <i>edit</i>
-                                  </button>
-                                  <button class="circle small error" onclick="deleteProduct('golden-lager')" data-testid="delete-product-golden-lager">
-                                    <i>delete</i>
-                                  </button>
-                                </div>
-                                
-                                <div class="card-content">
-                                    <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
-                                         alt="Golden Lager" class="responsive round" style="height: 220px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Golden Lager</h5>
-                                        <p class="text-grey margin-vertical-small">Crisp and refreshing with clean finish</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$7.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-            </div>
-        </section>
-
 
         <!-- Vendor Posts Section -->
         <section id="posts" class="padding-vertical-large surface-container-low">

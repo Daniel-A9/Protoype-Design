@@ -93,7 +93,7 @@
           <span style="font-size: 0.9rem;">Add Event</span>
         </a>
         
-        <a href="#" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+        <a href="#certificate-dialog" data-ui="#certificate-dialog" onclick="openCertificateDialog(event);" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
           <i style="margin-right: 0.5rem; font-size: 1.2rem;">verified_user</i>
           <span style="font-size: 0.9rem;">Add Certificate</span>
         </a>
@@ -318,6 +318,53 @@
                     <nav class="margin-top-large right-align">
                         <button type="button" class="btn" data-ui="#new-post-dialog">Cancel</button>
                         <button type="submit" class="btn primary">Publish</button>
+                    </nav>
+                </form>
+            </div>
+        </dialog>
+
+        <!-- Add Certificate Dialog -->
+        <dialog id="certificate-dialog" class="modal medium">
+            <button data-ui="#certificate-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+              <i>close</i>
+            </button>
+            <div class="padding-medium">
+                <h4>Add Certificate</h4>
+                <form id="certificate-form">
+                    <div class="margin-vertical-medium">
+                        <div class="field label border">
+                            <select id="certificate-type" required>
+                                <option value="">Select a certificate type</option>
+                                <option value="organic">Organic Certification</option>
+                                <option value="quality">Quality Assurance</option>
+                                <option value="safety">Safety Compliance</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <label>Certificate type</label>
+                        </div>
+                    </div>
+                    <div class="margin-vertical-medium">
+                        <div class="field label border">
+                            <input type="text" id="certificate-number" placeholder=" " required>
+                            <label>Certificate number</label>
+                        </div>
+                    </div>
+                    <div class="margin-vertical-medium">
+                        <div class="field label border">
+                            <input type="date" id="certificate-expiration" placeholder=" " required>
+                            <label>Expiration date</label>
+                        </div>
+                    </div>
+                    <div class="margin-top-small margin-bottom-medium center-align">
+                        <input type="file" id="certificate-attachment" accept="image/*,application/pdf" style="display: none;">
+                        <button type="button" id="certificate-attachment-button" class="btn secondary border">
+                            <i>cloud_upload</i>
+                            <span id="certificate-attachment-label">Attach certificate</span>
+                        </button>
+                    </div>
+                    <nav class="margin-top-large right-align">
+                        <button type="button" class="btn" data-ui="#certificate-dialog">Cancel</button>
+                        <button type="submit" class="btn primary">Submit</button>
                     </nav>
                 </form>
             </div>
@@ -977,6 +1024,47 @@
         toggleHamburgerMenu();
       }
 
+      function resizeCertificateDialog() {
+        const dialog = document.getElementById('certificate-dialog');
+        if (!dialog) {
+          return;
+        }
+
+        if (window.innerWidth <= 640) {
+          dialog.style.maxHeight = 'calc(100vh - 24px)';
+          dialog.style.height = 'auto';
+        } else {
+          dialog.style.maxHeight = '';
+          dialog.style.height = '';
+        }
+      }
+
+      function openCertificateDialog(event) {
+        if (event) {
+          event.preventDefault();
+        }
+
+        toggleHamburgerMenu();
+
+        resizeCertificateDialog();
+
+        const form = document.getElementById('certificate-form');
+        if (form) {
+          form.reset();
+        }
+
+        const attachmentLabel = document.getElementById('certificate-attachment-label');
+        if (attachmentLabel) {
+          attachmentLabel.textContent = 'Attach certificate';
+        }
+
+        const attachmentButton = document.getElementById('certificate-attachment-button');
+        if (attachmentButton) {
+          attachmentButton.classList.add('secondary');
+          attachmentButton.classList.remove('primary');
+        }
+      }
+
       function editPost(postId) {
         alert('Edit Post: ' + postId + '\n\nWould open post edit form');
       }
@@ -996,6 +1084,9 @@
         if (!storedEditMode) {
           hideEditControls();
         }
+
+        resizeCertificateDialog();
+        window.addEventListener('resize', resizeCertificateDialog);
 
         const newPostForm = document.getElementById('new-post-form');
         if (newPostForm) {
@@ -1064,6 +1155,78 @@
             }
 
             ui('#new-post-dialog');
+          });
+        }
+
+        const certificateForm = document.getElementById('certificate-form');
+        if (certificateForm) {
+          const attachmentInput = document.getElementById('certificate-attachment');
+          const attachmentButton = document.getElementById('certificate-attachment-button');
+          const attachmentLabel = document.getElementById('certificate-attachment-label');
+
+          if (attachmentButton && attachmentInput) {
+            attachmentButton.addEventListener('click', function() {
+              attachmentInput.click();
+            });
+          }
+
+          if (attachmentInput) {
+            attachmentInput.addEventListener('change', function() {
+              if (attachmentInput.files && attachmentInput.files[0]) {
+                if (attachmentLabel) {
+                  attachmentLabel.textContent = attachmentInput.files[0].name;
+                }
+                if (attachmentButton) {
+                  attachmentButton.classList.remove('secondary');
+                  attachmentButton.classList.add('primary');
+                }
+              } else {
+                if (attachmentLabel) {
+                  attachmentLabel.textContent = 'Attach certificate';
+                }
+                if (attachmentButton) {
+                  attachmentButton.classList.add('secondary');
+                  attachmentButton.classList.remove('primary');
+                }
+              }
+            });
+          }
+
+          certificateForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const certificateType = document.getElementById('certificate-type');
+            const certificateNumber = document.getElementById('certificate-number');
+            const certificateExpiration = document.getElementById('certificate-expiration');
+
+            const certificateData = {
+              type: certificateType ? certificateType.value : '',
+              number: certificateNumber ? certificateNumber.value.trim() : '',
+              expiration: certificateExpiration ? certificateExpiration.value : '',
+              attachment: attachmentInput && attachmentInput.files && attachmentInput.files[0] ? attachmentInput.files[0].name : ''
+            };
+
+            console.log('Submitting certificate:', certificateData);
+
+            certificateForm.reset();
+
+            if (attachmentLabel) {
+              attachmentLabel.textContent = 'Attach certificate';
+            }
+            if (attachmentButton) {
+              attachmentButton.classList.add('secondary');
+              attachmentButton.classList.remove('primary');
+            }
+
+            ui('#certificate-dialog');
+
+            const certificateSnackbar = document.getElementById('certificate-snackbar');
+            if (certificateSnackbar) {
+              certificateSnackbar.classList.add('active');
+              setTimeout(() => {
+                certificateSnackbar.classList.remove('active');
+              }, 4000);
+            }
           });
         }
       });
@@ -1220,6 +1383,12 @@
         </form>
       </div>
     </dialog>
+
+    <!-- Certificate Confirmation Snackbar -->
+    <div id="certificate-snackbar" class="snackbar">
+      <i>check_circle</i>
+      <span>Certificate saved</span>
+    </div>
 
     <!-- Confirmation Snackbar -->
     <div id="report-snackbar" class="snackbar">

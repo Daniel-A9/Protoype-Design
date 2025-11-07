@@ -67,6 +67,14 @@
         
         <hr style="margin: 0.75rem 0;">
         
+        <!-- Report User Option -->
+        <a href="#" onclick="openReportDialog('user', 'current-user-profile'); toggleHamburgerMenu(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
+          <span style="font-size: 0.9rem;">Report User</span>
+        </a>
+        
+        <hr style="margin: 0.75rem 0;">
+        
         <!-- Create Category -->
         <div style="font-size: 0.7rem; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; font-weight: 600;">Create</div>
         
@@ -75,7 +83,7 @@
           <span style="font-size: 0.9rem;">Add Product</span>
         </a>
         
-        <a href="#" onclick="createNewPost(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+        <a href="#new-post-dialog" data-ui="#new-post-dialog" onclick="createNewPost()" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
           <i style="margin-right: 0.5rem; font-size: 1.2rem;">post_add</i>
           <span style="font-size: 0.9rem;">New Post</span>
         </a>
@@ -280,6 +288,41 @@
             </div>
         </dialog>
 
+        <!-- New Post Dialog -->
+        <dialog id="new-post-dialog" class="modal large" style="max-height: calc(100vh - 80px);">
+            <button data-ui="#new-post-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+              <i>close</i>
+            </button>
+            <div class="padding-medium">
+                <h4>Create New Post</h4>
+                <form id="new-post-form">
+                    <div class="margin-vertical-medium">
+                        <div class="field label border">
+                            <input type="text" id="new-post-title" placeholder=" ">
+                            <label>Title</label>
+                        </div>
+                    </div>
+                    <div class="margin-top-small margin-bottom-medium center-align">
+                        <input type="file" id="new-post-media" accept="image/*,video/*" style="display: none;">
+                        <button type="button" id="new-post-media-button" class="btn secondary border">
+                            <i>cloud_upload</i>
+                            <span id="new-post-media-label">Add image or video</span>
+                        </button>
+                    </div>
+                    <div class="margin-vertical-medium">
+                        <div class="field textarea label border">
+                            <textarea id="new-post-description" required></textarea>
+                            <label>Speak your mind</label>
+                        </div>
+                    </div>
+                    <nav class="margin-top-large right-align">
+                        <button type="button" class="btn" data-ui="#new-post-dialog">Cancel</button>
+                        <button type="submit" class="btn primary">Publish</button>
+                    </nav>
+                </form>
+            </div>
+        </dialog>
+
         <!-- Products Section -->
         <section id="products" class="padding-vertical-large">
             <div class="container">
@@ -397,7 +440,7 @@
                     <div class="col s12">
                         <div class="row middle-align margin-bottom-medium">
                           <h3>Latest Posts</h3>
-                          <button class="edit-control btn circle primary margin-left-small" onclick="createPost()" data-testid="create-post-btn">
+                          <button class="edit-control btn circle primary margin-left-small" data-ui="#new-post-dialog" data-testid="create-post-btn">
                             <i>add</i>
                           </button>
                         </div>
@@ -724,12 +767,213 @@
       }
 
       // Post Functions
+      function addPostToFeed({ title, description, media }) {
+        const postsColumn = document.querySelector('#posts .col.s12');
+        if (!postsColumn) {
+          return;
+        }
+
+        const vendorNameElement = document.getElementById('vendor-name');
+        const vendorAvatarElement = document.getElementById('profile-image');
+        const vendorName = vendorNameElement ? vendorNameElement.textContent.trim() : 'Brewery Central';
+        const vendorAvatar = vendorAvatarElement ? vendorAvatarElement.src : 'https://www.beercss.com/favicon.png';
+        const postId = `new-post-${Date.now()}`;
+
+        const card = buildPostCard({
+          id: postId,
+          title,
+          description,
+          media,
+          vendorName,
+          vendorAvatar
+        });
+
+        const firstCard = postsColumn.querySelector('.card');
+        if (firstCard) {
+          postsColumn.insertBefore(card, firstCard);
+        } else {
+          postsColumn.appendChild(card);
+        }
+
+        const isEditMode = localStorage.getItem('editMode') === 'true';
+        if (!isEditMode) {
+          card.querySelectorAll('.edit-control').forEach(control => {
+            control.style.display = 'none';
+          });
+        }
+      }
+
+      function buildPostCard({ id, title, description, media, vendorName, vendorAvatar }) {
+        const card = document.createElement('div');
+        card.className = 'card medium margin-bottom-large';
+        card.style.position = 'relative';
+        card.dataset.postId = id;
+
+        const editControls = document.createElement('div');
+        editControls.className = 'edit-control';
+        editControls.style.position = 'absolute';
+        editControls.style.top = '10px';
+        editControls.style.right = '10px';
+        editControls.style.zIndex = '10';
+        editControls.style.display = 'flex';
+        editControls.style.gap = '0.5rem';
+
+        const editButton = document.createElement('button');
+        editButton.className = 'circle small primary';
+        editButton.setAttribute('onclick', `editPost('${id}')`);
+        editButton.setAttribute('data-testid', `edit-post-${id}`);
+        const editIcon = document.createElement('i');
+        editIcon.textContent = 'edit';
+        editButton.appendChild(editIcon);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'circle small error';
+        deleteButton.setAttribute('onclick', `deletePost('${id}')`);
+        deleteButton.setAttribute('data-testid', `delete-post-${id}`);
+        const deleteIcon = document.createElement('i');
+        deleteIcon.textContent = 'delete';
+        deleteButton.appendChild(deleteIcon);
+
+        editControls.appendChild(editButton);
+        editControls.appendChild(deleteButton);
+        card.appendChild(editControls);
+
+        const cardHeader = document.createElement('div');
+        cardHeader.className = 'card-header';
+        const headerRow = document.createElement('div');
+        headerRow.className = 'row no-gap';
+
+        const avatarCol = document.createElement('div');
+        avatarCol.className = 'col s2';
+        const avatarImg = document.createElement('img');
+        avatarImg.className = 'circle small';
+        avatarImg.src = vendorAvatar;
+        avatarImg.alt = vendorName + ' profile picture';
+        avatarImg.loading = 'lazy';
+        avatarCol.appendChild(avatarImg);
+
+        const infoCol = document.createElement('div');
+        infoCol.className = 'col s10';
+        const nameHeading = document.createElement('h6');
+        nameHeading.textContent = vendorName;
+        const timestamp = document.createElement('small');
+        timestamp.className = 'text-grey';
+        timestamp.textContent = 'Just now';
+        infoCol.appendChild(nameHeading);
+        infoCol.appendChild(timestamp);
+
+        headerRow.appendChild(avatarCol);
+        headerRow.appendChild(infoCol);
+        cardHeader.appendChild(headerRow);
+        card.appendChild(cardHeader);
+
+        const cardContent = document.createElement('div');
+        cardContent.className = 'card-content';
+
+        if (title) {
+          const titleHeading = document.createElement('h5');
+          titleHeading.textContent = title;
+          cardContent.appendChild(titleHeading);
+        }
+
+        if (media && media.src) {
+          let mediaElement;
+          if (media.type === 'video') {
+            mediaElement = document.createElement('video');
+            mediaElement.controls = true;
+            mediaElement.className = 'responsive round';
+            mediaElement.style.height = '300px';
+            mediaElement.style.objectFit = 'cover';
+            mediaElement.setAttribute('playsinline', '');
+            mediaElement.src = media.src;
+          } else {
+            mediaElement = document.createElement('img');
+            mediaElement.className = 'responsive round';
+            mediaElement.style.height = '300px';
+            mediaElement.style.objectFit = 'cover';
+            mediaElement.src = media.src;
+            mediaElement.alt = title || 'Vendor post image';
+            mediaElement.loading = 'lazy';
+          }
+
+          if (media.src && media.src.startsWith('blob:')) {
+            const revokeUrl = function() {
+              URL.revokeObjectURL(media.src);
+            };
+            if (media.type === 'video') {
+              mediaElement.addEventListener('loadeddata', revokeUrl, { once: true });
+            } else {
+              mediaElement.addEventListener('load', revokeUrl, { once: true });
+            }
+          }
+
+          cardContent.appendChild(mediaElement);
+        }
+
+        const descriptionParagraph = document.createElement('p');
+        descriptionParagraph.textContent = description;
+        cardContent.appendChild(descriptionParagraph);
+
+        card.appendChild(cardContent);
+
+        const cardFooter = document.createElement('div');
+        cardFooter.className = 'card-footer';
+        const footerRow = document.createElement('div');
+        footerRow.className = 'row no-gap';
+
+        const likeCol = document.createElement('div');
+        likeCol.className = 'col s6';
+        const likeRow = document.createElement('div');
+        likeRow.className = 'row no-gap middle-align';
+        likeRow.style.cursor = 'pointer';
+        likeRow.style.padding = '0.5rem';
+        const likeIcon = document.createElement('i');
+        likeIcon.className = 'material-icons';
+        likeIcon.textContent = 'favorite_border';
+        const likeText = document.createElement('span');
+        likeText.className = 'like-text';
+        likeText.textContent = 'Like';
+        const likeCount = document.createElement('span');
+        likeCount.className = 'like-count';
+        likeCount.textContent = '0';
+        likeRow.appendChild(likeIcon);
+        likeRow.appendChild(likeText);
+        likeRow.appendChild(likeCount);
+        likeCol.appendChild(likeRow);
+
+        const commentCol = document.createElement('div');
+        commentCol.className = 'col s6';
+        const commentRow = document.createElement('div');
+        commentRow.className = 'row no-gap middle-align';
+        commentRow.style.cursor = 'pointer';
+        commentRow.style.padding = '0.5rem';
+        const commentIcon = document.createElement('i');
+        commentIcon.className = 'material-icons';
+        commentIcon.textContent = 'chat_bubble_outline';
+        const commentText = document.createElement('span');
+        commentText.className = 'comment-text';
+        commentText.textContent = 'Comment';
+        const commentCount = document.createElement('span');
+        commentCount.className = 'comment-count';
+        commentCount.textContent = '0';
+        commentRow.appendChild(commentIcon);
+        commentRow.appendChild(commentText);
+        commentRow.appendChild(commentCount);
+        commentCol.appendChild(commentRow);
+
+        footerRow.appendChild(likeCol);
+        footerRow.appendChild(commentCol);
+        cardFooter.appendChild(footerRow);
+        card.appendChild(cardFooter);
+
+        return card;
+      }
+
       function createPost() {
-        alert('Create Post functionality - would open post creation form');
+        ui('#new-post-dialog');
       }
 
       function createNewPost() {
-        alert('New Post functionality - would open post creation form');
         toggleHamburgerMenu();
       }
 
@@ -739,8 +983,10 @@
 
       function deletePost(postId) {
         if (confirm('Are you sure you want to delete this post?')) {
-          alert('Post ' + postId + ' would be deleted');
-          // In real implementation, would remove the post card from DOM
+          const postCard = document.querySelector(`[data-post-id="${postId}"]`);
+          if (postCard) {
+            postCard.remove();
+          }
         }
       }
 
@@ -750,8 +996,236 @@
         if (!storedEditMode) {
           hideEditControls();
         }
+
+        const newPostForm = document.getElementById('new-post-form');
+        if (newPostForm) {
+          const mediaInput = document.getElementById('new-post-media');
+          const mediaButton = document.getElementById('new-post-media-button');
+          const mediaLabel = document.getElementById('new-post-media-label');
+
+          if (mediaButton && mediaInput) {
+            mediaButton.addEventListener('click', function() {
+              mediaInput.click();
+            });
+          }
+
+          if (mediaInput) {
+            mediaInput.addEventListener('change', function() {
+              if (mediaInput.files && mediaInput.files[0]) {
+                if (mediaLabel) {
+                  mediaLabel.textContent = mediaInput.files[0].name;
+                }
+                if (mediaButton) {
+                  mediaButton.classList.remove('secondary');
+                  mediaButton.classList.add('primary');
+                }
+              } else {
+                if (mediaLabel) {
+                  mediaLabel.textContent = 'Add image or video';
+                }
+                if (mediaButton) {
+                  mediaButton.classList.add('secondary');
+                  mediaButton.classList.remove('primary');
+                }
+              }
+            });
+          }
+
+          newPostForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const titleInput = document.getElementById('new-post-title');
+            const descriptionInput = document.getElementById('new-post-description');
+            const mediaFile = mediaInput && mediaInput.files ? mediaInput.files[0] : null;
+
+            const title = titleInput ? titleInput.value.trim() : '';
+            const description = descriptionInput ? descriptionInput.value.trim() : '';
+
+            if (!description) {
+              return;
+            }
+
+            let media = null;
+            if (mediaFile) {
+              const objectURL = URL.createObjectURL(mediaFile);
+              const type = mediaFile.type && mediaFile.type.toLowerCase().startsWith('video') ? 'video' : 'image';
+              media = { src: objectURL, type };
+            }
+
+            addPostToFeed({ title, description, media });
+            newPostForm.reset();
+
+            if (mediaLabel) {
+              mediaLabel.textContent = 'Add image or video';
+            }
+            if (mediaButton) {
+              mediaButton.classList.add('secondary');
+              mediaButton.classList.remove('primary');
+            }
+
+            ui('#new-post-dialog');
+          });
+        }
       });
+
+      // Report Dialog Functions
+      let currentReportType = '';
+      let currentReportId = '';
+
+      function openReportDialog(type, id) {
+        currentReportType = type;
+        currentReportId = id;
+        
+        const dialog = document.getElementById('report-dialog');
+        const title = document.getElementById('report-dialog-title');
+        
+        // Set title based on type
+        const titles = {
+          'product': 'Report Product',
+          'post': 'Report Post',
+          'vendor': 'Report Vendor',
+          'user': 'Report User'
+        };
+        
+        title.textContent = titles[type] || 'Report';
+        
+        // Reset form
+        document.getElementById('report-form').reset();
+        document.getElementById('explain-field-container').style.display = 'none';
+        document.getElementById('other-field-container').style.display = 'none';
+        
+        // Open dialog
+        ui('#report-dialog');
+      }
+
+      function handleReasonChange() {
+        const reason = document.getElementById('report-reason').value;
+        const explainContainer = document.getElementById('explain-field-container');
+        const otherContainer = document.getElementById('other-field-container');
+        
+        // Hide both containers first
+        explainContainer.style.display = 'none';
+        otherContainer.style.display = 'none';
+        
+        // Show appropriate container based on selection
+        if (reason === 'inappropriate-content' || reason === 'inappropriate-product') {
+          explainContainer.style.display = 'block';
+        } else if (reason === 'other') {
+          otherContainer.style.display = 'block';
+        }
+      }
+
+      function submitReport(event) {
+        event.preventDefault();
+        
+        const reason = document.getElementById('report-reason').value;
+        const description = document.getElementById('report-description').value;
+        const explain = document.getElementById('report-explain').value;
+        const other = document.getElementById('report-other').value;
+        
+        // Build description with conditional fields
+        let fullDescription = description;
+        if (explain) {
+          fullDescription = `Explain: ${explain}\n\nDescription: ${description}`;
+        }
+        if (other) {
+          fullDescription = `Other: ${other}\n\nDescription: ${description}`;
+        }
+        
+        // Prepare report data
+        const reportData = {
+          type: currentReportType,
+          id: currentReportId,
+          reason: reason,
+          desc: fullDescription,
+          userid: 'current-user' // Mock user ID
+        };
+        
+        // Mock submission (in real app, this would be an HTMX POST)
+        console.log('Submitting report:', reportData);
+        
+        // Simulate API call
+        setTimeout(() => {
+          // Close dialog
+          ui('#report-dialog');
+          
+          // Show confirmation snackbar
+          const snackbar = document.getElementById('report-snackbar');
+          snackbar.classList.add('active');
+          
+          // Auto-hide snackbar after 4 seconds
+          setTimeout(() => {
+            snackbar.classList.remove('active');
+          }, 4000);
+        }, 500);
+      }
     </script>
+
+    <!-- Unified Report Dialog -->
+    <dialog id="report-dialog" class="modal medium">
+      <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <i>close</i>
+      </button>
+      
+      <div class="padding-medium">
+        <h4 id="report-dialog-title">Report</h4>
+        
+        <form id="report-form" onsubmit="submitReport(event); return false;">
+          <!-- Report Reason -->
+          <div class="margin-vertical-medium">
+            <div class="field label border">
+              <select id="report-reason" required onchange="handleReasonChange()">
+                <option value="">Select a reason</option>
+                <option value="inappropriate-content">Inappropriate Content</option>
+                <option value="inappropriate-product">Inappropriate product</option>
+                <option value="wholesaling">Wholesaling</option>
+                <option value="scam-fraud-spam">Scam, Fraud, or Spam</option>
+                <option value="misleading-information">Misleading Information</option>
+                <option value="harassment">Harassment</option>
+                <option value="other">Other</option>
+              </select>
+              <label>Reason for reporting</label>
+            </div>
+          </div>
+          
+          <!-- Conditional Explain Field for Inappropriate Content/Product -->
+          <div id="explain-field-container" class="margin-vertical-medium" style="display: none;">
+            <div class="field label border">
+              <input type="text" id="report-explain" placeholder=" ">
+              <label>Explain</label>
+            </div>
+          </div>
+          
+          <!-- Conditional Text Field for Other -->
+          <div id="other-field-container" class="margin-vertical-medium" style="display: none;">
+            <div class="field label border">
+              <input type="text" id="report-other" placeholder=" ">
+              <label>Please specify</label>
+            </div>
+          </div>
+          
+          <!-- Description -->
+          <div class="margin-vertical-medium">
+            <div class="field textarea label border">
+              <textarea id="report-description" required></textarea>
+              <label>Description</label>
+            </div>
+          </div>
+          
+          <!-- Submit and Cancel Buttons -->
+          <nav class="margin-top-large">
+            <button type="button" data-ui="#report-dialog" class="btn">Cancel</button>
+            <button type="submit" class="btn primary">Submit Report</button>
+          </nav>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- Confirmation Snackbar -->
+    <div id="report-snackbar" class="snackbar">
+      <i>check_circle</i>
+      <span>Your report has been submitted</span>
+    </div>
   </body>
 </html>
 

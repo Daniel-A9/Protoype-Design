@@ -72,12 +72,36 @@
     <!-- Fixed Top Header -->
     <div class="top-header">
       <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <!-- Menu buttons go here if needed -->
+        <!-- Hamburger Menu Button for Vendor -->
+        <div class="mobile-menu-btn" onclick="toggleHamburgerMenu()" data-testid="vendor-hamburger-menu-btn">
+          <i>menu</i>
+        </div>
       </div>
       <!-- Site Logo -->
       <a href="../../index.html" class="site-logo">
         <img src="../../Logo 333.png" alt="LocalMarket Logo">
       </a>
+    </div>
+
+    <!-- Hamburger Menu Overlay for Vendor -->
+    <div id="vendor-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    
+    <!-- Hamburger Menu Sidebar for Vendor -->
+    <div id="vendor-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
+      <div style="padding: 1rem;">
+        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+          <i>close</i>
+        </button>
+        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+        
+        <hr style="margin: 0.75rem 0;">
+        
+        <!-- Menu Items -->
+        <a href="#" onclick="openReportDialog('vendor', 'brewery-central'); toggleHamburgerMenu(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
+          <span style="font-size: 0.9rem;">Report Vendor</span>
+        </a>
+      </div>
     </div>
 
     <!-- Bottom Navigation -->
@@ -408,8 +432,8 @@
             <!-- Events Link -->
             <div class="container margin-top-medium">
                 <div class="center-align">
-                    <a href="../../events/beer/index.html" class="text-primary" style="text-decoration: none; font-size: 1rem;">
-                        See our upcoming events
+                    <a href="events.html" class="text-primary" style="text-decoration: none; font-size: 1rem;">
+                        Upcoming Event <i style="font-size: 0.875rem; vertical-align: middle;">arrow_forward</i>
                     </a>
                 </div>
             </div>
@@ -430,9 +454,17 @@
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" class="circle small">
                                     </div>
-                                    <div class="col s10">
+                                    <div class="col s8">
                                         <h6>Brewery Central</h6>
                                         <small class="text-grey">2 hours ago</small>
+                                    </div>
+                                    <div class="col s2 right-align">
+                                        <button data-ui="#post-menu-1" class="circle transparent small">
+                                            <i>more_vert</i>
+                                        </button>
+                                        <menu id="post-menu-1">
+                                            <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                        </menu>
                                     </div>
                                 </div>
                             </div>
@@ -513,9 +545,17 @@
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" class="circle small">
                                     </div>
-                                    <div class="col s10">
+                                    <div class="col s8">
                                         <h6>Brewery Central</h6>
                                         <small class="text-grey">1 day ago</small>
+                                    </div>
+                                    <div class="col s2 right-align">
+                                        <button data-ui="#post-menu-2" class="circle transparent small">
+                                            <i>more_vert</i>
+                                        </button>
+                                        <menu id="post-menu-2">
+                                            <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
+                                        </menu>
                                     </div>
                                 </div>
                             </div>
@@ -586,9 +626,17 @@
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" class="circle small">
                                     </div>
-                                    <div class="col s10">
+                                    <div class="col s8">
                                         <h6>Brewery Central</h6>
                                         <small class="text-grey">3 days ago</small>
+                                    </div>
+                                    <div class="col s2 right-align">
+                                        <button data-ui="#post-menu-3" class="circle transparent small">
+                                            <i>more_vert</i>
+                                        </button>
+                                        <menu id="post-menu-3">
+                                            <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
+                                        </menu>
                                     </div>
                                 </div>
                             </div>
@@ -744,6 +792,14 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Report Button -->
+                    <div class="margin-vertical-medium">
+                        <button class="btn outline" style="width: 100%;" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
+                            <i>flag</i>
+                            <span>Report Product</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </dialog>
@@ -753,6 +809,72 @@
     <!-- Contact Modal (HTMX target) -->
     <div id="contact-modal" class="modal">
         <!-- Content loaded via HTMX -->
+    </div>
+
+    <!-- Unified Report Dialog -->
+    <dialog id="report-dialog" class="modal medium">
+        <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+            <i>close</i>
+        </button>
+        
+        <div class="padding-medium">
+            <h4 id="report-dialog-title">Report</h4>
+            
+            <form id="report-form" onsubmit="submitReport(event); return false;">
+                <!-- Report Reason -->
+                <div class="margin-vertical-medium">
+                    <div class="field label border">
+                        <select id="report-reason" required onchange="handleReasonChange()">
+                            <option value="">Select a reason</option>
+                            <option value="inappropriate-content">Inappropriate Content</option>
+                            <option value="inappropriate-product">Inappropriate product</option>
+                            <option value="wholesaling">Wholesaling</option>
+                            <option value="scam-fraud-spam">Scam, Fraud, or Spam</option>
+                            <option value="misleading-information">Misleading Information</option>
+                            <option value="harassment">Harassment</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <label>Reason for reporting</label>
+                    </div>
+                </div>
+                
+                <!-- Conditional Explain Field for Inappropriate Content/Product -->
+                <div id="explain-field-container" class="margin-vertical-medium" style="display: none;">
+                    <div class="field label border">
+                        <input type="text" id="report-explain" placeholder=" ">
+                        <label>Explain</label>
+                    </div>
+                </div>
+                
+                <!-- Conditional Text Field for Other -->
+                <div id="other-field-container" class="margin-vertical-medium" style="display: none;">
+                    <div class="field label border">
+                        <input type="text" id="report-other" placeholder=" ">
+                        <label>Please specify</label>
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="margin-vertical-medium">
+                    <div class="field textarea label border">
+                        <textarea id="report-description" required></textarea>
+                        <label>Description</label>
+                    </div>
+                </div>
+                
+                <!-- Submit and Cancel Buttons -->
+                <nav class="margin-top-large">
+                    <button type="button" data-ui="#report-dialog" class="btn">Cancel</button>
+                    <button type="submit" class="btn primary">Submit Report</button>
+                </nav>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Confirmation Snackbar -->
+    <div id="report-snackbar" class="snackbar">
+        <i>check_circle</i>
+        <span>Your report has been submitted</span>
     </div>
 
 
@@ -1033,6 +1155,112 @@
             setTimeout(() => {
                 icon.classList.remove('heart-animate');
             }, 600);
+        }
+
+        // Hamburger Menu Toggle for Vendor
+        function toggleHamburgerMenu() {
+            const overlay = document.getElementById('vendor-hamburger-menu-overlay');
+            const menu = document.getElementById('vendor-hamburger-menu');
+            
+            if (overlay.style.display === 'none' || overlay.style.display === '') {
+                overlay.style.display = 'block';
+                menu.style.right = '0';
+            } else {
+                overlay.style.display = 'none';
+                menu.style.right = '-240px';
+            }
+        }
+
+        // Report Dialog Functions
+        let currentReportType = '';
+        let currentReportId = '';
+
+        function openReportDialog(type, id) {
+            currentReportType = type;
+            currentReportId = id;
+            
+            const dialog = document.getElementById('report-dialog');
+            const title = document.getElementById('report-dialog-title');
+            
+            // Set title based on type
+            const titles = {
+                'product': 'Report Product',
+                'post': 'Report Post',
+                'vendor': 'Report Vendor',
+                'user': 'Report User'
+            };
+            
+            title.textContent = titles[type] || 'Report';
+            
+            // Reset form
+            document.getElementById('report-form').reset();
+            document.getElementById('explain-field-container').style.display = 'none';
+            document.getElementById('other-field-container').style.display = 'none';
+            
+            // Open dialog
+            ui('#report-dialog');
+        }
+
+        function handleReasonChange() {
+            const reason = document.getElementById('report-reason').value;
+            const explainContainer = document.getElementById('explain-field-container');
+            const otherContainer = document.getElementById('other-field-container');
+            
+            // Hide both containers first
+            explainContainer.style.display = 'none';
+            otherContainer.style.display = 'none';
+            
+            // Show appropriate container based on selection
+            if (reason === 'inappropriate-content' || reason === 'inappropriate-product') {
+                explainContainer.style.display = 'block';
+            } else if (reason === 'other') {
+                otherContainer.style.display = 'block';
+            }
+        }
+
+        function submitReport(event) {
+            event.preventDefault();
+            
+            const reason = document.getElementById('report-reason').value;
+            const description = document.getElementById('report-description').value;
+            const explain = document.getElementById('report-explain').value;
+            const other = document.getElementById('report-other').value;
+            
+            // Build description with conditional fields
+            let fullDescription = description;
+            if (explain) {
+                fullDescription = `Explain: ${explain}\n\nDescription: ${description}`;
+            }
+            if (other) {
+                fullDescription = `Other: ${other}\n\nDescription: ${description}`;
+            }
+            
+            // Prepare report data
+            const reportData = {
+                type: currentReportType,
+                id: currentReportId,
+                reason: reason,
+                desc: fullDescription,
+                userid: 'current-user' // Mock user ID
+            };
+            
+            // Mock submission (in real app, this would be an HTMX POST)
+            console.log('Submitting report:', reportData);
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Close dialog
+                ui('#report-dialog');
+                
+                // Show confirmation snackbar
+                const snackbar = document.getElementById('report-snackbar');
+                snackbar.classList.add('active');
+                
+                // Auto-hide snackbar after 4 seconds
+                setTimeout(() => {
+                    snackbar.classList.remove('active');
+                }, 4000);
+            }, 500);
         }
     </script>
   </body>

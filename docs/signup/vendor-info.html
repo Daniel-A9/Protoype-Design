@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
-    <title>Tell Us About Yourself • LocalMarket</title>
+    <title>Personal Account • LocalMarket</title>
     <link href="../style.css" rel="stylesheet">
     <style>
       .signup-container {
@@ -16,7 +16,7 @@
         padding: 2rem 1rem;
         background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%);
       }
-      
+
       .signup-card {
         background: var(--surface-container);
         border-radius: 24px;
@@ -26,14 +26,14 @@
         width: 100%;
         border: 2px solid var(--outline-variant);
       }
-      
+
       .step-indicator {
         text-align: center;
         color: var(--on-surface-variant);
         font-size: 0.9rem;
         margin-bottom: 1rem;
       }
-      
+
       .illustration-top {
         width: 100px;
         height: 100px;
@@ -43,13 +43,13 @@
         border: 3px solid var(--primary-container);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       }
-      
+
       .illustration-top img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-      
+
       .page-title {
         text-align: center;
         font-size: 1.8rem;
@@ -57,53 +57,14 @@
         margin-bottom: 0.5rem;
         color: var(--on-surface);
       }
-      
+
       .page-subtitle {
         text-align: center;
         color: var(--on-surface-variant);
         margin-bottom: 2rem;
         font-size: 1rem;
       }
-      
-      .interests-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1rem;
-        margin: 1.5rem 0;
-      }
-      
-      .interest-checkbox {
-        display: none;
-      }
-      
-      .interest-label {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem 1rem;
-        border: 2px solid var(--outline-variant);
-        border-radius: 16px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: var(--surface-container-low);
-      }
-      
-      .interest-label:hover {
-        border-color: var(--primary);
-        transform: translateY(-2px);
-      }
-      
-      .interest-checkbox:checked + .interest-label {
-        border-color: var(--primary);
-        background: var(--primary-container);
-        color: var(--on-primary-container);
-      }
-      
-      .interest-label i {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-      
+
       .back-link {
         display: inline-flex;
         align-items: center;
@@ -113,7 +74,7 @@
         margin-bottom: 1rem;
         font-weight: 500;
       }
-      
+
       .back-link:hover {
         text-decoration: underline;
       }
@@ -132,17 +93,17 @@
           <i>arrow_back</i>
           <span>Back</span>
         </a>
-        
-        <div class="step-indicator">Step 4 of 4</div>
-        
+
+        <div class="step-indicator">Step 4 of 8</div>
+
         <div class="illustration-top">
-          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop" alt="Shopper illustration" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop" alt="Vendor illustration" loading="lazy">
         </div>
-        
-        <h1 class="page-title">Almost There!</h1>
+
+        <h1 class="page-title">Personal Account</h1>
         <p class="page-subtitle">Tell us a bit about yourself</p>
-        
-        <form id="shopperForm">
+
+        <form id="vendorForm">
           <div class="field label border round">
             <input type="text" id="name" required>
             <label>Full Name *</label>
@@ -174,108 +135,11 @@
             <input type="text" id="zipcode" required pattern="[0-9]{5}">
             <label>Zip Code *</label>
           </div>
-          
-          <div style="margin-top: 2rem;">
-            <h6 class="small" style="margin-bottom: 1rem;">What interests you? (Select all that apply)</h6>
-            <div class="grid small-space">
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-discussions" name="interests" value="discussions" class="interest-checkbox">
-                <label for="interest-discussions" class="interest-label">
-                  <i>groups</i>
-                  <span>Discussions</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-events" name="interests" value="events" class="interest-checkbox">
-                <label for="interest-events" class="interest-label">
-                  <i>event</i>
-                  <span>Events</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-farms" name="interests" value="farms" class="interest-checkbox">
-                <label for="interest-farms" class="interest-label">
-                  <i>eco</i>
-                  <span>Farms</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-classes" name="interests" value="classes" class="interest-checkbox">
-                <label for="interest-classes" class="interest-label">
-                  <i>school</i>
-                  <span>Classes</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-produce" name="interests" value="produce" class="interest-checkbox">
-                <label for="interest-produce" class="interest-label">
-                  <i>local_florist</i>
-                  <span>Produce</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-eggs" name="interests" value="eggs" class="interest-checkbox">
-                <label for="interest-eggs" class="interest-label">
-                  <i>egg</i>
-                  <span>Eggs</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-meat" name="interests" value="meat" class="interest-checkbox">
-                <label for="interest-meat" class="interest-label">
-                  <i>restaurant</i>
-                  <span>Meat</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-teas" name="interests" value="teas" class="interest-checkbox">
-                <label for="interest-teas" class="interest-label">
-                  <i>local_cafe</i>
-                  <span>Teas</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-herbal" name="interests" value="herbal-remedies" class="interest-checkbox">
-                <label for="interest-herbal" class="interest-label">
-                  <i>healing</i>
-                  <span>Herbal Remedies</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-crafts" name="interests" value="crafts" class="interest-checkbox">
-                <label for="interest-crafts" class="interest-label">
-                  <i>brush</i>
-                  <span>Crafts</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-woodworking" name="interests" value="woodworking" class="interest-checkbox">
-                <label for="interest-woodworking" class="interest-label">
-                  <i>carpenter</i>
-                  <span>Woodworking</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-breweries" name="interests" value="breweries" class="interest-checkbox">
-                <label for="interest-breweries" class="interest-label">
-                  <i>sports_bar</i>
-                  <span>Breweries</span>
-                </label>
-              </div>
-              <div class="s6 m4 l2">
-                <input type="checkbox" id="interest-wineries" name="interests" value="wineries" class="interest-checkbox">
-                <label for="interest-wineries" class="interest-label">
-                  <i>wine_bar</i>
-                  <span>Wineries</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          
+
           <div style="margin-top: 2rem; display: flex; justify-content: center;">
             <button type="submit" class="btn primary round medium">
-              <span>Complete Sign Up</span>
-              <i>check</i>
+              <span>Continue</span>
+              <i>arrow_forward</i>
             </button>
           </div>
         </form>
@@ -285,7 +149,6 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
-      // Theme toggle
       (function() {
         const storedTheme = localStorage.getItem('theme') || 'light';
         document.body.classList.remove('dark', 'light');
@@ -320,7 +183,7 @@
           case 'first':
             return first;
           case 'firstLastInitial':
-            return last ? `${first} ${last.charAt(0).toUpperCase()}.` : first;
+            return last ? first + ' ' + last.charAt(0).toUpperCase() + '.' : first;
           case 'full':
             return parts.join(' ');
           default:
@@ -350,22 +213,18 @@
       });
 
       updateDisplayName();
-      
-      document.getElementById('shopperForm').addEventListener('submit', function(e) {
+
+      document.getElementById('vendorForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const name = document.getElementById('name').value;
         const zipcode = document.getElementById('zipcode').value;
-        const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
         const displayName = document.getElementById('displayName').value;
-        
+
         sessionStorage.setItem('signup_name', name);
         sessionStorage.setItem('signup_zipcode', zipcode);
-        sessionStorage.setItem('signup_interests', JSON.stringify(interests));
         sessionStorage.setItem('signup_display_name', displayName);
-        
-        // Redirect to shopper profile
-        alert('Welcome ' + name + '! Your account has been created.');
-        window.location.href = '../userprofile/shopper.html';
+
+        window.location.href = 'vendor-category.html';
       });
     </script>
   </body>

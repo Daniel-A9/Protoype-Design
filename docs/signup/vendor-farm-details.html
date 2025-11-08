@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Details • LocalMarket</title>
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
+    .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 600px; width: 100%; border: 2px solid var(--outline-variant); }
+    .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1rem; }
+    .illustration-top { width: 100px; height: 100px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-container); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .illustration-top img { width: 100%; height: 100%; object-fit: cover; }
+    .page-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--on-surface); }
+    .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2rem; font-size: 1rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; }
+    .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; margin: 1rem 0; }
+    .dropdown-card { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding: 1rem; border: 2px solid var(--outline-variant); border-radius: 12px; background: transparent; }
+    .dropdown-card select { flex: 1; color: var(--on-surface); background-color: var(--surface); }
+    .dropdown-card select option { color: var(--on-surface); background-color: var(--surface); }
+    .remove-btn { background: none; border: none; color: var(--error, #b3261e); cursor: pointer; padding: 0.5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; }
+    .remove-btn:hover { background: var(--error-container, rgba(179, 38, 30, 0.1)); }
+    .add-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1rem; border: 2px dashed var(--outline-variant); border-radius: 12px; background: transparent; color: var(--primary); cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; }
+    .add-btn:hover { border-color: var(--primary); background: var(--primary-container); }
+    .button-wrapper { margin-top: 2rem; display: flex; justify-content: center; }
+  </style>
+</head>
+<body>
+
+  <!-- Site Logo -->
+  <a href="../index.html" class="site-logo">
+    <img src="../Logo 333.png" alt="LocalMarket Logo">
+  </a>
+
+  <div class="signup-container">
+    <div class="signup-card">
+      <a href="choose-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+      <div class="step-indicator">Step 4 of 8</div>
+      <div class="illustration-top"><img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop" alt="Vendor"></div>
+      <h1 class="page-title">Tell Us About Your Farm</h1>
+      <p class="page-subtitle">We need some basic information to get started</p>
+      <form id="vendorForm">
+        <div class="field label border round">
+          <input type="text" id="company-name" required>
+          <label>Farm/Business Name *</label>
+        </div>
+        <div style="margin-top: 1rem;">
+          <label style="display: block; margin-bottom: 1rem; font-weight: 600;">Primary Vendor Type *</label>
+          <div class="dropdown-card">
+            <select id="vendor-type" required>
+              <option value="">Select a vendor type</option>
+              <option value="small-farm">Small Farm</option>
+              <option value="medium-farm">Medium Farm</option>
+              <option value="orchard">Orchard</option>
+              <option value="ranch">Ranch</option>
+              <option value="nursery">Nursery</option>
+              <option value="apiary">Apiary</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top: 1rem;">
+          <label style="display: block; margin-bottom: 1rem; font-weight: 600;">Product Types *</label>
+          <div id="product-types-container">
+            <div class="dropdown-card">
+              <select class="product-select" name="product-types" required>
+                <option value="">Select a product type</option>
+                <option value="produce">Produce</option>
+                <option value="dairy">Dairy</option>
+                <option value="eggs">Eggs</option>
+                <option value="meat">Meat</option>
+                <option value="baked-goods">Baked Goods</option>
+                <option value="beverages">Beverages</option>
+                <option value="prepared-foods">Prepared Foods</option>
+                <option value="handmade-crafts">Handmade Crafts</option>
+                <option value="art">Art</option>
+                <option value="jewelry">Jewelry</option>
+                <option value="clothing">Clothing</option>
+                <option value="soap">Soap</option>
+                <option value="candles">Candles</option>
+                <option value="teas">Teas</option>
+                <option value="herbs">Herbs</option>
+                <option value="spices">Spices</option>
+                <option value="plants">Plants</option>
+                <option value="tinctures">Tinctures</option>
+                <option value="woodworking">Woodworking</option>
+                <option value="ceramics">Ceramics</option>
+                <option value="other">Other</option>
+              </select>
+              <button type="button" class="remove-btn" onclick="removeProductDropdown(this)" style="display: none;"><i>close</i></button>
+              <div class="field label border round other-input" style="display: none;">
+                <input type="text" class="other-text" placeholder=" ">
+                <label>Describe your product *</label>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="add-btn" onclick="addProductDropdown()">
+            <i>add</i>
+            <span>Add Another Product Type</span>
+          </button>
+        </div>
+        <div class="button-wrapper">
+          <button type="submit" class="btn primary round medium"><span>Continue</span><i>arrow_forward</i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+  <script>
+    (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    function attachProductSelect(select) {
+      const card = select.closest('.dropdown-card');
+      const otherField = card.querySelector('.other-input');
+      const otherInput = otherField ? otherField.querySelector('input') : null;
+      if (!otherField || !otherInput) {
+        return;
+      }
+      const toggleOtherField = () => {
+        if (select.value === 'other') {
+          otherField.style.display = 'block';
+          otherInput.required = true;
+        } else {
+          otherField.style.display = 'none';
+          otherInput.required = false;
+          otherInput.value = '';
+        }
+      };
+      select.addEventListener('change', toggleOtherField);
+      toggleOtherField();
+    }
+    function addProductDropdown() {
+      const container = document.getElementById('product-types-container');
+      const newCard = document.createElement('div');
+      newCard.className = 'dropdown-card';
+      newCard.innerHTML = `
+        <select class="product-select" name="product-types">
+          <option value="">Select a product type</option>
+          <option value="produce">Produce</option>
+          <option value="dairy">Dairy</option>
+          <option value="eggs">Eggs</option>
+          <option value="meat">Meat</option>
+          <option value="baked-goods">Baked Goods</option>
+          <option value="beverages">Beverages</option>
+          <option value="prepared-foods">Prepared Foods</option>
+          <option value="handmade-crafts">Handmade Crafts</option>
+          <option value="art">Art</option>
+          <option value="jewelry">Jewelry</option>
+          <option value="clothing">Clothing</option>
+          <option value="soap">Soap</option>
+          <option value="candles">Candles</option>
+          <option value="teas">Teas</option>
+          <option value="herbs">Herbs</option>
+          <option value="spices">Spices</option>
+          <option value="plants">Plants</option>
+          <option value="tinctures">Tinctures</option>
+          <option value="woodworking">Woodworking</option>
+          <option value="ceramics">Ceramics</option>
+          <option value="other">Other</option>
+        </select>
+        <button type="button" class="remove-btn" onclick="removeProductDropdown(this)"><i>close</i></button>
+        <div class="field label border round other-input" style="display: none;">
+          <input type="text" class="other-text" placeholder=" ">
+          <label>Describe your product *</label>
+        </div>
+      `;
+      container.appendChild(newCard);
+      const select = newCard.querySelector('.product-select');
+      attachProductSelect(select);
+      updateProductRemoveButtons();
+    }
+    function removeProductDropdown(btn) {
+      const card = btn.closest('.dropdown-card');
+      if (document.querySelectorAll('.dropdown-card').length > 1) {
+        card.remove();
+        updateProductRemoveButtons();
+      }
+    }
+    function updateProductRemoveButtons() {
+      const cards = document.querySelectorAll('#product-types-container .dropdown-card');
+      cards.forEach((card, index) => {
+        const removeBtn = card.querySelector('.remove-btn');
+        if (cards.length > 1) {
+          removeBtn.style.display = 'flex';
+        } else {
+          removeBtn.style.display = 'none';
+        }
+      });
+    }
+    document.querySelectorAll('.product-select').forEach(select => attachProductSelect(select));
+    document.getElementById('vendorForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const cards = Array.from(document.querySelectorAll('#product-types-container .dropdown-card'));
+      const products = [];
+      let otherMissing = false;
+      cards.forEach(card => {
+        const select = card.querySelector('.product-select');
+        const value = select.value;
+        if (value === 'other') {
+          const otherInput = card.querySelector('.other-input input');
+          const customValue = otherInput.value.trim();
+          if (!customValue) {
+            otherMissing = true;
+            otherInput.focus();
+          } else {
+            products.push(customValue);
+          }
+        } else if (value) {
+          products.push(value);
+        }
+      });
+      if (otherMissing) {
+        alert('Please describe your "Other" product type');
+        return;
+      }
+      if (products.length===0){
+        alert('Please select at least one product type');
+        return;
+      }
+      sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);
+      sessionStorage.setItem('vendor_type',document.getElementById('vendor-type').value);
+      sessionStorage.setItem('vendor_products',JSON.stringify(products));
+      sessionStorage.setItem('vendor_category',sessionStorage.getItem('vendor_category') || 'farmer');
+      sessionStorage.setItem('farmer_company',document.getElementById('company-name').value);
+      if (sessionStorage.getItem('vendor_category') === 'artisan' && sessionStorage.getItem('artisan_type') === 'food') {
+        window.location.href='artisan-food-type.html';
+      } else if (sessionStorage.getItem('vendor_category') === 'artisan') {
+        window.location.href='artisan-nonfood.html';
+      } else {
+        window.location.href='food-vendor-details.html';
+      }
+    });
+  </script>
+</body>
+</html>
+

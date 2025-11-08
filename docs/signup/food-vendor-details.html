@@ -179,6 +179,23 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
       (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+      const stepIndicator = document.querySelector('.step-indicator');
+      const backLink = document.querySelector('.back-link');
+      const vendorCategory = sessionStorage.getItem('vendor_category');
+      const artisanType = sessionStorage.getItem('artisan_type');
+      if (stepIndicator) {
+        if (vendorCategory === 'farmer') {
+          stepIndicator.textContent = 'Step 6 of 6 - Final Step!';
+          if (backLink) {
+            backLink.setAttribute('href','vendor-details.html');
+          }
+        } else if (vendorCategory === 'artisan' && artisanType === 'food') {
+          stepIndicator.textContent = 'Step 8 of 8 - Final Step!';
+          if (backLink) {
+            backLink.setAttribute('href','artisan-food-type.html');
+          }
+        }
+      }
       const certificationOptions = `
         <option value="">Select a certification</option>
         <option value="regenerative-organic-certified">Regenerative Organic Certified</option>

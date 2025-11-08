@@ -32,17 +32,17 @@
 
     <div class="signup-container">
       <div class="signup-card">
-        <a href="vendor-details.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+        <a href="choose-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
         <div class="step-indicator">Step 5 of 8</div>
         <h1 class="page-title">What type of vendor are you?</h1>
         <p class="page-subtitle">Choose the option that best describes you</p>
         <div class="type-cards">
-          <a href="artisan-type.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'artisan'); return true;">
+          <a href="artisan-type.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'artisan'); sessionStorage.removeItem('artisan_type'); return true;">
             <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Artisan"></div>
             <h3>Artisan</h3>
             <p>I create handmade or crafted products</p>
           </a>
-          <a href="artisan-food-type.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'farmer'); return true;">
+          <a href="vendor-details.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'farmer'); sessionStorage.removeItem('artisan_type'); return true;">
             <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=200&h=200&fit=crop" alt="Farmer"></div>
             <h3>Farmer</h3>
             <p>I grow or produce food products</p>

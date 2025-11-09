@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase Your Craft • LocalMarket</title>
+    <link href="../style.css" rel="stylesheet">
+    <style>
+      .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
+      .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 720px; width: 100%; border: 2px solid var(--outline-variant); }
+      .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1rem; }
+      .page-title { text-align: center; font-size: 1.9rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--on-surface); }
+      .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2rem; font-size: 1rem; }
+      .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
+      .back-link:hover { text-decoration: underline; }
+      .media-section { margin-bottom: 2rem; border: 2px dashed var(--outline-variant); border-radius: 18px; padding: 1.5rem; background: var(--surface-container-low); }
+      .media-section:last-of-type { margin-bottom: 0; }
+      .media-section header { margin-bottom: 1rem; }
+      .preview-chip { width: 96px; height: 96px; border-radius: 50%; overflow: hidden; border: 2px solid var(--primary-container); display: flex; align-items: center; justify-content: center; background: var(--surface); position: relative; }
+      .preview-chip img { width: 100%; height: 100%; object-fit: cover; }
+      .preview-chip span { color: var(--on-surface-variant); font-size: 0.75rem; text-align: center; padding: 0 0.5rem; }
+      .preview-banner { width: 140px; height: 90px; border-radius: 12px; overflow: hidden; border: 2px solid var(--primary-container); display: flex; align-items: center; justify-content: center; background: var(--surface); position: relative; }
+      .preview-banner img { width: 100%; height: 100%; object-fit: cover; }
+      .preview-banner span { color: var(--on-surface-variant); font-size: 0.75rem; text-align: center; padding: 0 0.5rem; }
+      .thumbnail-card { display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 12px; border: 2px solid var(--surface-variant); background: var(--surface); }
+      .thumbnail-card img { position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover; }
+      .thumbnail-card button { position: absolute; top: 0.35rem; right: 0.35rem; }
+      .empty-gallery { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; padding: 1rem 0; }
+      @media (max-width: 600px) {
+        .signup-card { padding: 2rem 1.5rem; }
+        .preview-banner { width: 120px; height: 80px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Site Logo -->
+    <a href="../index.html" class="site-logo">
+      <img src="../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
+    </a>
+
+    <div class="signup-container">
+      <div class="signup-card">
+        <a href="artisan-details.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+        <div class="step-indicator" data-step="8" data-final="true">Step 8 of 8 - Final Step!</div>
+        <h1 class="page-title">Showcase Your Craft</h1>
+        <p class="page-subtitle">Add photos to help shoppers connect with your work</p>
+
+        <form id="artisanMediaForm" class="column large-space">
+          <section class="media-section column">
+            <header>
+              <h2 class="h5">Profile Picture</h2>
+              <p class="small-text">This appears as your avatar across LocalMarket.</p>
+            </header>
+            <div class="row middle-align small-space wrap">
+              <div class="preview-chip" id="profile-preview-wrapper">
+                <img id="profile-preview" src="" alt="Profile preview" loading="lazy" hidden>
+                <span id="profile-placeholder">Add photo</span>
+              </div>
+              <div class="field label border round max">
+                <input type="file" id="profile-image" accept="image/*" required>
+                <label>Upload profile photo *</label>
+              </div>
+            </div>
+          </section>
+
+          <section class="media-section column">
+            <header>
+              <h2 class="h5">Banner Image</h2>
+              <p class="small-text">Displayed at the top of your storefront.</p>
+            </header>
+            <div class="row middle-align small-space wrap">
+              <div class="preview-banner" id="banner-preview-wrapper">
+                <img id="banner-preview" src="" alt="Banner preview" loading="lazy" hidden>
+                <span id="banner-placeholder">Add banner</span>
+              </div>
+              <div class="field label border round max">
+                <input type="file" id="banner-image" accept="image/*" required>
+                <label>Upload banner image *</label>
+              </div>
+            </div>
+          </section>
+
+          <section class="media-section column">
+            <header>
+              <h2 class="h5">Make a Gallery</h2>
+              <p class="small-text">Share up to 8 photos that highlight your products.</p>
+            </header>
+            <div class="field label border round">
+              <input type="file" id="gallery-images" accept="image/*" multiple>
+              <label>Add gallery photos</label>
+            </div>
+            <div id="gallery-thumbnails" class="grid small-space"></div>
+            <div id="gallery-empty" class="empty-gallery">No gallery images yet.</div>
+            <div class="row right-align">
+              <button type="button" id="clear-gallery" class="chip border" style="display: none;">
+                <i>delete</i>
+                <span>Clear gallery</span>
+              </button>
+            </div>
+          </section>
+
+          <div class="row right-align">
+            <button type="submit" class="btn primary round medium">
+              <span>Complete Sign Up</span>
+              <i>check</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script>
+      (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+      (function(){const i=document.querySelector('.step-indicator');if(!i){return;}const s=Number(i.dataset.step)||8;const total=Number(sessionStorage.getItem('signup_total_steps'))||8;const isFinal=i.dataset.final==='true'||s>=total;i.textContent=`Step ${s} of ${total}`+(isFinal?' - Final Step!':'');})();
+
+      const profileInput = document.getElementById('profile-image');
+      const profilePreview = document.getElementById('profile-preview');
+      const profilePlaceholder = document.getElementById('profile-placeholder');
+
+      const bannerInput = document.getElementById('banner-image');
+      const bannerPreview = document.getElementById('banner-preview');
+      const bannerPlaceholder = document.getElementById('banner-placeholder');
+
+      const galleryInput = document.getElementById('gallery-images');
+      const galleryContainer = document.getElementById('gallery-thumbnails');
+      const galleryEmptyState = document.getElementById('gallery-empty');
+      const clearGalleryButton = document.getElementById('clear-gallery');
+
+      let galleryImages = [];
+
+      function readFileAsDataURL(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      async function handleSingleImage(input, preview, placeholder, storageKey) {
+        const file = input.files && input.files[0];
+        if (!file) {
+          return;
+        }
+        const dataUrl = await readFileAsDataURL(file);
+        preview.src = dataUrl;
+        preview.hidden = false;
+        placeholder.hidden = true;
+        sessionStorage.setItem(storageKey, dataUrl);
+      }
+
+      function restoreSingleImage(preview, placeholder, storageKey) {
+        const stored = sessionStorage.getItem(storageKey);
+        if (stored) {
+          preview.src = stored;
+          preview.hidden = false;
+          placeholder.hidden = true;
+        }
+      }
+
+      function renderGallery() {
+        galleryContainer.innerHTML = '';
+        if (!galleryImages.length) {
+          galleryEmptyState.style.display = 'block';
+          clearGalleryButton.style.display = 'none';
+          return;
+        }
+        galleryEmptyState.style.display = 'none';
+        clearGalleryButton.style.display = 'inline-flex';
+        galleryImages.forEach((src, index) => {
+          const cell = document.createElement('div');
+          cell.className = 's6 m4 l3';
+          cell.innerHTML = `
+            <div class="thumbnail-card">
+              <img src="${src}" alt="Gallery image ${index + 1}" loading="lazy">
+              <button type="button" class="circle transparent small" data-index="${index}">
+                <i>close</i>
+              </button>
+            </div>
+          `;
+          galleryContainer.appendChild(cell);
+        });
+      }
+
+      function restoreGallery() {
+        const stored = sessionStorage.getItem('artisan_media_gallery');
+        if (stored) {
+          try {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed)) {
+              galleryImages = parsed.slice(0, 8);
+            }
+          } catch (err) {
+            galleryImages = [];
+          }
+        }
+        renderGallery();
+      }
+
+      function removeGalleryImage(index) {
+        galleryImages.splice(index, 1);
+        sessionStorage.setItem('artisan_media_gallery', JSON.stringify(galleryImages));
+        renderGallery();
+      }
+
+      galleryContainer.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-index]');
+        if (!button) {
+          return;
+        }
+        const index = Number(button.getAttribute('data-index'));
+        if (!Number.isNaN(index)) {
+          removeGalleryImage(index);
+        }
+      });
+
+      clearGalleryButton.addEventListener('click', () => {
+        galleryImages = [];
+        sessionStorage.removeItem('artisan_media_gallery');
+        renderGallery();
+      });
+
+      galleryInput.addEventListener('change', async () => {
+        const files = Array.from(galleryInput.files || []);
+        if (!files.length) {
+          return;
+        }
+        for (const file of files) {
+          if (galleryImages.length >= 8) {
+            break;
+          }
+          try {
+            const dataUrl = await readFileAsDataURL(file);
+            galleryImages.push(dataUrl);
+          } catch (error) {
+            console.error('Unable to read file', error);
+          }
+        }
+        sessionStorage.setItem('artisan_media_gallery', JSON.stringify(galleryImages));
+        renderGallery();
+        galleryInput.value = '';
+      });
+
+      profileInput.addEventListener('change', () => handleSingleImage(profileInput, profilePreview, profilePlaceholder, 'artisan_media_profile'));
+      bannerInput.addEventListener('change', () => handleSingleImage(bannerInput, bannerPreview, bannerPlaceholder, 'artisan_media_banner'));
+
+      restoreSingleImage(profilePreview, profilePlaceholder, 'artisan_media_profile');
+      restoreSingleImage(bannerPreview, bannerPlaceholder, 'artisan_media_banner');
+      restoreGallery();
+
+      document.getElementById('artisanMediaForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const hasProfile = !!sessionStorage.getItem('artisan_media_profile');
+        const hasBanner = !!sessionStorage.getItem('artisan_media_banner');
+        if (!hasProfile || !hasBanner) {
+          alert('Please upload both a profile photo and a banner image to continue.');
+          return;
+        }
+        const email = sessionStorage.getItem('signup_email');
+        const name = email ? email.split('@')[0] : 'Friend';
+        alert('Welcome ' + name + '! Your artisan account has been created.');
+        sessionStorage.clear();
+        window.location.href = '../index.html';
+      });
+    </script>
+  </body>
+</html>
+

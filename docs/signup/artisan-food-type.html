@@ -40,7 +40,23 @@
         <h1 class="page-title">What types of prepared foods?</h1>
         <p class="page-subtitle">Select all that apply</p>
         <form id="foodTypeForm">
-          <div id="food-types-container">
+          <div class="field label border round">
+            <input type="text" id="food-business-name" required>
+            <label>Business Name *</label>
+          </div>
+          <div class="field textarea label border round top-margin">
+            <textarea id="food-description" placeholder=" " required></textarea>
+            <label>Food Description *</label>
+          </div>
+          <div class="field label border round top-margin">
+            <input type="url" id="food-website" placeholder=" ">
+            <label>Website (optional)</label>
+          </div>
+          <div class="field label border round top-margin">
+            <input type="text" id="food-address" placeholder=" ">
+            <label>Business Address (optional)</label>
+          </div>
+          <div id="food-types-container" class="top-margin">
             <div class="dropdown-card">
               <select class="food-type-select" name="food-types" required>
                 <option value="">Select a food type</option>
@@ -154,6 +170,22 @@
       document.querySelectorAll('.food-type-select').forEach(select => attachFoodTypeSelect(select));
       document.getElementById('foodTypeForm').addEventListener('submit',function(e){
         e.preventDefault();
+        const nameInput = document.getElementById('food-business-name');
+        const descriptionInput = document.getElementById('food-description');
+        const websiteInput = document.getElementById('food-website');
+        const addressInput = document.getElementById('food-address');
+        const nameValue = nameInput.value.trim();
+        const descriptionValue = descriptionInput.value.trim();
+        if (!nameValue) {
+          alert('Please provide your business name.');
+          nameInput.focus();
+          return;
+        }
+        if (!descriptionValue) {
+          alert('Please describe your food offerings.');
+          descriptionInput.focus();
+          return;
+        }
         const cards = Array.from(document.querySelectorAll('#food-types-container .dropdown-card'));
         const selected = [];
         let otherMissing = false;
@@ -181,6 +213,11 @@
           alert('Please select at least one food type');
           return;
         }
+        nameInput.value = nameValue;
+        sessionStorage.setItem('artisan_food_company', nameValue);
+        sessionStorage.setItem('artisan_food_description', descriptionValue);
+        sessionStorage.setItem('artisan_food_website', (websiteInput.value || '').trim());
+        sessionStorage.setItem('artisan_food_address', (addressInput.value || '').trim());
         sessionStorage.setItem('food_types',JSON.stringify(selected));
         window.location.href='food-vendor-details.html';
       });

@@ -202,10 +202,17 @@
     document.querySelectorAll('.product-select').forEach(select => attachProductSelect(select));
     document.getElementById('vendorForm').addEventListener('submit',function(e){
       e.preventDefault();
+      const companyNameInput = document.getElementById('company-name');
       const descriptionInput = document.getElementById('company-description');
       const websiteInput = document.getElementById('company-website');
       const addressInput = document.getElementById('company-address');
+      const companyNameValue = companyNameInput.value.trim();
       const descriptionValue = descriptionInput.value.trim();
+      if (!companyNameValue) {
+        alert('Please provide your farm or business name.');
+        companyNameInput.focus();
+        return;
+      }
       if (!descriptionValue) {
         alert('Please provide a description of your farm.');
         descriptionInput.focus();
@@ -238,7 +245,8 @@
         alert('Please select at least one product type');
         return;
       }
-      sessionStorage.setItem('vendor_company',document.getElementById('company-name').value);
+      companyNameInput.value = companyNameValue;
+      sessionStorage.setItem('vendor_company',companyNameValue);
       sessionStorage.setItem('vendor_description',descriptionValue);
       sessionStorage.setItem('vendor_website',(websiteInput.value || '').trim());
       sessionStorage.setItem('vendor_address',(addressInput.value || '').trim());
@@ -248,7 +256,7 @@
       sessionStorage.setItem('vendor_type',document.getElementById('vendor-type').value);
       sessionStorage.setItem('vendor_products',JSON.stringify(products));
       sessionStorage.setItem('vendor_category',sessionStorage.getItem('vendor_category') || 'farmer');
-      sessionStorage.setItem('farmer_company',document.getElementById('company-name').value);
+      sessionStorage.setItem('farmer_company',companyNameValue);
       if (sessionStorage.getItem('vendor_category') === 'artisan' && sessionStorage.getItem('artisan_type') === 'food') {
         window.location.href='artisan-food-type.html';
       } else if (sessionStorage.getItem('vendor_category') === 'artisan') {

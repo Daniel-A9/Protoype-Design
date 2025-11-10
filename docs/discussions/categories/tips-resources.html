@@ -113,43 +113,50 @@
             <div class="feed-container">
               
               <!-- Post Card 1 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Local Library</h6>
-                      <small class="text-grey">1 day ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-tips-1" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-tips-1">
-                        <li><a href="#" onclick="openReportDialog('post', 'tips-library-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Local Library</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>1 day ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-tips-1" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-tips-1">
+                      <li><a href="#" onclick="openReportDialog('post', 'tips-library-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Free computer classes start next week! Learn basic computer skills, internet safety, and job search techniques. All ages welcome. Registration required. 💻</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">16</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">3</span>
@@ -157,14 +164,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -174,12 +179,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -195,34 +198,38 @@
               </div>
 
               <!-- Post Card 2 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Community Center</h6>
-                      <small class="text-grey">3 days ago</small>
+                      <h5 class="card-title">Community Center</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>3 days ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Emergency preparedness workshop this Saturday! Learn how to create a family emergency plan, build a disaster kit, and stay safe during severe weather. Free and open to all! 🚨</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">24</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
@@ -230,14 +237,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -247,12 +252,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -268,35 +271,42 @@
               </div>
 
               <!-- Post Card 3 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Local Library</h6>
-                      <small class="text-grey">1 day ago</small>
+                      <h5 class="card-title">Local Library</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>1 day ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Free computer classes start next week! Learn basic computer skills, internet safety, and job search techniques. All ages welcome. Registration required. 💻</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">16</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">3</span>
@@ -304,14 +314,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -321,12 +329,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -342,34 +348,38 @@
               </div>
 
               <!-- Post Card 4 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Community Center</h6>
-                      <small class="text-grey">3 days ago</small>
+                      <h5 class="card-title">Community Center</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>3 days ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Emergency preparedness workshop this Saturday! Learn how to create a family emergency plan, build a disaster kit, and stay safe during severe weather. Free and open to all! 🚨</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">24</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
@@ -377,14 +387,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -394,12 +402,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -415,35 +421,42 @@
               </div>
 
               <!-- Post Card 5 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Health Department</h6>
-                      <small class="text-grey">4 days ago</small>
+                      <h5 class="card-title">Health Department</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>4 days ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Free health screenings available this month! Blood pressure, cholesterol, and diabetes checks. No appointment needed. Open to all residents. Your health matters! 🏥</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">19</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">5</span>
@@ -451,14 +464,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -468,12 +479,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -489,34 +498,38 @@
               </div>
 
               <!-- Post Card 6 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Senior Center</h6>
-                      <small class="text-grey">5 days ago</small>
+                      <h5 class="card-title">Senior Center</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>5 days ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>New programs starting this month! Exercise classes, art workshops, and technology help sessions. All activities are free for seniors. Come join our community! 👴👵</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">22</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">6</span>
@@ -524,14 +537,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -541,12 +552,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -562,35 +571,42 @@
               </div>
 
               <!-- Post Card 7 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Job Center</h6>
-                      <small class="text-grey">6 days ago</small>
+                      <h5 class="card-title">Job Center</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>6 days ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Free resume workshop this Thursday! Learn how to write a winning resume, practice interview skills, and discover local job opportunities. Bring your current resume for review! 💼</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">17</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">4</span>
@@ -598,14 +614,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -615,12 +629,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -636,34 +648,38 @@
               </div>
 
               <!-- Post Card 8 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Legal Aid</h6>
-                      <small class="text-grey">1 week ago</small>
+                      <h5 class="card-title">Legal Aid</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>1 week ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Free legal consultation clinic next Tuesday! Get help with housing issues, family law, and other legal matters. No income requirements. First come, first served. ⚖️</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">13</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">2</span>
@@ -671,14 +687,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>Commenter</strong>
@@ -688,12 +702,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -709,35 +721,42 @@
               </div>
 
               <!-- Post Card 9 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
                     <div class="col s10">
-                      <h6>Financial Counseling</h6>
-                      <small class="text-grey">1 week ago</small>
+                      <h5 class="card-title">Financial Counseling</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Tips &amp; Resources</span>
+                        <span class="separator">•</span>
+                        <span>1 week ago</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Free financial planning workshop this Saturday! Learn about budgeting, saving, and managing debt. One-on-one counseling sessions available. Take control of your finances! 💰</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">20</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">5</span>

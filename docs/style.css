@@ -1086,9 +1086,13 @@ body:not(.dark) .header-nav i {
     text-align: left !important;
   }
 
-  .card-content {
+.card-content {
     padding: 1rem;
     text-align: center;
+  }
+
+  .card-content.left-align {
+    text-align: left;
   }
 
   .card-footer {
@@ -1558,11 +1562,37 @@ body:not(.dark) .header-nav i {
 
   .card-header-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 0.75rem;
     padding: 0.75rem 1rem;
     background-color: var(--surface-container-high);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card-header-row > .row {
+    flex: 1;
+    margin: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .card-header-row .row .col {
+    text-align: left;
+  }
+
+  .card-header-row .card-title {
+    font-size: calc(1rem - 2pt);
+    text-align: left;
+    margin: 0;
+  }
+
+  .card-header-row .card-meta {
+    text-align: left;
+  }
+
+  .card-header-row > :last-child:not(.max) {
+    margin-left: auto;
   }
 
   .subcategory-tag {

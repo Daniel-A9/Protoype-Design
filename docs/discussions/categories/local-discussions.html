@@ -113,45 +113,50 @@
             <div class="feed-container">
               
               <!-- Post Card 1 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Sarah M.</h6>
-                      <small class="text-grey">2 hours ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-1" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-1">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-hiking-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Sarah M.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>2 hours ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-1" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-1">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-hiking-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Anyone know of good hiking trails near downtown? Looking for something moderate with nice views. Planning to go this weekend! 🥾</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)"
-                           data-testid="hiking-post-like-btn">
+                      <div class="clickable-container" onclick="toggleLike(this)" data-testid="hiking-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">24</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)"
-                           data-testid="hiking-post-comment-btn">
+                      <div class="clickable-container" onclick="toggleComments(this)" data-testid="hiking-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">8</span>
@@ -159,14 +164,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>TrailBlazer</strong>
@@ -178,7 +181,7 @@
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>HikerPro</strong>
@@ -188,12 +191,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
@@ -209,44 +210,46 @@
               </div>
 
               <!-- Post Card 2 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Mike R.</h6>
-                      <small class="text-grey">5 hours ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-2" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-2">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-coffee-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Mike R.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>5 hours ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-2" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-2">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-coffee-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Best coffee shop recommendations? Need a quiet place to work remotely. WiFi and good coffee are must-haves! ☕</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)"
-                           data-testid="coffee-post-like-btn">
+                      <div class="clickable-container" onclick="toggleLike(this)" data-testid="coffee-post-like-btn">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">31</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)"
-                           data-testid="coffee-post-comment-btn">
+                      <div class="clickable-container" onclick="toggleComments(this)" data-testid="coffee-post-comment-btn">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">12</span>
@@ -254,14 +257,12 @@
                     </div>
                   </div>
                 </div>
-                
-                <!-- Comments Section -->
                 <div class="comments-section" style="display: none;">
                   <div class="comments-list">
                     <div class="comment-item">
                       <div class="row no-gap">
                         <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                         </div>
                         <div class="col s10">
                           <strong>CoffeeAddict</strong>
@@ -271,12 +272,10 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <!-- Add Comment Form -->
                   <div class="add-comment">
                     <div class="row no-gap">
                       <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small" loading="lazy">
                       </div>
                       <div class="col s10">
                         <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
@@ -292,43 +291,50 @@
               </div>
 
               <!-- Post Card 3 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Emma L.</h6>
-                      <small class="text-grey">1 day ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-3" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-3">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-cleanup-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Emma L.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>1 day ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-3" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-3">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-cleanup-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Community cleanup event this Saturday at Riverside Park! Bring gloves and we'll provide trash bags. Great way to meet neighbors and help the environment 🌱</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">18</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">5</span>
@@ -339,42 +345,46 @@
               </div>
 
               <!-- Post Card 4 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>David K.</h6>
-                      <small class="text-grey">2 days ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-4" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-4">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-cat-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">David K.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>2 days ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-4" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-4">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-cat-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Lost my cat near 5th and Main yesterday. Orange tabby, answers to "Whiskers". Please message if you see him! 🐱</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">42</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">15</span>
@@ -385,43 +395,50 @@
               </div>
 
               <!-- Post Card 5 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Lisa T.</h6>
-                      <small class="text-grey">3 days ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-5" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-5">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-dog-walker-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Lisa T.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>3 days ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-5" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-5">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-dog-walker-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Looking for a reliable dog walker for my golden retriever. Need someone available weekday mornings. Any recommendations? 🐕</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">27</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">9</span>
@@ -432,42 +449,46 @@
               </div>
 
               <!-- Post Card 6 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Tom W.</h6>
-                      <small class="text-grey">4 days ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-6" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-6">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-garden-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Tom W.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>4 days ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-6" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-6">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-garden-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Anyone interested in starting a community garden? I have some extra seeds and would love to share the space. We could grow vegetables together and split the harvest! 🌱</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">15</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">6</span>
@@ -478,43 +499,50 @@
               </div>
 
               <!-- Post Card 7 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Maria S.</h6>
-                      <small class="text-grey">5 days ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-7" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-7">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-pottery-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Maria S.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>5 days ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-7" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-7">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-pottery-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" class="responsive round medium-height">
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&amp;h=300&amp;fit=crop" class="responsive round medium-height" loading="lazy">
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Finished my latest pottery piece! Hand-thrown ceramic bowl with a beautiful blue glaze. Anyone else into ceramics? Would love to share techniques! 🏺</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">22</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">4</span>
@@ -525,42 +553,46 @@
               </div>
 
               <!-- Post Card 8 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Alex P.</h6>
-                      <small class="text-grey">6 days ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-8" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-8">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-farmers-market-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Alex P.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>6 days ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-8" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-8">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-farmers-market-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Local farmers market is starting this Saturday! Fresh produce, handmade crafts, and live music. Support local vendors and enjoy a great community atmosphere. See you there! 🥕</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">33</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">11</span>
@@ -571,42 +603,46 @@
               </div>
 
               <!-- Post Card 9 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
+              <div class="card small">
+                <div class="card-header-row">
+                  <div class="row no-gap middle-align max">
                     <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+                      <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
-                    <div class="col s8">
-                      <h6>Jennifer M.</h6>
-                      <small class="text-grey">1 week ago</small>
-                    </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-local-disc-9" class="circle transparent small">
-                        <i>more_vert</i>
-                      </button>
-                      <menu id="post-menu-local-disc-9">
-                        <li><a href="#" onclick="openReportDialog('post', 'local-disc-book-club-post'); return false;">Report</a></li>
-                      </menu>
+                    <div class="col s10">
+                      <h5 class="card-title">Jennifer M.</h5>
+                      <div class="card-meta">
+                        <span class="type-badge">Local Discussions</span>
+                        <span class="separator">•</span>
+                        <span>1 week ago</span>
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <button data-ui="#post-menu-local-disc-9" class="circle transparent small">
+                      <i>more_vert</i>
+                    </button>
+                    <menu id="post-menu-local-disc-9">
+                      <li><a href="#" onclick="openReportDialog('post', 'local-disc-book-club-post'); return false;">Report</a></li>
+                    </menu>
+                  </div>
                 </div>
-                <div class="card-content center-align">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Does anyone know of a good local mechanic? My car is making a strange noise and I'd prefer to support a local business rather than a chain. Thanks! 🚗</p>
                 </div>
+                <div class="card-divider"></div>
                 <div class="card-footer">
                   <div class="row no-gap">
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
+                      <div class="clickable-container" onclick="toggleLike(this)">
                         <i class="material-icons">favorite_border</i>
                         <span class="like-text">Like</span>
                         <span class="like-count">19</span>
                       </div>
                     </div>
                     <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
+                      <div class="clickable-container" onclick="toggleComments(this)">
                         <i class="material-icons">chat_bubble_outline</i>
                         <span class="comment-text">Comment</span>
                         <span class="comment-count">7</span>

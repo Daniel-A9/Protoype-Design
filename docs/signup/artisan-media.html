@@ -41,8 +41,8 @@
 
     <div class="signup-container">
       <div class="signup-card">
-        <a href="artisan-details.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
-        <div class="step-indicator" data-step="8" data-final="true">Step 8 of 8 - Final Step!</div>
+        <a href="artisan-nonfood.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+        <div class="step-indicator" data-step="9">Step 9</div>
         <h1 class="page-title">Showcase Your Craft</h1>
         <p class="page-subtitle">Add photos to help shoppers connect with your work</p>
 
@@ -100,11 +100,11 @@
             </div>
           </section>
 
-          <div class="row right-align">
-            <button type="submit" class="btn primary round medium">
-              <span>Complete Sign Up</span>
-              <i>check</i>
-            </button>
+        <div class="row right-align">
+          <button type="submit" class="btn primary round medium">
+            <span>Continue</span>
+            <i>arrow_forward</i>
+          </button>
           </div>
         </form>
       </div>
@@ -113,8 +113,8 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
-      (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
-      (function(){const i=document.querySelector('.step-indicator');if(!i){return;}const s=Number(i.dataset.step)||8;const total=Number(sessionStorage.getItem('signup_total_steps'))||8;const isFinal=i.dataset.final==='true'||s>=total;i.textContent=`Step ${s} of ${total}`+(isFinal?' - Final Step!':'');})();
+    (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    (function(){const indicator=document.querySelector('.step-indicator');if(!indicator){return;}const step=Number(indicator.dataset.step)||9;const totalDefault='10';if(!sessionStorage.getItem('signup_total_steps')){sessionStorage.setItem('signup_total_steps',totalDefault);}const total=Number(sessionStorage.getItem('signup_total_steps'))||Number(totalDefault);const isFinal=step>=total;indicator.textContent=`Step ${step} of ${total}`+(isFinal?' - Final Step!':'');})();
 
       const profileInput = document.getElementById('profile-image');
       const profilePreview = document.getElementById('profile-preview');
@@ -259,11 +259,7 @@
           alert('Please upload both a profile photo and a banner image to continue.');
           return;
         }
-        const email = sessionStorage.getItem('signup_email');
-        const name = email ? email.split('@')[0] : 'Friend';
-        alert('Welcome ' + name + '! Your artisan account has been created.');
-        sessionStorage.clear();
-        window.location.href = '../index.html';
+        window.location.href = 'vendor-final.html';
       });
     </script>
   </body>

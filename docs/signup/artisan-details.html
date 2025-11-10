@@ -35,7 +35,7 @@
   <div class="signup-container">
     <div class="signup-card">
       <a href="artisan-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
-      <div class="step-indicator">Step 6 of 8</div>
+      <div class="step-indicator" data-step="7">Step 7</div>
       <div class="illustration-top"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop" alt="Artisan"></div>
       <h1 class="page-title">Tell Us About Your Artisan Craft</h1>
       <p class="page-subtitle">Help shoppers understand what you offer</p>
@@ -43,6 +43,30 @@
         <div class="field label border round">
           <input type="text" id="company-name" required>
           <label>Business Name *</label>
+        </div>
+        <div class="field label border round" style="margin-top: 1rem;">
+          <textarea id="business-description" rows="4" required></textarea>
+          <label>Business Description *</label>
+        </div>
+        <div class="row middle-align" style="margin-top: 1rem;">
+          <div class="field label border round max">
+            <input type="text" id="business-address">
+            <label>Business Address (optional)</label>
+          </div>
+          <button type="button" class="circle transparent small">
+            <i>info</i>
+            <div class="tooltip top left middle-align" style="max-width: 320px; width: min(320px, 90vw); background: var(--surface); color: var(--on-surface); padding: 1rem 1.25rem; border-radius: 16px; box-shadow: var(--elevate2, 0 8px 16px rgba(0,0,0,0.15));">
+              <span class="small-text" style="display: block; text-align: center; line-height: 1.4;">
+                Optional verification for vendors with business locations,<br>
+                certifications, or to get Verified<br>
+                profile status.
+              </span>
+            </div>
+          </button>
+        </div>
+        <div class="field label border round" style="margin-top: 1rem;">
+          <input type="url" id="website">
+          <label>Website (optional)</label>
         </div>
         <div style="margin-top: 1rem;">
           <label style="display: block; margin-bottom: 1rem; font-weight: 600;">What do you specialize in? *</label>
@@ -86,6 +110,7 @@
   <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
   <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    (function(){const indicator=document.querySelector('.step-indicator');if(!indicator){return;}const totalDefault='10';if(!sessionStorage.getItem('signup_total_steps')){sessionStorage.setItem('signup_total_steps',totalDefault);}const total=Number(sessionStorage.getItem('signup_total_steps'))||Number(totalDefault);const step=Number(indicator.dataset.step)||7;indicator.textContent=`Step ${step} of ${total}`;})();
     function attachNonFoodSelect(select) {
       const card = select.closest('.dropdown-card');
       const otherField = card.querySelector('.other-input');
@@ -151,7 +176,12 @@
       });
     }
     document.querySelectorAll('.nonfood-select').forEach(select => attachNonFoodSelect(select));
-    document.getElementById('artisanNonFoodForm').addEventListener('submit',function(e){
+    const form = document.getElementById('artisanNonFoodForm');
+    const companyInput = document.getElementById('company-name');
+    const descriptionInput = document.getElementById('business-description');
+    const addressInput = document.getElementById('business-address');
+    const websiteInput = document.getElementById('website');
+    form.addEventListener('submit',function(e){
       e.preventDefault();
       const cards = Array.from(document.querySelectorAll('#artisan-nonfood-types .dropdown-card'));
       const selections = [];
@@ -183,9 +213,12 @@
         alert('Please select at least one category');
         return;
       }
-      sessionStorage.setItem('artisan_details_company', document.getElementById('company-name').value);
+      sessionStorage.setItem('artisan_details_company', companyInput ? companyInput.value.trim() : '');
+      sessionStorage.setItem('artisan_details_description', descriptionInput ? descriptionInput.value.trim() : '');
+      sessionStorage.setItem('artisan_details_address', addressInput ? addressInput.value.trim() : '');
+      sessionStorage.setItem('artisan_details_website', websiteInput ? websiteInput.value.trim() : '');
       sessionStorage.setItem('artisan_details_categories', JSON.stringify(selections));
-      window.location.href = 'artisan-nonfood.html';
+      window.location.href = 'artisan-media.html';
     });
   </script>
 </body>

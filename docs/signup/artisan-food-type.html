@@ -35,7 +35,7 @@
     <div class="signup-container">
       <div class="signup-card">
         <a href="artisan-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
-        <div class="step-indicator">Step 6 of 9</div>
+        <div class="step-indicator" data-step="7">Step 7</div>
         <div class="illustration-top"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=300&fit=crop" alt="Food"></div>
         <h1 class="page-title">What types of prepared foods?</h1>
         <p class="page-subtitle">Select all that apply</p>
@@ -52,9 +52,21 @@
             <input type="url" id="food-website" placeholder=" ">
             <label>Website (optional)</label>
           </div>
-          <div class="field label border round top-margin">
-            <input type="text" id="food-address" placeholder=" ">
-            <label>Business Address (optional)</label>
+          <div class="row middle-align top-margin">
+            <div class="field label border round max">
+              <input type="text" id="food-address" placeholder=" ">
+              <label>Business Address (optional)</label>
+            </div>
+            <button type="button" class="circle transparent small">
+              <i>info</i>
+              <div class="tooltip top left middle-align" style="max-width: 320px; width: min(320px, 90vw); background: var(--surface); color: var(--on-surface); padding: 1rem 1.25rem; border-radius: 16px; box-shadow: var(--elevate2, 0 8px 16px rgba(0,0,0,0.15));">
+                <span class="small-text" style="display: block; text-align: center; line-height: 1.4;">
+                  Optional verification for vendors with business locations,<br>
+                  certifications, or to get Verified<br>
+                  profile status.
+                </span>
+              </div>
+            </button>
           </div>
           <div id="food-types-container" class="top-margin">
             <div class="dropdown-card">
@@ -95,7 +107,8 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
-      (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    (function(){const indicator=document.querySelector('.step-indicator');if(!indicator){return;}const totalDefault='10';if(!sessionStorage.getItem('signup_total_steps')){sessionStorage.setItem('signup_total_steps',totalDefault);}const total=Number(sessionStorage.getItem('signup_total_steps'))||Number(totalDefault);const step=Number(indicator.dataset.step)||7;indicator.textContent=`Step ${step} of ${total}`;})();
       function attachFoodTypeSelect(select) {
         const card = select.closest('.dropdown-card');
         const otherField = card.querySelector('.other-input');

@@ -150,7 +150,7 @@
     <div class="signup-container">
       <div class="signup-card">
         <a href="artisan-food-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
-        <div class="step-indicator">Step 8 of 8 - Final Step!</div>
+        <div class="step-indicator" data-step="8">Step 8</div>
         <div class="illustration-top"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=300&h=300&fit=crop" alt="Farm"></div>
         <h1 class="page-title">Almost Done!</h1>
         <p class="page-subtitle">Third Party Certifications</p>
@@ -169,7 +169,7 @@
               <label>Additional Information (optional)</label>
             </div>
             <div class="button-wrapper">
-              <button type="submit" class="btn primary round medium submit-button"><span>Complete Sign Up</span><i>check</i></button>
+              <button type="submit" class="btn primary round medium submit-button"><span>Continue</span><i>arrow_forward</i></button>
             </div>
           </div>
         </form>
@@ -178,20 +178,24 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
-      (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
       const stepIndicator = document.querySelector('.step-indicator');
       const backLink = document.querySelector('.back-link');
       const vendorCategory = sessionStorage.getItem('vendor_category');
       const artisanType = sessionStorage.getItem('artisan_type');
       if (stepIndicator) {
-        if (vendorCategory === 'farmer') {
-          stepIndicator.textContent = 'Step 6 of 6 - Final Step!';
-          if (backLink) {
+        const totalDefault = vendorCategory === 'farmer' ? '8' : '10';
+        if (!sessionStorage.getItem('signup_total_steps')) {
+          sessionStorage.setItem('signup_total_steps', totalDefault);
+        }
+        const total = Number(sessionStorage.getItem('signup_total_steps')) || Number(totalDefault);
+        const step = Number(stepIndicator.dataset.step) || 8;
+        const isFinal = step >= total;
+        stepIndicator.textContent = `Step ${step} of ${total}` + (isFinal ? ' - Final Step!' : '');
+        if (backLink) {
+          if (vendorCategory === 'farmer') {
             backLink.setAttribute('href','vendor-farm-details.html');
-          }
-        } else if (vendorCategory === 'artisan' && artisanType === 'food') {
-          stepIndicator.textContent = 'Step 8 of 8 - Final Step!';
-          if (backLink) {
+          } else if (vendorCategory === 'artisan' && artisanType === 'food') {
             backLink.setAttribute('href','artisan-food-type.html');
           }
         }
@@ -330,11 +334,7 @@
         }
         sessionStorage.setItem('certifications',JSON.stringify(certifications));
         sessionStorage.setItem('additional_info',document.getElementById('additional-info').value);
-        const email=sessionStorage.getItem('signup_email');
-        const name=email?email.split('@')[0]:'Friend';
-        alert('Welcome '+name+'! Your vendor account has been created.');
-        sessionStorage.clear();
-        window.location.href='../index.html';
+        window.location.href='food-vendor-media.html';
       });
     </script>
   </body>

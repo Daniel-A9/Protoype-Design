@@ -33,15 +33,15 @@
   <div class="signup-container">
     <div class="signup-card">
       <a href="vendor-category.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
-      <div class="step-indicator">Step 5 of 8</div>
+      <div class="step-indicator" data-step="6">Step 6</div>
       <h1 class="page-title">Do you sell food products?</h1>
       <div class="type-cards">
-        <a href="artisan-details.html" class="type-card" onclick="sessionStorage.setItem('artisan_type', 'nonfood'); return true;">
+        <a href="artisan-details.html" class="type-card" onclick="sessionStorage.setItem('artisan_type', 'nonfood'); sessionStorage.setItem('vendor_flow', 'artisan-nonfood'); sessionStorage.setItem('signup_total_steps', '10'); return true;">
           <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Non-Food"></div>
           <h3>Non-Food</h3>
           <p>I sell handmade crafts, art, or other non-food items</p>
         </a>
-        <a href="artisan-food-type.html" class="type-card" onclick="sessionStorage.setItem('artisan_type', 'food'); return true;">
+        <a href="artisan-food-type.html" class="type-card" onclick="sessionStorage.setItem('artisan_type', 'food'); sessionStorage.setItem('vendor_flow', 'artisan-food'); sessionStorage.setItem('signup_total_steps', '10'); return true;">
           <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Food"></div>
           <h3>Food</h3>
           <p>I sell cottage foods or prepared foods</p>
@@ -53,6 +53,7 @@
   <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
   <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
+    (function(){const indicator=document.querySelector('.step-indicator');if(!indicator){return;}const total=Number(sessionStorage.getItem('signup_total_steps'))||10;const step=Number(indicator.dataset.step)||6;indicator.textContent=`Step ${step} of ${total}`;})();
   </script>
 </body>
 </html>

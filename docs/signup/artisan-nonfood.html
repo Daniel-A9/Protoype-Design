@@ -26,8 +26,8 @@
 
   <div class="signup-container">
     <div class="signup-card">
-      <a href="artisan-type.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
-      <div class="step-indicator">Step 7 of 8</div>
+      <a href="artisan-details.html" class="back-link"><i>arrow_back</i><span>Back</span></a>
+      <div class="step-indicator" data-step="8">Step 8</div>
       <div class="illustration-top"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop" alt="Artisan"></div>
       <h1 class="page-title">Complete Your Profile!</h1>
       <p class="page-subtitle">A few more details about your business</p>
@@ -45,7 +45,7 @@
           <label>Business Description *</label>
         </div>
         <div style="margin-top: 2rem; display: flex; justify-content: center;">
-          <button type="submit" class="btn primary round medium"><span>Complete Sign Up</span><i>check</i></button>
+          <button type="submit" class="btn primary round medium"><span>Continue</span><i>arrow_forward</i></button>
         </div>
       </form>
     </div>
@@ -54,7 +54,8 @@
   <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
   <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
-    document.getElementById('nonfoodForm').addEventListener('submit',function(e){e.preventDefault();alert('Welcome! Your account has been created.');window.location.href='../index.html';});
+    (function(){const indicator=document.querySelector('.step-indicator');if(!indicator){return;}const totalDefault='10';if(!sessionStorage.getItem('signup_total_steps')){sessionStorage.setItem('signup_total_steps',totalDefault);}const total=Number(sessionStorage.getItem('signup_total_steps'))||Number(totalDefault);const step=Number(indicator.dataset.step)||8;indicator.textContent=`Step ${step} of ${total}`;})();
+    document.getElementById('nonfoodForm').addEventListener('submit',function(e){e.preventDefault();window.location.href='artisan-media.html';});
   </script>
 </body>
 </html>

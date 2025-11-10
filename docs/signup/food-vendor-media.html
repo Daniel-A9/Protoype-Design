@@ -42,7 +42,7 @@
     <div class="signup-container">
       <div class="signup-card">
         <a href="vendor-farm-details.html" class="back-link" id="media-back-link"><i>arrow_back</i><span>Back</span></a>
-        <div class="step-indicator" data-step="7">Step 7 of 8</div>
+        <div class="step-indicator" data-step="7">Step 7</div>
         <h1 class="page-title">Add Your Vendor Photos</h1>
         <p class="page-subtitle">Great visuals help shoppers trust and explore your booth.</p>
 
@@ -139,19 +139,17 @@
         }
         const vendorCategory = sessionStorage.getItem('vendor_category');
         const artisanType = sessionStorage.getItem('artisan_type');
-        const totalSteps = Number(sessionStorage.getItem('signup_total_steps')) || 8;
-        let stepNumber = Number(stepIndicator.dataset.step) || 7;
-        let previousHref = 'vendor-farm-details.html';
-
-        if (vendorCategory === 'artisan' && artisanType === 'food') {
-          stepNumber = 9;
-          previousHref = 'food-artisan-details.html';
-        } else if (vendorCategory === 'farmer') {
-          stepNumber = 7;
-          previousHref = 'vendor-farm-details.html';
+        const isFoodArtisan = vendorCategory === 'artisan' && artisanType === 'food';
+        const isFarmer = vendorCategory === 'farmer' || sessionStorage.getItem('vendor_flow') === 'farmer';
+        const totalDefault = isFoodArtisan ? '10' : '8';
+        if (!sessionStorage.getItem('signup_total_steps')) {
+          sessionStorage.setItem('signup_total_steps', totalDefault);
         }
+        const totalSteps = Number(sessionStorage.getItem('signup_total_steps')) || Number(totalDefault);
+        let stepNumber = isFoodArtisan ? 9 : 7;
+        let previousHref = isFoodArtisan ? 'food-vendor-details.html' : 'vendor-farm-details.html';
 
-        stepIndicator.textContent = `Step ${stepNumber} of ${totalSteps}`;
+        stepIndicator.textContent = `Step ${stepNumber} of ${totalSteps}` + (stepNumber >= totalSteps ? ' - Final Step!' : '');
         if (backLink) {
           backLink.setAttribute('href', previousHref);
         }
@@ -286,7 +284,7 @@
           alert('Please upload both a profile photo and a banner image to continue.');
           return;
         }
-        window.location.href = 'food-vendor-details.html';
+        window.location.href = 'vendor-final.html';
       });
     </script>
   </body>

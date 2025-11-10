@@ -37,12 +37,12 @@
         <h1 class="page-title">What type of vendor are you?</h1>
         <p class="page-subtitle">Choose the option that best describes you</p>
         <div class="type-cards">
-          <a href="artisan-type.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'artisan'); sessionStorage.removeItem('artisan_type'); return true;">
+          <a href="artisan-type.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'artisan'); sessionStorage.setItem('vendor_flow', 'artisan'); sessionStorage.setItem('signup_total_steps', '10'); sessionStorage.removeItem('artisan_type'); return true;">
             <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Artisan" loading="lazy"></div>
             <h3>Artisan</h3>
             <p>I create handmade or crafted products</p>
           </a>
-          <a href="vendor-farm-details.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'farmer'); sessionStorage.removeItem('artisan_type'); return true;">
+          <a href="vendor-farm-details.html" class="type-card" onclick="sessionStorage.setItem('vendor_category', 'farmer'); sessionStorage.setItem('vendor_flow', 'farmer'); sessionStorage.setItem('signup_total_steps', '8'); sessionStorage.removeItem('artisan_type'); return true;">
             <div class="icon-wrapper"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=200&h=200&fit=crop" alt="Farmer" loading="lazy"></div>
             <h3>Farmer</h3>
             <p>I grow or produce food products</p>

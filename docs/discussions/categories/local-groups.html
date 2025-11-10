@@ -111,704 +111,305 @@
             <h4>Local Groups</h4>
             <p class="category-description">Community groups, clubs, and organizations</p>
             <div class="feed-container">
-              
-              <!-- Post Card 1 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=160&h=160&fit=crop" alt="Raised garden beds" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Community Garden Club</h6>
-                      <small class="text-grey">1 day ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Community Garden Collective</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Hands-on planting days · Next: Apr 12 · Riverside Greenhouse</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-1" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-1">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-garden-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" class="responsive round medium-height">
-                  <p>Join us for our monthly garden planning meeting this Saturday at 10 AM! We'll be discussing the spring planting schedule and new member orientation. All skill levels welcome! 🌱</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">18</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">5</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 2 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1455885666463-00fb7f22f8b3?w=160&h=160&fit=crop" alt="Stack of books" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Book Lovers Club</h6>
-                      <small class="text-grey">3 days ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Book Lovers Circle</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Monthly picks & author chats · Next: Apr 9 · Downtown Library</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-2" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-2">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-book-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <p>This month's book selection: "The Overstory" by Richard Powers. Meeting next Tuesday at the library at 7 PM. Coffee and discussion provided! 📚</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">12</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">3</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 3 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=160&h=160&fit=crop" alt="Photographer with camera" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Photography Club</h6>
-                      <small class="text-grey">2 days ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Downtown Photo Walks</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Street & night shoots · Next: Apr 14 · Market Fountain</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-3" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-3">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-photo-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&h=300&fit=crop" class="responsive round medium-height">
-                  <p>Monthly photo walk this Sunday at 9 AM! We'll be exploring the historic downtown area. All skill levels welcome. Bring your camera or phone! 📸</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">14</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">3</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 4 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?w=160&h=160&fit=crop" alt="Runners warming up" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Running Club</h6>
-                      <small class="text-grey">3 days ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Riverfront Running Club</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Intervals & tempo runs · Next: Apr 11 · Community Track</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-4" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-4">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-running-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <p>5K training program starting next week! Perfect for beginners or those looking to improve their time. We meet Tuesdays and Thursdays at 6 PM at the community center. 🏃‍♀️</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">21</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">8</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 5 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=160&h=160&fit=crop" alt="Chess pieces" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Chess Club</h6>
-                      <small class="text-grey">4 days ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Knights Chess Guild</h6>
+                        <span class="chip tiny border">Private</span>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Invite-only ladder · Next: Apr 13 · Uptown Lounge</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-5" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-5">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-chess-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=400&h=300&fit=crop" class="responsive round medium-height">
-                  <p>Weekly chess tournament this Friday at 7 PM! Open to all skill levels. We'll have prizes for winners and refreshments for everyone. Bring your own board if you have one! ♟️</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">16</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">5</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 6 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=160&h=160&fit=crop" alt="Hands knitting" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Knitting Circle</h6>
-                      <small class="text-grey">5 days ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Knit & Natter Circle</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Charity projects & swaps · Next: Apr 10 · Senior Studio</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-6" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-6">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-knitting-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <p>New members welcome! We meet every Wednesday at 2 PM at the senior center. Currently working on blankets for the local shelter. Yarn and needles provided for beginners! 🧶</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">23</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">6</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 7 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=160&h=160&fit=crop" alt="Volunteers packing food" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Volunteer Network</h6>
-                      <small class="text-grey">6 days ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Volunteer Action Network</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Food bank & cleanups · Next: Apr 13 · Community Hub</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-7" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-7">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-volunteer-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=300&fit=crop" class="responsive round medium-height">
-                  <p>Food bank needs volunteers for this weekend's distribution. We're looking for 10 people to help sort and pack groceries. Great way to give back to the community! 🤝</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">28</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">12</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 8 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=160&h=160&fit=crop" alt="Tech speaker" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Tech Meetup</h6>
-                      <small class="text-grey">1 week ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Emerging Tech Meetup</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">AI & startup lightning talks · Next: Apr 16 · Innovation Lab</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-8" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-8">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-tech-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <p>Monthly tech meetup next Tuesday! This month's topic: "Introduction to AI and Machine Learning". Pizza and networking after the presentation. All skill levels welcome! 💻</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">19</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">7</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- Comments Section -->
-                <div class="comments-section" style="display: none;">
-                  <div class="comments-list">
-                    <div class="comment-item">
-                      <div class="row no-gap">
-                        <div class="col s2">
-                          <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                        </div>
-                        <div class="col s10">
-                          <strong>Commenter</strong>
-                          <p>Great post! Thanks for sharing.</p>
-                          <small class="text-grey">1 hour ago</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Add Comment Form -->
-                  <div class="add-comment">
-                    <div class="row no-gap">
-                      <div class="col s2">
-                        <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                      </div>
-                      <div class="col s10">
-                        <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
-                          <div class="input-field">
-                            <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
-                            <button type="submit" class="btn small">Post</button>
-                          </div>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Post Card 9 -->
-              <div class="card medium">
-                <div class="card-header">
-                  <div class="row no-gap">
-                    <div class="col s2">
-                      <img src="https://www.beercss.com/favicon.png" class="circle small">
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=160&h=160&fit=crop" alt="Parents with kids" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
                     </div>
-                    <div class="col s8">
-                      <h6>Parent Support Group</h6>
-                      <small class="text-grey">1 week ago</small>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Parent Village</h6>
+                        <span class="chip tiny border">Private</span>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Support circles & swaps · Next: Apr 13 · Family Center</small>
                     </div>
-                    <div class="col s2 right-align">
-                      <button data-ui="#post-menu-groups-9" class="circle transparent small">
-                        <i>more_vert</i>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
                       </button>
-                      <menu id="post-menu-groups-9">
-                        <li><a href="#" onclick="openReportDialog('post', 'groups-parent-post'); return false;">Report</a></li>
-                      </menu>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-content center-align">
-                  <p>New parent support group forming! We'll meet bi-weekly to share experiences, resources, and build a supportive community. First meeting this Saturday at 10 AM. 👶</p>
-                </div>
-                <div class="card-footer">
-                  <div class="row no-gap">
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleLike(this)">
-                        <i class="material-icons">favorite_border</i>
-                        <span class="like-text">Like</span>
-                        <span class="like-count">31</span>
-                      </div>
-                    </div>
-                    <div class="col s6">
-                      <div class="clickable-container" 
-                           onclick="toggleComments(this)">
-                        <i class="material-icons">chat_bubble_outline</i>
-                        <span class="comment-text">Comment</span>
-                        <span class="comment-count">9</span>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=160&h=160&fit=crop" alt="Group collaborating in workshop" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Artisan Makers Workshop</h6>
+                        <span class="chip tiny border">Private</span>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Cohort-based sessions · Next: Apr 15 · Maker Lab</small>
+                    </div>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?w=160&h=160&fit=crop" alt="Neighborhood watch meeting" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Neighborhood Watch Alliance</h6>
+                        <span class="chip tiny border">Private</span>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Community safety & patrols · Next: Apr 18 · Westside Hall</small>
+                    </div>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=160&h=160&fit=crop" alt="Community theater rehearsal" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Local Theater Troupe</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Auditions & set builds · Next: Apr 17 · Playhouse</small>
+                    </div>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=160&h=160&fit=crop" alt="Youth coding workshop" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Youth Coding Lab</h6>
+                        <span class="chip tiny border">Private</span>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Invitation-only cohort · Next: Apr 20 · Tech Hub</small>
+                    </div>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
+                <div class="card-header" style="padding: 0.75rem 1rem;">
+                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
+                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
+                      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=160&h=160&fit=crop" alt="Choir singing" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
+                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Community Choir Voices</h6>
+                      </div>
+                      <small class="text-grey" style="display: block; line-height: 1.2;">Weekly rehearsals · Next: Apr 15 · Harmony Center</small>
+                    </div>
+                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
+                        <span>Join</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             </div>
           </div>
@@ -885,37 +486,6 @@
           overlay.classList.remove('active');
         }
       });
-
-      // Toggle comments dropdown
-      function toggleComments(button) {
-        const card = button.closest('.card');
-        const commentsSection = card.querySelector('.comments-section');
-        
-        if (commentsSection.style.display === 'none') {
-          commentsSection.style.display = 'block';
-        } else {
-          commentsSection.style.display = 'none';
-        }
-      }
-
-      // Toggle like button
-      function toggleLike(button) {
-        const heartIcon = button.querySelector('.material-icons');
-        const likeCountSpan = button.querySelector('.like-count');
-        const currentCount = parseInt(likeCountSpan.textContent);
-        
-        if (heartIcon.textContent === 'favorite_border') {
-          // Like the post
-          heartIcon.textContent = 'favorite';
-          button.classList.add('liked');
-          likeCountSpan.textContent = currentCount + 1;
-        } else {
-          // Unlike the post
-          heartIcon.textContent = 'favorite_border';
-          button.classList.remove('liked');
-          likeCountSpan.textContent = currentCount - 1;
-        }
-      }
     </script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>

@@ -856,6 +856,35 @@
         </div>
       </div>
     </main>
+
+    <script>
+      // Theme Toggle Functionality
+      (function() {
+        const storedTheme = localStorage.getItem('theme') || 'light';
+
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+
+        document.body.appendChild(toggleButton);
+      })();
+    </script>
+
     <script>
       // Mobile menu toggle functionality
       function toggleMobileMenu() {

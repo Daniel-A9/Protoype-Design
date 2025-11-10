@@ -376,7 +376,7 @@ body:not(.dark) .header-nav i {
   .hero-banner {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 8px;
     margin-bottom: 1rem;
   }
 
@@ -456,7 +456,7 @@ body:not(.dark) .header-nav i {
 
   .form-container {
     background: var(--surface-container);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 2.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--outline-variant);
@@ -488,7 +488,7 @@ body:not(.dark) .header-nav i {
     margin-bottom: 2rem;
     padding: 1.5rem;
     background: var(--surface-container-low);
-    border-radius: 12px;
+    border-radius: 8px;
     border: 1px solid var(--outline-variant);
   }
 
@@ -852,7 +852,7 @@ body:not(.dark) .header-nav i {
   /* Desktop Sidebar Styles */
   .categories-sidebar {
     background-color: var(--surface-container-low);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 1.5rem;
     position: fixed;
     top: 60px;
@@ -882,7 +882,7 @@ body:not(.dark) .header-nav i {
   .header-section {
     background-color: transparent;
     border: 2px solid #F5F0E8;
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1.5rem;
     max-width: 700px;
@@ -1054,7 +1054,7 @@ body:not(.dark) .header-nav i {
   .card {
     margin-bottom: 2.5rem;
     background-color: var(--surface-container-low);
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     border-top: 2px solid rgba(255, 255, 255, 0.3);
@@ -2062,7 +2062,7 @@ body:not(.dark) .header-nav i {
   /* Rounded outline around Date & Time and Location section */
   .quick-info-content {
     border: 1px solid var(--outline-variant);
-    border-radius: 12px;
+    border-radius: 8px;
     background-color: var(--surface);
   }
 

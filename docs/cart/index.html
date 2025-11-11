@@ -61,7 +61,10 @@
             <div class="container" style="padding-top: 1rem;">
                 <div class="row">
                     <div class="col s12">
-                        <h2 style="margin-bottom: 1rem;">Shopping Cart</h2>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                          <h2 style="margin: 0;">Cart</h2>
+                          <a href="#" class="link" data-testid="header-edit-cart" onclick="toggleCartEdit(event)">Edit Cart</a>
+                        </div>
                         
                         <!-- Vendor Group 1: Brewery Central -->
                         <h6 style="margin: 1rem 0 0.5rem 0; font-size: 0.7rem; font-weight: 600; color: var(--on-surface-variant);">Brewery Central</h6>
@@ -85,6 +88,9 @@
                                         <div style="flex: 0 0 0px; text-align: right; font-size: 0.45rem;">
                                         </div>
                                     </div>
+                                    <button class="circle transparent small" data-cart-remove="brewery-central-citrus" style="margin-left: auto; display: none;">
+                                        <i>close</i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +112,9 @@
                                             <span>$9.99</span>
                                         </div>
                                     </div>
+                                    <button class="circle transparent small" data-cart-remove="brewery-central-chocolate" style="margin-left: auto; display: none;">
+                                        <i>close</i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -127,6 +136,9 @@
                                             <span>$7.99</span>
                                         </div>
                                     </div>
+                                    <button class="circle transparent small" data-cart-remove="brewery-central-golden" style="margin-left: auto; display: none;">
+                                        <i>close</i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -163,6 +175,9 @@
                                             <span>$4.99</span>
                                         </div>
                                     </div>
+                                    <button class="circle transparent small" data-cart-remove="farm-fresh-tomatoes" style="margin-left: auto; display: none;">
+                                        <i>close</i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -184,6 +199,9 @@
                                             <span>$3.49</span>
                                         </div>
                                     </div>
+                                    <button class="circle transparent small" data-cart-remove="farm-fresh-carrots" style="margin-left: auto; display: none;">
+                                        <i>close</i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -220,6 +238,9 @@
                                             <span>$6.99</span>
                                         </div>
                                     </div>
+                                    <button class="circle transparent small" data-cart-remove="artisan-bread-sourdough" style="margin-left: auto; display: none;">
+                                        <i>close</i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -241,6 +262,9 @@
                                             <span>$7.49</span>
                                         </div>
                                     </div>
+                                    <button class="circle transparent small" data-cart-remove="artisan-bread-rye" style="margin-left: auto; display: none;">
+                                        <i>close</i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -400,6 +424,24 @@
           paymentMethod: 'Stripe'
         }
       };
+
+      let isCartEditing = false;
+
+      function toggleCartEdit(event) {
+        if (event) {
+          event.preventDefault();
+        }
+        isCartEditing = !isCartEditing;
+        document.body.classList.toggle('cart-editing', isCartEditing);
+        const editLink = document.querySelector('[data-testid="header-edit-cart"]');
+        if (editLink) {
+          editLink.textContent = isCartEditing ? 'Done' : 'Edit Cart';
+        }
+        const editButtons = document.querySelectorAll('[data-cart-remove]');
+        editButtons.forEach((button) => {
+          button.style.display = isCartEditing ? 'inline-flex' : 'none';
+        });
+      }
 
       function openPurchaseModal(vendorKey) {
         const vendor = vendorData[vendorKey];

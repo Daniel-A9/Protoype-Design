@@ -88,7 +88,7 @@
       </a>
     </nav>
 
-    <main class="responsive" style="padding-bottom: 70px;">
+    <main class="responsive" style="padding-bottom: 260px; padding-top: 2rem;">
         <!-- Edit Product Hero Section -->
         <section class="events-hero" style="margin-bottom: 1rem;">
             <div class="hero-banner">
@@ -179,20 +179,29 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="product-image">Upload Product Image</label>
-                                        <div class="upload-container">
-                                            <input type="file" id="product-image" name="product_image" accept="image/*" style="display: none;" data-testid="product-image-input">
-                                            <button type="button" class="btn outline upload-btn" onclick="document.getElementById('product-image').click()" data-testid="upload-image-btn">
-                                                <i>cloud_upload</i>
-                                                <span>Choose Image</span>
-                                            </button>
-                                            <img id="image-preview" src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" style="max-width: 200px; max-height: 150px; margin-top: 0.5rem; border-radius: 8px; object-fit: cover; display: block;">
+                                        <label for="product-gallery">Product Media</label>
+                                        <div class="column small-space">
+                                            <div class="row middle-align small-space wrap">
+                                                <img id="product-hero-preview" src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Primary product preview" loading="lazy" class="round" style="max-width: 200px; max-height: 150px; object-fit: cover;">
+                                                <div class="field label border round max" style="margin-bottom: 1.5rem;">
+                                                    <input type="file" id="product-gallery" name="product_gallery[]" accept="image/*" multiple data-testid="product-gallery-input">
+                                                    <label>Add or replace product photos</label>
+                                                </div>
+                                            </div>
+                                            <div id="product-gallery-thumbnails" class="grid small-space"></div>
+                                            <div id="product-gallery-empty" style="text-align: center; color: var(--on-surface-variant); font-size: 0.9rem;">No additional product images selected.</div>
+                                            <div class="row right-align">
+                                                <button type="button" id="product-gallery-clear" class="chip border" style="display: none;">
+                                                    <i>delete</i>
+                                                    <span>Clear gallery</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Form Actions -->
-                                <div class="form-actions center" style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+                                <div class="form-actions center" style="display: flex; gap: 1rem; justify-content: center; align-items: center; margin-top: 3rem; margin-bottom: 6rem;">
                                     <a href="vendor-my-products.html" style="text-decoration: none;">
                                         <button type="button" class="btn outline" data-testid="cancel-btn" style="min-width: 120px;">Cancel</button>
                                     </a>
@@ -201,6 +210,7 @@
 
                                 <div id="form-result"></div>
                             </form>
+                            <div aria-hidden="true" style="height: 140px;"></div>
                 </div>
             </div>
         </section>
@@ -208,49 +218,134 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Form validation
             const form = document.querySelector('.event-form');
             const requiredFields = form.querySelectorAll('[required]');
-            const fileInput = document.getElementById('product-image');
+            const productGalleryInput = document.getElementById('product-gallery');
+            const galleryThumbnails = document.getElementById('product-gallery-thumbnails');
+            const galleryEmptyState = document.getElementById('product-gallery-empty');
+            const galleryClearButton = document.getElementById('product-gallery-clear');
             const heroBannerImage = document.getElementById('hero-banner-image');
-            const imagePreview = document.getElementById('image-preview');
+            const productHeroPreview = document.getElementById('product-hero-preview');
 
-            // File upload preview
-            fileInput.addEventListener('change', function() {
-                const file = this.files[0];
-                const uploadBtn = document.querySelector('.upload-btn');
-                
-                if (file) {
-                    // Update button text to show selected file
-                    uploadBtn.innerHTML = `<i>check_circle</i><span>${file.name}</span>`;
-                    
+            const initialBannerSrc = heroBannerImage ? heroBannerImage.src : '';
+            const initialPreviewSrc = productHeroPreview ? productHeroPreview.src : '';
+            const maxGalleryImages = 8;
+            let galleryImages = [];
+
+            function readFileAsDataURL(file) {
+                return new Promise((resolve, reject) => {
                     const reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Update preview image
-                        if (imagePreview) {
-                            imagePreview.src = e.target.result;
-                            imagePreview.style.display = 'block';
-                        }
-                        // Update hero banner image
-                        if (heroBannerImage) {
-                            heroBannerImage.src = e.target.result;
-                        }
-                    };
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
                     reader.readAsDataURL(file);
-                } else {
-                    // Reset button if no file selected
-                    uploadBtn.innerHTML = `<i>cloud_upload</i><span>Choose Image</span>`;
+                });
+            }
+
+            function setPrimaryImage(src) {
+                if (productHeroPreview) {
+                    productHeroPreview.src = src;
+                }
+                if (heroBannerImage) {
+                    heroBannerImage.src = src;
+                }
+            }
+
+            function resetPrimaryImage() {
+                if (productHeroPreview && initialPreviewSrc) {
+                    productHeroPreview.src = initialPreviewSrc;
+                }
+                if (heroBannerImage && initialBannerSrc) {
+                    heroBannerImage.src = initialBannerSrc;
+                }
+            }
+
+            function renderGallery() {
+                galleryThumbnails.innerHTML = '';
+
+                if (!galleryImages.length) {
+                    galleryEmptyState.style.display = 'block';
+                    galleryClearButton.style.display = 'none';
+                    resetPrimaryImage();
+                    return;
+                }
+
+                galleryEmptyState.style.display = 'none';
+                galleryClearButton.style.display = 'inline-flex';
+                setPrimaryImage(galleryImages[0]);
+
+                galleryImages.forEach((src, index) => {
+                    const cell = document.createElement('div');
+                    cell.className = 's6 m4 l3';
+                    cell.innerHTML = `
+                        <article class="round border" style="position: relative; padding-top: 100%; overflow: hidden;">
+                            <img src="${src}" alt="Product image ${index + 1}" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+                            <button type="button" class="circle transparent small" data-index="${index}" style="position: absolute; top: 0.35rem; right: 0.35rem;">
+                                <i>close</i>
+                            </button>
+                        </article>
+                    `;
+                    galleryThumbnails.appendChild(cell);
+                });
+            }
+
+            function removeGalleryImage(index) {
+                galleryImages.splice(index, 1);
+                renderGallery();
+            }
+
+            function initialiseExistingImage() {
+                if (productHeroPreview && productHeroPreview.src) {
+                    galleryImages = [productHeroPreview.src];
+                    renderGallery();
+                }
+            }
+
+            galleryThumbnails.addEventListener('click', (event) => {
+                const button = event.target.closest('button[data-index]');
+                if (!button) {
+                    return;
+                }
+                const index = Number(button.getAttribute('data-index'));
+                if (!Number.isNaN(index)) {
+                    removeGalleryImage(index);
                 }
             });
 
-            // Real-time validation
+            galleryClearButton.addEventListener('click', () => {
+                galleryImages = [];
+                renderGallery();
+            });
+
+            productGalleryInput.addEventListener('change', async () => {
+                const files = Array.from(productGalleryInput.files || []);
+                if (!files.length) {
+                    return;
+                }
+
+                for (const file of files) {
+                    if (galleryImages.length >= maxGalleryImages) {
+                        break;
+                    }
+                    try {
+                        const dataUrl = await readFileAsDataURL(file);
+                        galleryImages.push(dataUrl);
+                    } catch (error) {
+                        console.error('Unable to read file', error);
+                    }
+                }
+
+                renderGallery();
+                productGalleryInput.value = '';
+            });
+
+            initialiseExistingImage();
+
             requiredFields.forEach(field => {
                 field.addEventListener('blur', function() {
                     validateField(this);
                 });
             });
 
-            // Form submission
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
@@ -262,13 +357,11 @@
                 });
 
                 if (isValid) {
-                    // Show loading state
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const originalText = submitBtn.textContent;
                     submitBtn.textContent = 'Saving Changes...';
                     submitBtn.disabled = true;
 
-                    // Simulate form submission (replace with actual HTMX handling)
                     setTimeout(() => {
                         document.getElementById('form-result').innerHTML = 
                             '<div style="color: #fffffe; background: rgba(255, 255, 254, 0.1); padding: 1rem; border-radius: 8px;">Product updated successfully!</div>';
@@ -276,7 +369,6 @@
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
                         
-                        // Redirect after success
                         setTimeout(() => {
                             window.location.href = 'vendor-my-products.html';
                         }, 1500);
@@ -288,7 +380,6 @@
                 const value = field.value.trim();
                 const isValid = value.length > 0;
 
-                // Remove existing error styling
                 field.style.borderColor = '';
                 const existingError = field.parentNode.querySelector('.error-message');
                 if (existingError) {
@@ -309,7 +400,6 @@
                 return isValid;
             }
 
-            // Smooth scroll for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();

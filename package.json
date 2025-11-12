@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Daniel-A9/Protoype-Design#readme",
   "dependencies": {
-    "cypress": "^15.5.0"
+    "cypress": "^15.5.0",
+    "stripe": "^19.3.0"
   }
 }

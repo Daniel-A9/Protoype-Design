@@ -141,28 +141,24 @@
         <!-- Vendor Profile Hero Section -->
         <section id="home" class="margin-bottom-large">
             <div class="margin-bottom-negative-large">
-                <img src="https://images.unsplash.com/photo-1516571867551-567d5d52c71b?w=1200&h=400&fit=crop" 
-                     alt="Pottery artist glazing ceramic bowls" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&h=400&fit=crop" 
+                     alt="Shelves filled with handcrafted ceramic bowls and mugs" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
             </div>
             
             <div class="card surface-container margin-horizontal-small responsive auto-margin" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
-                            <div class="row no-gap middle-align">
-                                <div class="col s12 m8 l8">
-                                    <div class="row no-gap middle-align">
-                                        <div class="col s2">
-                                            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=100&h=100&fit=crop&crop=faces" class="circle small" loading="lazy">
-                                        </div>
-                                        <div class="col s10">
-                                            <h2 class="left-align">Mountain Pottery Studio</h2>
-                                        </div>
-                                    </div>
+                            <div class="row wrap no-gap middle-align">
+                                <div class="col s12 m3 l2 center-align">
+                                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=200&h=200&fit=crop&crop=faces" class="circle extra" loading="lazy">
+                                </div>
+                                <div class="col s12 m9 l10">
+                                    <h2 class="left-align">Mountain Pottery Studio</h2>
                                     <p class="text-left text-grey">Handcrafted ceramics inspired by the Cascade mountains since 2012</p>
                                     
-                                    <div class="row no-gap middle-align margin-top-small">
-                                        <div class="col s6 m4 l4">
+                                    <div class="row no-gap wrap margin-top-small">
+                                        <div class="col s6 m4 l3 margin-bottom-small">
                                             <a href="followers.html" style="text-decoration: none; color: inherit; display: block;">
                                                 <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
                                                     <span class="text-bold text-large">8.4k</span>
@@ -170,7 +166,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col s6 m4 l4">
+                                        <div class="col s6 m4 l3 margin-bottom-small">
                                             <a href="connections.html" style="text-decoration: none; color: inherit; display: block;">
                                                 <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
                                                     <span class="text-bold text-large">52</span>
@@ -179,23 +175,26 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col s12 m4 l4">
-                                    <div class="row no-gap middle-align" style="justify-content: flex-end; gap: 0.75rem;">
-                                        <button class="btn tiny primary border" 
-                                                hx-post="/api/follow" 
-                                                hx-target="this" 
-                                                hx-swap="outerHTML"
-                                                data-testid="follow-vendor-btn">
-                                            <span>Follow</span>
-                                        </button>
-                                        <button class="btn tiny primary border circle" 
-                                                hx-get="/contact-form" 
-                                                hx-target="#contact-modal" 
-                                                hx-swap="innerHTML"
-                                                data-testid="message-vendor-btn">
-                                            <i>mail</i>
-                                        </button>
+
+                                    <div class="row no-gap wrap margin-top-small" style="gap: 0.6rem;">
+                                        <div>
+                                            <button class="btn primary border" 
+                                                    hx-post="/api/follow" 
+                                                    hx-target="this" 
+                                                    hx-swap="outerHTML"
+                                                    data-testid="follow-vendor-btn">
+                                                <span>Follow</span>
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button class="btn primary border circle" 
+                                                    hx-get="/contact-form" 
+                                                    hx-target="#contact-modal" 
+                                                    hx-swap="innerHTML"
+                                                    data-testid="message-vendor-btn">
+                                                <i>mail</i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

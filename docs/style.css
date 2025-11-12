@@ -747,6 +747,8 @@ body:not(.dark) .header-nav i {
     min-width: 180px;
     z-index: 1002;
     overflow: hidden;
+    padding-bottom: 0;
+    height: auto;
   }
   
   .feed-menu-dropdown.active {
@@ -761,6 +763,10 @@ body:not(.dark) .header-nav i {
     transition: background-color 0.2s;
   }
   
+  .feed-menu-dropdown a:last-child {
+    padding-bottom: 0.75rem;
+  }
+  
   .feed-menu-dropdown a:hover {
     background-color: var(--surface-container-high);
   }
@@ -768,6 +774,27 @@ body:not(.dark) .header-nav i {
   .mobile-menu-btn i {
     color: var(--on-surface);
     font-size: 1.5rem;
+  }
+
+  /* Sidebar hamburger menu overrides - shrink to fit content */
+  #hamburger-menu,
+  #vendor-hamburger-menu {
+    height: auto !important;
+    max-height: 100vh !important;
+  }
+
+  #hamburger-menu > div:first-child,
+  #vendor-hamburger-menu > div:first-child {
+    padding-bottom: 0.5rem !important;
+  }
+
+  /* Ensure last clickable items have minimal bottom spacing */
+  #hamburger-menu > div:first-child > a:last-child,
+  #hamburger-menu > div:first-child > button:last-child,
+  #vendor-hamburger-menu > div:first-child > a:last-child,
+  #vendor-hamburger-menu > div:first-child > button:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0.5rem !important;
   }
 
   .mobile-categories-overlay {

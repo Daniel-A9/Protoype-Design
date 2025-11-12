@@ -65,6 +65,22 @@
 .product-card-clickable:hover {
   transform: translateY(-4px);
 }
+
+body.dark #vendorMessageModal {
+  background-color: var(--surface) !important;
+}
+
+@media (max-width: 600px) {
+  #vendorMessageModal {
+    margin-bottom: 72px !important;
+    max-height: calc(100vh - 96px) !important;
+  }
+
+  #vendorMessageModal > main {
+    max-height: calc(100vh - 192px);
+    overflow-y: auto;
+  }
+}
 </style>
   </head>
   <body>
@@ -72,6 +88,9 @@
     <!-- Fixed Top Header -->
     <div class="top-header">
       <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <a href="../../index.html" class="circle transparent" aria-label="Back to search feed" style="color: #000; display: inline-flex; align-items: center; justify-content: center;">
+          <i>arrow_back</i>
+        </a>
         <img src="../../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
       </div>
       <nav class="header-nav">
@@ -179,23 +198,25 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col s12 m4 l4">
-                                    <div class="row no-gap middle-align" style="justify-content: flex-end; gap: 0.75rem;">
-                                        <button class="btn tiny primary border" 
-                                                hx-post="/api/follow" 
-                                                hx-target="this" 
-                                                hx-swap="outerHTML"
-                                                data-testid="follow-vendor-btn">
-                                            <span>Follow</span>
-                                        </button>
-                                        <button class="btn tiny primary border circle" 
-                                                hx-get="/contact-form" 
-                                                hx-target="#contact-modal" 
-                                                hx-swap="innerHTML"
-                                                data-testid="message-vendor-btn">
-                                            <i>mail</i>
-                                        </button>
+
+                                    <div class="row no-gap wrap margin-top-small" style="gap: 0.6rem;">
+                                        <div>
+                                            <button class="btn primary border" 
+                                                    hx-post="/api/follow" 
+                                                    hx-target="this" 
+                                                    hx-swap="outerHTML"
+                                                    data-testid="follow-vendor-btn">
+                                                <span>Follow</span>
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button class="btn primary border circle" 
+                                                    data-open-modal="vendorMessageModal"
+                                                    data-testid="message-vendor-btn"
+                                                    aria-label="Message Brewery Central">
+                                                <i>mail</i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -204,6 +225,34 @@
                 </div>
             </div>
         </section>
+
+        <dialog id="vendorMessageModal" class="modal small-height" style="background-color: #F5F0E8;">
+            <header class="padding-horizontal small-padding">
+                <nav class="middle-align">
+                    <button class="circle transparent" data-close-modal="vendorMessageModal" aria-label="Close message composer">
+                        <i>arrow_back</i>
+                    </button>
+                    <h6 class="max" style="margin-left: 0.5rem; font-size: 0.85rem;">Messaging: Brewery Central</h6>
+                </nav>
+            </header>
+            <main class="padding-horizontal" style="padding-bottom: 0.5rem;">
+                <div class="field textarea fill" style="margin-bottom: 0.75rem;">
+                    <textarea id="messageBody" name="messageBody" placeholder="What's on your mind?" rows="5" aria-label="Message body"></textarea>
+                </div>
+                <nav class="row no-gap">
+                    <div class="col s6">
+                        <button class="btn border surface" data-close-modal="vendorMessageModal" style="width: 100%;">
+                            <span>Cancel</span>
+                        </button>
+                    </div>
+                    <div class="col s6">
+                        <button class="btn primary" data-close-modal="vendorMessageModal" style="width: 100%;">
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </nav>
+            </main>
+        </dialog>
 
         <!-- Products Section -->
         <section id="products" class="padding-vertical-large">
@@ -1289,6 +1338,61 @@
                 }, 4000);
             }, 500);
         }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("vendorMessageModal");
+        const openers = document.querySelectorAll('[data-open-modal="vendorMessageModal"]');
+        const closers = document.querySelectorAll('[data-close-modal="vendorMessageModal"]');
+        const messageBody = document.getElementById("messageBody");
+
+        function openModal() {
+          if (!modal.hasAttribute("open")) {
+            modal.setAttribute("open", "");
+            modal.classList.add("active");
+            requestAnimationFrame(function () {
+              if (messageBody) {
+                messageBody.focus();
+              }
+            });
+          }
+        }
+
+        function closeModal() {
+          if (modal.hasAttribute("open")) {
+            modal.classList.remove("active");
+            modal.removeAttribute("open");
+            if (messageBody) {
+              messageBody.blur();
+            }
+          }
+        }
+
+        openers.forEach(function (button) {
+          button.addEventListener("click", function (event) {
+            event.preventDefault();
+            openModal();
+          });
+        });
+
+        closers.forEach(function (button) {
+          button.addEventListener("click", function (event) {
+            event.preventDefault();
+            closeModal();
+          });
+        });
+
+        modal.addEventListener("cancel", function (event) {
+          event.preventDefault();
+          closeModal();
+        });
+
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+      });
     </script>
   </body>
 </html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>Help Message Center / FAQs - LocalMarket</title>
+    <link href="../style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="top-header">
+      <div class="header-left" style="display: flex; align-items: center; gap: 0.5rem;">
+        <img src="../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
+      </div>
+      <nav class="header-nav">
+        <a href="../home/index.html" class="link">Home</a>
+        <a href="../index.html" class="link">Discover</a>
+        <a href="../discussions/categories/local-discussions.html" class="link">Community</a>
+        <a href="../cart/index.html" class="link">
+          <i>shopping_cart</i>
+          <span>Cart</span>
+        </a>
+      </nav>
+      <div class="header-right">
+        <a href="../index.html" class="site-logo">
+          <img src="../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
+        </a>
+        <a href="../userprofile/index.html" class="header-profile">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
+        </a>
+        <div class="mobile-menu-btn" onclick="toggleHamburgerMenu()">
+          <i>menu</i>
+        </div>
+      </div>
+    </div>
+
+    <div id="hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+
+    <div id="hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
+      <div style="padding: 1rem;">
+        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+          <i>close</i>
+        </button>
+        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+
+        <a href="shopper.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">person_outline</i>
+          <span style="font-size: 0.9rem;">Personal Profile</span>
+        </a>
+
+        <a href="../discussions/categories/local-discussions.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">groups</i>
+          <span style="font-size: 0.9rem;">Groups</span>
+        </a>
+
+        <a href="vendor-settings.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">settings</i>
+          <span style="font-size: 0.9rem;">Vendor Settings</span>
+        </a>
+
+        <a href="personal-settings.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">settings</i>
+          <span style="font-size: 0.9rem;">Personal Settings</span>
+        </a>
+
+        <a href="#" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
+          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
+          <span style="font-size: 0.9rem;">Report User</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="../home/index.html" class="nav-item">
+        <i>home</i>
+      </a>
+      <a href="../index.html" class="nav-item">
+        <i>search</i>
+      </a>
+      <a href="../discussions/categories/local-discussions.html" class="nav-item">
+        <i>groups</i>
+      </a>
+      <a href="../cart/index.html" class="nav-item">
+        <i>shopping_cart</i>
+      </a>
+      <a href="index.html" class="nav-item active">
+        <i>person</i>
+      </a>
+    </nav>
+
+    <main class="responsive auto-margin" style="padding-bottom: 72px;">
+      <div class="container margin-vertical-large">
+        <a href="#" onclick="window.history.back(); return false;" style="display: inline-flex; align-items: center; margin-bottom: 1rem; color: var(--on-surface); text-decoration: none;">
+          <i style="color: var(--on-surface);">arrow_back</i>
+        </a>
+
+        <header class="margin-bottom-large">
+          <h2>Help Message Center / FAQs</h2>
+        </header>
+
+        <section class="margin-bottom-large">
+          <article class="card padding center-align">
+            <h4>Have any questions?</h4>
+            <p class="text-grey small-text margin-vertical-medium">Our customer service team is here to help you with any questions or concerns.</p>
+            <nav class="center-align">
+              <a href="customer-service.html" class="btn primary">
+                <i>chat</i>
+                <span>Contact Customer Service</span>
+              </a>
+            </nav>
+          </article>
+        </section>
+
+        <section class="margin-bottom-large">
+          <h3>Frequently Asked Questions</h3>
+          
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I create an account?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                To create an account, click on the "Sign Up" button in the top right corner of the homepage. You can sign up using your email address, Google account, or other social media accounts. Follow the prompts to complete your profile setup.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I place an order?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                Browse our marketplace to find products you're interested in. Click on a product to view details, then click "Add to Cart" or "Buy Now". Review your cart and proceed to checkout where you'll enter your shipping information and payment details.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">What payment methods do you accept?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                We accept major credit cards (Visa, Mastercard, American Express), debit cards, PayPal, and other digital payment methods. You can add and manage your payment methods in your account settings under "Payment Methods".
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I track my order?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                Once your order has been shipped, you'll receive a confirmation email with a tracking number. You can also view your order status and tracking information by going to "My Orders" in your profile. Click on the specific order to see detailed tracking updates.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">What is your return policy?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                Return policies vary by vendor. Most vendors accept returns within 7-30 days of purchase for unopened items. To initiate a return, go to "My Orders", select the order you want to return, and click "Request Return". The vendor will review your request and provide return instructions.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I become a vendor?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                To become a vendor, go to your profile settings and click "Become a Vendor" or navigate to the vendor registration page. You'll need to provide business information, verify your identity, and set up your vendor profile. Once approved, you can start listing products and managing your store.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I update my profile information?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                Go to your profile page and click on "Settings" or "Edit Profile". From there, you can update your display name, email, phone number, address, profile photo, and other personal information. Remember to save your changes before leaving the page.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I change my password?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                In your account settings, navigate to "Account Information" and click on "Change Password". You'll need to enter your current password and then create a new password. Make sure your new password meets the security requirements (typically 8+ characters with a mix of letters, numbers, and symbols).
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I contact a vendor directly?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                You can contact vendors through the messaging system. Go to the vendor's profile page and click "Message" or find them in your messages. You can also contact vendors through their listed contact information if they've made it available on their profile.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">What should I do if I receive a damaged or incorrect item?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                If you receive a damaged or incorrect item, contact the vendor immediately through the messaging system or use the "Report an Issue" option in your order details. Take photos of the damaged item if possible. Most vendors will work with you to resolve the issue, which may include a replacement, refund, or partial credit.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I delete my account?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                To delete your account, go to Settings > Help & Support. Scroll down to find the "Delete Account" option. You'll be asked to confirm your decision and may need to resolve any pending orders or disputes before the account can be permanently deleted. This action cannot be undone.
+              </div>
+            </details>
+          </article>
+
+          <article class="card padding margin-bottom-medium">
+            <details>
+              <summary>
+                <h6 class="small">How do I report a problem or safety concern?</h6>
+              </summary>
+              <div class="margin-top-small text-grey small-text">
+                If you encounter a problem or safety concern, you can report it through several channels: use the "Report an Issue" option in your settings, contact customer service directly through the messaging system, or use the "Report" button on any user or vendor profile. We take all reports seriously and will investigate promptly.
+              </div>
+            </details>
+          </article>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+    <script>
+      (function() {
+        const storedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+      })();
+
+      function toggleHamburgerMenu() {
+        const menu = document.getElementById('hamburger-menu');
+        const overlay = document.getElementById('hamburger-menu-overlay');
+
+        if (menu.style.right === '0px') {
+          menu.style.right = '-240px';
+          overlay.style.display = 'none';
+        } else {
+          menu.style.right = '0px';
+          overlay.style.display = 'block';
+        }
+      }
+    </script>
+  </body>
+</html>
+

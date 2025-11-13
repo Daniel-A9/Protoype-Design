@@ -170,6 +170,11 @@
             </div>
           </div>
 
+          <div class="field label border round top-margin medium-margin">
+            <input type="date" id="dateOfBirth">
+            <label>Date of Birth</label>
+          </div>
+
           <div class="field label border round top-margin small-margin">
             <input type="text" id="zipcode" required pattern="[0-9]{5}">
             <label>Zip Code *</label>
@@ -357,11 +362,13 @@
         const zipcode = document.getElementById('zipcode').value;
         const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
         const displayName = document.getElementById('displayName').value;
+        const dateOfBirth = document.getElementById('dateOfBirth').value;
         
         sessionStorage.setItem('signup_name', name);
         sessionStorage.setItem('signup_zipcode', zipcode);
         sessionStorage.setItem('signup_interests', JSON.stringify(interests));
         sessionStorage.setItem('signup_display_name', displayName);
+        sessionStorage.setItem('signup_date_of_birth', dateOfBirth);
         
         // Redirect to shopper profile
         alert('Welcome ' + name + '! Your account has been created.');

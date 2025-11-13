@@ -16,6 +16,17 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "");
 app.use(express.static("public"));
 app.use(express.json());
 
+// CORS middleware
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 app.get("/config", (req, res) => {
   if (!process.env.STRIPE_PUBLISHABLE_KEY) {
     return res.status(500).json({

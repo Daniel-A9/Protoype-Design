@@ -11,6 +11,9 @@
   <body>
     <div class="top-header">
       <div class="header-left" style="display: flex; align-items: center; gap: 0.5rem;">
+        <a href="index.html" class="circle transparent">
+          <i>arrow_back</i>
+        </a>
         <img src="../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
       </div>
       <nav class="header-nav">
@@ -88,15 +91,13 @@
         </a>
 
         <section class="margin-bottom-large">
-          <h3>Current Plan Overview</h3>
           <article class="card padding">
             <div class="grid small-space">
               <div class="s12 m6">
-                <h4 class="margin-bottom-small">Pro Seller</h4>
-                <p class="small-text text-grey">Includes featured listings, advanced analytics, and dedicated support.</p>
+                <h4>LM Subscription</h4>
               </div>
               <div class="s12 m6">
-                <ul class="list no-margin">
+                <ul class="list no-margin no-space">
                   <li class="row middle-align space">
                     <span class="small-text text-grey">Status</span>
                     <strong>Active</strong>
@@ -118,42 +119,6 @@
           <div id="checkout"></div>
           <div id="message" class="error" hidden></div>
           <div id="status" class="status" hidden>Creating checkout session…</div>
-        </section>
-        <section class="margin-bottom-large">
-          <h3>Actions</h3>
-          <article class="card padding">
-            <div class="grid small-space">
-              <div class="s12 m6">
-                <h6 class="small">Update Payment Method</h6>
-                <p class="small-text text-grey">Launch the embedded checkout flow to refresh saved cards or add new billing details.</p>
-                <a href="http://localhost:4242" class="btn primary" target="_blank" rel="noopener">Open Test Checkout</a>
-                <p class="tiny-text text-grey margin-top-small">Ensure the local Stripe demo server is running before launching checkout.</p>
-              </div>
-              <div class="s12 m6">
-                <h6 class="small">Change Plan</h6>
-                <p class="small-text text-grey">Preview marketplace plans and upgrade or downgrade instantly with Stripe.</p>
-                <a href="http://localhost:4242" class="btn secondary border" target="_blank" rel="noopener">View Available Plans</a>
-              </div>
-            </div>
-          </article>
-        </section>
-
-
-        <section class="margin-bottom-large">
-          <h3>Need Help?</h3>
-          <article class="card padding">
-            <div class="grid small-space">
-              <div class="s12 m6">
-                <h6 class="small">Billing Support</h6>
-                <p class="small-text text-grey">Email billing@localmarket.com or chat with us weekdays 9am–5pm PT.</p>
-              </div>
-              <div class="s12 m6">
-                <h6 class="small">Webhook Sandbox</h6>
-                <p class="small-text text-grey">Use the Stripe CLI or dashboard to trigger test webhook events with your webhook secret.</p>
-                <code class="small-text"></code>
-              </div>
-            </div>
-          </article>
         </section>
       </div>
       <script src="https://js.stripe.com/v3/"></script>
@@ -225,7 +190,7 @@
               if (checkoutDiv) {
                 const iframe = checkoutDiv.querySelector("iframe");
                 if (iframe) {
-                  iframe.style.setProperty("height", "1800px", "important");
+                  iframe.style.setProperty("height", "1200px", "important");
                 }
               }
             }, 2000);
@@ -248,9 +213,32 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script>
       (function() {
+        // Get stored theme or default to light
         const storedTheme = localStorage.getItem('theme') || 'light';
+        
+        // Apply theme on page load
         document.body.classList.remove('dark', 'light');
         document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'theme-toggle circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        document.body.appendChild(toggleButton);
       })();
 
       function toggleHamburgerMenu() {

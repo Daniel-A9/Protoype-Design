@@ -1061,6 +1061,21 @@ body:not(.dark) .header-nav i {
       max-width: calc(100% - 352px);
       margin: 0;
       padding-right: 1rem;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    
+    main.responsive > .container > .row {
+      box-sizing: border-box;
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+    }
+    
+    main.responsive > .container > .row > .col {
+      box-sizing: border-box;
+      max-width: 100%;
+      width: 100%;
     }
     
     .main-content {
@@ -1069,12 +1084,24 @@ body:not(.dark) .header-nav i {
       padding: 0;
       height: fit-content;
       width: 100% !important;
+      box-sizing: border-box;
+    }
+
+    .main-content h4 {
+      text-align: left;
+    }
+
+    .main-content .category-description {
+      text-align: left;
     }
     
     .feed-container {
       max-width: 100%;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      width: 100%;
+      overflow-x: hidden;
     }
     
     /* Ensure posts section matches top section width on vendor profile */
@@ -1096,6 +1123,77 @@ body:not(.dark) .header-nav i {
     #posts .card.medium {
       box-sizing: border-box;
       max-width: 100%;
+    }
+
+    /* Desktop Card Layout - Match Mobile Proportions */
+    .feed-container .card {
+      box-sizing: border-box;
+      max-width: 100%;
+      width: auto;
+      overflow: hidden;
+    }
+
+    .feed-container .card-header-row {
+      padding: 0.5rem 0.75rem !important;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    .feed-container .card-header-row .card-title {
+      text-align: left !important;
+    }
+
+    .feed-container .card-header-row .card-meta {
+      text-align: left !important;
+    }
+
+    .feed-container .card-header-row .row {
+      justify-content: flex-start !important;
+    }
+
+    .feed-container .card-header-row .row .col {
+      text-align: left !important;
+    }
+
+    .feed-container .card-image {
+      max-width: 100%;
+      overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .feed-container .card-image img {
+      max-width: 100%;
+      width: 100%;
+      height: 350px !important;
+      object-fit: cover;
+      box-sizing: border-box;
+    }
+
+    .feed-container .card-content {
+      padding: 0.5rem !important;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      max-width: 100%;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .feed-container .card-content p {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .feed-container .card-header-actions {
+      padding: 0.4rem 0.5rem !important;
+      box-sizing: border-box;
+      max-width: 100%;
+      width: 100%;
     }
   }
 

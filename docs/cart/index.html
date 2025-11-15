@@ -288,9 +288,12 @@
 
     <!-- Purchase Modal -->
     <dialog id="purchase-modal">
-        <div style="padding: 1.5rem; max-width: 500px; width: 90vw;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h5 id="modal-vendor-name" style="margin: 0;">Complete Purchase</h5>
+        <div style="padding: 0 1.5rem 1.5rem 1.5rem; max-width: 500px; width: 90vw;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; padding-top: 1rem;">
+                <div>
+                    <h5 id="modal-vendor-name" class="underline" style="margin: 0;">Complete Purchase</h5>
+                    <div style="font-size: 0.9rem; margin-top: 0.25rem; color: var(--on-surface-variant);">Checkout</div>
+                </div>
                 <button class="circle transparent" onclick="closePurchaseModal()" style="padding: 0.5rem;">
                     <i>close</i>
                 </button>
@@ -299,14 +302,22 @@
                 <!-- Products will be inserted here -->
             </div>
             <hr style="margin: 1rem 0;" />
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
                 <span style="font-weight: 600;">Total:</span>
-                <span id="modal-total" style="font-weight: 600; font-size: 1.2rem;">$0.00</span>
+                <span id="modal-total" style="font-weight: 600; font-size: 1.2rem; text-align: right;">$0.00</span>
             </div>
-            <div style="margin-bottom: 1rem;">
-                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Payment Method:</label>
-                <div id="modal-payment-method" style="padding: 0.75rem; background-color: var(--surface-container-high); border-radius: 8px; font-size: 0.9rem;">
-                    <!-- Payment method will be inserted here -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span style="font-weight: 500;">Payment Method:</span>
+                <div style="position: relative;">
+                    <button style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.75rem; background-color: var(--surface-container-high); border-radius: 8px; font-size: 0.9rem; border: none; color: var(--on-surface);" data-ui="#payment-method-menu">
+                        <i class="small">edit</i>
+                        <span id="modal-payment-method" style="text-align: right;">Paypal</span>
+                        <menu id="payment-method-menu" class="right" style="min-width: 200px;">
+                            <li><a href="#" data-payment="Paypal" onclick="selectPaymentMethod(event, 'Paypal')">Paypal</a></li>
+                            <li><a href="#" data-payment="Venmo" onclick="selectPaymentMethod(event, 'Venmo')">Venmo</a></li>
+                            <li><a href="#" data-payment="Stripe" onclick="selectPaymentMethod(event, 'Stripe')">Stripe</a></li>
+                        </menu>
+                    </button>
                 </div>
             </div>
             <nav style="display: flex; gap: 0.5rem;">
@@ -454,30 +465,33 @@
         const paymentMethodEl = document.getElementById('modal-payment-method');
 
         vendorNameEl.textContent = vendor.name;
-        paymentMethodEl.textContent = vendor.paymentMethod;
+        if (paymentMethodEl) {
+          paymentMethodEl.textContent = vendor.paymentMethod;
+        }
 
         // Calculate total and build products list
         let total = 0;
         productsEl.innerHTML = '';
-        vendor.products.forEach(product => {
+        vendor.products.forEach((product, index) => {
           total += product.price;
           const productDiv = document.createElement('div');
-          productDiv.style.cssText = 'display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--outline-variant);';
+          productDiv.style.cssText = 'display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0;';
           productDiv.innerHTML = `
-            <img src="${product.image}" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;" />
+            <img src="${product.image}" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px; flex-shrink: 0;" />
             <div style="flex: 1;">
               <div style="font-weight: 500; margin-bottom: 0.25rem;">${product.name}</div>
-              <div style="font-size: 0.9rem; color: var(--on-surface-variant);">$${product.price.toFixed(2)}</div>
+              <div style="font-size: 0.9rem; color: var(--on-surface-variant); text-align: right;">$${product.price.toFixed(2)}</div>
             </div>
           `;
           productsEl.appendChild(productDiv);
+          
+          // Add divider after each product except the last one
+          if (index < vendor.products.length - 1) {
+            const divider = document.createElement('hr');
+            divider.style.cssText = 'margin: 0.5rem 0;';
+            productsEl.appendChild(divider);
+          }
         });
-
-        // Remove border from last product
-        const lastProduct = productsEl.lastElementChild;
-        if (lastProduct) {
-          lastProduct.style.borderBottom = 'none';
-        }
 
         totalEl.textContent = '$' + total.toFixed(2);
 
@@ -504,6 +518,26 @@
           closePurchaseModal();
         }
       });
+
+      // Payment method selection handler
+      function selectPaymentMethod(event, method) {
+        event.preventDefault();
+        const paymentMethodEl = document.getElementById('modal-payment-method');
+        if (paymentMethodEl) {
+          paymentMethodEl.textContent = method;
+        }
+        
+        // Close the dropdown menu using BeerCSS ui function
+        if (typeof ui !== 'undefined') {
+          ui('#payment-method-menu');
+        } else {
+          // Fallback if ui function not available
+          const menu = document.getElementById('payment-method-menu');
+          if (menu) {
+            menu.classList.remove('active');
+          }
+        }
+      }
     </script>
   </body>
 </html>

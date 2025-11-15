@@ -31,7 +31,7 @@
         <a href="../index.html" class="site-logo">
           <img src="../Logo 333.png" alt="LocalMarket Logo">
         </a>
-        <a href="../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile">
+        <a href="#" class="header-profile" onclick="toggleProfileType(event); return false;" data-testid="desktop-nav-profile">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
         <!-- Hamburger Menu Button -->
@@ -546,6 +546,32 @@
           
           // Scroll to new comment
           newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Profile Type Toggle Functionality
+      function toggleProfileType(event) {
+        // Only work in desktop mode (screen width > 768px)
+        if (window.innerWidth <= 768) {
+          return;
+        }
+        
+        event.preventDefault();
+        
+        // Get current page filename
+        const currentPath = window.location.pathname;
+        const currentFile = currentPath.split('/').pop() || 'index.html';
+        
+        // Toggle to the other profile type
+        if (currentFile === 'index.html' || currentFile === '' || currentPath.endsWith('userprofile/')) {
+          // Currently on vendor profile, switch to shopper profile
+          window.location.href = 'shopper.html';
+        } else if (currentFile === 'shopper.html') {
+          // Currently on shopper profile, switch to vendor profile
+          window.location.href = 'index.html';
+        } else {
+          // Default to vendor profile if we can't determine
+          window.location.href = 'index.html';
+        }
       }
 
       // Hamburger Menu Functions

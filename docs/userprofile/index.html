@@ -32,7 +32,7 @@
         <a href="../index.html" class="site-logo">
           <img src="../Logo 333.png" alt="LocalMarket Logo">
         </a>
-        <a href="../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile">
+        <a href="#" class="header-profile" onclick="toggleProfileType(event); return false;" data-testid="desktop-nav-profile">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
         <!-- Hamburger Menu Button -->
@@ -75,14 +75,6 @@
         <a href="vendor-settings.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
           <i style="margin-right: 0.5rem; font-size: 1.2rem;">settings</i>
           <span style="font-size: 0.9rem;">Vendor Settings</span>
-        </a>
-        
-        <hr style="margin: 0.75rem 0;">
-        
-        <!-- Report User Option -->
-        <a href="#" onclick="openReportDialog('user', 'current-user-profile'); toggleHamburgerMenu(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
-          <span style="font-size: 0.9rem;">Report User</span>
         </a>
         
         <hr style="margin: 0.75rem 0;">
@@ -567,6 +559,32 @@
         
         document.body.appendChild(toggleButton);
       })();
+
+      // Profile Type Toggle Functionality
+      function toggleProfileType(event) {
+        // Only work in desktop mode (screen width > 768px)
+        if (window.innerWidth <= 768) {
+          return;
+        }
+        
+        event.preventDefault();
+        
+        // Get current page filename
+        const currentPath = window.location.pathname;
+        const currentFile = currentPath.split('/').pop() || 'index.html';
+        
+        // Toggle to the other profile type
+        if (currentFile === 'index.html' || currentFile === '' || currentPath.endsWith('userprofile/')) {
+          // Currently on vendor profile, switch to shopper profile
+          window.location.href = 'shopper.html';
+        } else if (currentFile === 'shopper.html') {
+          // Currently on shopper profile, switch to vendor profile
+          window.location.href = 'index.html';
+        } else {
+          // Default to vendor profile if we can't determine
+          window.location.href = 'index.html';
+        }
+      }
 
       // Edit Mode Functionality
       (function() {

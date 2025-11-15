@@ -1246,6 +1246,7 @@ body:not(.dark) .header-nav i {
     border-top: 1px solid var(--outline-variant);
     background-color: var(--surface-container);
     display: block;
+    position: relative;
   }
   
   .follow-btn {

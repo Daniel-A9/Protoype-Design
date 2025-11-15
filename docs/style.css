@@ -2244,3 +2244,76 @@ body:not(.dark) .header-nav i {
   .schedule-table td:last-child {
     width: 70%;
   }
+
+/* Desktop-only layout for Brewery Central card */
+@media (min-width: 769px) {
+  [data-desktop-layout="brewery"] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    order: 1;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-row .type-badge {
+    display: none;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-row .subcategory-tag {
+    display: none;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-row::before {
+    content: "Brewery Central";
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-row::after {
+    content: "VENDOR Brewery";
+    font-size: 0.8rem;
+    color: var(--on-surface-variant);
+  }
+
+  [data-desktop-layout="brewery"] .card-header-actions {
+    order: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: transparent;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-actions .card-title-section {
+    display: none;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-actions::before {
+    content: "12345 Pittsburgh, PA";
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  [data-desktop-layout="brewery"] .card-header-actions .follow-btn {
+    order: 2;
+  }
+
+  [data-desktop-layout="brewery"] .card-image {
+    order: 2;
+  }
+
+  [data-desktop-layout="brewery"] .card-divider {
+    order: 4;
+  }
+
+  [data-desktop-layout="brewery"] .card-content {
+    order: 5;
+  }
+}

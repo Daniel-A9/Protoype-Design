@@ -1076,6 +1076,27 @@ body:not(.dark) .header-nav i {
       margin: 0;
       padding: 0;
     }
+    
+    /* Ensure posts section matches top section width on vendor profile */
+    /* Both sections use .responsive.auto-margin from BeerCSS - ensure they match exactly */
+    /* The top section card and posts wrapper should have the same width constraints */
+    section#home .card.responsive.auto-margin,
+    #posts > .responsive.auto-margin {
+      box-sizing: border-box;
+    }
+    
+    /* Ensure containers inside both sections have matching width behavior */
+    section#home .card.responsive.auto-margin > .container,
+    #posts > .responsive.auto-margin > .container {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+    
+    /* Ensure post cards don't exceed their container and match the top section's content width */
+    #posts .card.medium {
+      box-sizing: border-box;
+      max-width: 100%;
+    }
   }
 
   .card {

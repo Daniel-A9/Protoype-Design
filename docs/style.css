@@ -1864,7 +1864,6 @@ body:not(.dark) .header-nav i {
     max-height: 200px;
     overflow: hidden;
     width: 100%;
-    position: relative;
   }
 
   .card-header-row {
@@ -1939,28 +1938,67 @@ body:not(.dark) .header-nav i {
     flex-direction: column !important;
   }
 
+  /* Cards with card-header-row structure (discussion pages) */
   .feed-container .card.small .card-header-row,
   .feed-container .card.small.clickable-card .card-header-row {
     order: 1 !important;
   }
 
-  .feed-container .card.small .card-image,
-  .feed-container .card.small.clickable-card .card-image {
+  .feed-container .card.small .card-header-row ~ .card-image,
+  .feed-container .card.small.clickable-card .card-header-row ~ .card-image {
     order: 2 !important;
   }
 
-  .feed-container .card.small .card-header-actions,
-  .feed-container .card.small.clickable-card .card-header-actions {
+  .feed-container .card.small .card-header-row ~ .card-header-actions,
+  .feed-container .card.small.clickable-card .card-header-row ~ .card-header-actions {
     order: 3 !important;
   }
 
-  .feed-container .card.small .card-divider,
-  .feed-container .card.small.clickable-card .card-divider {
+  .feed-container .card.small .card-header-row ~ .card-divider,
+  .feed-container .card.small.clickable-card .card-header-row ~ .card-divider {
     order: 4 !important;
   }
 
-  .feed-container .card.small .card-content,
-  .feed-container .card.small.clickable-card .card-content {
+  .feed-container .card.small .card-header-row ~ .card-content,
+  .feed-container .card.small.clickable-card .card-header-row ~ .card-content {
+    order: 5 !important;
+  }
+
+  .feed-container .card.small .card-header-row ~ .card-footer:not(.surface-container-low),
+  .feed-container .card.small.clickable-card .card-header-row ~ .card-footer:not(.surface-container-low) {
+    order: 6 !important;
+  }
+
+  .feed-container .card.small .card-header-row ~ .card-footer.surface-container-low,
+  .feed-container .card.small.clickable-card .card-header-row ~ .card-footer.surface-container-low,
+  .feed-container .card.small .card-header-row ~ .comments-section,
+  .feed-container .card.small.clickable-card .card-header-row ~ .comments-section {
+    order: 7 !important;
+  }
+
+  /* Cards with simple card-header structure (shopper profile) */
+  .feed-container .card.small .card-header:not(.surface-container-low):not(:has(+ .card-header-row)),
+  .feed-container .card.small.clickable-card .card-header:not(.surface-container-low):not(:has(+ .card-header-row)) {
+    order: 1 !important;
+  }
+
+  .feed-container .card.small .card-header:not(.surface-container-low) ~ .card-image,
+  .feed-container .card.small.clickable-card .card-header:not(.surface-container-low) ~ .card-image {
+    order: 2 !important;
+  }
+
+  .feed-container .card.small .card-header:not(.surface-container-low) ~ .card-content,
+  .feed-container .card.small.clickable-card .card-header:not(.surface-container-low) ~ .card-content {
+    order: 3 !important;
+  }
+
+  .feed-container .card.small .card-header:not(.surface-container-low) ~ .card-footer:not(.surface-container-low),
+  .feed-container .card.small.clickable-card .card-header:not(.surface-container-low) ~ .card-footer:not(.surface-container-low) {
+    order: 4 !important;
+  }
+
+  .feed-container .card.small .card-header:not(.surface-container-low) ~ .card-footer.surface-container-low,
+  .feed-container .card.small.clickable-card .card-header:not(.surface-container-low) ~ .card-footer.surface-container-low {
     order: 5 !important;
   }
   }
@@ -2510,6 +2548,14 @@ body:not(.dark) .header-nav i {
     order: 5;
   }
 
+  [data-desktop-layout="brewery"] .card-footer {
+    order: 6;
+  }
+
+  [data-desktop-layout="brewery"] .comments-section {
+    order: 7;
+  }
+
   /* Copy brewery card layout to all other cards on desktop */
   .feed-container .card.small:not([data-desktop-layout="brewery"]) {
     display: flex;
@@ -2571,6 +2617,14 @@ body:not(.dark) .header-nav i {
 
   .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-content {
     order: 5;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-footer {
+    order: 6;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .comments-section {
+    order: 7;
   }
 }
 

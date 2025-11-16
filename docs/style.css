@@ -2601,3 +2601,75 @@ body:not(.dark) .header-nav i {
   white-space: normal;
   max-width: 100%;
 }
+
+/* Desktop Vendor Card Three-Row Layout - Independent rows */
+@media (min-width: 769px) {
+  /* Target the vendor card content container - use 2 columns for row 1, 1 column for rows 2-3 */
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr auto;
+    gap: 0;
+    align-items: start;
+  }
+  
+  /* Row 1: Logo + Name row - left column, fixed height, no expansion */
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 > .row:first-of-type {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    flex: 0 0 auto;
+  }
+  
+  /* Row 2: Description - spans both columns, expandable, independent */
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 > p.text-left.text-grey,
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 > .vendor-description-container {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    min-height: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  /* Row 3: Stats - spans both columns, fixed height, no expansion, left-aligned */
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 > .row.margin-top-small:nth-of-type(2) {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 0;
+    flex: 0 0 auto;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+  
+  /* Ensure stats columns are left-aligned */
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 > .row.margin-top-small:nth-of-type(2) > .col {
+    text-align: left !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
+  
+  /* Ensure inner stat divs are left-aligned */
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 > .row.margin-top-small:nth-of-type(2) .text-left {
+    text-align: left !important;
+    width: 100%;
+  }
+  
+  /* Buttons row - right column of Row 1, align to right */
+  section#home .card .container .row .col.s12 .row .col.s12.m8.l8 > .row.margin-top-small:last-of-type {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+}

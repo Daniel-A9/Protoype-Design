@@ -1932,6 +1932,39 @@ body:not(.dark) .header-nav i {
     margin: 0;
   }
 
+  /* Ensure all cards match brewery card layout on mobile - same structure */
+  .feed-container .card.small,
+  .feed-container .card.small.clickable-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .feed-container .card.small .card-header-row,
+  .feed-container .card.small.clickable-card .card-header-row {
+    order: 1 !important;
+  }
+
+  .feed-container .card.small .card-image,
+  .feed-container .card.small.clickable-card .card-image {
+    order: 2 !important;
+  }
+
+  .feed-container .card.small .card-header-actions,
+  .feed-container .card.small.clickable-card .card-header-actions {
+    order: 3 !important;
+  }
+
+  .feed-container .card.small .card-divider,
+  .feed-container .card.small.clickable-card .card-divider {
+    order: 4 !important;
+  }
+
+  .feed-container .card.small .card-content,
+  .feed-container .card.small.clickable-card .card-content {
+    order: 5 !important;
+  }
+  }
+
   .card-location {
     display: flex;
     flex-direction: column;
@@ -2476,4 +2509,95 @@ body:not(.dark) .header-nav i {
   [data-desktop-layout="brewery"] .card-content {
     order: 5;
   }
+
+  /* Copy brewery card layout to all other cards on desktop */
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    order: 1;
+    padding: 0.75rem 1rem;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-row .type-badge {
+    display: none;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-row .subcategory-tag {
+    display: none;
+  }
+
+  /* Style moved title in header row */
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-row .card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-row .subcategory-tag {
+    font-size: 0.8rem;
+    color: var(--on-surface-variant);
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-actions {
+    order: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: transparent;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-actions .card-location {
+    font-size: 0.875rem;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-header-actions .follow-btn {
+    order: 2;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-image {
+    order: 2;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-divider {
+    order: 4;
+  }
+
+  .feed-container .card.small:not([data-desktop-layout="brewery"]) .card-content {
+    order: 5;
+  }
+}
+
+/* Vendor and Event Description Containers - Independent expandable elements */
+.vendor-description-container,
+.event-description-container {
+  width: 100%;
+  min-height: 0;
+  flex-shrink: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.vendor-description-container p,
+.event-description-container p {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Ensure vendor tagline can expand without affecting layout */
+#vendor-tagline {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
 }

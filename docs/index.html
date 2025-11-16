@@ -604,6 +604,59 @@
         }
       });
       
+      // Move card elements to match brewery card layout on desktop
+      function rearrangeCardLayout() {
+        if (window.innerWidth < 769) {
+          // Reset on mobile
+          document.querySelectorAll('.feed-container .card.small:not([data-desktop-layout="brewery"])').forEach(card => {
+            delete card.dataset.rearranged;
+            const titleClone = card.querySelector('.card-header-row .card-title');
+            if (titleClone) titleClone.remove();
+            const titleEl = card.querySelector('.card-header-actions .card-title');
+            if (titleEl) titleEl.style.display = '';
+          });
+          return;
+        }
+        
+        const cards = document.querySelectorAll('.feed-container .card.small:not([data-desktop-layout="brewery"])');
+        cards.forEach(card => {
+          if (card.dataset.rearranged) return; // Already rearranged
+          
+          const headerRow = card.querySelector('.card-header-row');
+          const titleEl = card.querySelector('.card-title');
+          const typeBadge = card.querySelector('.type-badge');
+          const subcategoryTag = card.querySelector('.subcategory-tag');
+          
+          if (headerRow && titleEl && !headerRow.querySelector('.card-title')) {
+            // Clone title and move to header row
+            const titleClone = titleEl.cloneNode(true);
+            headerRow.insertBefore(titleClone, headerRow.firstChild);
+          }
+          
+          // Hide original title in title section
+          if (titleEl) titleEl.style.display = 'none';
+          
+          // Move type badge and subcategory to right side of header row
+          if (headerRow && typeBadge && subcategoryTag) {
+            const typeContainer = document.createElement('span');
+            typeContainer.style.fontSize = '0.8rem';
+            typeContainer.style.color = 'var(--on-surface-variant)';
+            typeContainer.textContent = typeBadge.textContent.trim() + ' ' + subcategoryTag.textContent.trim();
+            headerRow.appendChild(typeContainer);
+          }
+          
+          card.dataset.rearranged = 'true';
+        });
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', rearrangeCardLayout);
+      } else {
+        rearrangeCardLayout();
+      }
+      
+      window.addEventListener('resize', rearrangeCardLayout);
+      
       // Hide header and logo when scrolling down
       (function() {
         let lastScrollTop = 0;

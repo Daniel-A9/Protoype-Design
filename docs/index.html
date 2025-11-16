@@ -96,15 +96,15 @@
             <!-- Header Section -->
             <div class="header-section">
               <div class="search-bar">
-                <button class="filter-toggle-btn" onclick="document.getElementById('filterDropdown').classList.toggle('show')" data-testid="filter-btn">
-                  <i class="material-icons">tune</i>
-                </button>
                 <div class="search-input-container">
                   <i class="material-icons location-pin-icon">location_on</i>
                   <input type="text" value="15235" class="zip-input" data-testid="zip-input">
                   <div class="input-divider"></div>
                   <input type="text" placeholder="Search near me" class="search-input" data-testid="search-input">
                 </div>
+                <button class="filter-toggle-btn" onclick="document.getElementById('filterDropdown').classList.toggle('show')" data-testid="filter-btn">
+                  <i class="material-icons">tune</i>
+                </button>
               </div>
               
               <div id="filterDropdown" class="filter-dropdown-menu">

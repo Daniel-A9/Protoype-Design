@@ -1,0 +1,89 @@
+{% extends 'ledger/reports.html' %}
+
+{% block report_title %}Profit & Loss{% endblock %}
+{% block report_heading %}Profit & Loss Statement{% endblock %}
+
+{% block report_script %}
+async function loadReport() {
+  try {
+    const dateTo = document.getElementById('report-date').value || new Date().toISOString().split('T')[0];
+    const dateFrom = new Date(new Date(dateTo).getFullYear(), new Date(dateTo).getMonth(), 1).toISOString().split('T')[0];
+    
+    const response = await fetch(`/api/ledger/reports/profit-loss/?date_from=${dateFrom}&date_to=${dateTo}`);
+    const data = await response.json();
+    
+    const container = document.getElementById('report-content');
+    
+    let html = `
+      <h5>Profit & Loss Statement</h5>
+      <p class="small-text">Period: ${data.period.from} to ${data.period.to}</p>
+      
+      <article class="padding">
+        <h6>Revenue</h6>
+        <ul class="list no-space">
+    `;
+    
+    if (data.revenue && data.revenue.details && data.revenue.details.length > 0) {
+      data.revenue.details.forEach(item => {
+        html += `
+          <li>
+            <div class="max">${item.account_name}</div>
+            <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.amount)}</label>
+          </li>
+        `;
+      });
+    }
+    
+    html += `
+          <li class="bold">
+            <div class="max">Total Revenue</div>
+            <label class="green-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.revenue.total || 0)}</label>
+          </li>
+        </ul>
+      </article>
+      
+      <article class="padding">
+        <h6>Expenses</h6>
+        <ul class="list no-space">
+    `;
+    
+    if (data.expenses && data.expenses.details && data.expenses.details.length > 0) {
+      data.expenses.details.forEach(item => {
+        html += `
+          <li>
+            <div class="max">${item.account_name}</div>
+            <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.amount)}</label>
+          </li>
+        `;
+      });
+    }
+    
+    html += `
+          <li class="bold">
+            <div class="max">Total Expenses</div>
+            <label class="red-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.expenses.total || 0)}</label>
+          </li>
+        </ul>
+      </article>
+      
+      <hr>
+      
+      <article class="padding">
+        <div class="row middle-align">
+          <h5 class="max">Net Income</h5>
+          <h4 class="${data.net_income >= 0 ? 'green-text' : 'red-text'}">
+            ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.net_income || 0)}
+          </h4>
+        </div>
+      </article>
+    `;
+    
+    container.innerHTML = html;
+  } catch (error) {
+    document.getElementById('report-content').innerHTML = 
+      '<div class="center-align red-text"><p>Error loading report</p></div>';
+    console.error('Error:', error);
+  }
+}
+{% endblock %}
+

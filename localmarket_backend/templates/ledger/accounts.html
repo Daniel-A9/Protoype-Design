@@ -1,0 +1,68 @@
+{% extends 'ledger/base.html' %}
+
+{% block title %}Accounts - Django Ledger{% endblock %}
+
+{% block content %}
+  <h3>Chart of Accounts</h3>
+  
+  <div class="grid small-space" id="accounts-container">
+    <div class="s12">
+      <article class="padding">
+        <table>
+          <thead>
+            <tr>
+              <th>Account #</th>
+              <th>Account Name</th>
+              <th>Type</th>
+              <th class="right-align">Balance</th>
+            </tr>
+          </thead>
+          <tbody id="accounts-table">
+            <tr>
+              <td colspan="4" class="center-align">Loading...</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </div>
+  </div>
+
+  <script>
+    async function loadAccounts() {
+      try {
+        const response = await fetch('/api/ledger/accounts/');
+        const data = await response.json();
+        
+        const tbody = document.getElementById('accounts-table');
+        tbody.innerHTML = '';
+        
+        if (data.results) {
+          data.results.forEach(account => {
+            const row = document.createElement('tr');
+            const balance = account.balance || 0;
+            const balanceClass = balance >= 0 ? 'green-text' : 'red-text';
+            const balanceFormatted = new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            }).format(Math.abs(balance));
+            
+            row.innerHTML = `
+              <td>${account.account_number}</td>
+              <td>${account.account_name}</td>
+              <td>${account.account_type}</td>
+              <td class="right-align ${balanceClass}">${balanceFormatted}</td>
+            `;
+            tbody.appendChild(row);
+          });
+        }
+      } catch (error) {
+        document.getElementById('accounts-table').innerHTML = 
+          '<tr><td colspan="4" class="center-align red-text">Error loading accounts</td></tr>';
+        console.error('Error:', error);
+      }
+    }
+    
+    loadAccounts();
+  </script>
+{% endblock %}
+

@@ -1,0 +1,150 @@
+{% extends 'ledger/base.html' %}
+
+{% block title %}Dashboard - Django Ledger{% endblock %}
+
+{% block content %}
+  <h3>Ledger Dashboard</h3>
+  
+  <div class="grid small-space">
+    <div class="s12 m6 l4">
+      <article class="padding">
+        <h6>Quick Actions</h6>
+        <nav class="vertical small-space">
+          <a href="{% url 'ledger:create_transaction' %}">
+            <button class="primary max">
+              <i>add_circle</i>
+              <span>New Transaction</span>
+            </button>
+          </a>
+          <a href="{% url 'ledger:accounts' %}">
+            <button class="secondary max">
+              <i>account_balance</i>
+              <span>View Accounts</span>
+            </button>
+          </a>
+          <a href="{% url 'ledger:transactions' %}">
+            <button class="secondary max">
+              <i>receipt_long</i>
+              <span>View Transactions</span>
+            </button>
+          </a>
+        </nav>
+      </article>
+    </div>
+    
+    <div class="s12 m6 l4">
+      <article class="padding">
+        <h6>Reports</h6>
+        <nav class="vertical small-space">
+          <a href="{% url 'ledger:trial_balance' %}">
+            <button class="secondary max">
+              <i>assessment</i>
+              <span>Trial Balance</span>
+            </button>
+          </a>
+          <a href="{% url 'ledger:profit_loss' %}">
+            <button class="secondary max">
+              <i>trending_up</i>
+              <span>Profit & Loss</span>
+            </button>
+          </a>
+          <a href="{% url 'ledger:balance_sheet' %}">
+            <button class="secondary max">
+              <i>account_balance_wallet</i>
+              <span>Balance Sheet</span>
+            </button>
+          </a>
+        </nav>
+      </article>
+    </div>
+    
+    <div class="s12 m6 l4">
+      <article class="padding">
+        <h6>Account Summary</h6>
+        <div id="account-summary">
+          <progress class="circle"></progress>
+          <p class="small-text">Loading...</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  
+  <div class="space"></div>
+  
+  <article class="padding">
+    <h6>Recent Transactions</h6>
+    <div id="recent-transactions">
+      <progress class="circle"></progress>
+      <p class="small-text">Loading...</p>
+    </div>
+  </article>
+
+  <script>
+    async function loadDashboard() {
+      try {
+        // Load account summary
+        const accountsResponse = await fetch('/api/ledger/accounts/');
+        const accountsData = await accountsResponse.json();
+        const accounts = accountsData.results || accountsData;
+        
+        let summaryHtml = '<ul class="list no-space">';
+        let totalAssets = 0;
+        let totalLiabilities = 0;
+        let totalEquity = 0;
+        let totalRevenue = 0;
+        let totalExpenses = 0;
+        
+        accounts.forEach(account => {
+          const balance = account.balance || 0;
+          if (account.account_type === 'Asset') totalAssets += Math.abs(balance);
+          else if (account.account_type === 'Liability') totalLiabilities += Math.abs(balance);
+          else if (account.account_type === 'Equity') totalEquity += Math.abs(balance);
+          else if (account.account_type === 'Revenue') totalRevenue += Math.abs(balance);
+          else if (account.account_type === 'Expense') totalExpenses += Math.abs(balance);
+        });
+        
+        summaryHtml += `
+          <li><div class="max">Assets</div><label class="green-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalAssets)}</label></li>
+          <li><div class="max">Liabilities</div><label class="red-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalLiabilities)}</label></li>
+          <li><div class="max">Equity</div><label class="green-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalEquity)}</label></li>
+          <li><div class="max">Revenue</div><label class="green-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalRevenue)}</label></li>
+          <li><div class="max">Expenses</div><label class="red-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalExpenses)}</label></li>
+        `;
+        summaryHtml += '</ul>';
+        document.getElementById('account-summary').innerHTML = summaryHtml;
+        
+        // Load recent transactions
+        const transResponse = await fetch('/api/ledger/transactions/?ordering=-date');
+        const transData = await transResponse.json();
+        const transactions = (transData.results || transData).slice(0, 5);
+        
+        if (transactions.length > 0) {
+          let transHtml = '<ul class="list no-space">';
+          transactions.forEach(entry => {
+            transHtml += `
+              <li>
+                <div class="max">
+                  <h6 class="small">Entry #${entry.entry_number}</h6>
+                  <div class="small-text">${entry.description}</div>
+                  <div class="chip tiny">${entry.date}</div>
+                </div>
+                <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(entry.total_debits || 0))}</label>
+              </li>
+            `;
+          });
+          transHtml += '</ul>';
+          document.getElementById('recent-transactions').innerHTML = transHtml;
+        } else {
+          document.getElementById('recent-transactions').innerHTML = '<p class="small-text">No transactions yet</p>';
+        }
+      } catch (error) {
+        console.error('Error loading dashboard:', error);
+        document.getElementById('account-summary').innerHTML = '<p class="small-text red-text">Error loading data</p>';
+        document.getElementById('recent-transactions').innerHTML = '<p class="small-text red-text">Error loading transactions</p>';
+      }
+    }
+    
+    loadDashboard();
+  </script>
+{% endblock %}
+

@@ -1,0 +1,75 @@
+{% extends 'ledger/reports.html' %}
+
+{% block report_title %}Trial Balance{% endblock %}
+{% block report_heading %}Trial Balance{% endblock %}
+
+{% block report_script %}
+async function loadReport() {
+  try {
+    const date = document.getElementById('report-date').value || new Date().toISOString().split('T')[0];
+    const response = await fetch(`/api/ledger/reports/trial-balance/?as_of_date=${date}`);
+    const data = await response.json();
+    
+    const container = document.getElementById('report-content');
+    
+    let html = `
+      <h5>Trial Balance as of ${data.as_of_date}</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Account #</th>
+            <th>Account Name</th>
+            <th>Type</th>
+            <th class="right-align">Debit Total</th>
+            <th class="right-align">Credit Total</th>
+            <th class="right-align">Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+    
+    if (data.accounts && data.accounts.length > 0) {
+      data.accounts.forEach(account => {
+        const balance = account.balance || 0;
+        const balanceClass = balance >= 0 ? 'green-text' : 'red-text';
+        html += `
+          <tr>
+            <td>${account.account_number}</td>
+            <td>${account.account_name}</td>
+            <td>${account.account_type}</td>
+            <td class="right-align">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(account.debit_total || 0)}</td>
+            <td class="right-align">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(account.credit_total || 0)}</td>
+            <td class="right-align ${balanceClass}">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Math.abs(balance))}</td>
+          </tr>
+        `;
+      });
+    }
+    
+    html += `
+        </tbody>
+        <tfoot>
+          <tr class="bold">
+            <td colspan="3">Totals</td>
+            <td class="right-align">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.total_debits || 0)}</td>
+            <td class="right-align">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.total_credits || 0)}</td>
+            <td class="right-align ${data.difference === 0 ? 'green-text' : 'red-text'}">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Math.abs(data.difference || 0))}</td>
+          </tr>
+        </tfoot>
+      </table>
+    `;
+    
+    if (data.difference !== 0) {
+      html += `<p class="red-text center-align">⚠️ Unbalanced: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Math.abs(data.difference))}</p>`;
+    } else {
+      html += `<p class="green-text center-align">✓ Balanced</p>`;
+    }
+    
+    container.innerHTML = html;
+  } catch (error) {
+    document.getElementById('report-content').innerHTML = 
+      '<div class="center-align red-text"><p>Error loading report</p></div>';
+    console.error('Error:', error);
+  }
+}
+{% endblock %}
+

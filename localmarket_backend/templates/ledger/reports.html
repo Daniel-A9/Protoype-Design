@@ -1,0 +1,33 @@
+{% extends 'ledger/base.html' %}
+
+{% block title %}{% block report_title %}Report{% endblock %} - Django Ledger{% endblock %}
+
+{% block content %}
+  <h3>{% block report_heading %}Report{% endblock %}</h3>
+  
+  <article class="padding">
+    <div class="field label border">
+      <input type="date" id="report-date" onchange="loadReport()">
+      <label>As of Date</label>
+    </div>
+    
+    <div id="report-content">
+      <div class="center-align">
+        <progress class="circle"></progress>
+        <p>Loading report...</p>
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.getElementById('report-date').valueAsDate = new Date();
+    
+    {% block report_script %}
+    function loadReport() {
+      // Override in child templates
+    }
+    loadReport();
+    {% endblock %}
+  </script>
+{% endblock %}
+

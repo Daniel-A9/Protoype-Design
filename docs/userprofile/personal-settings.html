@@ -99,10 +99,48 @@
           <h3>Account Information</h3>
           <article class="card padding">
             <div class="grid small-space">
+              <div class="s12">
+                <div class="border round small-padding surface-container-low margin-bottom-medium">
+                  <button class="border round small" style="margin-bottom: 0.5rem; padding: 0.375rem 0.75rem; width: auto; display: inline-block;" onclick="document.getElementById('profile-photo-input').click()">
+                    <span>Change Profile Photo</span>
+                  </button>
+                  <input type="file" id="profile-photo-input" accept="image/*" aria-label="Change Profile Photo" style="display: none;">
+                  <div class="row middle-align small-space wrap">
+                    <div class="border circle center-align middle-align" style="width: 96px; height: 96px; overflow: hidden; background-color: var(--surface);">
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face" alt="Current profile preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="s12 m6">
                 <div class="field label border">
                   <input type="text" value="Sarah Johnson" placeholder=" " aria-label="Display Name">
                   <label>Display Name</label>
+                </div>
+              </div>
+              <div class="s12">
+                <div class="field textarea label border">
+                  <textarea placeholder="Share your story" aria-label="Bio">Local food enthusiast and craft beer lover exploring the best of the community.</textarea>
+                  <label>Bio</label>
+                </div>
+              </div>
+              <div class="s12 m6">
+                <div class="row middle-align">
+                  <div class="max">
+                    <div class="field label border">
+                      <input type="text" value="Portland" placeholder=" " aria-label="City">
+                      <label>City</label>
+                    </div>
+                  </div>
+                  <button class="circle transparent small" data-ui="#location-info-dialog" style="margin-left: 0.5rem;">
+                    <i>info</i>
+                  </button>
+                </div>
+              </div>
+              <div class="s12 m6">
+                <div class="field label border">
+                  <input type="text" value="97203" placeholder=" " aria-label="Zip Code">
+                  <label>Zip Code</label>
                 </div>
               </div>
               <div class="s12 m6">
@@ -163,52 +201,6 @@
                     <span>Add Payment Method</span>
                   </button>
                 </nav>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section class="margin-bottom-large">
-          <h3>Profile Customization</h3>
-          <article class="card padding">
-            <div class="grid small-space">
-              <div class="s12">
-                <div class="border round padding surface-container-low margin-bottom-medium">
-                  <div class="row middle-align small-space wrap">
-                    <div class="border circle center-align middle-align" style="width: 96px; height: 96px; overflow: hidden; background-color: var(--surface);">
-                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face" alt="Current profile preview" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="field label border round max">
-                      <input type="file" accept="image/*" aria-label="Upload profile photo">
-                      <label>Change Profile Photo</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="s12">
-                <div class="field textarea label border">
-                  <textarea placeholder="Share your story" aria-label="Bio">Local food enthusiast and craft beer lover exploring the best of the community.</textarea>
-                  <label>Bio</label>
-                </div>
-              </div>
-              <div class="s12 m6">
-                <div class="row middle-align">
-                  <div class="max">
-                    <div class="field label border">
-                      <input type="text" value="Portland" placeholder=" " aria-label="City">
-                      <label>City</label>
-                    </div>
-                  </div>
-                  <button class="circle transparent small" data-ui="#location-info-dialog" style="margin-left: 0.5rem;">
-                    <i>info</i>
-                  </button>
-                </div>
-              </div>
-              <div class="s12 m6">
-                <div class="field label border">
-                  <input type="text" value="97203" placeholder=" " aria-label="Zip Code">
-                  <label>Zip Code</label>
-                </div>
               </div>
             </div>
           </article>

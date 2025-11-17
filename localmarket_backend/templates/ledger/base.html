@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google" content="notranslate">
+    <title>{% block title %}Django Ledger{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+  </head>
+  <body class="dark">
+    
+    <nav class="left m">
+      <header>
+        <img src="https://www.beercss.com/favicon.png" class="circle extra" loading="lazy">
+        <h6>Django Ledger</h6>
+      </header>
+      <a href="{% url 'ledger:index' %}">
+        <i>dashboard</i>
+        <div>Dashboard</div>
+      </a>
+      <a href="{% url 'ledger:accounts' %}">
+        <i>account_balance</i>
+        <div>Accounts</div>
+      </a>
+      <a href="{% url 'ledger:transactions' %}">
+        <i>receipt_long</i>
+        <div>Transactions</div>
+      </a>
+      <a href="{% url 'ledger:create_transaction' %}">
+        <i>add_circle</i>
+        <div>New Transaction</div>
+      </a>
+      <hr>
+      <a href="{% url 'ledger:trial_balance' %}">
+        <i>assessment</i>
+        <div>Trial Balance</div>
+      </a>
+      <a href="{% url 'ledger:profit_loss' %}">
+        <i>trending_up</i>
+        <div>Profit & Loss</div>
+      </a>
+      <a href="{% url 'ledger:balance_sheet' %}">
+        <i>account_balance_wallet</i>
+        <div>Balance Sheet</div>
+      </a>
+    </nav>
+
+    <main class="responsive">
+      {% block content %}{% endblock %}
+    </main>
+
+  </body>
+</html>
+

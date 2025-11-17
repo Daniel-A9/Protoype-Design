@@ -1,0 +1,114 @@
+{% extends 'ledger/reports.html' %}
+
+{% block report_title %}Balance Sheet{% endblock %}
+{% block report_heading %}Balance Sheet{% endblock %}
+
+{% block report_script %}
+async function loadReport() {
+  try {
+    const date = document.getElementById('report-date').value || new Date().toISOString().split('T')[0];
+    const response = await fetch(`/api/ledger/reports/balance-sheet/?as_of_date=${date}`);
+    const data = await response.json();
+    
+    const container = document.getElementById('report-content');
+    
+    let html = `
+      <h5>Balance Sheet as of ${data.as_of_date}</h5>
+      
+      <article class="padding">
+        <h6>Assets</h6>
+        <ul class="list no-space">
+    `;
+    
+    if (data.assets && data.assets.details && data.assets.details.length > 0) {
+      data.assets.details.forEach(item => {
+        html += `
+          <li>
+            <div class="max">${item.account_name}</div>
+            <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.balance)}</label>
+          </li>
+        `;
+      });
+    }
+    
+    html += `
+          <li class="bold">
+            <div class="max">Total Assets</div>
+            <label class="green-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.assets.total || 0)}</label>
+          </li>
+        </ul>
+      </article>
+      
+      <article class="padding">
+        <h6>Liabilities</h6>
+        <ul class="list no-space">
+    `;
+    
+    if (data.liabilities && data.liabilities.details && data.liabilities.details.length > 0) {
+      data.liabilities.details.forEach(item => {
+        html += `
+          <li>
+            <div class="max">${item.account_name}</div>
+            <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.balance)}</label>
+          </li>
+        `;
+      });
+    }
+    
+    html += `
+          <li class="bold">
+            <div class="max">Total Liabilities</div>
+            <label class="red-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.liabilities.total || 0)}</label>
+          </li>
+        </ul>
+      </article>
+      
+      <article class="padding">
+        <h6>Equity</h6>
+        <ul class="list no-space">
+    `;
+    
+    if (data.equity && data.equity.details && data.equity.details.length > 0) {
+      data.equity.details.forEach(item => {
+        html += `
+          <li>
+            <div class="max">${item.account_name}</div>
+            <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.balance)}</label>
+          </li>
+        `;
+      });
+    }
+    
+    html += `
+          <li class="bold">
+            <div class="max">Total Equity</div>
+            <label class="green-text">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.equity.total || 0)}</label>
+          </li>
+        </ul>
+      </article>
+      
+      <hr>
+      
+      <article class="padding">
+        <div class="row middle-align">
+          <h5 class="max">Total Liabilities + Equity</h5>
+          <h4>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.total_liabilities_equity || 0)}</h4>
+        </div>
+      </article>
+    `;
+    
+    if (data.difference !== 0) {
+      html += `<p class="red-text center-align">⚠️ Unbalanced: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Math.abs(data.difference))}</p>`;
+    } else {
+      html += `<p class="green-text center-align">✓ Balanced (Assets = Liabilities + Equity)</p>`;
+    }
+    
+    container.innerHTML = html;
+  } catch (error) {
+    document.getElementById('report-content').innerHTML = 
+      '<div class="center-align red-text"><p>Error loading report</p></div>';
+    console.error('Error:', error);
+  }
+}
+{% endblock %}
+

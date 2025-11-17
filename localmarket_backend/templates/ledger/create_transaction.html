@@ -1,0 +1,264 @@
+{% extends 'ledger/base.html' %}
+
+{% block title %}New Transaction - Django Ledger{% endblock %}
+
+{% block content %}
+  <h3>Create New Transaction</h3>
+  
+  <article class="padding">
+    <form id="transaction-form">
+      <div class="field label border">
+        <input type="date" id="transaction-date" required>
+        <label>Date</label>
+      </div>
+      
+      <div class="field label border">
+        <input type="text" id="transaction-description" required>
+        <label>Description</label>
+      </div>
+      
+      <div class="field label border">
+        <input type="text" id="reference-type" placeholder="order, payment, subscription, refund, manual">
+        <label>Reference Type</label>
+      </div>
+      
+      <div class="field label border">
+        <input type="text" id="reference-id" placeholder="External system ID">
+        <label>Reference ID</label>
+      </div>
+      
+      <hr>
+      <h5>Entries</h5>
+      <p class="small-text">Debits must equal credits</p>
+      
+      <div id="entries-container">
+        <div class="entry-row">
+          <div class="field label border">
+            <select class="account-select" required>
+              <option value="">Select Account</option>
+            </select>
+            <label>Account</label>
+          </div>
+          <div class="field label border">
+            <input type="number" step="0.01" min="0" class="debit-amount" placeholder="0.00">
+            <label>Debit</label>
+          </div>
+          <div class="field label border">
+            <input type="number" step="0.01" min="0" class="credit-amount" placeholder="0.00">
+            <label>Credit</label>
+          </div>
+          <div class="field label border">
+            <input type="text" class="entry-description" placeholder="Description">
+            <label>Description</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="space"></div>
+      
+      <div class="row middle-align">
+        <button type="button" onclick="addEntryRow()" class="secondary">
+          <i>add</i>
+          <span>Add Entry</span>
+        </button>
+        <div class="max"></div>
+        <div id="balance-status" class="small-text"></div>
+      </div>
+      
+      <div class="space"></div>
+      
+      <nav class="right-align">
+        <button type="button" onclick="window.location.href='{% url 'ledger:transactions' %}'" class="secondary">
+          Cancel
+        </button>
+        <button type="submit" class="primary">
+          Create Transaction
+        </button>
+      </nav>
+    </form>
+  </article>
+
+  <script>
+    let accounts = [];
+    
+    async function loadAccounts() {
+      try {
+        const response = await fetch('/api/ledger/accounts/');
+        const data = await response.json();
+        accounts = data.results || data;
+        
+        document.querySelectorAll('.account-select').forEach(select => {
+          select.innerHTML = '<option value="">Select Account</option>';
+          accounts.forEach(account => {
+            const option = document.createElement('option');
+            option.value = account.id;
+            option.textContent = `${account.account_number} - ${account.account_name}`;
+            select.appendChild(option);
+          });
+        });
+      } catch (error) {
+        console.error('Error loading accounts:', error);
+      }
+    }
+    
+    function addEntryRow() {
+      const container = document.getElementById('entries-container');
+      const newRow = document.createElement('div');
+      newRow.className = 'entry-row';
+      newRow.innerHTML = `
+        <div class="field label border">
+          <select class="account-select" required>
+            <option value="">Select Account</option>
+          </select>
+          <label>Account</label>
+        </div>
+        <div class="field label border">
+          <input type="number" step="0.01" min="0" class="debit-amount" placeholder="0.00">
+          <label>Debit</label>
+        </div>
+        <div class="field label border">
+          <input type="number" step="0.01" min="0" class="credit-amount" placeholder="0.00">
+          <label>Credit</label>
+        </div>
+        <div class="field label border">
+          <input type="text" class="entry-description" placeholder="Description">
+          <label>Description</label>
+        </div>
+        <button type="button" onclick="this.closest('.entry-row').remove(); checkBalance()" class="transparent circle">
+          <i>close</i>
+        </button>
+      `;
+      
+      const select = newRow.querySelector('.account-select');
+      select.innerHTML = '<option value="">Select Account</option>';
+      accounts.forEach(account => {
+        const option = document.createElement('option');
+        option.value = account.id;
+        option.textContent = `${account.account_number} - ${account.account_name}`;
+        select.appendChild(option);
+      });
+      
+      container.appendChild(newRow);
+      
+      newRow.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', checkBalance);
+      });
+    }
+    
+    function checkBalance() {
+      const rows = document.querySelectorAll('.entry-row');
+      let totalDebits = 0;
+      let totalCredits = 0;
+      
+      rows.forEach(row => {
+        const debit = parseFloat(row.querySelector('.debit-amount').value || 0);
+        const credit = parseFloat(row.querySelector('.credit-amount').value || 0);
+        totalDebits += debit;
+        totalCredits += credit;
+      });
+      
+      const diff = totalDebits - totalCredits;
+      const status = document.getElementById('balance-status');
+      
+      if (diff === 0 && totalDebits > 0) {
+        status.textContent = '✓ Balanced';
+        status.className = 'small-text green-text';
+      } else if (totalDebits === 0 && totalCredits === 0) {
+        status.textContent = 'Enter amounts';
+        status.className = 'small-text';
+      } else {
+        status.textContent = `Difference: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Math.abs(diff))}`;
+        status.className = 'small-text red-text';
+      }
+    }
+    
+    document.getElementById('transaction-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const rows = document.querySelectorAll('.entry-row');
+      const entries = [];
+      
+      rows.forEach(row => {
+        const accountId = row.querySelector('.account-select').value;
+        const debit = parseFloat(row.querySelector('.debit-amount').value || 0);
+        const credit = parseFloat(row.querySelector('.credit-amount').value || 0);
+        const description = row.querySelector('.entry-description').value;
+        
+        if (accountId && (debit > 0 || credit > 0)) {
+          entries.push({
+            account_id: parseInt(accountId),
+            debit: debit,
+            credit: credit,
+            description: description
+          });
+        }
+      });
+      
+      if (entries.length < 2) {
+        alert('A transaction must have at least two entries');
+        return;
+      }
+      
+      const totalDebits = entries.reduce((sum, e) => sum + parseFloat(e.debit || 0), 0);
+      const totalCredits = entries.reduce((sum, e) => sum + parseFloat(e.credit || 0), 0);
+      
+      if (Math.abs(totalDebits - totalCredits) > 0.01) {
+        alert(`Debits (${totalDebits}) must equal credits (${totalCredits})`);
+        return;
+      }
+      
+      const transactionData = {
+        date: document.getElementById('transaction-date').value,
+        description: document.getElementById('transaction-description').value,
+        reference_type: document.getElementById('reference-type').value || 'manual',
+        reference_id: document.getElementById('reference-id').value || '',
+        entries: entries
+      };
+      
+      try {
+        const response = await fetch('/api/ledger/transactions/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(transactionData)
+        });
+        
+        if (response.ok) {
+          window.location.href = '{% url "ledger:transactions" %}';
+        } else {
+          const error = await response.json();
+          alert('Error: ' + (error.error || 'Failed to create transaction'));
+        }
+      } catch (error) {
+        alert('Error: ' + error.message);
+        console.error('Error:', error);
+      }
+    });
+    
+    document.querySelectorAll('input').forEach(input => {
+      if (input.type === 'number') {
+        input.addEventListener('input', checkBalance);
+      }
+    });
+    
+    document.getElementById('transaction-date').valueAsDate = new Date();
+    loadAccounts();
+  </script>
+
+  <style>
+    .entry-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 2fr auto;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: end;
+    }
+    @media (max-width: 768px) {
+      .entry-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+{% endblock %}
+

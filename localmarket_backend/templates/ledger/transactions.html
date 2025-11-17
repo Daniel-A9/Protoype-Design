@@ -1,0 +1,97 @@
+{% extends 'ledger/base.html' %}
+
+{% block title %}Transactions - Django Ledger{% endblock %}
+
+{% block content %}
+  <div class="row middle-align">
+    <h3 class="max">Transactions</h3>
+    <a href="{% url 'ledger:create_transaction' %}">
+      <button class="primary">
+        <i>add</i>
+        <span>New Transaction</span>
+      </button>
+    </a>
+  </div>
+  
+  <div class="space"></div>
+  
+  <div class="grid small-space" id="transactions-container">
+    <div class="s12">
+      <div id="transactions-list">
+        <article class="padding center-align">
+          <progress class="circle"></progress>
+          <p>Loading transactions...</p>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function loadTransactions() {
+      try {
+        const response = await fetch('/api/ledger/transactions/');
+        const data = await response.json();
+        
+        const container = document.getElementById('transactions-list');
+        container.innerHTML = '';
+        
+        if (data.results && data.results.length > 0) {
+          data.results.forEach(entry => {
+            const article = document.createElement('article');
+            article.className = 'padding';
+            
+            const totalDebits = parseFloat(entry.total_debits || 0);
+            const totalCredits = parseFloat(entry.total_credits || 0);
+            
+            let entriesHtml = '<ul class="list no-space">';
+            if (entry.ledger_entries) {
+              entry.ledger_entries.forEach(le => {
+                const drAmount = parseFloat(le.debit || 0);
+                const crAmount = parseFloat(le.credit || 0);
+                const amount = drAmount > 0 ? drAmount : crAmount;
+                const drCr = drAmount > 0 ? 'DR' : 'CR';
+                entriesHtml += `
+                  <li>
+                    <div class="max">
+                      <h6 class="small">${le.account_name} (${le.account_number})</h6>
+                      <div class="small-text">${le.description || ''}</div>
+                    </div>
+                    <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount)} ${drCr}</label>
+                  </li>
+                `;
+              });
+            }
+            entriesHtml += '</ul>';
+            
+            article.innerHTML = `
+              <div class="row middle-align">
+                <div class="max">
+                  <h5>Entry #${entry.entry_number}</h5>
+                  <p class="small-text">${entry.description}</p>
+                  <div class="chip small">${entry.reference_type || 'manual'}</div>
+                  <div class="chip small">${entry.reference_id || 'N/A'}</div>
+                  <div class="chip small">${entry.date}</div>
+                </div>
+                <div class="right-align">
+                  <div class="small-text">Debits: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalDebits)}</div>
+                  <div class="small-text">Credits: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalCredits)}</div>
+                </div>
+              </div>
+              ${entriesHtml}
+            `;
+            container.appendChild(article);
+          });
+        } else {
+          container.innerHTML = '<article class="padding center-align"><p>No transactions found</p></article>';
+        }
+      } catch (error) {
+        document.getElementById('transactions-list').innerHTML = 
+          '<article class="padding center-align red-text"><p>Error loading transactions</p></article>';
+        console.error('Error:', error);
+      }
+    }
+    
+    loadTransactions();
+  </script>
+{% endblock %}
+

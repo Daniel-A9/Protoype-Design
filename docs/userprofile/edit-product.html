@@ -12,13 +12,13 @@
 
     <!-- Top Header with Back Button and Logo -->
     <div class="top-header">
+      <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit; margin-right: 1rem;">
+        <button class="circle transparent">
+          <i>arrow_back</i>
+        </button>
+      </a>
       <div style="display: flex; align-items: center; gap: 0.5rem;">
         <img src="../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
-        <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit;">
-          <button class="circle transparent">
-            <i>arrow_back</i>
-          </button>
-        </a>
       </div>
       <nav class="header-nav">
         <a href="../home/index.html" class="link" data-testid="desktop-nav-home">Home</a>
@@ -88,7 +88,7 @@
       </a>
     </nav>
 
-    <main class="responsive" style="padding-bottom: 260px; padding-top: 2rem;">
+    <main class="responsive" style="padding-bottom: 140px; padding-top: 2rem;">
         <!-- Edit Product Hero Section -->
         <section class="events-hero" style="margin-bottom: 1rem;">
             <div class="hero-banner">
@@ -101,7 +101,6 @@
                     <div class="row" style="margin: 0;">
                         <div class="col s12 center">
                             <h1 class="hero-title" style="margin-bottom: 0.25rem; margin-top: 0;">Edit Product</h1>
-                            <p class="hero-subtitle" style="margin: 0;">Update your product information</p>
                         </div>
                     </div>
                 </div>
@@ -109,15 +108,10 @@
         </section>
 
         <!-- Edit Product Form Section -->
-        <section class="create-event-section">
-            <div class="container">
-                <div class="form-container">
-                            <div class="form-header center">
-                                <h2 class="form-title">Product Details</h2>
-                                <p class="form-subtitle">Update the information below to modify your product</p>
-                            </div>
-                    
-                            <form class="event-form" hx-post="/api/update-product" hx-target="#form-result" hx-swap="innerHTML" data-testid="edit-product-form">
+        <section class="create-event-section" style="padding-bottom: 0; margin-bottom: 0;">
+            <div class="container" style="padding-bottom: 0; margin-bottom: 0;">
+                <div class="form-container" style="padding-bottom: 0; margin-bottom: 0;">
+                            <form id="edit-product-form" class="event-form" hx-post="/api/update-product" hx-target="#form-result" hx-swap="innerHTML" data-testid="edit-product-form">
                                 <!-- Basic Information -->
                                 <div class="form-section">
                                     <h3 class="section-title">Basic Information</h3>
@@ -177,43 +171,48 @@
                                         <label for="additional-notes">Additional Notes</label>
                                         <textarea id="additional-notes" name="notes" rows="3" placeholder="Add any additional information, storage instructions, or special notes (optional)..." data-testid="additional-notes-textarea">ABV: 6.5% | IBU: 65 | Serving Temperature: 45-50°F. Pairs excellently with spicy foods, fish tacos, and citrus-based desserts.</textarea>
                                     </div>
-                                    
+                                </div>
+
+                                <!-- Product Media -->
+                                <div class="form-section">
+                                    <h3 class="section-title">Product Media</h3>
                                     <div class="form-group">
-                                        <label for="product-gallery">Product Media</label>
-                                        <div class="column small-space">
-                                            <div class="row middle-align small-space wrap">
-                                                <img id="product-hero-preview" src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Primary product preview" loading="lazy" class="round" style="max-width: 200px; max-height: 150px; object-fit: cover;">
-                                                <div class="field label border round max" style="margin-bottom: 1.5rem;">
-                                                    <input type="file" id="product-gallery" name="product_gallery[]" accept="image/*" multiple data-testid="product-gallery-input">
-                                                    <label>Add or replace product photos</label>
-                                                </div>
+                                        <div class="row middle-align small-space wrap" style="margin-bottom: 2rem;">
+                                            <img id="product-hero-preview" src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" alt="Primary product preview" loading="lazy" class="round" style="max-width: 200px; max-height: 150px; object-fit: cover;">
+                                            <div class="field label border round max">
+                                                <input type="file" id="product-gallery" name="product_gallery[]" accept="image/*" multiple data-testid="product-gallery-input">
+                                                <label>Change product photo</label>
                                             </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label style="margin-bottom: 1rem; display: block; font-weight: 500; color: var(--on-surface); font-size: 0.9rem;">Gallery Photos</label>
                                             <div id="product-gallery-thumbnails" class="grid small-space"></div>
-                                            <div id="product-gallery-empty" style="text-align: center; color: var(--on-surface-variant); font-size: 0.9rem;">No additional product images selected.</div>
-                                            <div class="row right-align">
+                                            <div id="product-gallery-empty" style="text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-top: 1rem;">No additional product images selected.</div>
+                                            <div class="row right-align" style="margin-top: 1rem;">
                                                 <button type="button" id="product-gallery-clear" class="chip border" style="display: none;">
-                                                    <i>delete</i>
-                                                    <span>Clear gallery</span>
+                                                    <i>add</i>
+                                                    <span>Add to gallery</span>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Form Actions -->
-                                <div class="form-actions center" style="display: flex; gap: 1rem; justify-content: center; align-items: center; margin-top: 3rem; margin-bottom: 6rem;">
-                                    <a href="vendor-my-products.html" style="text-decoration: none;">
-                                        <button type="button" class="btn outline" data-testid="cancel-btn" style="min-width: 120px;">Cancel</button>
-                                    </a>
-                                    <button type="submit" class="btn primary submit-btn" data-testid="submit-btn" style="min-width: 120px;">Save Changes</button>
-                                </div>
-
                                 <div id="form-result"></div>
                             </form>
-                            <div aria-hidden="true" style="height: 140px;"></div>
                 </div>
             </div>
         </section>
+
+        <!-- Form Actions -->
+        <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; margin-top: -6rem; margin-bottom: 2rem; padding-top: 0; border-top: 1px solid var(--outline-variant);">
+            <a href="vendor-my-products.html" style="text-decoration: none;">
+                <button type="button" class="btn outline" data-testid="cancel-btn" style="width: 120px;">Cancel</button>
+            </a>
+            <button type="submit" form="edit-product-form" class="btn primary submit-btn" data-testid="submit-btn" style="width: 120px;">Save Changes</button>
+        </div>
+        <div aria-hidden="true" style="height: 140px;"></div>
     </main>
 
     <script>
@@ -279,8 +278,8 @@
                     cell.innerHTML = `
                         <article class="round border" style="position: relative; padding-top: 100%; overflow: hidden;">
                             <img src="${src}" alt="Product image ${index + 1}" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-                            <button type="button" class="circle transparent small" data-index="${index}" style="position: absolute; top: 0.35rem; right: 0.35rem;">
-                                <i>close</i>
+                            <button type="button" class="circle transparent small" data-index="${index}" style="position: absolute; top: 0.35rem; right: 0.35rem; background-color: rgba(244, 67, 54, 0.9); color: white;">
+                                <i style="color: white;">close</i>
                             </button>
                         </article>
                     `;

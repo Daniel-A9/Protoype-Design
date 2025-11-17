@@ -467,24 +467,32 @@
       </div>
     </dialog>
 
-    <dialog id="product-type-dialog" class="modal medium">
+    <dialog id="product-type-dialog" class="modal large" style="display: flex; flex-direction: column;">
       <button data-ui="#product-type-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem;">
         <i>close</i>
       </button>
-      <div class="padding-medium">
-        <h4>Product Types</h4>
-        <p class="text-grey small-text">Select the product categories customers can expect.</p>
-        <div class="field label border margin-vertical-medium">
-          <select multiple aria-label="Product Types">
-            <option selected>IPA</option>
-            <option selected>Stout</option>
-            <option>Seasonal Releases</option>
-            <option>Merchandise</option>
-            <option>Gift Sets</option>
-          </select>
-          <label>Product Types</label>
+      <div class="padding-medium" style="flex: 1; display: flex; flex-direction: column;">
+        <div>
+          <h4>Product Types</h4>
+          <p class="text-grey small-text">Select the product categories customers can expect.</p>
+          <div class="row center-align margin-vertical-medium">
+            <button class="btn small border">
+              <i>add</i>
+              <span>Add product type</span>
+            </button>
+          </div>
+          <div class="field label border margin-top-medium">
+            <select multiple aria-label="Product Types" style="min-height: 200px;">
+              <option selected>IPA</option>
+              <option selected>Stout</option>
+              <option>Seasonal Releases</option>
+              <option>Merchandise</option>
+              <option>Gift Sets</option>
+            </select>
+            <label>Product Types</label>
+          </div>
         </div>
-        <nav class="right-align">
+        <nav class="right-align" style="margin-top: auto; padding-top: 1.5rem;">
           <button data-ui="#product-type-dialog" class="btn">Cancel</button>
           <button class="btn primary">Save</button>
         </nav>

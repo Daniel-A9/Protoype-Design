@@ -88,19 +88,6 @@
                 <img id="hero-banner-image" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=400&fit=crop" 
                      alt="Product Banner" class="responsive round">
             </div>
-            
-            <div class="hero-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 center">
-                            <h1 class="hero-title">Add New Product</h1>
-                            <p class="hero-subtitle">Share your products with the community</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Add Product Form Section -->
         <section class="create-event-section">
             <div class="container">
@@ -124,13 +111,42 @@
                                             <select id="product-category" name="category" required data-testid="product-category-select">
                                                 <option value="">Select Category</option>
                                                 <option value="produce">Fresh Produce</option>
-                                                <option value="dairy">Dairy & Eggs</option>
+                                                <option value="dairy">Dairy</option>
+                                                <option value="eggs">Eggs</option>
                                                 <option value="meat">Meat & Poultry</option>
                                                 <option value="seafood">Seafood</option>
                                                 <option value="bakery">Bakery</option>
+                                                <option value="bread">Bread</option>
+                                                <option value="baked-goods">Baked Goods</option>
                                                 <option value="beverages">Beverages</option>
-                                                <option value="pantry">Pantry Staples</option>
-                                                <option value="prepared">Prepared Foods</option>
+                                                <option value="tea">Tea</option>
+                                                <option value="teas">Teas</option>
+                                                <option value="cheese">Cheese</option>
+                                                <option value="jam-preserves">Jam/Preserves</option>
+                                                <option value="spices">Spices</option>
+                                                <option value="dressings-condiments">Dressings/Condiments</option>
+                                                <option value="confections-candies">Confections/Candies</option>
+                                                <option value="dry-mixes">Dry Mixes</option>
+                                                <option value="dried-foods">Dried Foods</option>
+                                                <option value="hot-prepared-foods">Hot Prepared Foods</option>
+                                                <option value="cold-prepared-foods">Cold Prepared Foods</option>
+                                                <option value="prepared-foods">Prepared Foods</option>
+                                                <option value="prepared">Prepared Foods (Legacy)</option>
+                                                <option value="herbs">Herbs</option>
+                                                <option value="plants">Plants</option>
+                                                <option value="tinctures">Tinctures</option>
+                                                <option value="handmade-crafts">Handmade Crafts</option>
+                                                <option value="art">Art & Illustration</option>
+                                                <option value="jewelry">Jewelry</option>
+                                                <option value="clothing">Clothing & Accessories</option>
+                                                <option value="woodworking">Woodworking</option>
+                                                <option value="blacksmithing">Blacksmith</option>
+                                                <option value="ceramics">Ceramics & Pottery</option>
+                                                <option value="soap">Bath & Body / Soap</option>
+                                                <option value="candles">Candles & Scents</option>
+                                                <option value="home-decor">Home Decor</option>
+                                                <option value="weaving">Weaving</option>
+                                                <option value="stationery">Stationery & Paper Goods</option>
                                                 <option value="specialty">Specialty Items</option>
                                                 <option value="other">Other</option>
                                             </select>
@@ -170,23 +186,28 @@
                                         <label for="additional-notes">Additional Notes</label>
                                         <textarea id="additional-notes" name="notes" rows="3" placeholder="Add any additional information, storage instructions, or special notes (optional)..." data-testid="additional-notes-textarea"></textarea>
                                     </div>
-                                    
+                                </div>
+
+                                <!-- Product Media -->
+                                <div class="form-section">
+                                    <h3 class="section-title">Product Media</h3>
                                     <div class="form-group">
-                                        <label for="product-gallery">Product Media</label>
-                                        <div class="column small-space">
-                                            <div class="row middle-align small-space wrap">
-                                                <img id="product-hero-preview" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=200&fit=crop" alt="Primary product preview" loading="lazy" class="round" style="max-width: 200px; max-height: 150px; object-fit: cover;">
-                                                <div class="field label border round max" style="margin-bottom: 1.5rem;">
-                                                    <input type="file" id="product-gallery" name="product_gallery[]" accept="image/*" multiple data-testid="product-gallery-input">
-                                                    <label>Add product photos</label>
-                                                </div>
+                                        <div class="row middle-align small-space wrap" style="margin-bottom: 2rem;">
+                                            <img id="product-hero-preview" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=200&fit=crop" alt="Primary product preview" loading="lazy" class="round" style="max-width: 200px; max-height: 150px; object-fit: cover;">
+                                            <div class="field label border round max">
+                                                <input type="file" id="product-gallery" name="product_gallery[]" accept="image/*" multiple data-testid="product-gallery-input">
+                                                <label>Add product photo</label>
                                             </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label style="margin-bottom: 1rem; display: block; font-weight: 500; color: var(--on-surface); font-size: 0.9rem;">Gallery Photos</label>
                                             <div id="product-gallery-thumbnails" class="grid small-space"></div>
-                                            <div id="product-gallery-empty" style="text-align: center; color: var(--on-surface-variant); font-size: 0.9rem;">No product images selected.</div>
-                                            <div class="row right-align">
+                                            <div id="product-gallery-empty" style="text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-top: 1rem;">No additional product images selected.</div>
+                                            <div class="row right-align" style="margin-top: 1rem;">
                                                 <button type="button" id="product-gallery-clear" class="chip border" style="display: none;">
-                                                    <i>delete</i>
-                                                    <span>Clear gallery</span>
+                                                    <i>add</i>
+                                                    <span>Add to gallery</span>
                                                 </button>
                                             </div>
                                         </div>
@@ -269,8 +290,8 @@
                     cell.innerHTML = `
                         <article class="round border" style="position: relative; padding-top: 100%; overflow: hidden;">
                             <img src="${src}" alt="Product image ${index + 1}" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-                            <button type="button" class="circle transparent small" data-index="${index}" style="position: absolute; top: 0.35rem; right: 0.35rem;">
-                                <i>close</i>
+                            <button type="button" class="circle transparent small" data-index="${index}" style="position: absolute; top: 0.35rem; right: 0.35rem; background-color: rgba(244, 67, 54, 0.9); color: white;">
+                                <i style="color: white;">close</i>
                             </button>
                         </article>
                     `;
@@ -295,8 +316,7 @@
             });
 
             galleryClearButton.addEventListener('click', () => {
-                galleryImages = [];
-                renderGallery();
+                productGalleryInput.click();
             });
 
             productGalleryInput.addEventListener('change', async () => {

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Company Details • LocalMarket</title>
-  <link href="../style.css" rel="stylesheet">
+  <link href="../../style.css" rel="stylesheet">
   <style>
     .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
     .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 600px; width: 100%; border: 2px solid var(--outline-variant); }
@@ -13,21 +13,22 @@
     .illustration-top img { width: 100%; height: 100%; object-fit: cover; }
     .page-title { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--on-surface); }
     .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2rem; font-size: 1rem; }
-    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
-    .back-link:hover { text-decoration: underline; }
+    .back-link { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: #000; text-decoration: none; border-radius: 50%; background: rgba(255, 255, 255, 0.9); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); transition: all 0.2s ease; position: absolute; top: 1rem; left: 1rem; z-index: 10; }
+    .back-link:hover { background: rgba(255, 255, 255, 1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); transform: scale(1.05); }
+    .back-link i { font-size: 24px; }
+    .back-link span { display: none; }
   </style>
 </head>
 <body>
 
   <!-- Site Logo -->
-  <a href="../index.html" class="site-logo">
-    <img src="../Logo 333.png" alt="LocalMarket Logo">
+  <a href="../../index.html" class="site-logo">
+    <img src="../../Logo 333.png" alt="LocalMarket Logo">
   </a>
-
-  <a href="artisan-details.html" class="back-link" style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;"><i>arrow_back</i><span>Back</span></a>
 
   <div class="signup-container">
     <div class="signup-card">
+      <a href="../artisan-details/index.html" class="back-link"><i>arrow_back</i></a>
       <div class="step-indicator" data-step="8">Step 8</div>
       <div class="illustration-top"><img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop" alt="Artisan"></div>
       <h1 class="page-title">Complete Your Profile!</h1>
@@ -56,7 +57,7 @@
   <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
     (function(){const indicator=document.querySelector('.step-indicator');if(!indicator){return;}const totalDefault='10';if(!sessionStorage.getItem('signup_total_steps')){sessionStorage.setItem('signup_total_steps',totalDefault);}const total=Number(sessionStorage.getItem('signup_total_steps'))||Number(totalDefault);const step=Number(indicator.dataset.step)||8;indicator.textContent=`Step ${step} of ${total}`;})();
-    document.getElementById('nonfoodForm').addEventListener('submit',function(e){e.preventDefault();window.location.href='artisan-media.html';});
+    document.getElementById('nonfoodForm').addEventListener('submit',function(e){e.preventDefault();window.location.href='../artisan-media/index.html';});
   </script>
 </body>
 </html>

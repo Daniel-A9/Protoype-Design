@@ -6,7 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
     <title>Local Market Tips • LocalMarket</title>
-    <link href="../style.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
+    <style>
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #000;
+        text-decoration: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.2s ease;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
+      }
+      .back-link:hover {
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+      }
+      .back-link i {
+        font-size: 24px;
+      }
+      .back-link span {
+        display: none;
+      }
+      section.responsive {
+        position: relative;
+      }
+    </style>
   </head>
   <body>
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
@@ -20,19 +53,36 @@
         document.body.classList.remove('light', 'dark');
         document.body.classList.add(storedTheme);
       })();
+      
+      // Set dynamic back link based on flow
+      (function() {
+        const backLink = document.getElementById('vendor-final-back-link');
+        if (!backLink) return;
+        
+        const vendorCategory = sessionStorage.getItem('vendor_category');
+        const artisanType = sessionStorage.getItem('artisan_type');
+        const isFoodArtisan = vendorCategory === 'artisan' && artisanType === 'food';
+        const isFarmer = vendorCategory === 'farmer' || sessionStorage.getItem('vendor_flow') === 'farmer';
+        
+        // If it's artisan non-food, go back to artisan-media, otherwise food-vendor-media
+        if (vendorCategory === 'artisan' && artisanType === 'nonfood') {
+          backLink.setAttribute('href', '../artisan-media/index.html');
+        } else {
+          backLink.setAttribute('href', '../food-vendor-media/index.html');
+        }
+      })();
     </script>
 
-    <a href="../index.html" class="site-logo">
-      <img src="../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
+    <a href="../../index.html" class="site-logo">
+      <img src="../../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
     </a>
 
     <main class="responsive max top-padding bottom-padding">
       <section class="responsive medium-width auto-margin column medium-space small-padding">
+        <a href="../food-vendor-media/index.html" class="back-link" id="vendor-final-back-link">
+          <i>arrow_back</i>
+        </a>
         <nav class="row left-align">
-          <a href="food-vendor-media.html" class="button transparent">
-            <i>arrow_back</i>
-            <span>Back</span>
-          </a>
         </nav>
         <header class="center-align medium-space">
           <h1 class="large-text tiny-zoom">Local Market Tips!</h1>
@@ -74,7 +124,7 @@
               <span>I acknowledge and agree to the Terms of Service and Privacy Policy.</span>
             </label>
             <div class="row right-align top-margin">
-              <a href="../index.html" class="button primary round medium">
+              <a href="../../index.html" class="button primary round medium">
                 <span>Continue</span>
                 <i>arrow_forward</i>
               </a>

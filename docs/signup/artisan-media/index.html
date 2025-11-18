@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showcase Your Craft • LocalMarket</title>
-    <link href="../style.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
     <style>
       .signup-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(135deg, rgba(224, 220, 141, 0.1) 0%, rgba(252, 246, 220, 0.05) 100%); }
       .signup-card { background: var(--surface-container); border-radius: 24px; padding: 3rem 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.1); max-width: 720px; width: 100%; border: 2px solid var(--outline-variant); }
       .step-indicator { text-align: center; color: var(--on-surface-variant); font-size: 0.9rem; margin-bottom: 1rem; }
       .page-title { text-align: center; font-size: 1.9rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--on-surface); }
       .page-subtitle { text-align: center; color: var(--on-surface-variant); margin-bottom: 2rem; font-size: 1rem; }
-      .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
-      .back-link:hover { text-decoration: underline; }
+      .back-link { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: #000; text-decoration: none; border-radius: 50%; background: rgba(255, 255, 255, 0.9); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); transition: all 0.2s ease; position: absolute; top: 1rem; left: 1rem; z-index: 10; }
+      .back-link:hover { background: rgba(255, 255, 255, 1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); transform: scale(1.05); }
+      .back-link i { font-size: 24px; }
+      .back-link span { display: none; }
       .media-section { margin-bottom: 2rem; border: 2px dashed var(--outline-variant); border-radius: 18px; padding: 1.5rem; background: var(--surface-container-low); }
       .media-section:last-of-type { margin-bottom: 0; }
       .media-section header { margin-bottom: 1rem; }
@@ -35,14 +37,13 @@
   <body>
 
     <!-- Site Logo -->
-    <a href="../index.html" class="site-logo">
-      <img src="../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
+    <a href="../../index.html" class="site-logo">
+      <img src="../../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
     </a>
-
-    <a href="artisan-nonfood.html" class="back-link" style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;"><i>arrow_back</i><span>Back</span></a>
 
     <div class="signup-container">
       <div class="signup-card">
+        <a href="../artisan-nonfood/index.html" class="back-link"><i>arrow_back</i></a>
         <div class="step-indicator" data-step="9">Step 9</div>
         <h1 class="page-title">Showcase Your Craft</h1>
         <p class="page-subtitle">Add photos to help shoppers connect with your work</p>
@@ -260,7 +261,7 @@
           alert('Please upload both a profile photo and a banner image to continue.');
           return;
         }
-        window.location.href = 'vendor-final.html';
+        window.location.href = '../vendor-final/index.html';
       });
     </script>
   </body>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
     <title>Verify Your Email • LocalMarket</title>
-    <link href="../style.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
     <style>
       .signup-container {
         min-height: 100vh;
@@ -93,15 +93,33 @@
       .back-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #000;
         text-decoration: none;
-        margin-bottom: 1rem;
-        font-weight: 500;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.2s ease;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
       }
       
       .back-link:hover {
-        text-decoration: underline;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+      }
+      
+      .back-link i {
+        font-size: 24px;
+      }
+      
+      .back-link span {
+        display: none;
       }
       
       .resend-link {
@@ -119,17 +137,15 @@
   <body>
 
     <!-- Site Logo -->
-    <a href="../index.html" class="site-logo">
-      <img src="../Logo 333.png" alt="LocalMarket Logo">
-    </a>
-
-    <a href="email-password.html" class="back-link" style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;">
-      <i>arrow_back</i>
-      <span>Back</span>
+    <a href="../../index.html" class="site-logo">
+      <img src="../../Logo 333.png" alt="LocalMarket Logo">
     </a>
 
     <div class="signup-container">
       <div class="signup-card">
+        <a href="../email-password/index.html" class="back-link">
+          <i>arrow_back</i>
+        </a>
         
         <div class="step-indicator">Step 2 of 4</div>
         
@@ -212,7 +228,7 @@
         // Accept any 6-digit code (fake verification)
         const code = Array.from(codeInputs).map(input => input.value).join('');
         if (code.length === 6) {
-          window.location.href = 'choose-type.html';
+          window.location.href = '../choose-type/index.html';
         } else {
           alert('Please enter a 6-digit code');
         }

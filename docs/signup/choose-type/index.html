@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
     <title>Choose Your Path • LocalMarket</title>
-    <link href="../style.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
     <style>
       .signup-container {
         min-height: 100vh;
@@ -105,15 +105,33 @@
       .back-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #000;
         text-decoration: none;
-        margin-bottom: 1rem;
-        font-weight: 500;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.2s ease;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
       }
       
       .back-link:hover {
-        text-decoration: underline;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+      }
+      
+      .back-link i {
+        font-size: 24px;
+      }
+      
+      .back-link span {
+        display: none;
       }
       
       @media (min-width: 600px) {
@@ -126,17 +144,15 @@
   <body>
 
     <!-- Site Logo -->
-    <a href="../index.html" class="site-logo">
-      <img src="../Logo 333.png" alt="LocalMarket Logo">
-    </a>
-
-    <a href="verify-code.html" class="back-link" style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;">
-      <i>arrow_back</i>
-      <span>Back</span>
+    <a href="../../index.html" class="site-logo">
+      <img src="../../Logo 333.png" alt="LocalMarket Logo">
     </a>
 
     <div class="signup-container">
       <div class="signup-card">
+        <a href="../verify-code/index.html" class="back-link">
+          <i>arrow_back</i>
+        </a>
         
         <div class="step-indicator">Step 3</div>
         
@@ -144,7 +160,7 @@
         <p class="page-subtitle">Choose the option that best describes you</p>
         
         <div class="type-cards">
-          <a href="shopper-info.html" class="type-card" onclick="sessionStorage.setItem('account_type', 'shopper'); return true;">
+          <a href="../shopper-info/index.html" class="type-card" onclick="sessionStorage.setItem('account_type', 'shopper'); return true;">
             <div class="icon-wrapper">
               <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop" alt="Shopper">
             </div>
@@ -152,7 +168,7 @@
             <p>I want to discover local products, events, and connect with my community</p>
           </a>
           
-          <a href="vendor-info.html" class="type-card" onclick="sessionStorage.setItem('account_type', 'vendor'); sessionStorage.removeItem('vendor_category'); sessionStorage.removeItem('artisan_type'); return true;">
+          <a href="../vendor-info/index.html" class="type-card" onclick="sessionStorage.setItem('account_type', 'vendor'); sessionStorage.removeItem('vendor_category'); sessionStorage.removeItem('artisan_type'); return true;">
             <div class="icon-wrapper">
               <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=200&h=200&fit=crop" alt="Vendor" loading="lazy">
             </div>

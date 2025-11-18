@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Vendor Details • LocalMarket</title>
-    <link href="../style.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
     <style>
       .signup-container {
         min-height: 100vh;
@@ -59,14 +59,30 @@
       .back-link {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #000;
         text-decoration: none;
-        margin-bottom: 1rem;
-        font-weight: 500;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.2s ease;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
       }
       .back-link:hover {
-        text-decoration: underline;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+      }
+      .back-link i {
+        font-size: 24px;
+      }
+      .back-link span {
+        display: none;
       }
       #foodDetailsForm {
         display: flex;
@@ -143,14 +159,13 @@
   <body>
 
     <!-- Site Logo -->
-    <a href="../index.html" class="site-logo">
-      <img src="../Logo 333.png" alt="LocalMarket Logo">
+    <a href="../../index.html" class="site-logo">
+      <img src="../../Logo 333.png" alt="LocalMarket Logo">
     </a>
-
-    <a href="artisan-food-type.html" class="back-link" style="position: fixed; top: 1rem; left: 1rem; z-index: 1000;"><i>arrow_back</i><span>Back</span></a>
 
     <div class="signup-container">
       <div class="signup-card">
+        <a href="../food-artisan-details/index.html" class="back-link" id="food-vendor-details-back-link"><i>arrow_back</i></a>
         <div class="step-indicator" data-step="8">Step 8</div>
         <div class="illustration-top"><img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=300&h=300&fit=crop" alt="Farm"></div>
         <h1 class="page-title">Almost Done!</h1>
@@ -181,7 +196,7 @@
     <script>
     (function(){const t=localStorage.getItem('theme')||'light';document.body.classList.remove('dark','light');document.body.classList.add(t);const b=document.createElement('button');b.className='theme-toggle circle';b.setAttribute('aria-label','Toggle theme');b.innerHTML='<i>'+(t==='light'?'dark_mode':'light_mode')+'</i>';b.addEventListener('click',function(){const c=document.body.classList.contains('dark')?'dark':'light';const n=c==='light'?'dark':'light';document.body.classList.remove('dark','light');document.body.classList.add(n);localStorage.setItem('theme',n);b.querySelector('i').textContent=n==='light'?'dark_mode':'light_mode';});document.body.appendChild(b);})();
       const stepIndicator = document.querySelector('.step-indicator');
-      const backLink = document.querySelector('.back-link');
+      const backLink = document.getElementById('food-vendor-details-back-link');
       const vendorCategory = sessionStorage.getItem('vendor_category');
       const artisanType = sessionStorage.getItem('artisan_type');
       if (stepIndicator) {
@@ -195,9 +210,9 @@
         stepIndicator.textContent = `Step ${step} of ${total}` + (isFinal ? ' - Final Step!' : '');
         if (backLink) {
           if (vendorCategory === 'farmer') {
-            backLink.setAttribute('href','vendor-farm-details.html');
+            backLink.setAttribute('href','../vendor-farm-details/index.html');
           } else if (vendorCategory === 'artisan' && artisanType === 'food') {
-            backLink.setAttribute('href','artisan-food-type.html');
+            backLink.setAttribute('href','../food-artisan-details/index.html');
           }
         }
       }
@@ -335,7 +350,7 @@
         }
         sessionStorage.setItem('certifications',JSON.stringify(certifications));
         sessionStorage.setItem('additional_info',document.getElementById('additional-info').value);
-        window.location.href='food-vendor-media.html';
+        window.location.href='../food-vendor-media/index.html';
       });
     </script>
   </body>

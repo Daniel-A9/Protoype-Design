@@ -48,40 +48,97 @@
       </a>
     </nav>
 
-    <main class="responsive">
-      {% block back_button %}
-      <div id="back-button" style="display: none; position: fixed; top: 1rem; left: calc(256px + 1rem); z-index: 1000;">
+    <!-- Top Header Bar -->
+    <header id="top-header" style="position: fixed; top: 0; left: 256px; right: 0; height: 60px; background-color: var(--surface); border-bottom: 1px solid var(--outline-variant); z-index: 999; display: flex; align-items: center; padding: 0 1rem; gap: 1rem;">
+      <!-- Back Button (left) -->
+      <div id="header-back-button" style="display: none;">
         <a href="{% url 'ledger:index' %}">
           <button class="circle">
             <i>arrow_back</i>
           </button>
         </a>
       </div>
-      {% endblock %}
+      
+      <!-- Logo (center) -->
+      <div style="position: absolute; left: 50%; transform: translateX(-50%);">
+        <a href="{% url 'ledger:index' %}" style="display: flex; align-items: center; text-decoration: none;">
+          <img src="../../docs/Logo 333.png" alt="LocalMarket Logo" style="height: 40px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <h6 style="display: none; margin: 0; color: var(--on-surface);">LocalMarket</h6>
+        </a>
+      </div>
+      
+      <!-- Add Button & Theme Toggle (right) -->
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
+        <a href="{% url 'ledger:create_transaction' %}">
+          <button class="circle">
+            <i>add</i>
+          </button>
+        </a>
+        <div id="theme-toggle-container"></div>
+      </div>
+    </header>
+
+    <main class="responsive" style="padding-top: 60px;">
       {% block content %}{% endblock %}
     
     <script>
+      // Theme Toggle Functionality
+      (function() {
+        // Get stored theme or default to dark (since base is dark)
+        const storedTheme = localStorage.getItem('theme') || 'dark';
+        
+        // Apply theme on page load
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(storedTheme);
+        
+        // Create toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'circle';
+        toggleButton.setAttribute('aria-label', 'Toggle theme');
+        toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
+        
+        // Add click handler
+        toggleButton.addEventListener('click', function() {
+          const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          
+          document.body.classList.remove('dark', 'light');
+          document.body.classList.add(newTheme);
+          localStorage.setItem('theme', newTheme);
+          
+          toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
+        });
+        
+        // Insert into theme toggle container
+        const container = document.getElementById('theme-toggle-container');
+        if (container) {
+          container.appendChild(toggleButton);
+        }
+      })();
+
       // Show back button on all pages except home
       document.addEventListener('DOMContentLoaded', function() {
-        const backButton = document.getElementById('back-button');
-        if (backButton) {
+        const headerBackButton = document.getElementById('header-back-button');
+        const topHeader = document.getElementById('top-header');
+        
+        if (headerBackButton && topHeader) {
           const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
           // Show back button on all pages except home (root path)
           if (currentPath !== '/' && currentPath !== '') {
-            backButton.style.display = 'block';
+            headerBackButton.style.display = 'block';
           }
           
-          // Adjust position on mobile when nav is collapsed
-          function adjustBackButtonPosition() {
+          // Adjust header position on mobile when nav is collapsed
+          function adjustHeaderPosition() {
             if (window.innerWidth < 768) {
-              backButton.style.left = '1rem';
+              topHeader.style.left = '0';
             } else {
-              backButton.style.left = 'calc(256px + 1rem)';
+              topHeader.style.left = '256px';
             }
           }
           
-          adjustBackButtonPosition();
-          window.addEventListener('resize', adjustBackButtonPosition);
+          adjustHeaderPosition();
+          window.addEventListener('resize', adjustHeaderPosition);
         }
       });
     </script>

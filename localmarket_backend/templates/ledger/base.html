@@ -65,9 +65,9 @@
       document.addEventListener('DOMContentLoaded', function() {
         const backButton = document.getElementById('back-button');
         if (backButton) {
-          const currentPath = window.location.pathname;
-          // Hide on home page (root path)
-          if (currentPath !== '/' && !currentPath.endsWith('/index') && currentPath !== '') {
+          const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+          // Show back button on all pages except home (root path)
+          if (currentPath !== '/' && currentPath !== '') {
             backButton.style.display = 'block';
           }
           

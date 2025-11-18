@@ -9,7 +9,7 @@ async function loadReport() {
     const dateTo = document.getElementById('report-date').value || new Date().toISOString().split('T')[0];
     const dateFrom = new Date(new Date(dateTo).getFullYear(), new Date(dateTo).getMonth(), 1).toISOString().split('T')[0];
     
-    const response = await fetch(`/api/ledger/reports/profit-loss/?date_from=${dateFrom}&date_to=${dateTo}`);
+    const response = await fetch(`/api/reports/profit-loss/`);
     const data = await response.json();
     
     const container = document.getElementById('report-content');

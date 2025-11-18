@@ -29,14 +29,21 @@
   <script>
     async function loadTransactions() {
       try {
-        const response = await fetch('/api/ledger/transactions/');
-        const data = await response.json();
+        const response = await fetch('/api/transactions/');
         
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
         const container = document.getElementById('transactions-list');
         container.innerHTML = '';
         
-        if (data.results && data.results.length > 0) {
-          data.results.forEach(entry => {
+        // Handle paginated response (DRF) or direct array
+        const transactions = Array.isArray(data) ? data : (data.results || []);
+        
+        if (transactions.length > 0) {
+          transactions.forEach(entry => {
             const article = document.createElement('article');
             article.className = 'padding';
             

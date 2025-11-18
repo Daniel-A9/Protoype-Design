@@ -83,9 +83,18 @@
     async function loadDashboard() {
       try {
         // Load account summary
-        const accountsResponse = await fetch('/api/ledger/accounts/');
+        const accountsResponse = await fetch('/api/accounts/');
+        
+        if (!accountsResponse.ok) {
+          throw new Error(`Failed to load accounts: ${accountsResponse.status}`);
+        }
+        
         const accountsData = await accountsResponse.json();
-        const accounts = accountsData.results || accountsData;
+        const accounts = Array.isArray(accountsData) ? accountsData : (accountsData.results || []);
+        
+        if (!Array.isArray(accounts)) {
+          throw new Error('Invalid accounts data format');
+        }
         
         let summaryHtml = '<ul class="list no-space">';
         let totalAssets = 0;
@@ -114,33 +123,44 @@
         document.getElementById('account-summary').innerHTML = summaryHtml;
         
         // Load recent transactions
-        const transResponse = await fetch('/api/ledger/transactions/?ordering=-date');
-        const transData = await transResponse.json();
-        const transactions = (transData.results || transData).slice(0, 5);
-        
-        if (transactions.length > 0) {
-          let transHtml = '<ul class="list no-space">';
-          transactions.forEach(entry => {
-            transHtml += `
-              <li>
-                <div class="max">
-                  <h6 class="small">Entry #${entry.entry_number}</h6>
-                  <div class="small-text">${entry.description}</div>
-                  <div class="chip tiny">${entry.date}</div>
-                </div>
-                <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(entry.total_debits || 0))}</label>
-              </li>
-            `;
-          });
-          transHtml += '</ul>';
-          document.getElementById('recent-transactions').innerHTML = transHtml;
-        } else {
+        try {
+          const transResponse = await fetch('/api/transactions/');
+          
+          if (transResponse.ok) {
+            const transData = await transResponse.json();
+            const transactions = Array.isArray(transData) ? transData : (transData.results || []);
+            const recentTransactions = Array.isArray(transactions) ? transactions.slice(0, 5) : [];
+            
+            if (recentTransactions.length > 0) {
+              let transHtml = '<ul class="list no-space">';
+              recentTransactions.forEach(entry => {
+                transHtml += `
+                  <li>
+                    <div class="max">
+                      <h6 class="small">Entry #${entry.entry_number}</h6>
+                      <div class="small-text">${entry.description}</div>
+                      <div class="chip tiny">${entry.date}</div>
+                    </div>
+                    <label>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(entry.total_debits || 0))}</label>
+                  </li>
+                `;
+              });
+              transHtml += '</ul>';
+              document.getElementById('recent-transactions').innerHTML = transHtml;
+            } else {
+              document.getElementById('recent-transactions').innerHTML = '<p class="small-text">No transactions yet</p>';
+            }
+          } else {
+            document.getElementById('recent-transactions').innerHTML = '<p class="small-text">No transactions yet</p>';
+          }
+        } catch (transError) {
+          console.error('Error loading transactions:', transError);
           document.getElementById('recent-transactions').innerHTML = '<p class="small-text">No transactions yet</p>';
         }
       } catch (error) {
         console.error('Error loading dashboard:', error);
-        document.getElementById('account-summary').innerHTML = '<p class="small-text red-text">Error loading data</p>';
-        document.getElementById('recent-transactions').innerHTML = '<p class="small-text red-text">Error loading transactions</p>';
+        document.getElementById('account-summary').innerHTML = '<p class="small-text red-text">Error loading data: ' + error.message + '</p>';
+        document.getElementById('recent-transactions').innerHTML = '<p class="small-text">Unable to load transactions</p>';
       }
     }
     

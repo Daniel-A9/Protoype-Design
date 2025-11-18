@@ -49,7 +49,42 @@
     </nav>
 
     <main class="responsive">
+      {% block back_button %}
+      <div id="back-button" style="display: none; position: fixed; top: 1rem; left: calc(256px + 1rem); z-index: 1000;">
+        <a href="{% url 'ledger:index' %}">
+          <button class="circle">
+            <i>arrow_back</i>
+          </button>
+        </a>
+      </div>
+      {% endblock %}
       {% block content %}{% endblock %}
+    
+    <script>
+      // Show back button on all pages except home
+      document.addEventListener('DOMContentLoaded', function() {
+        const backButton = document.getElementById('back-button');
+        if (backButton) {
+          const currentPath = window.location.pathname;
+          // Hide on home page (root path)
+          if (currentPath !== '/' && !currentPath.endsWith('/index') && currentPath !== '') {
+            backButton.style.display = 'block';
+          }
+          
+          // Adjust position on mobile when nav is collapsed
+          function adjustBackButtonPosition() {
+            if (window.innerWidth < 768) {
+              backButton.style.left = '1rem';
+            } else {
+              backButton.style.left = 'calc(256px + 1rem)';
+            }
+          }
+          
+          adjustBackButtonPosition();
+          window.addEventListener('resize', adjustBackButtonPosition);
+        }
+      });
+    </script>
     </main>
 
   </body>

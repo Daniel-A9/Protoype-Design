@@ -83,9 +83,18 @@
     
     async function loadAccounts() {
       try {
-        const response = await fetch('/api/ledger/accounts/');
+        const response = await fetch('/api/accounts/');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
-        accounts = data.results || data;
+        accounts = Array.isArray(data) ? data : (data.results || []);
+        
+        if (!Array.isArray(accounts)) {
+          throw new Error('Invalid accounts data format');
+        }
         
         document.querySelectorAll('.account-select').forEach(select => {
           select.innerHTML = '<option value="">Select Account</option>';
@@ -98,6 +107,7 @@
         });
       } catch (error) {
         console.error('Error loading accounts:', error);
+        alert('Error loading accounts. Please refresh the page.');
       }
     }
     
@@ -216,7 +226,7 @@
       };
       
       try {
-        const response = await fetch('/api/ledger/transactions/', {
+        const response = await fetch('/api/transactions/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

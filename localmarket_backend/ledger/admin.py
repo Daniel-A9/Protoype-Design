@@ -18,9 +18,10 @@ class AccountAdmin(admin.ModelAdmin):
     
     def get_balance(self, obj):
         try:
-            balance = obj.balance.net_balance
-            return f"${balance:,.2f}"
-        except AccountBalance.DoesNotExist:
+            if hasattr(obj, 'balance') and obj.balance:
+                return f"${obj.balance.net_balance:,.2f}"
+            return "$0.00"
+        except (AttributeError, AccountBalance.DoesNotExist, TypeError):
             return "$0.00"
     get_balance.short_description = 'Balance'
 

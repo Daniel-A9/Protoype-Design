@@ -12,9 +12,10 @@ class AccountSerializer(serializers.ModelSerializer):
     
     def get_balance(self, obj):
         try:
-            balance = obj.balance.net_balance
-            return float(balance)
-        except AccountBalance.DoesNotExist:
+            if hasattr(obj, 'balance') and obj.balance:
+                return float(obj.balance.net_balance)
+            return 0.0
+        except (AttributeError, AccountBalance.DoesNotExist, TypeError):
             return 0.0
 
 

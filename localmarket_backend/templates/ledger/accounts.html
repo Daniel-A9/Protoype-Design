@@ -30,14 +30,21 @@
   <script>
     async function loadAccounts() {
       try {
-        const response = await fetch('/api/ledger/accounts/');
-        const data = await response.json();
+        const response = await fetch('/api/accounts/');
         
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
         const tbody = document.getElementById('accounts-table');
         tbody.innerHTML = '';
         
-        if (data.results) {
-          data.results.forEach(account => {
+        // Handle paginated response (DRF) or direct array
+        const accounts = Array.isArray(data) ? data : (data.results || []);
+        
+        if (accounts.length > 0) {
+          accounts.forEach(account => {
             const row = document.createElement('tr');
             const balance = account.balance || 0;
             const balanceClass = balance >= 0 ? 'green-text' : 'red-text';
@@ -54,10 +61,12 @@
             `;
             tbody.appendChild(row);
           });
+        } else {
+          tbody.innerHTML = '<tr><td colspan="4" class="center-align">No accounts found</td></tr>';
         }
       } catch (error) {
         document.getElementById('accounts-table').innerHTML = 
-          '<tr><td colspan="4" class="center-align red-text">Error loading accounts</td></tr>';
+          '<tr><td colspan="4" class="center-align red-text">Error loading accounts: ' + error.message + '</td></tr>';
         console.error('Error:', error);
       }
     }

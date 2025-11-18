@@ -7,7 +7,8 @@ never import new js or css files, other than style.css, but never write new css 
 you are NOT ALLOWED to create new javascript files or import additional javascript files
 read this entire beercss documentation below when editing
 always use loading='lazy' for images
-
+all created html files should be called index.html, to name a page, put it in a folder with a name of the meaning of the page
+all links and urls to pages should end with '/', should not mention the index.html name
 
 # BeerCSS - Complete Documentation for AI/LLM Systems
 

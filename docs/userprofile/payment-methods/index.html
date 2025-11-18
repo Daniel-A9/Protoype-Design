@@ -5,36 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
-    <title>Open Orders - Shopper Profile</title>
+    <title>Payment Methods - Shopper Profile</title>
    
-    <link href="../style.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
   </head>
   <body>
 
     <!-- Fixed Top Header -->
     <div class="top-header">
       <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <a href="my-orders.html" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit; margin-right: 0.5rem;">
+        <a href="../my-orders/" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit; margin-right: 0.5rem;">
           <button class="circle transparent">
             <i>arrow_back</i>
           </button>
         </a>
-        <img src="../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
+        <img src="../../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
       </div>
       <nav class="header-nav">
-        <a href="../home/index.html" class="link" data-testid="desktop-nav-home">Home</a>
-        <a href="../index.html" class="link" data-testid="desktop-nav-discovery">Discover</a>
-        <a href="../discussions/categories/local-discussions.html" class="link" data-testid="desktop-nav-community">Community</a>
-        <a href="../cart/index.html" class="link" data-testid="desktop-nav-cart">
+        <a href="../../home/./" class="link" data-testid="desktop-nav-home">Home</a>
+        <a href="../.././" class="link" data-testid="desktop-nav-discovery">Discover</a>
+        <a href="../../discussions/categories/local-discussions.html" class="link" data-testid="desktop-nav-community">Community</a>
+        <a href="../../cart/./" class="link" data-testid="desktop-nav-cart">
           <i>shopping_cart</i>
           <span>Cart</span>
         </a>
       </nav>
       <div class="header-right">
-        <a href="../index.html" class="site-logo">
-          <img src="../Logo 333.png" alt="LocalMarket Logo">
+        <a href="../.././" class="site-logo">
+          <img src="../../Logo 333.png" alt="LocalMarket Logo">
         </a>
-        <a href="../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile">
+        <a href="../../userprofile/./" class="header-profile" data-testid="desktop-nav-profile">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
       </div>
@@ -42,19 +42,19 @@
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-      <a href="../home/index.html" class="nav-item" data-testid="nav-home">
+      <a href="../../home/./" class="nav-item" data-testid="nav-home">
         <i>home</i>
       </a>
-      <a href="../index.html" class="nav-item" data-testid="nav-search">
+      <a href="../.././" class="nav-item" data-testid="nav-search">
         <i>search</i>
       </a>
-      <a href="../discussions/categories/local-discussions.html" class="nav-item" data-testid="nav-discussions">
+      <a href="../../discussions/categories/local-discussions.html" class="nav-item" data-testid="nav-discussions">
         <i>groups</i>
       </a>
-      <a href="../cart/index.html" class="nav-item" data-testid="nav-cart">
+      <a href="../../cart/./" class="nav-item" data-testid="nav-cart">
         <i>shopping_cart</i>
       </a>
-      <a href="shopper.html" class="nav-item active" data-testid="nav-profile">
+      <a href="../shopper/" class="nav-item active" data-testid="nav-profile">
         <i>person</i>
       </a>
     </nav>
@@ -64,19 +64,21 @@
             <div class="container" style="padding-top: 1rem;">
                 <div class="row">
                     <div class="col s12">
-                        <h2 style="margin-bottom: 1rem;">Open Orders</h2>
+                        <h2 style="margin-bottom: 1rem;">Payment Methods</h2>
                         <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
                             <div class="card-header" style="padding: 0.5rem 1rem;">
                                 <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                                        <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                                    <div style="flex-shrink: 0; margin-right: 0.75rem;">
+                                        <i class="material-icons" style="font-size: 2rem; color: var(--primary);">credit_card</i>
                                     </div>
                                     <div style="flex: 1; min-width: 0;">
-                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">Citrus IPA - Order #1234</h6>
-                                        <small class="text-grey" style="display: block; line-height: 1.2;">Brewery Central • Status: Processing</small>
+                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">•••• •••• •••• 4242</h6>
+                                        <small class="text-grey" style="display: block; line-height: 1.2;">Visa • Expires 12/25</small>
                                     </div>
-                                    <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right;">
-                                        <small class="text-grey" style="font-size: 0.65rem;">Ordered 2 days ago</small>
+                                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                                        <button class="btn tiny outline" style="padding: 0.25rem 0.5rem;">
+                                            <i>edit</i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -84,18 +86,26 @@
                         <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
                             <div class="card-header" style="padding: 0.5rem 1rem;">
                                 <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                                        <img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=100&h=100&fit=crop" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                                    <div style="flex-shrink: 0; margin-right: 0.75rem;">
+                                        <i class="material-icons" style="font-size: 2rem; color: var(--primary);">account_balance</i>
                                     </div>
                                     <div style="flex: 1; min-width: 0;">
-                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">Artisan Sourdough Bread - Order #1235</h6>
-                                        <small class="text-grey" style="display: block; line-height: 1.2;">Artisan Bread Co. • Status: Shipped</small>
+                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">PayPal</h6>
+                                        <small class="text-grey" style="display: block; line-height: 1.2;">sarah.johnson@email.com</small>
                                     </div>
-                                    <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right;">
-                                        <small class="text-grey" style="font-size: 0.65rem;">Ordered 5 days ago</small>
+                                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
+                                        <button class="btn tiny outline" style="padding: 0.25rem 0.5rem;">
+                                            <i>edit</i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <button class="btn primary" style="width: 100%;">
+                                <i>add</i>
+                                <span>Add Payment Method</span>
+                            </button>
                         </div>
                     </div>
                 </div>

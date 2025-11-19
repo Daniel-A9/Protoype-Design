@@ -7,24 +7,24 @@
   
   <article class="padding">
     <form id="transaction-form">
-      <div class="field label border">
+      <div class="field border" style="margin-bottom: 2rem;">
+        <label for="transaction-date" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Date</label>
         <input type="date" id="transaction-date" required>
-        <label>Date</label>
       </div>
       
-      <div class="field label border">
+      <div class="field border" style="margin-bottom: 2rem;">
+        <label for="transaction-description" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Description</label>
         <input type="text" id="transaction-description" required>
-        <label>Description</label>
       </div>
       
-      <div class="field label border">
+      <div class="field border" style="margin-bottom: 2rem;">
+        <label for="reference-type" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Reference Type</label>
         <input type="text" id="reference-type" placeholder="order, payment, subscription, refund, manual">
-        <label>Reference Type</label>
       </div>
       
-      <div class="field label border">
+      <div class="field border" style="margin-bottom: 2rem;">
+        <label for="reference-id" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Reference ID</label>
         <input type="text" id="reference-id" placeholder="External system ID">
-        <label>Reference ID</label>
       </div>
       
       <hr>
@@ -33,23 +33,23 @@
       
       <div id="entries-container">
         <div class="entry-row">
-          <div class="field label border">
-            <select class="account-select" required>
+          <div class="field border">
+            <label for="account-select-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Account</label>
+            <select class="account-select" id="account-select-0" required>
               <option value="">Select Account</option>
             </select>
-            <label>Account</label>
           </div>
-          <div class="field label border">
-            <input type="number" step="0.01" min="0" class="debit-amount" placeholder="0.00">
-            <label>Debit</label>
+          <div class="field border">
+            <label for="debit-amount-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Debit</label>
+            <input type="number" step="0.01" min="0" class="debit-amount" id="debit-amount-0">
           </div>
-          <div class="field label border">
-            <input type="number" step="0.01" min="0" class="credit-amount" placeholder="0.00">
-            <label>Credit</label>
+          <div class="field border">
+            <label for="credit-amount-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Credit</label>
+            <input type="number" step="0.01" min="0" class="credit-amount" id="credit-amount-0">
           </div>
-          <div class="field label border">
-            <input type="text" class="entry-description" placeholder="Description">
-            <label>Description</label>
+          <div class="field border">
+            <label for="entry-description-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Description</label>
+            <input type="text" class="entry-description" id="entry-description-0">
           </div>
         </div>
       </div>
@@ -111,28 +111,31 @@
       }
     }
     
+    let rowCounter = 1;
+    
     function addEntryRow() {
       const container = document.getElementById('entries-container');
       const newRow = document.createElement('div');
       newRow.className = 'entry-row';
+      const rowId = rowCounter++;
       newRow.innerHTML = `
-        <div class="field label border">
-          <select class="account-select" required>
+        <div class="field border">
+          <label for="account-select-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Account</label>
+          <select class="account-select" id="account-select-${rowId}" required>
             <option value="">Select Account</option>
           </select>
-          <label>Account</label>
         </div>
-        <div class="field label border">
-          <input type="number" step="0.01" min="0" class="debit-amount" placeholder="0.00">
-          <label>Debit</label>
+        <div class="field border">
+          <label for="debit-amount-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Debit</label>
+          <input type="number" step="0.01" min="0" class="debit-amount" id="debit-amount-${rowId}">
         </div>
-        <div class="field label border">
-          <input type="number" step="0.01" min="0" class="credit-amount" placeholder="0.00">
-          <label>Credit</label>
+        <div class="field border">
+          <label for="credit-amount-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Credit</label>
+          <input type="number" step="0.01" min="0" class="credit-amount" id="credit-amount-${rowId}">
         </div>
-        <div class="field label border">
-          <input type="text" class="entry-description" placeholder="Description">
-          <label>Description</label>
+        <div class="field border">
+          <label for="entry-description-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Description</label>
+          <input type="text" class="entry-description" id="entry-description-${rowId}">
         </div>
         <button type="button" onclick="this.closest('.entry-row').remove(); checkBalance()" class="transparent circle">
           <i>close</i>
@@ -261,13 +264,23 @@
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 2fr auto;
       gap: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       align-items: end;
     }
     @media (max-width: 768px) {
       .entry-row {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
+    }
+    
+    /* Add spacing between field groups */
+    .field.border {
+      margin-bottom: 2rem;
+    }
+    
+    .entry-row .field.border {
+      margin-bottom: 0;
     }
   </style>
 {% endblock %}

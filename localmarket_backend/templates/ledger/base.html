@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,17 +60,17 @@
         </a>
       </div>
       
-      <!-- Logo (center) -->
-      <div style="position: absolute; left: 50%; transform: translateX(-50%);">
-        <a href="{% url 'ledger:index' %}" style="display: flex; align-items: center; text-decoration: none;">
-          <img src="../../docs/Logo 333.png" alt="LocalMarket Logo" style="height: 40px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <h6 style="display: none; margin: 0; color: var(--on-surface);">LocalMarket</h6>
+      <!-- Left Side: Text Image + Logo (both mobile and desktop) -->
+      <div id="header-left" class="header-left">
+        <a href="{% url 'ledger:index' %}" style="display: flex; align-items: center; text-decoration: none; gap: 0.5rem;">
+          <img src="{% static 'text.png' %}" alt="LocalMarket Text" style="height: 30px;">
+          <img src="{% static 'Logo 333.png' %}" alt="LocalMarket Logo" style="height: 40px;">
         </a>
       </div>
       
       <!-- Add Button & Theme Toggle (right) -->
       <div style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
-        <a href="{% url 'ledger:create_transaction' %}">
+        <a id="header-add-button" href="{% url 'ledger:create_transaction' %}">
           <button class="circle">
             <i>add</i>
           </button>
@@ -77,6 +78,33 @@
         <div id="theme-toggle-container"></div>
       </div>
     </header>
+    
+    <style>
+      /* Header left side: always visible */
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      #header-add-button {
+        display: block;
+      }
+      
+      /* Mobile header layout (< 768px) */
+      @media (max-width: 767px) {
+        #header-add-button {
+          display: none !important;
+        }
+      }
+      
+      /* Desktop header layout (>= 768px) */
+      @media (min-width: 768px) {
+        #header-add-button {
+          display: block !important;
+        }
+      }
+    </style>
 
     <main class="responsive" style="padding-top: 60px;">
       {% block content %}{% endblock %}
@@ -116,7 +144,7 @@
         }
       })();
 
-      // Show back button on all pages except home
+      // Show back button on all pages except home and handle mobile layout
       document.addEventListener('DOMContentLoaded', function() {
         const headerBackButton = document.getElementById('header-back-button');
         const topHeader = document.getElementById('top-header');
@@ -129,6 +157,7 @@
           }
           
           // Adjust header position on mobile when nav is collapsed
+          // Note: CSS media queries handle visibility of mobile/desktop elements
           function adjustHeaderPosition() {
             if (window.innerWidth < 768) {
               topHeader.style.left = '0';

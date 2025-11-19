@@ -53,7 +53,7 @@
     <header id="top-header" style="position: fixed; top: 0; left: 256px; right: 0; height: 60px; background-color: var(--surface); border-bottom: 1px solid var(--outline-variant); z-index: 999; display: flex; align-items: center; padding: 0 1rem; gap: 1rem;">
       <!-- Back Button (left) -->
       <div id="header-back-button" style="display: none;">
-        <a href="{% url 'ledger:index' %}">
+        <a href="#">
           <button class="circle">
             <i>arrow_back</i>
           </button>
@@ -154,6 +154,15 @@
           // Show back button on all pages except home (root path)
           if (currentPath !== '/' && currentPath !== '') {
             headerBackButton.style.display = 'block';
+          }
+          
+          // Add click handler for back button to use History API
+          const backButtonLink = headerBackButton.querySelector('a[href="#"]');
+          if (backButtonLink) {
+            backButtonLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              window.history.back();
+            });
           }
           
           // Adjust header position on mobile when nav is collapsed

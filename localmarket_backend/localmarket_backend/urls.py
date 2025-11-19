@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(('ledger.urls', 'ledger'), namespace='ledger')),
+    path('ledger/', include(('ledger.urls', 'ledger'), namespace='ledger')),
 ]
 
 # Serve static files during development

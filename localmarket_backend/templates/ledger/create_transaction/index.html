@@ -59,6 +59,21 @@
         }
       }
       
+      // Check if product data is provided from context
+      {% if product %}
+      const productData = {
+        name: '{{ product.name|escapejs }}',
+        price: {{ product.price }},
+        id: '{{ product.id|escapejs }}'
+      };
+      
+      // Autofill description with product name
+      document.getElementById('transaction-description').value = productData.name;
+      
+      // Store product data in sessionStorage for use on entry page
+      sessionStorage.setItem('productData', JSON.stringify(productData));
+      {% endif %}
+      
       // Set default date to today
       const dateInput = document.getElementById('transaction-date');
       if (!dateInput.value) {

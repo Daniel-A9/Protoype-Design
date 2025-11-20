@@ -162,6 +162,41 @@
             select.appendChild(option);
           });
         });
+        
+        // Autofill with product data if available
+        const productDataStr = sessionStorage.getItem('productData');
+        if (productDataStr) {
+          try {
+            const productData = JSON.parse(productDataStr);
+            const firstRow = document.querySelector('.entry-row');
+            if (firstRow && productData.price) {
+              // Find Cash account (account_number '1000')
+              const cashAccount = accounts.find(acc => acc.account_number === '1000');
+              // Find Sales Revenue account (account_number '4000')
+              const salesAccount = accounts.find(acc => acc.account_number === '4000');
+              
+              if (cashAccount && salesAccount) {
+                const debitSelect = firstRow.querySelector('.debit-account-select');
+                const creditSelect = firstRow.querySelector('.credit-account-select');
+                const debitAmount = firstRow.querySelector('.debit-amount');
+                const creditAmount = firstRow.querySelector('.credit-amount');
+                
+                if (debitSelect) debitSelect.value = cashAccount.id;
+                if (creditSelect) creditSelect.value = salesAccount.id;
+                if (debitAmount) debitAmount.value = productData.price;
+                if (creditAmount) creditAmount.value = productData.price;
+                
+                // Trigger balance check
+                checkBalance();
+                
+                // Remove product data from sessionStorage after use
+                sessionStorage.removeItem('productData');
+              }
+            }
+          } catch (e) {
+            console.error('Error processing product data:', e);
+          }
+        }
       } catch (error) {
         console.error('Error loading accounts:', error);
         alert('Error loading accounts. Please refresh the page.');

@@ -16,6 +16,54 @@ class TransactionsView(TemplateView):
 
 class CreateTransactionView(TemplateView):
     template_name = 'ledger/create_transaction/index.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Get product ID from query parameter
+        product_id = self.request.GET.get('product')
+        
+        if product_id:
+            # Get product data from the same list used in InventoryView
+            # In a real app, this would query a Product model
+            products = [
+                {
+                    'id': 'citrus-ipa',
+                    'name': 'Citrus IPA',
+                    'image': 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop',
+                    'price': 12.99,
+                },
+                {
+                    'id': 'chocolate-stout',
+                    'name': 'Chocolate Stout',
+                    'image': 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop',
+                    'price': 14.99,
+                },
+                {
+                    'id': 'golden-lager',
+                    'name': 'Golden Lager',
+                    'image': 'https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop',
+                    'price': 11.99,
+                },
+                {
+                    'id': 'hefeweizen',
+                    'name': 'Hefeweizen',
+                    'image': 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop',
+                    'price': 13.99,
+                },
+                {
+                    'id': 'pale-ale',
+                    'name': 'Pale Ale',
+                    'image': 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop',
+                    'price': 12.49,
+                },
+            ]
+            
+            # Find the product by ID
+            product = next((p for p in products if p['id'] == product_id), None)
+            if product:
+                context['product'] = product
+        
+        return context
 
 
 class CreateTransactionEntryView(TemplateView):
@@ -45,26 +93,31 @@ class InventoryView(TemplateView):
                 'id': 'citrus-ipa',
                 'name': 'Citrus IPA',
                 'image': 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop',
+                'price': 12.99,
             },
             {
                 'id': 'chocolate-stout',
                 'name': 'Chocolate Stout',
                 'image': 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop',
+                'price': 14.99,
             },
             {
                 'id': 'golden-lager',
                 'name': 'Golden Lager',
                 'image': 'https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop',
+                'price': 11.99,
             },
             {
                 'id': 'hefeweizen',
                 'name': 'Hefeweizen',
                 'image': 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop',
+                'price': 13.99,
             },
             {
                 'id': 'pale-ale',
                 'name': 'Pale Ale',
                 'image': 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop',
+                'price': 12.49,
             },
         ]
         return context

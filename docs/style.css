@@ -1668,6 +1668,7 @@ body:not(.dark) .header-nav i {
       padding-bottom: 0 !important;
     }
     
+    
     main.responsive .container .row {
       width: 100% !important;
       max-width: 100% !important;
@@ -2012,6 +2013,15 @@ body:not(.dark) .header-nav i {
   .feed-container .card.small .card-header:not(.surface-container-low) ~ .card-footer.surface-container-low,
   .feed-container .card.small.clickable-card .card-header:not(.surface-container-low) ~ .card-footer.surface-container-low {
     order: 5 !important;
+  }
+  
+  /* Cart page - constrain container width and center on desktop - must be last to override all other rules */
+  main.responsive > section > .container[style*="padding-top: 1rem"] {
+    max-width: 800px !important;
+    width: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
   }
   }
 

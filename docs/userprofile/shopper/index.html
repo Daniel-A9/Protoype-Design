@@ -557,20 +557,19 @@
         
         event.preventDefault();
         
-        // Get current page filename
+        // Get current page pathname
         const currentPath = window.location.pathname;
-        const currentFile = currentPath.split('/').pop() || './';
+        
+        // Check if we're on the shopper profile page
+        const isShopperProfile = currentPath.includes('/shopper/') || currentPath.endsWith('/shopper');
         
         // Toggle to the other profile type
-        if (currentFile === './' || currentFile === '' || currentPath.endsWith('userprofile/')) {
+        if (isShopperProfile) {
+          // Currently on shopper profile, switch to vendor profile
+          window.location.href = '../';
+        } else {
           // Currently on vendor profile, switch to shopper profile
           window.location.href = 'shopper/';
-        } else if (currentFile === 'shopper/') {
-          // Currently on shopper profile, switch to vendor profile
-          window.location.href = './';
-        } else {
-          // Default to vendor profile if we can't determine
-          window.location.href = './';
         }
       }
 

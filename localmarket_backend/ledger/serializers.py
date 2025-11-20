@@ -10,6 +10,13 @@ class AccountSerializer(serializers.ModelSerializer):
         fields = ['id', 'account_number', 'account_name', 'account_type', 'normal_balance', 'is_active', 'balance']
         read_only_fields = ['id']
     
+    def validate_account_number(self, value):
+        """Ensure account number is unique when creating"""
+        if self.instance is None:  # Only check on create, not update
+            if Account.objects.filter(account_number=value).exists():
+                raise serializers.ValidationError("An account with this account number already exists.")
+        return value
+    
     def get_balance(self, obj):
         try:
             if hasattr(obj, 'balance') and obj.balance:

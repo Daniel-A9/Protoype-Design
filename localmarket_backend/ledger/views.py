@@ -15,12 +15,16 @@ from .serializers import (
 from .services import record_transaction, get_account_balance, update_all_balances
 
 
-class AccountViewSet(viewsets.ReadOnlyModelViewSet):
+class AccountViewSet(viewsets.ModelViewSet):
     """
-    ViewSet for viewing accounts
+    ViewSet for viewing and creating accounts
     """
     queryset = Account.objects.filter(is_active=True)
     serializer_class = AccountSerializer
+    
+    def get_queryset(self):
+        """Return all active accounts"""
+        return Account.objects.filter(is_active=True)
     
     @action(detail=True, methods=['get'])
     def balance(self, request, pk=None):

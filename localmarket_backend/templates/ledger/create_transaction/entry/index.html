@@ -1,0 +1,429 @@
+{% extends 'ledger/index.html' %}
+
+{% block title %}Transaction Entries - Django Ledger{% endblock %}
+
+{% block content %}
+  <h3>Transaction Entries</h3>
+  
+  <article class="padding">
+    <form id="entry-form">
+      <hr>
+      <h5>Entries</h5>
+      <p class="small-text">Debits must equal credits</p>
+      
+      <div id="entries-container">
+        <div class="entry-row">
+          <div class="field border">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.1rem;">
+              <label for="debit-account-0" style="display: block; color: var(--on-surface); font-size: 0.875rem; margin: 0;">Debit Account</label>
+              <button type="button" data-ui="#debit-info-modal" class="transparent circle" style="width: 20px; height: 20px; min-width: 20px; padding: 0;" title="What is a debit?">
+                <i style="font-size: 16px;">info</i>
+              </button>
+            </div>
+            <select class="debit-account-select" id="debit-account-0" required>
+              <option value="">Select Account</option>
+            </select>
+          </div>
+          <div class="field border">
+            <label for="debit-amount-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Debit Amount</label>
+            <input type="number" step="0.01" min="0" class="debit-amount" id="debit-amount-0" required>
+          </div>
+          <div class="field border">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.1rem;">
+              <label for="credit-account-0" style="display: block; color: var(--on-surface); font-size: 0.875rem; margin: 0;">Credit Account</label>
+              <button type="button" data-ui="#credit-info-modal" class="transparent circle" style="width: 20px; height: 20px; min-width: 20px; padding: 0;" title="What is a credit?">
+                <i style="font-size: 16px;">info</i>
+              </button>
+            </div>
+            <select class="credit-account-select" id="credit-account-0" required>
+              <option value="">Select Account</option>
+            </select>
+          </div>
+          <div class="field border">
+            <label for="credit-amount-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Credit Amount</label>
+            <input type="number" step="0.01" min="0" class="credit-amount" id="credit-amount-0" required>
+          </div>
+        </div>
+      </div>
+      
+      <div class="space"></div>
+      
+      <div class="row middle-align">
+        <button type="button" onclick="addEntryRow()" class="secondary">
+          <i>add</i>
+          <span>Add Entry</span>
+        </button>
+        <div class="max"></div>
+        <div id="balance-status" class="small-text"></div>
+      </div>
+      
+      <div class="space"></div>
+      
+      <nav class="right-align">
+        <button type="button" onclick="goBack()" class="secondary">
+          Back
+        </button>
+        <button type="submit" class="primary">
+          Create Transaction
+        </button>
+      </nav>
+    </form>
+  </article>
+
+  <!-- Debit Info Modal -->
+  <dialog id="debit-info-modal" class="medium" style="max-height: 80vh; height: auto;">
+    <nav style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <h5 style="margin: 0;">What is a Debit?</h5>
+      <button data-ui="#debit-info-modal" class="transparent circle" style="width: 32px; height: 32px; min-width: 32px; padding: 0;" title="Close">
+        <i>close</i>
+      </button>
+    </nav>
+    <div style="padding: 1rem 0;">
+      <p>A debit in accounting is an entry on the left side of an account that records value coming into the business or increasing something the business owns.</p>
+      
+      <p><strong>Debits increase:</strong></p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Assets (cash, equipment, accounts receivable)</li>
+        <li>Expenses (rent, utilities, wages)</li>
+        <li>Dividends/Owner draws</li>
+      </ul>
+      
+      <p><strong>Debits decrease:</strong></p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Liabilities</li>
+        <li>Equity</li>
+        <li>Revenue</li>
+      </ul>
+      
+      <p><strong>Simple version:</strong> Debit = left side; assets/expenses go up.</p>
+    </div>
+    <nav>
+      <button data-ui="#debit-info-modal" class="primary">Close</button>
+    </nav>
+  </dialog>
+
+  <!-- Credit Info Modal -->
+  <dialog id="credit-info-modal" class="medium" style="max-height: 80vh; height: auto;">
+    <nav style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <h5 style="margin: 0;">What is a Credit?</h5>
+      <button data-ui="#credit-info-modal" class="transparent circle" style="width: 32px; height: 32px; min-width: 32px; padding: 0;" title="Close">
+        <i>close</i>
+      </button>
+    </nav>
+    <div style="padding: 1rem 0;">
+      <p>A credit in accounting is an entry on the right side of an account that records value leaving the business or increasing what the business owes or has earned.</p>
+      
+      <p><strong>Credits increase:</strong></p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Liabilities (loans, accounts payable)</li>
+        <li>Equity (capital, retained earnings)</li>
+        <li>Revenue (sales, service income)</li>
+      </ul>
+      
+      <p><strong>Credits decrease:</strong></p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Assets</li>
+        <li>Expenses</li>
+      </ul>
+      
+      <p><strong>Simple version:</strong> Credit = right side; liabilities/equity/revenue go up.</p>
+    </div>
+    <nav>
+      <button data-ui="#credit-info-modal" class="primary">Close</button>
+    </nav>
+  </dialog>
+
+  <script>
+    let accounts = [];
+    let rowCounter = 1;
+    
+    async function loadAccounts() {
+      try {
+        const response = await fetch('/ledger/api/accounts/');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        accounts = Array.isArray(data) ? data : (data.results || []);
+        
+        if (!Array.isArray(accounts)) {
+          throw new Error('Invalid accounts data format');
+        }
+        
+        // Populate all existing selects
+        document.querySelectorAll('.debit-account-select, .credit-account-select').forEach(select => {
+          select.innerHTML = '<option value="">Select Account</option>';
+          accounts.forEach(account => {
+            const option = document.createElement('option');
+            option.value = account.id;
+            option.textContent = `${account.account_number} - ${account.account_name}`;
+            select.appendChild(option);
+          });
+        });
+      } catch (error) {
+        console.error('Error loading accounts:', error);
+        alert('Error loading accounts. Please refresh the page.');
+      }
+    }
+    
+    function addEntryRow() {
+      const container = document.getElementById('entries-container');
+      const newRow = document.createElement('div');
+      newRow.className = 'entry-row';
+      const rowId = rowCounter++;
+      newRow.innerHTML = `
+        <div class="field border">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.1rem;">
+            <label for="debit-account-${rowId}" style="display: block; color: var(--on-surface); font-size: 0.875rem; margin: 0;">Debit Account</label>
+            <button type="button" data-ui="#debit-info-modal" class="transparent circle" style="width: 20px; height: 20px; min-width: 20px; padding: 0;" title="What is a debit?">
+              <i style="font-size: 16px;">info</i>
+            </button>
+          </div>
+          <select class="debit-account-select" id="debit-account-${rowId}" required>
+            <option value="">Select Account</option>
+          </select>
+        </div>
+        <div class="field border">
+          <label for="debit-amount-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Debit Amount</label>
+          <input type="number" step="0.01" min="0" class="debit-amount" id="debit-amount-${rowId}" required>
+        </div>
+        <div class="field border">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.1rem;">
+            <label for="credit-account-${rowId}" style="display: block; color: var(--on-surface); font-size: 0.875rem; margin: 0;">Credit Account</label>
+            <button type="button" data-ui="#credit-info-modal" class="transparent circle" style="width: 20px; height: 20px; min-width: 20px; padding: 0;" title="What is a credit?">
+              <i style="font-size: 16px;">info</i>
+            </button>
+          </div>
+          <select class="credit-account-select" id="credit-account-${rowId}" required>
+            <option value="">Select Account</option>
+          </select>
+        </div>
+        <div class="field border">
+          <label for="credit-amount-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Credit Amount</label>
+          <input type="number" step="0.01" min="0" class="credit-amount" id="credit-amount-${rowId}" required>
+        </div>
+        <button type="button" onclick="this.closest('.entry-row').remove(); checkBalance()" class="transparent circle">
+          <i>close</i>
+        </button>
+      `;
+      
+      const debitSelect = newRow.querySelector('.debit-account-select');
+      const creditSelect = newRow.querySelector('.credit-account-select');
+      
+      [debitSelect, creditSelect].forEach(select => {
+        select.innerHTML = '<option value="">Select Account</option>';
+        accounts.forEach(account => {
+          const option = document.createElement('option');
+          option.value = account.id;
+          option.textContent = `${account.account_number} - ${account.account_name}`;
+          select.appendChild(option);
+        });
+      });
+      
+      container.appendChild(newRow);
+      
+      newRow.querySelectorAll('input, select').forEach(element => {
+        element.addEventListener('input', checkBalance);
+        element.addEventListener('change', checkBalance);
+      });
+    }
+    
+    function checkBalance() {
+      const rows = document.querySelectorAll('.entry-row');
+      let totalDebits = 0;
+      let totalCredits = 0;
+      
+      rows.forEach(row => {
+        const debit = parseFloat(row.querySelector('.debit-amount').value || 0);
+        const credit = parseFloat(row.querySelector('.credit-amount').value || 0);
+        totalDebits += debit;
+        totalCredits += credit;
+      });
+      
+      const diff = totalDebits - totalCredits;
+      const status = document.getElementById('balance-status');
+      
+      if (diff === 0 && totalDebits > 0) {
+        status.textContent = '✓ Balanced';
+        status.className = 'small-text green-text';
+      } else if (totalDebits === 0 && totalCredits === 0) {
+        status.textContent = 'Enter amounts';
+        status.className = 'small-text';
+      } else {
+        status.textContent = `Difference: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Math.abs(diff))}`;
+        status.className = 'small-text red-text';
+      }
+    }
+    
+    function goBack() {
+      window.location.href = '{% url "ledger:create_transaction" %}';
+    }
+    
+    document.getElementById('entry-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get transaction details from sessionStorage
+      const savedData = sessionStorage.getItem('transactionDetails');
+      if (!savedData) {
+        alert('Transaction details not found. Please start over.');
+        window.location.href = '{% url "ledger:create_transaction" %}';
+        return;
+      }
+      
+      let transactionData;
+      try {
+        transactionData = JSON.parse(savedData);
+      } catch (e) {
+        alert('Error loading transaction details. Please start over.');
+        window.location.href = '{% url "ledger:create_transaction" %}';
+        return;
+      }
+      
+      const rows = document.querySelectorAll('.entry-row');
+      const entries = [];
+      
+      rows.forEach(row => {
+        const debitAccountId = row.querySelector('.debit-account-select').value;
+        const debitAmount = parseFloat(row.querySelector('.debit-amount').value || 0);
+        const creditAccountId = row.querySelector('.credit-account-select').value;
+        const creditAmount = parseFloat(row.querySelector('.credit-amount').value || 0);
+        
+        if (debitAccountId && debitAmount > 0) {
+          entries.push({
+            account_id: parseInt(debitAccountId),
+            debit: debitAmount,
+            credit: 0
+          });
+        }
+        
+        if (creditAccountId && creditAmount > 0) {
+          entries.push({
+            account_id: parseInt(creditAccountId),
+            debit: 0,
+            credit: creditAmount
+          });
+        }
+      });
+      
+      if (entries.length < 2) {
+        alert('A transaction must have at least two entries');
+        return;
+      }
+      
+      const totalDebits = entries.reduce((sum, e) => sum + parseFloat(e.debit || 0), 0);
+      const totalCredits = entries.reduce((sum, e) => sum + parseFloat(e.credit || 0), 0);
+      
+      if (Math.abs(totalDebits - totalCredits) > 0.01) {
+        alert(`Debits (${totalDebits}) must equal credits (${totalCredits})`);
+        return;
+      }
+      
+      transactionData.entries = entries;
+      
+      try {
+        const response = await fetch('/ledger/api/transactions/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(transactionData)
+        });
+        
+        if (response.ok) {
+          sessionStorage.removeItem('transactionDetails');
+          window.location.href = '{% url "ledger:transactions" %}';
+        } else {
+          const error = await response.json();
+          alert('Error: ' + (error.error || 'Failed to create transaction'));
+        }
+      } catch (error) {
+        alert('Error: ' + error.message);
+        console.error('Error:', error);
+      }
+    });
+    
+    // Load accounts on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      // Check if we have saved transaction data first
+      const savedData = sessionStorage.getItem('transactionDetails');
+      if (!savedData) {
+        alert('No transaction details found. Redirecting to transaction details page.');
+        window.location.href = '{% url "ledger:create_transaction" %}';
+        return;
+      }
+      
+      // Load accounts after confirming we have transaction data
+      loadAccounts();
+    });
+  </script>
+
+  <style>
+    .entry-row {
+      display: grid;
+      grid-template-columns: 2fr 0.5fr 2fr 0.5fr auto;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: end;
+    }
+    @media (max-width: 768px) {
+      .entry-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      
+      /* On mobile, stack account selects full width, amounts side by side */
+      .entry-row .field.border:nth-child(1) {
+        grid-column: 1 / -1;
+      }
+      
+      .entry-row .field.border:nth-child(2) {
+        grid-column: 1;
+        max-width: 100%;
+      }
+      
+      .entry-row .field.border:nth-child(3) {
+        grid-column: 1 / -1;
+      }
+      
+      .entry-row .field.border:nth-child(4) {
+        grid-column: 2;
+        max-width: 100%;
+      }
+      
+      .entry-row .field.border:nth-child(5) {
+        grid-column: 1 / -1;
+      }
+      
+      .entry-row .field.border:nth-child(4) input {
+        text-align: right;
+      }
+    }
+    
+    /* Add spacing between field groups */
+    .field.border {
+      margin-bottom: 2rem;
+    }
+    
+    .entry-row .field.border {
+      margin-bottom: 0;
+    }
+    
+    /* Make amount field containers narrower */
+    .entry-row .field.border:nth-child(2),
+    .entry-row .field.border:nth-child(4) {
+      max-width: 150px;
+    }
+    
+    /* Align debit amount left, credit amount right */
+    .entry-row input.debit-amount {
+      text-align: left !important;
+    }
+    
+    .entry-row input.credit-amount {
+      text-align: right !important;
+    }
+  </style>
+{% endblock %}
+

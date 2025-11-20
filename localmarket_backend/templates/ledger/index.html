@@ -28,6 +28,12 @@
               <span>View Transactions</span>
             </button>
           </a>
+          <a href="{% url 'ledger:inventory' %}">
+            <button class="secondary max">
+              <i>inventory_2</i>
+              <span>Inventory</span>
+            </button>
+          </a>
         </nav>
       </article>
     </div>
@@ -83,7 +89,7 @@
     async function loadDashboard() {
       try {
         // Load account summary
-        const accountsResponse = await fetch('/api/accounts/');
+        const accountsResponse = await fetch('/ledger/api/accounts/');
         
         if (!accountsResponse.ok) {
           throw new Error(`Failed to load accounts: ${accountsResponse.status}`);
@@ -124,7 +130,7 @@
         
         // Load recent transactions
         try {
-          const transResponse = await fetch('/api/transactions/');
+          const transResponse = await fetch('/ledger/api/transactions/');
           
           if (transResponse.ok) {
             const transData = await transResponse.json();

@@ -3,7 +3,13 @@
 {% block title %}Accounts - Django Ledger{% endblock %}
 
 {% block content %}
-  <h3>Chart of Accounts</h3>
+  <div class="row">
+    <h3 class="max">Chart of Accounts</h3>
+    <button class="primary" data-ui="#add-account-dialog">
+      <i>add</i>
+      <span>Add Account</span>
+    </button>
+  </div>
   
   <div class="grid small-space" id="accounts-container">
     <div class="s12">
@@ -27,10 +33,142 @@
     </div>
   </div>
 
+  <!-- Add Account Dialog -->
+  <dialog id="add-account-dialog">
+    <h5>Add New Account</h5>
+    <form id="add-account-form">
+      <div class="field label border">
+        <input type="text" id="account-number" name="account_number" required>
+        <label>Account Number</label>
+      </div>
+      <div class="field label border">
+        <input type="text" id="account-name" name="account_name" required>
+        <label>Account Name</label>
+      </div>
+      <div class="field label border">
+        <select id="account-type" name="account_type" required>
+          <option value="">Select Account Type</option>
+          <option value="Asset">Asset</option>
+          <option value="Liability">Liability</option>
+          <option value="Equity">Equity</option>
+          <option value="Revenue">Revenue</option>
+          <option value="Expense">Expense</option>
+        </select>
+        <label>Account Type</label>
+      </div>
+      <div class="field label border">
+        <select id="normal-balance" name="normal_balance" required>
+          <option value="">Select Normal Balance</option>
+          <option value="Debit">Debit</option>
+          <option value="Credit">Credit</option>
+        </select>
+        <label>Normal Balance</label>
+      </div>
+      <nav>
+        <button type="button" data-ui="#add-account-dialog">Cancel</button>
+        <button type="submit" class="primary">Create Account</button>
+      </nav>
+    </form>
+  </dialog>
+
+  <!-- Snackbar for notifications -->
+  <div class="snackbar" id="account-snackbar">
+    <i id="snackbar-icon">info</i>
+    <span id="snackbar-message">Message</span>
+  </div>
+
   <script>
+    // Essential accounts to auto-create
+    const essentialAccounts = [
+      { account_number: '1000', account_name: 'Asset', account_type: 'Asset', normal_balance: 'Debit' },
+      { account_number: '2000', account_name: 'Liability', account_type: 'Liability', normal_balance: 'Credit' },
+      { account_number: '4000', account_name: 'Expenses', account_type: 'Expense', normal_balance: 'Debit' },
+      { account_number: '3000', account_name: 'Equity', account_type: 'Equity', normal_balance: 'Credit' },
+      { account_number: '5000', account_name: 'Revenue', account_type: 'Revenue', normal_balance: 'Credit' }
+    ];
+
+    // Auto-create essential accounts if they don't exist
+    async function ensureEssentialAccounts() {
+      try {
+        const response = await fetch('/ledger/api/accounts/');
+        if (!response.ok) return;
+        
+        const data = await response.json();
+        const accounts = Array.isArray(data) ? data : (data.results || []);
+        const existingAccountNumbers = new Set(accounts.map(acc => acc.account_number));
+        
+        // Create missing essential accounts
+        for (const account of essentialAccounts) {
+          if (!existingAccountNumbers.has(account.account_number)) {
+            try {
+              await fetch('/ledger/api/accounts/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(account)
+              });
+            } catch (error) {
+              console.error(`Error creating essential account ${account.account_number}:`, error);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error checking essential accounts:', error);
+      }
+    }
+
+    // Helper function to get CSRF token
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    // Show snackbar notification
+    function showSnackbar(message, icon, colorClass) {
+      const snackbar = document.getElementById('account-snackbar');
+      const snackbarIcon = document.getElementById('snackbar-icon');
+      const snackbarMessage = document.getElementById('snackbar-message');
+      
+      if (snackbar && snackbarIcon && snackbarMessage) {
+        snackbarIcon.textContent = icon;
+        snackbarMessage.textContent = message;
+        snackbarMessage.className = colorClass ? colorClass : '';
+        ui('#account-snackbar', 3000);
+      }
+    }
+
+    // Auto-set normal balance based on account type
+    document.addEventListener('DOMContentLoaded', function() {
+      const accountTypeSelect = document.getElementById('account-type');
+      const normalBalanceSelect = document.getElementById('normal-balance');
+      
+      if (accountTypeSelect && normalBalanceSelect) {
+        accountTypeSelect.addEventListener('change', function() {
+          const accountType = this.value;
+          if (accountType === 'Asset' || accountType === 'Expense') {
+            normalBalanceSelect.value = 'Debit';
+          } else if (accountType === 'Liability' || accountType === 'Equity' || accountType === 'Revenue') {
+            normalBalanceSelect.value = 'Credit';
+          }
+        });
+      }
+    });
+
     async function loadAccounts() {
       try {
-        const response = await fetch('/api/accounts/');
+        const response = await fetch('/ledger/api/accounts/');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -70,8 +208,58 @@
         console.error('Error:', error);
       }
     }
+
+    // Handle add account form submission
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('add-account-form');
+      if (form) {
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const formData = {
+            account_number: document.getElementById('account-number').value,
+            account_name: document.getElementById('account-name').value,
+            account_type: document.getElementById('account-type').value,
+            normal_balance: document.getElementById('normal-balance').value,
+            is_active: true
+          };
+          
+          try {
+            const response = await fetch('/ledger/api/accounts/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+              },
+              body: JSON.stringify(formData)
+            });
+            
+            if (!response.ok) {
+              const errorData = await response.json();
+              throw new Error(errorData.error || errorData.detail || 'Failed to create account');
+            }
+            
+            // Close dialog and reload accounts
+            ui('#add-account-dialog');
+            form.reset();
+            await loadAccounts();
+            
+            // Show success message
+            showSnackbar('Account created successfully', 'check_circle', 'green-text');
+          } catch (error) {
+            // Show error message
+            showSnackbar('Error creating account: ' + error.message, 'error', 'red-text');
+            console.error('Error:', error);
+          }
+        });
+      }
+    });
     
-    loadAccounts();
+    // Initialize: ensure essential accounts exist, then load accounts
+    (async function() {
+      await ensureEssentialAccounts();
+      await loadAccounts();
+    })();
   </script>
 {% endblock %}
 

@@ -93,8 +93,9 @@ body.light {
   --wordmark-filter: none;
 }
 
-/* Dark Mode Custom Colors */
-body.dark {
+/* Dark Mode Custom Colors - Must override BeerCSS and material-dynamic-colors defaults */
+body.dark,
+body.dark * {
   /* Primary Button Colors - Lighter/Softer for dark mode */
   --primary: #fcf6dc;              /* Cream/beige - easy on eyes */
   --on-primary: #2d2816;           /* Dark brown text (high contrast) */
@@ -102,10 +103,19 @@ body.dark {
   --on-primary-container: #1a1709; /* Very dark brown text on hover */
   
   /* Secondary/Accent Colors */
-  --secondary: #cbc2db;            /* Light muted purple */
-  --on-secondary: #332d41;         /* Dark text on secondary */
-  --secondary-container: #4a4458;  /* Dark secondary for hover */
-  --on-secondary-container: #e8def8;
+  --secondary: #d4c5a9;            /* Light beige */
+  --on-secondary: #2d2816;         /* Dark brown text on secondary */
+  --secondary-container: #8b7d5f;  /* Darker beige for hover */
+  --on-secondary-container: #f5f0e8;
+  
+  /* Tertiary Colors */
+  --tertiary: #c4b5a0;             /* Beige tertiary */
+  --on-tertiary: #2d2816;          /* Dark brown text on tertiary */
+  --tertiary-container: #8b7d5f;   /* Darker beige for tertiary hover */
+  --on-tertiary-container: #f5f0e8;
+  
+  /* Inverse Primary (used for inverse surfaces) */
+  --inverse-primary: #d4c5a9;      /* Beige for inverse surfaces */
   
   /* Surface & Background Colors */
   --background: #1c1b1e;           /* Dark page background */
@@ -117,7 +127,9 @@ body.dark {
   /* Border & Outline Colors */
   --outline: #948f99;
   --outline-variant: #49454e;
+}
 
+body.dark {
   /* Wordmark filter to shift logo text to beige */
   --wordmark-filter: invert(92%) sepia(14%) saturate(326%) hue-rotate(6deg) brightness(104%) contrast(97%);
 }

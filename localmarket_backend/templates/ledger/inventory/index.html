@@ -1,0 +1,80 @@
+{% extends 'ledger/base.html' %}
+
+{% block title %}Inventory - Django Ledger{% endblock %}
+
+{% block content %}
+  <h3>Inventory</h3>
+  
+  <div class="space small"></div>
+  
+  <article class="padding">
+    <nav class="middle-align">
+      <div class="max">
+        <h6>Product Inventory</h6>
+        <div class="small-text">Manage your inventory and create inventory-related transactions</div>
+      </div>
+      <a href="/userprofile/vendor-my-products/" target="_blank">
+        <button class="secondary">
+          <i>open_in_new</i>
+          <span>Full Inventory Management</span>
+        </button>
+      </a>
+    </nav>
+  </article>
+  
+  <div class="space small"></div>
+  
+  <div class="grid small-space">
+    {% for product in products %}
+    <div class="s12 m6 l4">
+      <article class="padding">
+        <div class="card medium">
+          <div class="card-content">
+            <h5 style="margin-top: 0; margin-bottom: 0.5rem;">{{ product.name }}</h5>
+            <img src="{{ product.image }}" 
+                 alt="{{ product.name }}" 
+                 class="responsive round" 
+                 loading="lazy" 
+                 style="height: 120px; object-fit: cover; margin-bottom: 0.5rem;">
+            <nav class="middle-align small-space">
+              <a href="{% url 'ledger:create_transaction' %}?product={{ product.id }}">
+                <button class="primary">
+                  <i>receipt_long</i>
+                  <span>Create Transaction</span>
+                </button>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </article>
+    </div>
+    {% empty %}
+    <div class="s12">
+      <article class="padding">
+        <p class="center-align">No products found. <a href="/userprofile/vendor-my-products/">Add products to your inventory</a>.</p>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <div class="space"></div>
+  
+  <article class="padding">
+    <h6>Quick Actions</h6>
+    <nav class="vertical small-space">
+      <a href="{% url 'ledger:create_transaction' %}">
+        <button class="primary max">
+          <i>add_circle</i>
+          <span>New Inventory Transaction</span>
+        </button>
+      </a>
+      <a href="/userprofile/vendor-my-products/" target="_blank">
+        <button class="secondary max">
+          <i>inventory_2</i>
+          <span>Manage Products</span>
+        </button>
+      </a>
+    </nav>
+  </article>
+{% endblock %}
+

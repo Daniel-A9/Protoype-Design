@@ -7,9 +7,17 @@
   
   <article class="padding">
     <form id="transaction-form">
-      <div class="field border" style="margin-bottom: 2rem;">
+      <div class="field border" style="margin-bottom: 2rem; position: relative;">
         <label for="transaction-date" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Date</label>
-        <input type="date" id="transaction-date" required>
+        <input type="date" id="transaction-date" required style="padding-right: 3rem;">
+        <button type="button" onclick="openDatePicker()" class="transparent circle" style="position: absolute; right: 0.5rem; top: 2.2rem; z-index: 1;" title="Open calendar">
+          <i>calendar_today</i>
+        </button>
+      </div>
+      
+      <div class="field border" style="margin-bottom: 2rem;">
+        <label for="reference-type" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Reference Type</label>
+        <input type="text" id="reference-type" required placeholder="order, payment, subscription, refund, manual">
       </div>
       
       <div class="field border" style="margin-bottom: 2rem;">
@@ -18,270 +26,84 @@
       </div>
       
       <div class="field border" style="margin-bottom: 2rem;">
-        <label for="reference-type" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Reference Type</label>
-        <input type="text" id="reference-type" placeholder="order, payment, subscription, refund, manual">
-      </div>
-      
-      <div class="field border" style="margin-bottom: 2rem;">
-        <label for="reference-id" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Reference ID</label>
+        <label for="reference-id" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Reference ID (Optional)</label>
         <input type="text" id="reference-id" placeholder="External system ID">
-      </div>
-      
-      <hr>
-      <h5>Entries</h5>
-      <p class="small-text">Debits must equal credits</p>
-      
-      <div id="entries-container">
-        <div class="entry-row">
-          <div class="field border">
-            <label for="account-select-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Account</label>
-            <select class="account-select" id="account-select-0" required>
-              <option value="">Select Account</option>
-            </select>
-          </div>
-          <div class="field border">
-            <label for="debit-amount-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Debit</label>
-            <input type="number" step="0.01" min="0" class="debit-amount" id="debit-amount-0">
-          </div>
-          <div class="field border">
-            <label for="credit-amount-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Credit</label>
-            <input type="number" step="0.01" min="0" class="credit-amount" id="credit-amount-0">
-          </div>
-          <div class="field border">
-            <label for="entry-description-0" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Description</label>
-            <input type="text" class="entry-description" id="entry-description-0">
-          </div>
-        </div>
-      </div>
-      
-      <div class="space"></div>
-      
-      <div class="row middle-align">
-        <button type="button" onclick="addEntryRow()" class="secondary">
-          <i>add</i>
-          <span>Add Entry</span>
-        </button>
-        <div class="max"></div>
-        <div id="balance-status" class="small-text"></div>
       </div>
       
       <div class="space"></div>
       
       <nav class="right-align">
         <button type="button" onclick="window.location.href='{% url 'ledger:transactions' %}'" class="secondary">
-          Cancel
+          Back
         </button>
-        <button type="submit" class="primary">
-          Create Transaction
+        <button type="button" onclick="goToEntryPage()" class="primary">
+          Next
         </button>
       </nav>
     </form>
   </article>
 
   <script>
-    let accounts = [];
+    // Load saved data from sessionStorage if available
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedData = sessionStorage.getItem('transactionDetails');
+      if (savedData) {
+        try {
+          const data = JSON.parse(savedData);
+          if (data.date) document.getElementById('transaction-date').value = data.date;
+          if (data.reference_type) document.getElementById('reference-type').value = data.reference_type;
+          if (data.description) document.getElementById('transaction-description').value = data.description;
+          if (data.reference_id) document.getElementById('reference-id').value = data.reference_id;
+        } catch (e) {
+          console.error('Error loading saved data:', e);
+        }
+      }
+      
+      // Set default date to today
+      const dateInput = document.getElementById('transaction-date');
+      if (!dateInput.value) {
+        dateInput.valueAsDate = new Date();
+      }
+    });
     
-    async function loadAccounts() {
-      try {
-        const response = await fetch('/api/accounts/');
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        accounts = Array.isArray(data) ? data : (data.results || []);
-        
-        if (!Array.isArray(accounts)) {
-          throw new Error('Invalid accounts data format');
-        }
-        
-        document.querySelectorAll('.account-select').forEach(select => {
-          select.innerHTML = '<option value="">Select Account</option>';
-          accounts.forEach(account => {
-            const option = document.createElement('option');
-            option.value = account.id;
-            option.textContent = `${account.account_number} - ${account.account_name}`;
-            select.appendChild(option);
-          });
+    function openDatePicker() {
+      const dateInput = document.getElementById('transaction-date');
+      // Try modern showPicker() API, fallback to focus/click
+      if (dateInput.showPicker) {
+        dateInput.showPicker().catch(() => {
+          // If showPicker fails, fallback to focus
+          dateInput.focus();
+          dateInput.click();
         });
-      } catch (error) {
-        console.error('Error loading accounts:', error);
-        alert('Error loading accounts. Please refresh the page.');
-      }
-    }
-    
-    let rowCounter = 1;
-    
-    function addEntryRow() {
-      const container = document.getElementById('entries-container');
-      const newRow = document.createElement('div');
-      newRow.className = 'entry-row';
-      const rowId = rowCounter++;
-      newRow.innerHTML = `
-        <div class="field border">
-          <label for="account-select-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Account</label>
-          <select class="account-select" id="account-select-${rowId}" required>
-            <option value="">Select Account</option>
-          </select>
-        </div>
-        <div class="field border">
-          <label for="debit-amount-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Debit</label>
-          <input type="number" step="0.01" min="0" class="debit-amount" id="debit-amount-${rowId}">
-        </div>
-        <div class="field border">
-          <label for="credit-amount-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Credit</label>
-          <input type="number" step="0.01" min="0" class="credit-amount" id="credit-amount-${rowId}">
-        </div>
-        <div class="field border">
-          <label for="entry-description-${rowId}" style="display: block; margin-bottom: 0.1rem; color: var(--on-surface); font-size: 0.875rem;">Description</label>
-          <input type="text" class="entry-description" id="entry-description-${rowId}">
-        </div>
-        <button type="button" onclick="this.closest('.entry-row').remove(); checkBalance()" class="transparent circle">
-          <i>close</i>
-        </button>
-      `;
-      
-      const select = newRow.querySelector('.account-select');
-      select.innerHTML = '<option value="">Select Account</option>';
-      accounts.forEach(account => {
-        const option = document.createElement('option');
-        option.value = account.id;
-        option.textContent = `${account.account_number} - ${account.account_name}`;
-        select.appendChild(option);
-      });
-      
-      container.appendChild(newRow);
-      
-      newRow.querySelectorAll('input').forEach(input => {
-        input.addEventListener('input', checkBalance);
-      });
-    }
-    
-    function checkBalance() {
-      const rows = document.querySelectorAll('.entry-row');
-      let totalDebits = 0;
-      let totalCredits = 0;
-      
-      rows.forEach(row => {
-        const debit = parseFloat(row.querySelector('.debit-amount').value || 0);
-        const credit = parseFloat(row.querySelector('.credit-amount').value || 0);
-        totalDebits += debit;
-        totalCredits += credit;
-      });
-      
-      const diff = totalDebits - totalCredits;
-      const status = document.getElementById('balance-status');
-      
-      if (diff === 0 && totalDebits > 0) {
-        status.textContent = '✓ Balanced';
-        status.className = 'small-text green-text';
-      } else if (totalDebits === 0 && totalCredits === 0) {
-        status.textContent = 'Enter amounts';
-        status.className = 'small-text';
       } else {
-        status.textContent = `Difference: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Math.abs(diff))}`;
-        status.className = 'small-text red-text';
+        // Fallback for browsers that don't support showPicker()
+        dateInput.focus();
+        dateInput.click();
       }
     }
     
-    document.getElementById('transaction-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
+    function goToEntryPage() {
+      const form = document.getElementById('transaction-form');
       
-      const rows = document.querySelectorAll('.entry-row');
-      const entries = [];
-      
-      rows.forEach(row => {
-        const accountId = row.querySelector('.account-select').value;
-        const debit = parseFloat(row.querySelector('.debit-amount').value || 0);
-        const credit = parseFloat(row.querySelector('.credit-amount').value || 0);
-        const description = row.querySelector('.entry-description').value;
-        
-        if (accountId && (debit > 0 || credit > 0)) {
-          entries.push({
-            account_id: parseInt(accountId),
-            debit: debit,
-            credit: credit,
-            description: description
-          });
-        }
-      });
-      
-      if (entries.length < 2) {
-        alert('A transaction must have at least two entries');
+      // Validate required fields
+      if (!form.checkValidity()) {
+        form.reportValidity();
         return;
       }
       
-      const totalDebits = entries.reduce((sum, e) => sum + parseFloat(e.debit || 0), 0);
-      const totalCredits = entries.reduce((sum, e) => sum + parseFloat(e.credit || 0), 0);
-      
-      if (Math.abs(totalDebits - totalCredits) > 0.01) {
-        alert(`Debits (${totalDebits}) must equal credits (${totalCredits})`);
-        return;
-      }
-      
+      // Save form data to sessionStorage
       const transactionData = {
         date: document.getElementById('transaction-date').value,
+        reference_type: document.getElementById('reference-type').value,
         description: document.getElementById('transaction-description').value,
-        reference_type: document.getElementById('reference-type').value || 'manual',
-        reference_id: document.getElementById('reference-id').value || '',
-        entries: entries
+        reference_id: document.getElementById('reference-id').value || ''
       };
       
-      try {
-        const response = await fetch('/api/transactions/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(transactionData)
-        });
-        
-        if (response.ok) {
-          window.location.href = '{% url "ledger:transactions" %}';
-        } else {
-          const error = await response.json();
-          alert('Error: ' + (error.error || 'Failed to create transaction'));
-        }
-      } catch (error) {
-        alert('Error: ' + error.message);
-        console.error('Error:', error);
-      }
-    });
-    
-    document.querySelectorAll('input').forEach(input => {
-      if (input.type === 'number') {
-        input.addEventListener('input', checkBalance);
-      }
-    });
-    
-    document.getElementById('transaction-date').valueAsDate = new Date();
-    loadAccounts();
+      sessionStorage.setItem('transactionDetails', JSON.stringify(transactionData));
+      
+      // Navigate to entry page
+      window.location.href = '{% url "ledger:create_transaction_entry" %}';
+    }
   </script>
-
-  <style>
-    .entry-row {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 2fr auto;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      align-items: end;
-    }
-    @media (max-width: 768px) {
-      .entry-row {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-    }
-    
-    /* Add spacing between field groups */
-    .field.border {
-      margin-bottom: 2rem;
-    }
-    
-    .entry-row .field.border {
-      margin-bottom: 0;
-    }
-  </style>
 {% endblock %}
 

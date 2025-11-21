@@ -1653,11 +1653,23 @@ body:not(.dark) .header-nav i {
     }
     
     /* Force full width containers */
-    main.responsive .container {
+    main.responsive .container:not(.cart-page-container) {
       width: 100% !important;
       max-width: 100% !important;
       margin: 0 !important;
       padding: 0 !important;
+    }
+    
+    /* Exception: Cart page container should be centered and constrained */
+    /* This rule must override the general container rule above - using unique class for higher specificity */
+    main.responsive > section > .container.cart-page-container {
+      max-width: 1600px !important;
+      width: auto !important;
+      min-width: 0 !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      display: block !important;
+      box-sizing: border-box !important;
     }
 
     /* Preserve container padding for followers/connections pages to match desktop */
@@ -2015,14 +2027,6 @@ body:not(.dark) .header-nav i {
     order: 5 !important;
   }
   
-  /* Cart page - constrain container width and center on desktop - must be last to override all other rules */
-  main.responsive > section > .container[style*="padding-top: 1rem"] {
-    max-width: 800px !important;
-    width: auto !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: block !important;
-  }
   }
 
   .card-location {

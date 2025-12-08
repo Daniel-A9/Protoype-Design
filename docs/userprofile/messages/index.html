@@ -12,7 +12,7 @@
   <body>
 
     <!-- Fixed Top Header -->
-    <div class="top-header">
+    <header class="top-header">
       <div style="display: flex; align-items: center; gap: 0.5rem;">
         <a href="../shopper/" style="display: inline-flex; align-items: center; text-decoration: none; color: inherit; margin-right: 0.5rem;">
           <button class="circle transparent">
@@ -40,7 +40,7 @@
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
       </div>
-    </div>
+    </header>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
@@ -63,121 +63,121 @@
 
     <main class="responsive" style="padding-bottom: 70px;">
         <section>
-            <div class="container" style="padding-top: 1rem;">
+            <div class="container top-padding-medium">
                 <div class="row">
                     <div class="col s12">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                            <i class="material-icons" style="font-size: 1.5rem; color: var(--primary);">mail</i>
-                            <h2 style="margin: 0;">Messages</h2>
+                        <div class="row middle-align margin-bottom-medium">
+                            <i class="material-icons primary" style="font-size: 1.5rem;">mail</i>
+                            <h2 class="no-margin margin-left-small">Messages</h2>
                         </div>
-                        <a href="../conversation/#brewery-central" style="text-decoration: none; color: inherit; display: block;">
-                            <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; background-color: var(--surface-container-high);">
-                                <div class="card-header" style="padding: 0.5rem 1rem;">
-                                    <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                        <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem; position: relative;">
-                                            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=100&h=100&fit=crop" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                                            <span style="position: absolute; top: -2px; right: -2px; width: 10px; height: 10px; background-color: var(--primary); border-radius: 50%; border: 2px solid var(--surface-container-high);"></span>
+                        <article class="margin-bottom-small no-padding" style="background-color: var(--surface-container-high); overflow: hidden;">
+                            <a href="../conversation/#brewery-central" style="text-decoration: none; color: inherit; display: block;">
+                                <header class="horizontal-padding-medium" style="display: flex; align-items: center; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                                    <div class="row no-gap middle-align" style="width: 100%;">
+                                        <div class="no-shrink margin-right-medium relative" style="width: 48px; height: 48px; overflow: hidden; flex-shrink: 0;">
+                                            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=100&h=100&fit=crop" alt="Brewery Central" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
+                                            <span class="absolute" style="top: -2px; right: -2px; width: 10px; height: 10px; background-color: var(--primary); border-radius: 50%; border: 2px solid var(--surface-container-high);"></span>
                                         </div>
-                                        <div style="flex: 1; min-width: 0;">
-                                            <h6 style="margin: 0 0 0.125rem 0; font-weight: 700; font-size: 0.7rem;">Brewery Central</h6>
+                                        <div class="max min-width-0">
+                                            <h6 class="no-margin margin-bottom-tiny bold small-text">Brewery Central</h6>
                                             <small style="display: block; line-height: 1.2; font-weight: 500;">Thanks for your order! Your Citrus IPA will be ready for pickup tomorrow...</small>
                                         </div>
-                                        <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                                            <small style="font-size: 0.65rem; font-weight: 600;">2 hours ago</small>
-                                            <i class="material-icons" style="font-size: 1rem; color: var(--primary); margin-top: 0.25rem;">mail</i>
+                                        <div class="no-shrink margin-left-medium right-align" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                            <small class="small-text bold">2 hours ago</small>
+                                            <i class="material-icons primary" style="font-size: 1rem; margin-top: 0.25rem;">mail</i>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="../conversation/#farm-fresh-produce" style="text-decoration: none; color: inherit; display: block;">
-                            <div class="card medium" style="margin-bottom: 0.5rem; padding: 0; background-color: var(--surface-container-high);">
-                                <div class="card-header" style="padding: 0.5rem 1rem;">
-                                    <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                        <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem; position: relative;">
-                                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                                            <span style="position: absolute; top: -2px; right: -2px; width: 10px; height: 10px; background-color: var(--primary); border-radius: 50%; border: 2px solid var(--surface-container-high);"></span>
+                                </header>
+                            </a>
+                        </article>
+                        <article class="margin-bottom-small no-padding" style="background-color: var(--surface-container-high); overflow: hidden;">
+                            <a href="../conversation/#farm-fresh-produce" style="text-decoration: none; color: inherit; display: block;">
+                                <header class="horizontal-padding-medium" style="display: flex; align-items: center; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                                    <div class="row no-gap middle-align" style="width: 100%;">
+                                        <div class="no-shrink margin-right-medium relative" style="width: 48px; height: 48px; overflow: hidden; flex-shrink: 0;">
+                                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop" alt="Farm Fresh Produce" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
+                                            <span class="absolute" style="top: -2px; right: -2px; width: 10px; height: 10px; background-color: var(--primary); border-radius: 50%; border: 2px solid var(--surface-container-high);"></span>
                                         </div>
-                                        <div style="flex: 1; min-width: 0;">
-                                            <h6 style="margin: 0 0 0.125rem 0; font-weight: 700; font-size: 0.7rem;">Farm Fresh Produce</h6>
+                                        <div class="max min-width-0">
+                                            <h6 class="no-margin margin-bottom-tiny bold small-text">Farm Fresh Produce</h6>
                                             <small style="display: block; line-height: 1.2; font-weight: 500;">New organic vegetables available this week. Would you like...</small>
                                         </div>
-                                        <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                                            <small style="font-size: 0.65rem; font-weight: 600;">1 day ago</small>
-                                            <i class="material-icons" style="font-size: 1rem; color: var(--primary); margin-top: 0.25rem;">mail</i>
+                                        <div class="no-shrink margin-left-medium right-align" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                            <small class="small-text bold">1 day ago</small>
+                                            <i class="material-icons primary" style="font-size: 1rem; margin-top: 0.25rem;">mail</i>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                            <div class="card-header" style="padding: 0.5rem 1rem;">
-                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                                </header>
+                            </a>
+                        </article>
+                        <article class="margin-bottom-small no-padding" style="overflow: hidden;">
+                            <header class="padding-small horizontal-padding-medium" style="display: flex; align-items: center;">
+                                <div class="row no-gap middle-align" style="width: 100%;">
+                                    <div class="no-shrink margin-right-medium" style="width: 48px; height: 48px; overflow: hidden; flex-shrink: 0;">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Mike Chen" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
-                                    <div style="flex: 1; min-width: 0;">
-                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">Mike Chen</h6>
-                                        <small class="text-grey" style="display: block; line-height: 1.2;">Hey! Saw your post about the beer festival. Want to meet up?</small>
+                                    <div class="max min-width-0">
+                                        <h6 class="no-margin margin-bottom-tiny bold small-text">Mike Chen</h6>
+                                        <small class="text-grey">Hey! Saw your post about the beer festival. Want to meet up?</small>
                                     </div>
-                                    <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                                        <small class="text-grey" style="font-size: 0.65rem;">2 days ago</small>
+                                    <div class="no-shrink margin-left-medium right-align" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                        <small class="text-grey small-text">2 days ago</small>
                                         <i class="material-icons" style="font-size: 1rem; color: var(--on-surface-variant); margin-top: 0.25rem; opacity: 0.5;">drafts</i>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                            <div class="card-header" style="padding: 0.5rem 1rem;">
-                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                                        <img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=100&h=100&fit=crop" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                            </header>
+                        </article>
+                        <article class="margin-bottom-small no-padding" style="overflow: hidden;">
+                            <header class="padding-small horizontal-padding-medium" style="display: flex; align-items: center;">
+                                <div class="row no-gap middle-align" style="width: 100%;">
+                                    <div class="no-shrink margin-right-medium" style="width: 48px; height: 48px; overflow: hidden; flex-shrink: 0;">
+                                        <img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?w=100&h=100&fit=crop" alt="Artisan Bread Co." loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
-                                    <div style="flex: 1; min-width: 0;">
-                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">Artisan Bread Co.</h6>
-                                        <small class="text-grey" style="display: block; line-height: 1.2;">Special weekend sale on sourdough! 20% off...</small>
+                                    <div class="max min-width-0">
+                                        <h6 class="no-margin margin-bottom-tiny bold small-text">Artisan Bread Co.</h6>
+                                        <small class="text-grey">Special weekend sale on sourdough! 20% off...</small>
                                     </div>
-                                    <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                                        <small class="text-grey" style="font-size: 0.65rem;">3 days ago</small>
+                                    <div class="no-shrink margin-left-medium right-align" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                        <small class="text-grey small-text">3 days ago</small>
                                         <i class="material-icons" style="font-size: 1rem; color: var(--on-surface-variant); margin-top: 0.25rem; opacity: 0.5;">drafts</i>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                            <div class="card-header" style="padding: 0.5rem 1rem;">
-                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                            </header>
+                        </article>
+                        <article class="margin-bottom-small no-padding" style="overflow: hidden;">
+                            <header class="padding-small horizontal-padding-medium" style="display: flex; align-items: center;">
+                                <div class="row no-gap middle-align" style="width: 100%;">
+                                    <div class="no-shrink margin-right-medium" style="width: 48px; height: 48px; overflow: hidden; flex-shrink: 0;">
+                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Sarah Johnson" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
-                                    <div style="flex: 1; min-width: 0;">
-                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">Sarah Johnson</h6>
-                                        <small class="text-grey" style="display: block; line-height: 1.2;">Thanks for the hiking trail recommendation! It was amazing...</small>
+                                    <div class="max min-width-0">
+                                        <h6 class="no-margin margin-bottom-tiny bold small-text">Sarah Johnson</h6>
+                                        <small class="text-grey">Thanks for the hiking trail recommendation! It was amazing...</small>
                                     </div>
-                                    <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                                        <small class="text-grey" style="font-size: 0.65rem;">5 days ago</small>
+                                    <div class="no-shrink margin-left-medium right-align" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                        <small class="text-grey small-text">5 days ago</small>
                                         <i class="material-icons" style="font-size: 1rem; color: var(--on-surface-variant); margin-top: 0.25rem; opacity: 0.5;">drafts</i>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                            <div class="card-header" style="padding: 0.5rem 1rem;">
-                                <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=100&h=100&fit=crop" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
+                            </header>
+                        </article>
+                        <article class="margin-bottom-small no-padding" style="overflow: hidden;">
+                            <header class="padding-small horizontal-padding-medium" style="display: flex; align-items: center;">
+                                <div class="row no-gap middle-align" style="width: 100%;">
+                                    <div class="no-shrink margin-right-medium" style="width: 48px; height: 48px; overflow: hidden; flex-shrink: 0;">
+                                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=100&h=100&fit=crop" alt="Local Cheese Makers" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
-                                    <div style="flex: 1; min-width: 0;">
-                                        <h6 style="margin: 0 0 0.125rem 0; font-weight: 600; font-size: 0.7rem;">Local Cheese Makers</h6>
-                                        <small class="text-grey" style="display: block; line-height: 1.2;">New batch of aged cheddar ready! Limited availability...</small>
+                                    <div class="max min-width-0">
+                                        <h6 class="no-margin margin-bottom-tiny bold small-text">Local Cheese Makers</h6>
+                                        <small class="text-grey">New batch of aged cheddar ready! Limited availability...</small>
                                     </div>
-                                    <div style="flex-shrink: 0; margin-left: 0.75rem; text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
-                                        <small class="text-grey" style="font-size: 0.65rem;">1 week ago</small>
+                                    <div class="no-shrink margin-left-medium right-align" style="display: flex; flex-direction: column; align-items: flex-end;">
+                                        <small class="text-grey small-text">1 week ago</small>
                                         <i class="material-icons" style="font-size: 1rem; color: var(--on-surface-variant); margin-top: 0.25rem; opacity: 0.5;">drafts</i>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </header>
+                        </article>
                     </div>
                 </div>
             </div>

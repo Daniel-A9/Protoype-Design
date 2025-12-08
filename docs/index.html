@@ -136,149 +136,211 @@
             <section class="feed-container" aria-label="Vendors and events feed">
               
               <!-- Card 1: Brewery Central -->
-              <article class="card small clickable-card" data-testid="brewery-card" data-desktop-layout="brewery">
-                <a href="vendors/brewery/index.html" class="card-link" aria-label="View Brewery Central">
-                  <header class="card-header-row">
-                    <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
-                    <span class="subcategory-tag">Brewery</span>
-                  </header>
-                  <figure class="card-image">
+              <article class="card small feed-card" 
+                       data-testid="brewery-card" 
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
+                <div class="card-header-row">
+                  <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
+                  <span class="subcategory-tag">Brewery</span>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <a href="vendors/brewery/index.html" aria-label="View Brewery Central">
                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Brewery Central taproom">
-                  </figure>
-                  <div class="card-header-actions">
-                    <div class="card-title-section">
-                      <h2 class="card-title">Brewery Central</h2>
-                      <address class="card-location">
-                        <span class="location">12345</span>
-                        <span class="location-detail">Pittsburgh, PA</span>
-                      </address>
-                    </div>
-                    <button type="button" class="follow-btn" aria-label="Follow Brewery Central">Follow</button>
+                  </a>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-header-actions">
+                  <div class="card-title-section">
+                    <h2 class="card-title">Brewery Central</h2>
+                    <address class="card-location">
+                      <span class="location">12345</span>
+                      <span class="location-detail">Pittsburgh, PA</span>
+                    </address>
                   </div>
-                  <hr class="card-divider">
-                  <section class="card-content">
-                    <p>Crafting exceptional, small-batch beers since 2015, we're dedicated to quality, creativity, and community. Stop by our taproom to enjoy fresh pours straight from the source and explore our brewery with guided tours!</p>
-                  </section>
-                </a>
+                  <button type="button" class="follow-btn" aria-label="Follow Brewery Central">Follow</button>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
+                  <p>Crafting exceptional, small-batch beers since 2015, we're dedicated to quality, creativity, and community. Stop by our taproom to enjoy fresh pours straight from the source and explore our brewery with guided tours!</p>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 2: Farmer -->
-              <article class="card small clickable-card" data-testid="farm-card">
-                <a href="vendors/sunny-acres/index.html" class="card-link" aria-label="View Sunny Acres Farm">
-                  <header class="card-header-row">
-                    <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
-                    <span class="subcategory-tag">Small Farm</span>
-                  </header>
-                  <figure class="card-image">
+              <article class="card small feed-card" 
+                       data-testid="farm-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
+                <header class="card-header-row">
+                  <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
+                  <span class="subcategory-tag">Small Farm</span>
+                </header>
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <a href="vendors/sunny-acres/index.html" aria-label="View Sunny Acres Farm">
                     <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Sunny Acres Farm">
-                  </figure>
-                  <div class="card-header-actions">
-                    <div class="card-title-section">
-                      <h2 class="card-title">Sunny Acres Farm</h2>
-                      <address class="card-location">
-                        <span class="location">15235</span>
-                        <span class="location-detail">Boston, MA</span>
-                      </address>
-                    </div>
-                    <button type="button" class="follow-btn" aria-label="Follow Sunny Acres Farm">Follow</button>
+                  </a>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-header-actions">
+                  <div class="card-title-section">
+                    <h2 class="card-title">Sunny Acres Farm</h2>
+                    <address class="card-location">
+                      <span class="location">15235</span>
+                      <span class="location-detail">Boston, MA</span>
+                    </address>
                   </div>
-                  <hr class="card-divider">
-                  <section class="card-content">
-                    <p>Fresh organic vegetables, free-range eggs, and seasonal fruits—all grown with care using sustainable farming practices. Visit our charming farm stand to pick up the latest harvest, or join our CSA program for weekly boxes filled with the very best of the season!</p>
-                  </section>
-                </a>
+                  <button type="button" class="follow-btn" aria-label="Follow Sunny Acres Farm">Follow</button>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
+                  <p>Fresh organic vegetables, free-range eggs, and seasonal fruits—all grown with care using sustainable farming practices. Visit our charming farm stand to pick up the latest harvest, or join our CSA program for weekly boxes filled with the very best of the season!</p>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 2: Artisan -->
-              <article class="card small clickable-card" data-testid="pottery-card">
-                <a href="vendors/mountain-pottery/index.html" class="card-link" aria-label="View Mountain Pottery Studio">
-                  <header class="card-header-row">
-                    <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
-                    <span class="subcategory-tag">Artisan</span>
-                  </header>
-                  <figure class="card-image">
+              <article class="card small feed-card" 
+                       data-testid="pottery-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
+                <header class="card-header-row">
+                  <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
+                  <span class="subcategory-tag">Artisan</span>
+                </header>
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <a href="vendors/mountain-pottery/index.html" aria-label="View Mountain Pottery Studio">
                     <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Artist painting detailed designs onto a handcrafted ceramic vase">
-                  </figure>
-                  <div class="card-header-actions">
-                    <div class="card-title-section">
-                      <h2 class="card-title">Mountain Pottery Studio</h2>
-                      <address class="card-location">
-                        <span class="location">03860</span>
-                        <span class="location-detail">Portland, OR</span>
-                      </address>
-                    </div>
-                    <button type="button" class="follow-btn" aria-label="Follow Mountain Pottery Studio">Follow</button>
+                  </a>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-header-actions">
+                  <div class="card-title-section">
+                    <h2 class="card-title">Mountain Pottery Studio</h2>
+                    <address class="card-location">
+                      <span class="location">03860</span>
+                      <span class="location-detail">Portland, OR</span>
+                    </address>
                   </div>
-                  <hr class="card-divider">
-                  <section class="card-content">
-                    <p>Handcrafted ceramic pieces made with locally sourced clay, each created with care and attention to detail. Custom orders are always welcome! Visit our studio to browse our latest work and take part in our pottery classes and hands-on workshops.</p>
-                  </section>
-                </a>
+                  <button type="button" class="follow-btn" aria-label="Follow Mountain Pottery Studio">Follow</button>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
+                  <p>Handcrafted ceramic pieces made with locally sourced clay, each created with care and attention to detail. Custom orders are always welcome! Visit our studio to browse our latest work and take part in our pottery classes and hands-on workshops.</p>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 3: Event -->
-              <article class="card small clickable-card" data-testid="music-festival-card">
-                <a href="events/summer-music-festival/index.html" class="card-link" aria-label="View Summer Music Festival">
-                  <header class="card-header-row">
-                    <span class="type-badge event" aria-label="Event type">EVENT</span>
-                    <span class="subcategory-tag">Music Festival</span>
-                  </header>
-                  <figure class="card-image">
+              <article class="card small feed-card" 
+                       data-testid="music-festival-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
+                <header class="card-header-row">
+                  <span class="type-badge event" aria-label="Event type">EVENT</span>
+                  <span class="subcategory-tag">Music Festival</span>
+                </header>
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <a href="events/summer-music-festival/index.html" aria-label="View Summer Music Festival">
                     <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Summer Music Festival">
-                  </figure>
-                  <div class="card-header-actions">
-                    <div class="card-title-section">
-                      <h2 class="card-title">Summer Music Festival</h2>
-                      <address class="card-location">
-                        <span class="location">03894</span>
-                        <span class="location-detail">Austin, TX</span>
-                      </address>
-                    </div>
-                    <button type="button" class="follow-btn" aria-label="Follow Summer Music Festival">Follow</button>
+                  </a>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-header-actions">
+                  <div class="card-title-section">
+                    <h2 class="card-title">Summer Music Festival</h2>
+                    <address class="card-location">
+                      <span class="location">03894</span>
+                      <span class="location-detail">Austin, TX</span>
+                    </address>
                   </div>
-                  <hr class="card-divider">
-                  <section class="card-content">
-                    <p>Three days of local bands, food trucks, and artisan vendors. Family-friendly activities and live music all weekend long!</p>
-                  </section>
-                </a>
+                  <button type="button" class="follow-btn" aria-label="Follow Summer Music Festival">Follow</button>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
+                  <p>Three days of local bands, food trucks, and artisan vendors. Family-friendly activities and live music all weekend long!</p>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 4: Beer Tasting Event -->
-              <article class="card small clickable-card" data-testid="beer-event-card">
-                <a href="events/beer/index.html" class="card-link" aria-label="View Craft Beer Tasting Event">
-                  <header class="card-header-row">
-                    <span class="type-badge event" aria-label="Event type">EVENT</span>
-                    <span class="subcategory-tag">Beer Tasting</span>
-                  </header>
-                  <figure class="card-image">
+              <article class="card small feed-card" 
+                       data-testid="beer-event-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
+                <header class="card-header-row">
+                  <span class="type-badge event" aria-label="Event type">EVENT</span>
+                  <span class="subcategory-tag">Beer Tasting</span>
+                </header>
+                <div class="card-divider"></div>
+                <div class="card-image">
+                  <a href="events/beer/index.html" aria-label="View Craft Beer Tasting Event">
                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Craft Beer Tasting Event">
-                  </figure>
-                  <div class="card-header-actions">
-                    <div class="card-title-section">
-                      <h2 class="card-title">Craft Beer Tasting Event</h2>
-                      <address class="card-location">
-                        <span class="location">12345</span>
-                        <span class="location-detail">Pittsburgh, PA</span>
-                      </address>
-                    </div>
-                    <button type="button" class="follow-btn" aria-label="Follow Craft Beer Tasting Event">Follow</button>
+                  </a>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-header-actions">
+                  <div class="card-title-section">
+                    <h2 class="card-title">Craft Beer Tasting Event</h2>
+                    <address class="card-location">
+                      <span class="location">12345</span>
+                      <span class="location-detail">Pittsburgh, PA</span>
+                    </address>
                   </div>
-                  <hr class="card-divider">
-                  <section class="card-content">
-                    <p>Join us for an exclusive craft beer tasting featuring local breweries. Sample unique brews, meet the brewers, and enjoy live music!</p>
-                  </section>
-                </a>
+                  <button type="button" class="follow-btn" aria-label="Follow Craft Beer Tasting Event">Follow</button>
+                </div>
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
+                  <p>Join us for an exclusive craft beer tasting featuring local breweries. Sample unique brews, meet the brewers, and enjoy live music!</p>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 5: Craftsman -->
-              <article class="card small" data-testid="woodworks-card">
+              <article class="card small feed-card" 
+                       data-testid="woodworks-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
                   <span class="subcategory-tag">Craftsmen</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Riverside Woodworks">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Riverside Woodworks</h2>
@@ -289,21 +351,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Riverside Woodworks">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Custom furniture and home decor made from reclaimed wood. Each piece tells a story of local history and craftsmanship.</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 5: Class -->
-              <article class="card small" data-testid="cooking-class-card">
+              <article class="card small feed-card" 
+                       data-testid="cooking-class-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge event" aria-label="Event type">EVENT</span>
                   <span class="subcategory-tag">Class</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Farm-to-Table Cooking Class">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Farm-to-Table Cooking Class</h2>
@@ -314,21 +387,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Farm-to-Table Cooking Class">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Learn to cook with fresh, local ingredients! Chef Maria will teach you seasonal recipes using produce from nearby farms.</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 6: Farmer -->
-              <article class="card small" data-testid="apiary-card">
+              <article class="card small feed-card" 
+                       data-testid="apiary-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
                   <span class="subcategory-tag">Small Farm</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Honey Hill Apiary">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Honey Hill Apiary</h2>
@@ -339,21 +423,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Honey Hill Apiary">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Raw, unfiltered honey from our local bee colonies. Also offering beekeeping classes and hive tours for the whole family!</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 7: Fair -->
-              <article class="card small" data-testid="craft-fair-card">
+              <article class="card small feed-card" 
+                       data-testid="craft-fair-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge event" aria-label="Event type">EVENT</span>
                   <span class="subcategory-tag">Craft Fair</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="County Craft Fair">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">County Craft Fair</h2>
@@ -364,21 +459,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow County Craft Fair">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Over 50 local artisans showcasing handmade goods, jewelry, pottery, textiles, and more. Food trucks and live demonstrations!</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 8: Artisan -->
-              <article class="card small" data-testid="jewelry-card">
+              <article class="card small feed-card" 
+                       data-testid="jewelry-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
                   <span class="subcategory-tag">Artisan</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Silver Moon Jewelry">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Silver Moon Jewelry</h2>
@@ -389,21 +495,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Silver Moon Jewelry">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Handcrafted sterling silver jewelry inspired by nature. Custom pieces available. Visit our studio or shop online!</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 9: Farmer -->
-              <article class="card small" data-testid="organic-farm-card">
+              <article class="card small feed-card" 
+                       data-testid="organic-farm-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
                   <span class="subcategory-tag">Small Farm</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Green Valley Organic Farm">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Green Valley Organic Farm</h2>
@@ -414,21 +531,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Green Valley Organic Farm">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Certified organic vegetables, herbs, and flowers. Pick-your-own berries in season. Farm tours available by appointment.</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 10: Class -->
-              <article class="card small" data-testid="woodworking-class-card">
+              <article class="card small feed-card" 
+                       data-testid="woodworking-class-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge event" aria-label="Event type">EVENT</span>
                   <span class="subcategory-tag">Workshop</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Beginner Woodworking Workshop">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Beginner Woodworking Workshop</h2>
@@ -439,21 +567,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Beginner Woodworking Workshop">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Learn basic woodworking skills and create your own cutting board! All tools and materials provided. Perfect for beginners.</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 11: Artisan -->
-              <article class="card small" data-testid="textiles-card">
+              <article class="card small feed-card" 
+                       data-testid="textiles-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge vendor" aria-label="Vendor type">VENDOR</span>
                   <span class="subcategory-tag">Artisan</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Heritage Textiles">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Heritage Textiles</h2>
@@ -464,21 +603,32 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Heritage Textiles">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Handwoven textiles using traditional techniques. Scarves, blankets, and home decor items. Custom orders welcome!</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
               <!-- Card 12: Event -->
-              <article class="card small" data-testid="farmers-market-card">
+              <article class="card small feed-card" 
+                       data-testid="farmers-market-card"
+                       data-show-footer="false"
+                       data-show-comments="false"
+                       data-show-header-actions="true"
+                       data-card-type="search">
                 <header class="card-header-row">
                   <span class="type-badge event" aria-label="Event type">EVENT</span>
                   <span class="subcategory-tag">Market</span>
                 </header>
-                <figure class="card-image">
+                <div class="card-divider"></div>
+                <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Farmers Market Opening Day">
-                </figure>
+                </div>
+                <div class="card-divider"></div>
                 <div class="card-header-actions">
                   <div class="card-title-section">
                     <h2 class="card-title">Farmers Market Opening Day</h2>
@@ -489,10 +639,14 @@
                   </div>
                   <button type="button" class="follow-btn" aria-label="Follow Farmers Market Opening Day">Follow</button>
                 </div>
-                <hr class="card-divider">
-                <section class="card-content">
+                <div class="card-divider"></div>
+                <div class="card-content left-align">
                   <p>Join us for the opening day of our weekly farmers market! Fresh produce, local vendors, live music, and family activities.</p>
-                </section>
+                </div>
+                <!-- Footer section (hidden for search feed) -->
+                <div class="card-footer" data-show-footer="false"></div>
+                <!-- Comments section (hidden for search feed) -->
+                <div class="comments-section" data-show-comments="false"></div>
               </article>
 
             </section>
@@ -534,59 +688,6 @@
         
         document.body.appendChild(toggleButton);
       })();
-      
-      // Move card elements to match brewery card layout on desktop
-      function rearrangeCardLayout() {
-        if (window.innerWidth < 769) {
-          // Reset on mobile
-          document.querySelectorAll('.feed-container .card.small:not([data-desktop-layout="brewery"])').forEach(card => {
-            delete card.dataset.rearranged;
-            const titleClone = card.querySelector('.card-header-row .card-title');
-            if (titleClone) titleClone.remove();
-            const titleEl = card.querySelector('.card-header-actions .card-title');
-            if (titleEl) titleEl.style.display = '';
-          });
-          return;
-        }
-        
-        const cards = document.querySelectorAll('.feed-container .card.small:not([data-desktop-layout="brewery"])');
-        cards.forEach(card => {
-          if (card.dataset.rearranged) return; // Already rearranged
-          
-          const headerRow = card.querySelector('.card-header-row');
-          const titleEl = card.querySelector('.card-title');
-          const typeBadge = card.querySelector('.type-badge');
-          const subcategoryTag = card.querySelector('.subcategory-tag');
-          
-          if (headerRow && titleEl && !headerRow.querySelector('.card-title')) {
-            // Clone title and move to header row
-            const titleClone = titleEl.cloneNode(true);
-            headerRow.insertBefore(titleClone, headerRow.firstChild);
-          }
-          
-          // Hide original title in title section
-          if (titleEl) titleEl.style.display = 'none';
-          
-          // Move type badge and subcategory to right side of header row
-          if (headerRow && typeBadge && subcategoryTag) {
-            const typeContainer = document.createElement('span');
-            typeContainer.style.fontSize = '0.8rem';
-            typeContainer.style.color = 'var(--on-surface-variant)';
-            typeContainer.textContent = typeBadge.textContent.trim() + ' ' + subcategoryTag.textContent.trim();
-            headerRow.appendChild(typeContainer);
-          }
-          
-          card.dataset.rearranged = 'true';
-        });
-      }
-      
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', rearrangeCardLayout);
-      } else {
-        rearrangeCardLayout();
-      }
-      
-      window.addEventListener('resize', rearrangeCardLayout);
       
       // Handle filter toggle button
       (function() {
@@ -633,15 +734,12 @@
         }
       })();
       
-      // Handle card links (prevent double navigation)
+      // Handle follow button clicks (prevent navigation)
       (function() {
-        document.querySelectorAll('.card-link').forEach(link => {
-          link.addEventListener('click', function(e) {
-            // Allow button clicks to work independently
-            if (e.target.closest('button')) {
-              e.stopPropagation();
-              e.preventDefault();
-            }
+        document.querySelectorAll('.follow-btn').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Follow button functionality can be added here
           });
         });
       })();
@@ -692,60 +790,6 @@
         window.addEventListener('scroll', onScroll, { passive: true });
       })();
       
-      // Update card layout rearrangement for new semantic structure
-      (function() {
-        function rearrangeCardLayout() {
-          if (window.innerWidth < 769) {
-            // Reset on mobile
-            document.querySelectorAll('section.feed-container article.card.small:not([data-desktop-layout="brewery"])').forEach(card => {
-              delete card.dataset.rearranged;
-              const titleClone = card.querySelector('.card-header-row .card-title');
-              if (titleClone) titleClone.remove();
-              const titleEl = card.querySelector('.card-header-actions .card-title');
-              if (titleEl) titleEl.style.display = '';
-            });
-            return;
-          }
-          
-          const cards = document.querySelectorAll('section.feed-container article.card.small:not([data-desktop-layout="brewery"])');
-          cards.forEach(card => {
-            if (card.dataset.rearranged) return; // Already rearranged
-            
-            const headerRow = card.querySelector('.card-header-row');
-            const titleEl = card.querySelector('.card-title');
-            const typeBadge = card.querySelector('.type-badge');
-            const subcategoryTag = card.querySelector('.subcategory-tag');
-            
-            if (headerRow && titleEl && !headerRow.querySelector('.card-title')) {
-              // Clone title and move to header row
-              const titleClone = titleEl.cloneNode(true);
-              headerRow.insertBefore(titleClone, headerRow.firstChild);
-            }
-            
-            // Hide original title in title section
-            if (titleEl) titleEl.style.display = 'none';
-            
-            // Move type badge and subcategory to right side of header row
-            if (headerRow && typeBadge && subcategoryTag) {
-              const typeContainer = document.createElement('span');
-              typeContainer.style.fontSize = '0.8rem';
-              typeContainer.style.color = 'var(--on-surface-variant)';
-              typeContainer.textContent = typeBadge.textContent.trim() + ' ' + subcategoryTag.textContent.trim();
-              headerRow.appendChild(typeContainer);
-            }
-            
-            card.dataset.rearranged = 'true';
-          });
-        }
-        
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', rearrangeCardLayout);
-        } else {
-          rearrangeCardLayout();
-        }
-        
-        window.addEventListener('resize', rearrangeCardLayout);
-      })();
     </script>
   </body>
 </html>

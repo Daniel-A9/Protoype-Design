@@ -20,6 +20,9 @@ body.light {
   --on-surface: #1c1b1e;
   --surface-variant: #e7e0eb;
   --on-surface-variant: #49454e;
+  --surface-container: #f5f0e8;
+  --surface-container-low: #fdf8fd;
+  --surface-container-high: #f5f0e8;
   --outline: #7a757f;
   --outline-variant: #cac4cf;
   --wordmark-filter: none;
@@ -45,6 +48,9 @@ body.dark {
   --on-surface: #e6e1e6;
   --surface-variant: #49454e;
   --on-surface-variant: #cac4cf;
+  --surface-container: #201f22;
+  --surface-container-low: #141316;
+  --surface-container-high: #2b292d;
   --outline: #948f99;
   --outline-variant: #49454e;
   --wordmark-filter: invert(92%) sepia(14%) saturate(326%) hue-rotate(6deg) brightness(104%) contrast(97%);
@@ -54,6 +60,7 @@ body.dark {
 :root {
   --spacing-xs: 0.125rem;
   --spacing-sm: 0.25rem;
+  --spacing-base: 0.5rem;
   --spacing-md: 0.5rem;
   --spacing-lg: 0.75rem;
   --spacing-xl: 1rem;
@@ -234,6 +241,14 @@ header.top-header.header-hidden {
   gap: var(--spacing-md);
 }
 
+.header-wordmark .circle.transparent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface);
+  text-decoration: none;
+}
+
 .wordmark-img {
   height: 40px;
   filter: var(--wordmark-filter);
@@ -346,7 +361,7 @@ body:not(.dark) .header-nav a:focus {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   min-width: 180px;
-  z-index: var(--z-fixed);
+  z-index: var(--z-modal);
   overflow: hidden;
   padding: 0;
 }
@@ -576,7 +591,7 @@ article.card .card-link {
   padding: var(--spacing-xl);
   margin-bottom: var(--spacing-2xl);
   max-width: 700px;
-  margin-left: var(--spacing-xl);
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -741,14 +756,35 @@ main.responsive {
   height: calc(100vh - var(--header-height));
   overflow-y: auto;
   overflow-x: hidden;
-  padding: var(--spacing-xl);
-  padding-top: calc(var(--header-height) + var(--spacing-xl));
+  padding: 0;
+  padding-top: calc(var(--header-height) + var(--spacing-md));
+  margin: 0;
 }
 
 .feed-container {
   max-width: 100%;
   padding: 0;
   margin: 0;
+}
+
+/* ============================================
+   FEED CARD CONDITIONAL RENDERING
+   ============================================ */
+
+.feed-card[data-show-footer="false"] .card-footer {
+  display: none;
+}
+
+.feed-card[data-show-comments="false"] .comments-section {
+  display: none;
+}
+
+.feed-card[data-show-image="false"] .card-image {
+  display: none;
+}
+
+.feed-card[data-show-header-actions="false"] .card-header-actions {
+  display: none;
 }
 
 /* ============================================
@@ -760,9 +796,7 @@ main.responsive {
   .site-logo {
     width: var(--logo-size-mobile);
     height: var(--logo-size-mobile);
-    top: var(--spacing-md);
-    right: var(--spacing-xl);
-    left: auto;
+    position: static;
   }
 
   .theme-toggle {
@@ -779,12 +813,23 @@ main.responsive {
     padding: 0;
     padding-top: calc(var(--header-height) + var(--spacing-md));
     padding-bottom: 70px;
+    margin: 0;
+  }
+
+  main.responsive > .container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
   }
 
   .header-section {
     max-width: 100%;
     padding: var(--spacing-md);
-    margin: var(--spacing-md);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
   }
 
   .search-input-container {
@@ -816,8 +861,8 @@ main.responsive {
 
   article.card {
     margin-bottom: var(--spacing-3xl);
-    margin-left: var(--spacing-xs);
-    margin-right: var(--spacing-xs);
+    margin-left: auto;
+    margin-right: auto;
     max-width: calc(100% - var(--spacing-sm));
     width: calc(100% - var(--spacing-sm));
   }
@@ -847,9 +892,15 @@ main.responsive {
   }
 
   main.responsive > .container {
-    max-width: calc(100% - 352px);
-    margin: 0;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: var(--spacing-xl);
     padding-right: var(--spacing-xl);
+  }
+
+  .header-section {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .feed-container .card-image img {
@@ -864,117 +915,4 @@ main.responsive {
     padding: var(--spacing-base) var(--spacing-md);
   }
 
-  /* Desktop card layout adjustments */
-  [data-desktop-layout="brewery"] {
-    display: flex;
-    flex-direction: column;
-  }
-
-  [data-desktop-layout="brewery"] .card-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    order: 1;
-  }
-
-  [data-desktop-layout="brewery"] .card-header-row .type-badge,
-  [data-desktop-layout="brewery"] .card-header-row .subcategory-tag {
-    display: none;
-  }
-
-  [data-desktop-layout="brewery"] .card-header-row::before {
-    content: "Brewery Central";
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-medium);
-    margin: 0;
-  }
-
-  [data-desktop-layout="brewery"] .card-header-row::after {
-    content: "VENDOR Brewery";
-    font-size: var(--font-size-md);
-    color: var(--on-surface-variant);
-  }
-
-  [data-desktop-layout="brewery"] .card-header-actions {
-    order: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    background: transparent;
-  }
-
-  [data-desktop-layout="brewery"] .card-header-actions .card-title-section {
-    display: none;
-  }
-
-  [data-desktop-layout="brewery"] .card-header-actions::before {
-    content: "12345 Pittsburgh, PA";
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    font-size: 0.875rem;
-  }
-
-  [data-desktop-layout="brewery"] .card-image {
-    order: 2;
-  }
-
-  [data-desktop-layout="brewery"] .card-divider {
-    order: 4;
-  }
-
-  [data-desktop-layout="brewery"] .card-content {
-    order: 5;
-  }
-
-  /* Other cards desktop layout */
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    order: 1;
-    padding: var(--spacing-lg) var(--spacing-xl);
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-header-row .type-badge,
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-header-row .subcategory-tag {
-    display: none;
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-header-row .card-title {
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-medium);
-    margin: 0;
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-header-actions {
-    order: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    background: transparent;
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-header-actions .card-location {
-    font-size: 0.875rem;
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-image {
-    order: 2;
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-divider {
-    order: 4;
-  }
-
-  .feed-container article.card.small:not([data-desktop-layout="brewery"]) .card-content {
-    order: 5;
-  }
 }

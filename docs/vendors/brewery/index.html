@@ -269,12 +269,12 @@ body.dark #vendorMessageModal {
             </div>
             
             <!-- Products Grid - Full Width for Horizontal Scroll -->
-            <div id="products-grid" class="row no-wrap scroll" style="padding: 0.5rem 0; gap: 1.5rem; padding-left: 0.5rem; padding-right: 0.5rem;">
+            <div id="products-grid" class="row no-wrap scroll" style="padding: 0.5rem 0; gap: 1.5rem; padding-left: 0.5rem; padding-right: 0.5rem; overflow-x: auto; overflow-y: hidden; align-items: flex-start; height: auto;">
                             <!-- Product Card 1 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('citrus-ipa')">
+                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
+                                <div class="product-card-clickable" onclick="openProduct('citrus-ipa')" style="cursor: pointer;">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
-                                         alt="Citrus IPA" class="responsive round" style="height: 280px; object-fit: cover;">
+                                         alt="Citrus IPA" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Citrus IPA</h5>
                                         <p class="text-grey margin-vertical-small">Perfectly balanced hops with refreshing citrus notes</p>
@@ -288,7 +288,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="tiny-padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -312,14 +312,14 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 2 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('chocolate-stout')">
+                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
+                                <div class="product-card-clickable" onclick="openProduct('chocolate-stout')" style="cursor: pointer;">
                                     <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
-                                         alt="Chocolate Stout" class="responsive round" style="height: 280px; object-fit: cover;">
+                                         alt="Chocolate Stout" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Chocolate Stout</h5>
                                         <p class="text-grey margin-vertical-small">Rich chocolate and coffee flavors with smooth finish</p>
@@ -333,7 +333,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="tiny-padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -357,14 +357,14 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 3 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('golden-lager')">
+                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
+                                <div class="product-card-clickable" onclick="openProduct('golden-lager')" style="cursor: pointer;">
                                     <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
-                                         alt="Golden Lager" class="responsive round" style="height: 280px; object-fit: cover;">
+                                         alt="Golden Lager" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Golden Lager</h5>
                                         <p class="text-grey margin-vertical-small">Crisp and refreshing with clean finish</p>
@@ -378,7 +378,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="tiny-padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -402,14 +402,14 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 4 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('hefeweizen')">
+                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
+                                <div class="product-card-clickable" onclick="openProduct('hefeweizen')" style="cursor: pointer;">
                                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" 
-                                         alt="Hefeweizen" class="responsive round" style="height: 280px; object-fit: cover;">
+                                         alt="Hefeweizen" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Hefeweizen</h5>
                                         <p class="text-grey margin-vertical-small">Traditional German wheat beer with banana and clove notes</p>
@@ -423,7 +423,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="tiny-padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -447,14 +447,14 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 5 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('pale-ale')">
+                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
+                                <div class="product-card-clickable" onclick="openProduct('pale-ale')" style="cursor: pointer;">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
-                                         alt="Pale Ale" class="responsive round" style="height: 280px; object-fit: cover;">
+                                         alt="Pale Ale" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
                                     <div class="padding-vertical-medium">
                                         <h5>Pale Ale</h5>
                                         <p class="text-grey margin-vertical-small">Classic American pale ale with balanced hop bitterness</p>
@@ -468,7 +468,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="tiny-padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -492,8 +492,8 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
             </div>
             
             <!-- Events Link -->
@@ -529,11 +529,11 @@ body.dark #vendorMessageModal {
                     </div>
 
                     <!-- Post Card 1 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
+                    <article class="medium margin-bottom-large margin-horizontal-small">
+                            <header>
                                 <div class="row no-gap">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s8">
                                         <h6>Brewery Central</h6>
@@ -548,13 +548,13 @@ body.dark #vendorMessageModal {
                                         </menu>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-content">
+                            </header>
+                            <div>
                                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop" 
-                                     alt="Brewing Process" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewing Process" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
                                 <p>Just finished brewing our latest batch of Citrus IPA! The hops are perfectly balanced with refreshing citrus notes. Can't wait to share this with our community. The brewing process took 3 weeks of careful fermentation and conditioning. 🍺</p>
                             </div>
-                            <div class="card-footer">
+                            <footer>
                                 <div class="row no-gap">
                                     <div class="col s6">
                                         <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="brewing-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
@@ -574,11 +574,11 @@ body.dark #vendorMessageModal {
                             </div>
                             
                             <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="BeerLover42" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <strong>BeerLover42</strong>
@@ -588,7 +588,7 @@ body.dark #vendorMessageModal {
                                     </div>
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="HopHead" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <strong>HopHead</strong>
@@ -602,7 +602,7 @@ body.dark #vendorMessageModal {
                                 <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
                                     <div class="row no-gap">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <div class="row no-gap middle-align">
@@ -617,14 +617,14 @@ body.dark #vendorMessageModal {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
                     <!-- Post Card 2 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
+                    <article class="medium margin-bottom-large margin-horizontal-small">
+                            <header>
                                 <div class="row no-gap">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s8">
                                         <h6>Brewery Central</h6>
@@ -639,13 +639,13 @@ body.dark #vendorMessageModal {
                                         </menu>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-content">
+                            </header>
+                            <div>
                                 <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
-                                     alt="Chocolate Stout" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Chocolate Stout" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
                                 <p>Our seasonal Chocolate Stout is back! Rich chocolate and coffee flavors with a smooth finish. Perfect for these cooler evenings. Limited batch available - get yours before it's gone! ☕</p>
                             </div>
-                            <div class="card-footer">
+                            <footer>
                                 <div class="row no-gap">
                                     <div class="col s6">
                                         <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="festival-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
@@ -662,14 +662,14 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </footer>
                             
                             <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="StoutLover" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <strong>StoutLover</strong>
@@ -683,7 +683,7 @@ body.dark #vendorMessageModal {
                                 <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
                                     <div class="row no-gap">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <div class="row no-gap middle-align">
@@ -698,14 +698,14 @@ body.dark #vendorMessageModal {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
                     <!-- Post Card 3 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
+                    <article class="medium margin-bottom-large margin-horizontal-small">
+                            <header>
                                 <div class="row no-gap">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s8">
                                         <h6>Brewery Central</h6>
@@ -720,13 +720,13 @@ body.dark #vendorMessageModal {
                                         </menu>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-content">
+                            </header>
+                            <div>
                                 <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
-                                     alt="Brewery Tour" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewery Tour" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
                                 <p>New brewery tour dates are live! Come see how we craft our signature beers. Includes tasting flight and take-home growler. Book your spot today! Limited to 15 people per tour. 🏭</p>
                             </div>
-                            <div class="card-footer">
+                            <footer>
                                 <div class="row no-gap">
                                     <div class="col s6">
                                         <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="tasting-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
@@ -743,14 +743,14 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </footer>
                             
                             <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="BreweryTourist" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <strong>BreweryTourist</strong>
@@ -764,7 +764,7 @@ body.dark #vendorMessageModal {
                                 <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
                                     <div class="row no-gap">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <div class="row no-gap middle-align">
@@ -779,7 +779,7 @@ body.dark #vendorMessageModal {
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>

@@ -9,7 +9,6 @@
   </head>
   <body class="dark">
 
-    <!-- Fixed Top Header -->
     <header class="top-header">
       <div class="header-wordmark">
         <img src="../../../text.png" alt="Local Market Wordmark" loading="lazy" class="wordmark-img">
@@ -23,16 +22,13 @@
           <span>Cart</span>
         </a>
       </nav>
-      <!-- Right side: Logo and hamburger menu -->
       <div class="header-right">
-        <!-- Site Logo -->
         <a href="../../../" class="site-logo">
           <img src="../../../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
         </a>
         <a href="../../../userprofile/" class="header-profile" data-testid="desktop-nav-profile" aria-label="User profile">
           <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="Brewery Central Logo" loading="lazy" class="circle small">
         </a>
-        <!-- Discussion Menu Button -->
         <button type="button" class="feed-menu-btn" aria-label="Discussion menu" aria-expanded="false" aria-controls="discussionMenu" onclick="toggleHamburgerMenu()" data-testid="discussion-hamburger-menu-btn">
           <i>menu</i>
           <menu class="feed-menu-dropdown" id="discussionMenu" role="menu">
@@ -44,7 +40,6 @@
       </div>
     </header>
 
-    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
       <a href="../../../home/" class="nav-item" data-testid="nav-home">
         <i>home</i>
@@ -63,307 +58,278 @@
       </a>
     </nav>
 
-    <!-- Hamburger Menu Overlay for Discussion Categories -->
-    <div id="discussion-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    <div id="discussion-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002;"></div>
     
-    <!-- Hamburger Menu Sidebar for Discussion Categories -->
-    <div id="discussion-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
-      <div style="padding: 1rem;">
-        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
-          <i>close</i>
-        </button>
-        <div style="clear: both; margin-bottom: 0.5rem;"></div>
-        
-        <h5 style="margin-bottom: 0.75rem;">Categories</h5>
-        
-        <hr style="margin: 0.75rem 0;">
-        
-        <!-- Local Section -->
-        <div style="font-size: 0.7rem; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; font-weight: 600;">Local</div>
-        
-        <a href="../local-discussions/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);" onclick="toggleHamburgerMenu();">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">forum</i>
-          <span style="font-size: 0.9rem;">Discussions</span>
-        </a>
-        
-        <a href="../local-groups/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);" onclick="toggleHamburgerMenu();">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">groups</i>
-          <span style="font-size: 0.9rem;">Groups</span>
-        </a>
-        
-        <a href="../used-barter/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);" onclick="toggleHamburgerMenu();">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">swap_horiz</i>
-          <span style="font-size: 0.9rem;">Used/Barter</span>
-        </a>
-        
-        <hr style="margin: 0.75rem 0;">
-        
-        <!-- General Section -->
-        <div style="font-size: 0.7rem; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; font-weight: 600;">General</div>
-        
-        <a href="../food-farm-news/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);" onclick="toggleHamburgerMenu();">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">restaurant</i>
-          <span style="font-size: 0.9rem;">Food & Farm News</span>
-        </a>
-        
-        <a href="../tips-resources/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);" onclick="toggleHamburgerMenu();">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">lightbulb</i>
-          <span style="font-size: 0.9rem;">Tips & Resources</span>
-        </a>
+    <div id="discussion-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto;">
+      <div class="padding-medium">
+        <nav class="right-align">
+          <button class="circle transparent small no-margin" onclick="toggleHamburgerMenu()">
+            <i>close</i>
+          </button>
+        </nav>
+        <h5 class="margin-bottom-medium">Categories</h5>
+        <hr class="margin-vertical-medium">
+        <div class="small-text upper bold margin-bottom-small">Local</div>
+        <nav class="vertical">
+          <a href="../local-discussions/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">forum</i>
+            <span class="small-text">Discussions</span>
+          </a>
+          <a href="../local-groups/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">groups</i>
+            <span class="small-text">Groups</span>
+          </a>
+          <a href="../used-barter/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">swap_horiz</i>
+            <span class="small-text">Used/Barter</span>
+          </a>
+        </nav>
+        <hr class="margin-vertical-medium">
+        <div class="small-text upper bold margin-bottom-small">General</div>
+        <nav class="vertical">
+          <a href="../food-farm-news/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">restaurant</i>
+            <span class="small-text">Food & Farm News</span>
+          </a>
+          <a href="../tips-resources/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">lightbulb</i>
+            <span class="small-text">Tips & Resources</span>
+          </a>
+        </nav>
       </div>
     </div>
 
     <main class="responsive">
       <div class="container">
         <div class="row">
-          <!-- Main Content Column (2/3 on desktop) -->
           <div class="col s12 m8 l8 main-content">
             <h4>Used/Barter</h4>
             <p class="category-description">Buy, sell, trade, and barter items locally</p>
             <div class="feed-container">
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=160&h=160&fit=crop" alt="Vintage dining table" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=160&h=160&fit=crop" alt="Vintage dining table" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Vintage Dining Table</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">John D. • Maplewood</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Seats six, solid oak, gently used. Pickup only—message if you can swap for garden tools.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Vintage Dining Table</h6>
+                      <small class="text-grey">John D. • Maplewood</small>
+                      <p class="margin-top-tiny no-margin small-text">Seats six, solid oak, gently used. Pickup only—message if you can swap for garden tools.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">$150</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">$150</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=160&h=160&fit=crop" alt="Fresh eggs basket" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=160&h=160&fit=crop" alt="Fresh eggs basket" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Backyard Chicken Eggs</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Maria S. • Oak Ridge</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Two dozen fresh eggs gathered this morning. Looking for homegrown veggies or a loaf of sourdough.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Backyard Chicken Eggs</h6>
+                      <small class="text-grey">Maria S. • Oak Ridge</small>
+                      <p class="margin-top-tiny no-margin small-text">Two dozen fresh eggs gathered this morning. Looking for homegrown veggies or a loaf of sourdough.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">Trade</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">Trade</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&h=160&fit=crop" alt="Kids bike" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&h=160&fit=crop" alt="Kids bike" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Children’s Cruiser Bike</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Mike D. • Riverbend</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">20&quot; wheels, recently tuned, ready to ride. Can include helmet if you need it.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Children's Cruiser Bike</h6>
+                      <small class="text-grey">Mike D. • Riverbend</small>
+                      <p class="margin-top-tiny no-margin small-text">20&quot; wheels, recently tuned, ready to ride. Can include helmet if you need it.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">$85</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">$85</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=160&h=160&fit=crop" alt="Garden tools bundle" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=160&h=160&fit=crop" alt="Garden tools bundle" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Garden Starter Bundle</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Lena P. • Willow Creek</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Hand tools, gloves, and seed trays. Helping a neighbor downsize their shed—first come, first served.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Garden Starter Bundle</h6>
+                      <small class="text-grey">Lena P. • Willow Creek</small>
+                      <p class="margin-top-tiny no-margin small-text">Hand tools, gloves, and seed trays. Helping a neighbor downsize their shed—first come, first served.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">Free</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">Free</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=160&h=160&fit=crop" alt="Stacked firewood" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=160&h=160&fit=crop" alt="Stacked firewood" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Seasoned Firewood Stack</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Tom H. • Pine Hollow</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Dry and ready to burn. I can help load—looking for produce shares or help splitting the remaining logs.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Seasoned Firewood Stack</h6>
+                      <small class="text-grey">Tom H. • Pine Hollow</small>
+                      <p class="margin-top-tiny no-margin small-text">Dry and ready to burn. I can help load—looking for produce shares or help splitting the remaining logs.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">Trade</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">Trade</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1600375086995-6b2f33e64cd1?w=160&h=160&fit=crop" alt="Baby gear" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1600375086995-6b2f33e64cd1?w=160&h=160&fit=crop" alt="Baby gear" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Baby Essentials Set</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Lisa M. • Cedar Heights</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Stroller, high chair, toys, and a box of gently-used clothes. Clean and ready for the next family.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Baby Essentials Set</h6>
+                      <small class="text-grey">Lisa M. • Cedar Heights</small>
+                      <p class="margin-top-tiny no-margin small-text">Stroller, high chair, toys, and a box of gently-used clothes. Clean and ready for the next family.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">$100</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">$100</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1524594154908-edd0312763f5?w=160&h=160&fit=crop" alt="Herb seedlings" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1524594154908-edd0312763f5?w=160&h=160&fit=crop" alt="Herb seedlings" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Herb Seedling Tray</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Amina R. • Greenfield</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Basil, mint, thyme, and parsley starts. Extras from my greenhouse—swing by and take what you need.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Herb Seedling Tray</h6>
+                      <small class="text-grey">Amina R. • Greenfield</small>
+                      <p class="margin-top-tiny no-margin small-text">Basil, mint, thyme, and parsley starts. Extras from my greenhouse—swing by and take what you need.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">Free</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">Free</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=160&h=160&fit=crop" alt="Sectional sofa" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=160&h=160&fit=crop" alt="Sectional sofa" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Cozy Sectional Sofa</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">David P. • Lakeside</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Smoke-free home, neutral fabric, includes ottoman. We can help load if you have a truck.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Cozy Sectional Sofa</h6>
+                      <small class="text-grey">David P. • Lakeside</small>
+                      <p class="margin-top-tiny no-margin small-text">Smoke-free home, neutral fabric, includes ottoman. We can help load if you have a truck.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">$200</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">$200</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 56px; height: 56px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1470246973918-29a93221c455?w=160&h=160&fit=crop" alt="Home canning jars" loading="lazy" style="width: 56px; height: 56px; object-fit: cover; border-radius: 4px;">
+              <article class="no-padding small-margin margin-bottom-tiny" style="height: 180px; overflow: hidden;">
+                <header class="padding-medium horizontal-padding-medium">
+                  <div class="row no-gap middle-align">
+                    <div class="no-shrink margin-right-medium" style="width: 90px; height: 90px; overflow: hidden; flex-shrink: 0;">
+                      <img src="https://images.unsplash.com/photo-1470246973918-29a93221c455?w=160&h=160&fit=crop" alt="Home canning jars" loading="lazy" class="round" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <h6 style="margin: 0 0 0.25rem 0; font-weight: 600; font-size: 0.75rem;">Canning Jar Set</h6>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Noah G. • Harvest Hill</small>
-                      <p style="margin: 0.5rem 0 0 0; line-height: 1.4;">Three dozen quart jars plus lids—great for preserves or pantry storage. Happy to swap for pantry staples.</p>
+                    <div class="max min-width-0">
+                      <h6 class="no-margin margin-bottom-tiny bold">Canning Jar Set</h6>
+                      <small class="text-grey">Noah G. • Harvest Hill</small>
+                      <p class="margin-top-tiny no-margin small-text">Three dozen quart jars plus lids—great for preserves or pantry storage. Happy to swap for pantry staples.</p>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <div class="chip small border primary" style="margin: 0;">Trade</div>
+                    <div class="no-shrink margin-left-medium">
+                      <span class="chip small border primary no-margin">Trade</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
             </div>
           </div>
 
-          <!-- Categories Sidebar Column (1/3 on desktop) -->
-          <div class="col s12 m4 l4">
+          <aside class="col s12 m4 l4">
             <div class="categories-sidebar" id="categoriesSidebar">
               <h5>Categories</h5>
-              
-              <!-- Local Section -->
               <div class="section-header">
                 <h6>Local</h6>
               </div>
-
               <a href="../local-discussions/" class="category-item">
                 <h6>Discussions</h6>
                 <p>General community conversations and local topics</p>
               </a>
-
               <a href="../local-groups/" class="category-item">
                 <h6>Groups</h6>
                 <p>Community groups, clubs, and organizations</p>
               </a>
-
               <a href="../used-barter/" class="category-item">
                 <h6>Used/Barter</h6>
                 <p>Buy, sell, trade, and barter items locally</p>
               </a>
-
-              <!-- General Section -->
               <div class="section-header">
                 <h6>General</h6>
               </div>
-
               <a href="../food-farm-news/" class="category-item">
                 <h6>Food & Farm News</h6>
                 <p>Local food, farming, and agricultural updates</p>
               </a>
-
               <a href="../tips-resources/" class="category-item">
                 <h6>Tips & Resources</h6>
                 <p>Helpful tips, guides, and local resources</p>
               </a>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </main>
 
     <script>
-      // Theme Toggle Functionality
       (function() {
         const storedTheme = localStorage.getItem('theme') || 'light';
-
         document.body.classList.remove('dark', 'light');
         document.body.classList.add(storedTheme);
-
         const toggleButton = document.createElement('button');
         toggleButton.className = 'theme-toggle circle';
         toggleButton.setAttribute('aria-label', 'Toggle theme');
         toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
-
         toggleButton.addEventListener('click', function() {
           const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
           const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
           document.body.classList.remove('dark', 'light');
           document.body.classList.add(newTheme);
           localStorage.setItem('theme', newTheme);
-
           toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
         });
-
         document.body.appendChild(toggleButton);
       })();
     </script>
 
     <script>
-      // Hamburger Menu Toggle for Discussion Categories
       function toggleHamburgerMenu() {
         const overlay = document.getElementById('discussion-hamburger-menu-overlay');
         const menu = document.getElementById('discussion-hamburger-menu');
-        
         if (overlay.style.display === 'none' || overlay.style.display === '') {
           overlay.style.display = 'block';
           menu.style.right = '0';
@@ -372,7 +338,6 @@
           menu.style.right = '-240px';
         }
       }
-
     </script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
@@ -441,7 +406,7 @@
       }
     </script>
     <dialog id="report-dialog" class="modal medium">
-      <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+      <button data-ui="#report-dialog" class="circle transparent absolute right top" style="z-index: 10;">
         <i>close</i>
       </button>
       <div class="padding-medium">

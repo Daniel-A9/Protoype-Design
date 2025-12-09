@@ -2,13 +2,14 @@
 
 ## when editing html files
 
-don't use any custom css or js, instead use beer css settings, helpers, and elements
+don't WRITE any custom css or js, instead use beer css settings, helpers, and elements
 never import new js or css files, other than style.css, but never write new css in style.css only edit variables
 you are NOT ALLOWED to create new javascript files or import additional javascript files
 read this entire beercss documentation below when editing
 always use loading='lazy' for images
 all created html files should be called index.html, to name a page, put it in a folder with a name of the meaning of the page
 all links and urls to pages should end with '/', should not mention the index.html name
+dont use !important
 
 # BeerCSS - Complete Documentation for AI/LLM Systems
 

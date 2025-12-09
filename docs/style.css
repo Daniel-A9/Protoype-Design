@@ -922,6 +922,9 @@ main.responsive .col {
     padding: var(--spacing-md);
     max-width: calc(50% - var(--spacing-sm));
   }
+div.card {
+  padding-bottom: 1.5rem;
+}
 
   article.card {
     margin-bottom: var(--spacing-3xl);

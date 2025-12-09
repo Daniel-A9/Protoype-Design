@@ -527,259 +527,271 @@ body.dark #vendorMessageModal {
                             <h3 class="left-align">Posts</h3>
                         </div>
                     </div>
-
-                    <!-- Post Card 1 -->
-                    <article class="medium margin-bottom-large margin-horizontal-small">
-                            <header>
-                                <div class="row no-gap">
+                    <div class="feed-container">
+                        <!-- Post Card 1 -->
+                        <div class="card small">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">2 hours ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-1" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-1">
-                                            <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>2 hours ago</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </header>
-                            <div>
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop" 
-                                     alt="Brewing Process" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewing Process" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Just finished brewing our latest batch of Citrus IPA! The hops are perfectly balanced with refreshing citrus notes. Can't wait to share this with our community. The brewing process took 3 weeks of careful fermentation and conditioning. 🍺</p>
                             </div>
-                            <footer>
+                            <div class="card-divider"></div>
+                            <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="brewing-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="brewing-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">24</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">8</span>
                                         </div>
                                     </div>
                                 </div>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-1" class="circle transparent small">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-1">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
                             </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" alt="BeerLover42" loading="lazy" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>BeerLover42</strong>
-                                            <p class="margin-vertical-small">This looks amazing! When will it be available in stores?</p>
-                                            <small class="text-grey">1 hour ago</small>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="BeerLover42" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BeerLover42</strong>
+                                                <p>This looks amazing! When will it be available in stores?</p>
+                                                <small class="text-grey">1 hour ago</small>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" alt="HopHead" loading="lazy" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>HopHead</strong>
-                                            <p class="margin-vertical-small">Love the citrus notes! Perfect for summer 🍺</p>
-                                            <small class="text-grey">45 minutes ago</small>
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="HopHead" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>HopHead</strong>
+                                                <p>Love the citrus notes! Perfect for summer 🍺</p>
+                                                <small class="text-grey">45 minutes ago</small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="brewing-post-comment-input">
+                                            <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="brewing-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="brewing-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="brewing-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </article>
+                        </div>
 
-                    <!-- Post Card 2 -->
-                    <article class="medium margin-bottom-large margin-horizontal-small">
-                            <header>
-                                <div class="row no-gap">
+                        <!-- Post Card 2 -->
+                        <div class="card small">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">1 day ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-2" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-2">
-                                            <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>1 day ago</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </header>
-                            <div>
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
-                                     alt="Chocolate Stout" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Chocolate Stout" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Our seasonal Chocolate Stout is back! Rich chocolate and coffee flavors with a smooth finish. Perfect for these cooler evenings. Limited batch available - get yours before it's gone! ☕</p>
                             </div>
-                            <footer>
+                            <div class="card-divider"></div>
+                            <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="festival-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="festival-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">31</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="festival-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="festival-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">12</span>
                                         </div>
                                     </div>
                                 </div>
-                            </footer>
-                            
-                            <!-- Comments Section -->
-                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" alt="StoutLover" loading="lazy" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>StoutLover</strong>
-                                            <p class="margin-vertical-small">Perfect for winter nights! The chocolate notes are incredible</p>
-                                            <small class="text-grey">3 hours ago</small>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-2" class="circle transparent small">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-2">
+                                        <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </div>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="StoutLover" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>StoutLover</strong>
+                                                <p>Perfect for winter nights! The chocolate notes are incredible</p>
+                                                <small class="text-grey">3 hours ago</small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="tasting-post-comment-input">
+                                            <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="tasting-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="tasting-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="tasting-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </article>
+                        </div>
 
-                    <!-- Post Card 3 -->
-                    <article class="medium margin-bottom-large margin-horizontal-small">
-                            <header>
-                                <div class="row no-gap">
+                        <!-- Post Card 3 -->
+                        <div class="card small">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">3 days ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-3" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-3">
-                                            <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>3 days ago</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </header>
-                            <div>
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
-                                     alt="Brewery Tour" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewery Tour" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>New brewery tour dates are live! Come see how we craft our signature beers. Includes tasting flight and take-home growler. Book your spot today! Limited to 15 people per tour. 🏭</p>
                             </div>
-                            <footer>
+                            <div class="card-divider"></div>
+                            <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="tasting-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="tasting-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">18</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">5</span>
                                         </div>
                                     </div>
                                 </div>
-                            </footer>
-                            
-                            <!-- Comments Section -->
-                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" alt="BreweryTourist" loading="lazy" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>BreweryTourist</strong>
-                                            <p class="margin-vertical-small">I went on the tour last week! Highly recommend it</p>
-                                            <small class="text-grey">1 day ago</small>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-3" class="circle transparent small">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-3">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </div>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="BreweryTourist" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BreweryTourist</strong>
+                                                <p>I went on the tour last week! Highly recommend it</p>
+                                                <small class="text-grey">1 day ago</small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="festival-post-comment-input">
+                                            <form hx-post="/api/comments/3" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="festival-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="festival-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="festival-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    </article>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1009,75 +1021,35 @@ body.dark #vendorMessageModal {
             }
         });
 
-        function toggleLike(element) {
-            const icon = element.querySelector('i');
-            const likeText = element.querySelector('.like-text');
-            const likeCount = element.querySelector('.like-count');
+        // Toggle like button
+        function toggleLike(button) {
+            const heartIcon = button.querySelector('.material-icons');
+            const likeCountSpan = button.querySelector('.like-count');
+            const currentCount = parseInt(likeCountSpan.textContent);
             
-            if (element.classList.contains('liked')) {
-                // Unlike
-                element.classList.remove('liked');
-                icon.textContent = 'favorite_border';
-                icon.className = 'material-icons';
-                likeText.textContent = 'Like';
-                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            if (heartIcon.textContent === 'favorite_border') {
+                // Like the post
+                heartIcon.textContent = 'favorite';
+                button.classList.add('liked');
+                likeCountSpan.textContent = currentCount + 1;
             } else {
-                // Like
-                element.classList.add('liked');
-                icon.textContent = 'favorite';
-                icon.className = 'material-icons error';
-                likeText.textContent = 'Liked';
-                likeText.className = 'like-text error';
-                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                // Unlike the post
+                heartIcon.textContent = 'favorite_border';
+                button.classList.remove('liked');
+                likeCountSpan.textContent = currentCount - 1;
             }
         }
-        
-        function toggleComments(element) {
-            const postCard = element.closest('.card');
-            const commentsSection = postCard.querySelector('.card-footer');
+
+        // Toggle comments dropdown
+        function toggleComments(button) {
+            const card = button.closest('.card');
+            const commentsSection = card.querySelector('.comments-section');
             
-            if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+            if (commentsSection.style.display === 'none') {
                 commentsSection.style.display = 'block';
-                element.querySelector('.comment-text').textContent = 'Hide Comments';
             } else {
                 commentsSection.style.display = 'none';
-                element.querySelector('.comment-text').textContent = 'Comment';
             }
-        }
-        
-        function addComment(element) {
-            const postCard = element.closest('.card');
-            const commentInput = postCard.querySelector('input[type="text"]');
-            const commentsContainer = postCard.querySelector('.margin-bottom-medium');
-            const commentCount = postCard.querySelector('.comment-count');
-            
-            if (commentInput.value.trim() === '') return;
-            
-            // Create new comment element
-            const newComment = document.createElement('div');
-            newComment.className = 'row no-gap margin-bottom-medium';
-            newComment.innerHTML = `
-                <div class="col s2">
-                    <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                </div>
-                <div class="col s10">
-                    <strong>You</strong>
-                    <p class="margin-vertical-small">${commentInput.value}</p>
-                    <small class="text-grey">Just now</small>
-                </div>
-            `;
-            
-            // Add to comments container
-            commentsContainer.appendChild(newComment);
-            
-            // Update comment count
-            commentCount.textContent = parseInt(commentCount.textContent) + 1;
-            
-            // Clear input
-            commentInput.value = '';
-            
-            // Scroll to new comment
-            newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         document.addEventListener('DOMContentLoaded', function() {

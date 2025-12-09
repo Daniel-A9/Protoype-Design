@@ -503,22 +503,26 @@ article.card .card-link {
 }
 
 .card-image img {
-  width: 100%;
-  max-width: 100%;
+  width: 90%;
+  max-width: 90%;
   height: auto;
   display: block !important;
   object-fit: cover;
   visibility: visible !important;
   opacity: 1 !important;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .card-image img.responsive {
-  width: 100%;
-  max-width: 100%;
+  width: 90%;
+  max-width: 90%;
   height: auto;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .card-header-actions {
@@ -942,6 +946,10 @@ main.responsive .col {
     opacity: 1 !important;
     height: auto;
     max-height: none;
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
   .card-header-row {
@@ -983,6 +991,10 @@ main.responsive .col {
 
   .feed-container .card-image img {
     height: var(--card-image-height-desktop);
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
   .feed-container .card-content {

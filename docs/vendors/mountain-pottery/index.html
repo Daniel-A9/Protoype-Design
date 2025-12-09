@@ -210,8 +210,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
                         </div>
                     </div>
                 </div>
@@ -272,8 +272,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 2 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -317,8 +317,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 3 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -362,8 +362,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 4 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -407,8 +407,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 5 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -452,8 +452,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
             </div>
             
             <!-- Events Link -->
@@ -487,17 +487,19 @@
                             <h3 class="left-align">Posts</h3>
                         </div>
                     </div>
-
-                    <!-- Post Card 1 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
+                    <div class="feed-container">
+                        <!-- Post Card 1 -->
+                        <div class="card small">
+                            <header class="card-header-row">
                                 <div class="row no-gap">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" class="circle small">
                                     </div>
                                     <div class="col s8">
-                                        <h6>Mountain Pottery Studio</h6>
-                                        <small class="text-grey">2 hours ago</small>
+                                        <h5 class="card-title">Mountain Pottery Studio</h5>
+                                        <div class="card-meta">
+                                            <span>2 hours ago</span>
+                                        </div>
                                     </div>
                                     <div class="col s2 right-align">
                                         <button data-ui="#post-menu-1" class="circle transparent small">
@@ -507,34 +509,51 @@
                                             <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
                                         </menu>
                                     </div>
-                                </footer>
-                            </article>
-                            <div class="card-content">
+                                </div>
+                            </header>
+                            <div class="card-divider"></div>
+                            <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1524230572899-a752b3835840?w=600&h=300&fit=crop" 
                                      alt="Potter trimming a mug on the wheel" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
                                 <p>The new glacier glaze run just came out of the kiln and we’re obsessed with the icy blues and subtle speckles. 48 mugs made it through with gorgeous variation—look for them online this Friday! 🗻</p>
                             </div>
-                            <div class="card-footer">
+                            <footer class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="brewing-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="brewing-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">24</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">8</span>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                </div>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-1" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-1">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </footer>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-1" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-1">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </footer>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
@@ -575,107 +594,88 @@
                                             </div>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
                         </div>
 
-                    <!-- Post Card 2 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
-                                <div class="row no-gap">
-                                    <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                    </div>
-                                    <div class="col s8">
-                                        <h6>Mountain Pottery Studio</h6>
-                                        <small class="text-grey">1 day ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-2" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-2">
-                                            <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
-                                        </menu>
-                                    </div>
-                                </footer>
-                            </article>
-
-                    <!-- Post Card 2 -->
-                    <article class="medium margin-bottom-large margin-horizontal-small">
-                            <header>
-                                <div class="row no-gap">
+                        <!-- Post Card 2 -->
+                        <article class="card small">
+                            <header class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" alt="Mountain Pottery Studio" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Mountain Pottery Studio</h6>
-                                        <small class="text-grey">1 day ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-2" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-2">
-                                            <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Mountain Pottery Studio</h5>
+                                        <div class="card-meta">
+                                            <span>1 day ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </header>
-                            <div>
+                            <div class="card-divider"></div>
+                            <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1516815231560-8f41ec531527?w=600&h=300&fit=crop" 
-                                     alt="Shelves of finished pottery drying in studio" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Shelves of finished pottery drying in studio" loading="lazy" class="responsive round medium-height">
+                            </figure>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Studio shelves are full as we prep for the spring open house! Bowls, planters, and pour-over sets are curing before the final glaze firing this weekend.</p>
                             </div>
-                            <footer>
+                            <div class="card-divider"></div>
+                            <footer class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="festival-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="festival-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">31</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="festival-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="festival-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">12</span>
                                         </div>
                                     </div>
                                 </div>
-                            </footer>
-                            
-                            <!-- Comments Section -->
-                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" alt="GalleryGuru" loading="lazy" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>GalleryGuru</strong>
-                                            <p class="margin-vertical-small">Those planters will go fast—please save one for the Portland market booth!</p>
-                                            <small class="text-grey">3 hours ago</small>
-                                        </div>
-                                    </div>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-2" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-2">
+                                        <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
+                                    </menu>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                            </footer>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <article class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="GalleryGuru" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>GalleryGuru</strong>
+                                                <p>Those planters will go fast—please save one for the Portland market booth!</p>
+                                                <small class="text-grey">3 hours ago</small>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="tasting-post-comment-input">
+                                            <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="tasting-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="tasting-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="tasting-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -683,15 +683,17 @@
                         </article>
 
                     <!-- Post Card 3 -->
-                    <article class="medium margin-bottom-large margin-horizontal-small">
+                        <article class="card small">
                             <header>
                                 <div class="row no-gap">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" alt="Mountain Pottery Studio" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s8">
-                                        <h6>Mountain Pottery Studio</h6>
-                                        <small class="text-grey">3 days ago</small>
+                                        <h5 class="card-title">Mountain Pottery Studio</h5>
+                                        <div class="card-meta">
+                                            <span>3 days ago</span>
+                                        </div>
                                     </div>
                                     <div class="col s2 right-align">
                                         <button data-ui="#post-menu-3" class="circle transparent small">
@@ -705,9 +707,13 @@
                             </header>
                             <div>
                                 <img src="https://images.unsplash.com/photo-1512238701577-f182d9ef8af7?w=600&h=300&fit=crop" 
-                                     alt="Pottery workshop with instructor guiding students" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Pottery workshop with instructor guiding students" loading="lazy" class="responsive round medium-height">
+                            </figure>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Summer workshop dates are live! Learn wheel fundamentals, decorate with underglaze, and leave with two fired pieces. Seats are limited to keep instruction hands-on. 🎨</p>
                             </div>
+                            <div class="card-divider"></div>
                             <footer>
                                 <div class="row no-gap">
                                     <div class="col s6">
@@ -1014,16 +1020,15 @@
             }
         }
         
-        function toggleComments(element) {
-            const postCard = element.closest('.card');
-            const commentsSection = postCard.querySelector('.card-footer');
+        // Toggle comments dropdown
+        function toggleComments(button) {
+            const card = button.closest('.card');
+            const commentsSection = card.querySelector('.comments-section');
             
-            if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+            if (commentsSection.style.display === 'none') {
                 commentsSection.style.display = 'block';
-                element.querySelector('.comment-text').textContent = 'Hide Comments';
             } else {
                 commentsSection.style.display = 'none';
-                element.querySelector('.comment-text').textContent = 'Comment';
             }
         }
         

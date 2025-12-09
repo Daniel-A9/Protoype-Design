@@ -210,8 +210,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
                         </div>
                     </div>
                 </div>
@@ -272,8 +272,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 2 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -317,8 +317,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 3 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -362,8 +362,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 4 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -407,8 +407,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
 
                             <!-- Product Card 5 -->
                             <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
@@ -452,8 +452,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
+                                </div>
+                            </header>
             </div>
             
             <!-- Events Link -->
@@ -487,17 +487,19 @@
                             <h3 class="left-align">Posts</h3>
                         </div>
                     </div>
-
-                    <!-- Post Card 1 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
+                    <div class="feed-container">
+                        <!-- Post Card 1 -->
+                        <article class="card small">
+                            <header class="card-header-row">
                                 <div class="row no-gap">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" class="circle small">
                                     </div>
                                     <div class="col s8">
-                                        <h6>Sunny Acres Farm</h6>
-                                        <small class="text-grey">2 hours ago</small>
+                                        <h5 class="card-title">Sunny Acres Farm</h5>
+                                        <div class="card-meta">
+                                            <span>2 hours ago</span>
+                                        </div>
                                     </div>
                                     <div class="col s2 right-align">
                                         <button data-ui="#post-menu-1" class="circle transparent small">
@@ -507,9 +509,10 @@
                                             <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
                                         </menu>
                                     </div>
-                                </footer>
-                            </article>
-                            <div class="card-content">
+                                </div>
+                            </header>
+                            <div class="card-divider"></div>
+                            <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1500934824176-417feca7c2d8?w=600&h=300&fit=crop" 
                                      alt="Freshly harvested vegetables from the field" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
                                 <p>The first wave of spring greens is here! We just harvested butter lettuce, rainbow chard, and tender baby kale for this week’s CSA shares. Everything was picked at sunrise and cooled within the hour so it reaches your kitchen crisp and vibrant. 🥬</p>
@@ -530,11 +533,18 @@
                                             <span class="comment-count">8</span>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                </div>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-1" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-1">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </footer>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
@@ -580,26 +590,21 @@
 
                     <!-- Post Card 2 -->
                     <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
-                                <div class="row no-gap">
+                            <header class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Sunny Acres Farm" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Sunny Acres Farm</h6>
-                                        <small class="text-grey">1 day ago</small>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Sunny Acres Farm</h5>
+                                        <div class="card-meta">
+                                            <span>1 day ago</span>
+                                        </div>
                                     </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-2" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-2">
-                                            <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
-                                        </menu>
-                                    </div>
-                                </footer>
-                            </article>
-                            <div class="card-content">
+                                </div>
+                            </header>
+                            <div class="card-divider"></div>
+                            <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&h=300&fit=crop" 
                                      alt="Sunset over vegetable fields" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
                                 <p>We just installed new drip irrigation in our pepper and tomato tunnels. The plants are thriving, and we’re expecting our earliest summer harvest yet. Thank you to the volunteers who helped lay mulch this weekend! 🌱</p>
@@ -607,160 +612,145 @@
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="festival-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="festival-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">31</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="festival-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="festival-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">12</span>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" alt="SoilSaver" loading="lazy" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>SoilSaver</strong>
-                                            <p class="margin-vertical-small">The new irrigation looks great! Excited to see the tomato harvest this year.</p>
-                                            <small class="text-grey">3 hours ago</small>
-                                        </div>
-                                    </div>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-2" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-2">
+                                        <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </footer>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <article class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="SoilSaver" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>SoilSaver</strong>
+                                                <p>The new irrigation looks great! Excited to see the tomato harvest this year.</p>
+                                                <small class="text-grey">3 hours ago</small>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="tasting-post-comment-input">
+                                            <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="tasting-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="tasting-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="tasting-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
-                                </footer>
-                            </article>
-                        </div>
+                                </div>
+                            </div>
+                        </article>
 
-                    <!-- Post Card 3 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
-                                <div class="row no-gap">
-                                    <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
-                                    </div>
-                                    <div class="col s8">
-                                        <h6>Sunny Acres Farm</h6>
-                                        <small class="text-grey">3 days ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-3" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-3">
-                                            <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
-                                        </menu>
-                                    </div>
-                                </footer>
-                            </article>
-
-                    <!-- Post Card 3 -->
-                    <article class="medium margin-bottom-large margin-horizontal-small">
-                            <header>
-                                <div class="row no-gap">
+                        <!-- Post Card 3 -->
+                        <article class="card small">
+                            <header class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" alt="Sunny Acres Farm" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Sunny Acres Farm</h6>
-                                        <small class="text-grey">3 days ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-3" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-3">
-                                            <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Sunny Acres Farm</h5>
+                                        <div class="card-meta">
+                                            <span>3 days ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </header>
-                            <div>
+                            <div class="card-divider"></div>
+                            <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=300&fit=crop" 
-                                     alt="Family friendly farm tour" loading="lazy" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Family friendly farm tour" loading="lazy" class="responsive round medium-height">
+                            </figure>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Farm tour dates are open for June! Meet the goats, taste fresh berries right off the vine, and learn how we compost to build healthy soil. Tours are capped at 12 guests for an intimate experience. 🐐</p>
                             </div>
-                            <footer>
+                            <div class="card-divider"></div>
+                            <footer class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="tasting-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="tasting-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">18</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">5</span>
                                         </div>
                                     </div>
                                 </div>
-                            </footer>
-                            
-                            <!-- Comments Section -->
-                            <div class="surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" alt="MarketMaven" loading="lazy" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>MarketMaven</strong>
-                                            <p class="margin-vertical-small">Took my kids last season and they loved feeding the goats. Highly recommend!</p>
-                                            <small class="text-grey">1 day ago</small>
-                                        </div>
-                                    </div>
+                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                    <button data-ui="#post-menu-3" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-3">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
+                                    </menu>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                            </footer>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <article class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="MarketMaven" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>MarketMaven</strong>
+                                                <p>Took my kids last season and they loved feeding the goats. Highly recommend!</p>
+                                                <small class="text-grey">1 day ago</small>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="festival-post-comment-input">
+                                            <form hx-post="/api/comments/3" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="festival-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="festival-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="festival-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                    </article>
+                        </article>
                 </div>
             </div>
         </section>
@@ -1013,16 +1003,15 @@
             }
         }
         
-        function toggleComments(element) {
-            const postCard = element.closest('.card');
-            const commentsSection = postCard.querySelector('.card-footer');
+        // Toggle comments dropdown
+        function toggleComments(button) {
+            const card = button.closest('.card');
+            const commentsSection = card.querySelector('.comments-section');
             
-            if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
+            if (commentsSection.style.display === 'none') {
                 commentsSection.style.display = 'block';
-                element.querySelector('.comment-text').textContent = 'Hide Comments';
             } else {
                 commentsSection.style.display = 'none';
-                element.querySelector('.comment-text').textContent = 'Comment';
             }
         }
         

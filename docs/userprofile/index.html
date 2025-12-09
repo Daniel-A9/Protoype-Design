@@ -152,7 +152,7 @@
                 </button>
             </div>
             
-            <div class="card surface-container margin-horizontal-small responsive auto-margin" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
+            <article class="surface-container margin-horizontal-small responsive auto-margin" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
@@ -214,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
 
         <!-- Dashboard Section -->
@@ -382,7 +382,7 @@
                         </div>
                         
                         <!-- Post Card 1 -->
-                        <div class="card medium margin-bottom-large" style="position: relative;">
+                        <div class="card small" style="position: relative;">
                             <!-- Edit Controls -->
                             <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
                               <button class="circle small primary" onclick="editPost('brewing-post')" data-testid="edit-post-brewing">
@@ -392,34 +392,40 @@
                                 <i>delete</i>
                               </button>
                             </div>
-                            
-                            <div class="card-header">
-                                <div class="row no-gap">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s10">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">2 hours ago</small>
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>2 hours ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop" 
-                                     alt="Brewing Process" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewing Process" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Just finished brewing our latest batch of Citrus IPA! The hops are perfectly balanced with refreshing citrus notes. Can't wait to share this with our community. The brewing process took 3 weeks of careful fermentation and conditioning. 🍺</p>
                             </div>
+                            <div class="card-divider"></div>
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                        <div class="clickable-container" onclick="toggleLike(this)">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">24</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                        <div class="clickable-container" onclick="toggleComments(this)">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">8</span>
@@ -427,10 +433,30 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <!-- Comments will be loaded here -->
+                                </div>
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                                                    <button type="submit" class="btn small">Post</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Post Card 2 -->
-                        <div class="card medium margin-bottom-large" style="position: relative;">
+                        <div class="card small" style="position: relative;">
                             <!-- Edit Controls -->
                             <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
                               <button class="circle small primary" onclick="editPost('festival-post')" data-testid="edit-post-festival">
@@ -440,34 +466,40 @@
                                 <i>delete</i>
                               </button>
                             </div>
-                            
-                            <div class="card-header">
-                                <div class="row no-gap">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s10">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">1 day ago</small>
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>1 day ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
-                                     alt="Chocolate Stout" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Chocolate Stout" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Our seasonal Chocolate Stout is back! Rich chocolate and coffee flavors with a smooth finish. Perfect for these cooler evenings. Limited batch available - get yours before it's gone! ☕</p>
                             </div>
+                            <div class="card-divider"></div>
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                        <div class="clickable-container" onclick="toggleLike(this)">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">31</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                        <div class="clickable-container" onclick="toggleComments(this)">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">12</span>
@@ -475,10 +507,30 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <!-- Comments will be loaded here -->
+                                </div>
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                                                    <button type="submit" class="btn small">Post</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Post Card 3 -->
-                        <div class="card medium margin-bottom-large" style="position: relative;">
+                        <div class="card small" style="position: relative;">
                             <!-- Edit Controls -->
                             <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
                               <button class="circle small primary" onclick="editPost('tasting-post')" data-testid="edit-post-tasting">
@@ -488,37 +540,63 @@
                                 <i>delete</i>
                               </button>
                             </div>
-                            
-                            <div class="card-header">
-                                <div class="row no-gap">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s10">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">3 days ago</small>
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>3 days ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
-                                     alt="Brewery Tour" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewery Tour" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>New brewery tour dates are live! Come see how we craft our signature beers. Includes tasting flight and take-home growler. Book your spot today! Limited to 15 people per tour. 🏭</p>
                             </div>
+                            <div class="card-divider"></div>
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                        <div class="clickable-container" onclick="toggleLike(this)">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">18</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" style="cursor: pointer; padding: 0.5rem;">
+                                        <div class="clickable-container" onclick="toggleComments(this)">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comments-section" style="display: none;">
+                                <div class="comments-list">
+                                    <!-- Comments will be loaded here -->
+                                </div>
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <form hx-post="/api/comments/3" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required>
+                                                    <button type="submit" class="btn small">Post</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -751,7 +829,7 @@
           vendorAvatar
         });
 
-        const firstCard = postsColumn.querySelector('.card');
+        const firstCard = postsColumn.querySelector('article');
         if (firstCard) {
           postsColumn.insertBefore(card, firstCard);
         } else {
@@ -767,8 +845,8 @@
       }
 
       function buildPostCard({ id, title, description, media, vendorName, vendorAvatar }) {
-        const card = document.createElement('div');
-        card.className = 'card medium margin-bottom-large';
+        const card = document.createElement('article');
+        card.className = 'medium margin-bottom-large';
         card.style.position = 'relative';
         card.dataset.postId = id;
 
@@ -801,8 +879,7 @@
         editControls.appendChild(deleteButton);
         card.appendChild(editControls);
 
-        const cardHeader = document.createElement('div');
-        cardHeader.className = 'card-header';
+        const cardHeader = document.createElement('header');
         const headerRow = document.createElement('div');
         headerRow.className = 'row no-gap';
 
@@ -831,7 +908,6 @@
         card.appendChild(cardHeader);
 
         const cardContent = document.createElement('div');
-        cardContent.className = 'card-content';
 
         if (title) {
           const titleHeading = document.createElement('h5');
@@ -991,6 +1067,37 @@
           if (postCard) {
             postCard.remove();
           }
+        }
+      }
+
+      // Toggle comments dropdown
+      function toggleComments(button) {
+        const card = button.closest('.card');
+        const commentsSection = card.querySelector('.comments-section');
+        
+        if (commentsSection.style.display === 'none') {
+          commentsSection.style.display = 'block';
+        } else {
+          commentsSection.style.display = 'none';
+        }
+      }
+
+      // Toggle like functionality
+      function toggleLike(button) {
+        const heartIcon = button.querySelector('.material-icons');
+        const likeCountSpan = button.querySelector('.like-count');
+        const currentCount = parseInt(likeCountSpan.textContent);
+        
+        if (heartIcon.textContent === 'favorite_border') {
+          // Like the post
+          heartIcon.textContent = 'favorite';
+          button.classList.add('liked');
+          likeCountSpan.textContent = currentCount + 1;
+        } else {
+          // Unlike the post
+          heartIcon.textContent = 'favorite_border';
+          button.classList.remove('liked');
+          likeCountSpan.textContent = currentCount - 1;
         }
       }
 

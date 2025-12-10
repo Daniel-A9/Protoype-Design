@@ -9,79 +9,6 @@
    
    
 <link href="../../style.css" rel="stylesheet">
-
-<style>
-/* Heart favorite animation */
-@keyframes heartPulse {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.3); }
-  50% { transform: scale(1.1); }
-  75% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.heart-animate {
-  animation: heartPulse 0.6s ease-in-out;
-}
-
-/* Green firework animation */
-@keyframes firework {
-  0% { 
-    transform: translateY(0) scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(20px) scale(1);
-    opacity: 0.8;
-  }
-  100% { 
-    transform: translateY(40px) scale(0.5);
-    opacity: 0;
-  }
-}
-
-.firework-effect {
-  position: relative;
-}
-
-.firework-effect::after {
-  content: '✨';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 20px;
-  color: #4CAF50;
-  animation: firework 0.8s ease-out;
-  pointer-events: none;
-}
-
-/* Product card hover effect */
-.product-card-clickable {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.product-card-clickable:hover {
-  transform: translateY(-4px);
-}
-
-body.dark #vendorMessageModal {
-  background-color: var(--surface) !important;
-}
-
-@media (max-width: 600px) {
-  #vendorMessageModal {
-    margin-bottom: 72px !important;
-    max-height: calc(100vh - 96px) !important;
-  }
-
-  #vendorMessageModal > main {
-    max-height: calc(100vh - 192px);
-    overflow-y: auto;
-  }
-}
-</style>
   </head>
   <body>
 
@@ -109,11 +36,11 @@ body.dark #vendorMessageModal {
         <a href="../../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile" aria-label="User profile">
           <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="Profile" loading="lazy" class="circle small">
         </a>
-        <button type="button" class="feed-menu-btn" aria-label="Vendor menu" aria-expanded="false" aria-controls="vendorMenu" onclick="toggleHamburgerMenu()" data-testid="vendor-hamburger-menu-btn">
+        <button type="button" class="feed-menu-btn" aria-label="Vendor menu" aria-expanded="false" aria-controls="vendorMenu" data-ui="#vendor-hamburger-menu" data-testid="vendor-hamburger-menu-btn">
           <i>menu</i>
           <menu class="feed-menu-dropdown" id="vendorMenu" role="menu">
             <li role="menuitem">
-              <a href="#" class="menu-item">Vendor Settings</a>
+              <a href="#" class="menu-item" data-ui="#vendor-hamburger-menu">Vendor Settings</a>
             </li>
           </menu>
         </button>
@@ -121,25 +48,25 @@ body.dark #vendorMessageModal {
     </header>
 
     <!-- Hamburger Menu Overlay for Vendor -->
-    <div id="vendor-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    <div id="vendor-hamburger-menu-overlay" class="overlay" data-ui="#vendor-hamburger-menu"></div>
     
     <!-- Hamburger Menu Sidebar for Vendor -->
-    <div id="vendor-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
-      <div style="padding: 1rem;">
-        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+    <dialog id="vendor-hamburger-menu" class="right medium-width">
+      <nav class="vertical padding">
+        <button class="circle transparent small right" data-ui="#vendor-hamburger-menu">
           <i>close</i>
         </button>
-        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+        <div class="space"></div>
         
-        <hr style="margin: 0.75rem 0;">
+        <hr class="margin-vertical-small">
         
         <!-- Menu Items -->
-        <a href="#" onclick="openReportDialog('vendor', 'brewery-central'); toggleHamburgerMenu(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
-          <span style="font-size: 0.9rem;">Report Vendor</span>
+        <a href="#" onclick="openReportDialog('vendor', 'brewery-central'); ui('#vendor-hamburger-menu'); return false;" class="row middle-align padding-vertical-small">
+          <i class="medium">flag</i>
+          <span class="small-text">Report Vendor</span>
         </a>
-      </div>
-    </div>
+      </nav>
+    </dialog>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
@@ -165,10 +92,10 @@ body.dark #vendorMessageModal {
         <section id="home" class="margin-bottom-large">
             <div class="margin-bottom-negative-large">
                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
-                     alt="Brewery Interior with Copper Vessels" class="responsive round" style="height: 300px; object-fit: cover;">
+                     alt="Brewery Interior with Copper Vessels" class="responsive round medium-height" loading="lazy">
             </div>
             
-            <div class="card surface-container margin-horizontal-small responsive auto-margin padding-medium">
+            <article class="surface-container margin-horizontal-small responsive auto-margin padding-medium">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
@@ -176,7 +103,7 @@ body.dark #vendorMessageModal {
                                 <div class="col s12 m8 l8">
                                     <div class="row no-gap middle-align">
                                         <div class="col s2">
-                                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" class="circle small" alt="Brewery Central Logo">
+                                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" class="circle small" alt="Brewery Central Logo" loading="lazy">
                                         </div>
                                         <div class="col s10">
                                             <h2 class="left-align">Brewery Central</h2>
@@ -186,16 +113,16 @@ body.dark #vendorMessageModal {
                                     
                                     <div class="row no-gap middle-align margin-top-small">
                                         <div class="col s6 m4 l4">
-                                            <a href="followers/" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="followers/" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">2.3k</span>
                                                     <div class="text-small text-grey">Followers</div>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="col s6 m4 l4">
-                                            <a href="connections/" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="connections/" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">156</span>
                                                     <div class="text-small text-grey">Connections</div>
                                                 </div>
@@ -203,57 +130,49 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
 
-                                    <div class="row no-gap wrap margin-top-small small-space">
-                                        <div>
-                                            <button class="btn primary border" 
-                                                    hx-post="/api/follow" 
-                                                    hx-target="this" 
-                                                    hx-swap="outerHTML"
-                                                    data-testid="follow-vendor-btn">
-                                                <span>Follow</span>
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="btn primary border circle" 
-                                                    data-open-modal="vendorMessageModal"
-                                                    data-testid="message-vendor-btn"
-                                                    aria-label="Message Brewery Central">
-                                                <i>mail</i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <nav class="row no-gap wrap margin-top-small small-space">
+                                        <button class="btn primary border" 
+                                                hx-post="/api/follow" 
+                                                hx-target="this" 
+                                                hx-swap="outerHTML"
+                                                data-testid="follow-vendor-btn">
+                                            <span>Follow</span>
+                                        </button>
+                                        <button class="btn primary border circle" 
+                                                data-open-modal="vendorMessageModal"
+                                                data-testid="message-vendor-btn"
+                                                aria-label="Message Brewery Central">
+                                            <i>mail</i>
+                                        </button>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
 
-        <dialog id="vendorMessageModal" class="modal small-height" style="background-color: #F5F0E8;">
+        <dialog id="vendorMessageModal" class="modal small-height surface-bright">
             <header class="padding-horizontal small-padding">
                 <nav class="middle-align">
                     <button class="circle transparent" data-close-modal="vendorMessageModal" aria-label="Close message composer">
                         <i>arrow_back</i>
                     </button>
-                    <h6 class="max" style="margin-left: 0.5rem; font-size: 0.85rem;">Messaging: Brewery Central</h6>
+                    <h6 class="max small-text left-margin-small">Messaging: Brewery Central</h6>
                 </nav>
             </header>
-            <main class="padding-horizontal" style="padding-bottom: 0.5rem;">
-                <div class="field textarea fill" style="margin-bottom: 0.75rem;">
+            <main class="padding-horizontal padding-bottom-small">
+                <div class="field textarea fill margin-bottom-medium">
                     <textarea id="messageBody" name="messageBody" placeholder="What's on your mind?" rows="5" aria-label="Message body"></textarea>
                 </div>
                 <nav class="row no-gap">
-                    <div class="col s6">
-                        <button class="btn border surface" data-close-modal="vendorMessageModal" style="width: 100%;">
-                            <span>Cancel</span>
-                        </button>
-                    </div>
-                    <div class="col s6">
-                        <button class="btn primary" data-close-modal="vendorMessageModal" style="width: 100%;">
-                            <span>Send</span>
-                        </button>
-                    </div>
+                    <button class="btn border surface max" data-close-modal="vendorMessageModal">
+                        <span>Cancel</span>
+                    </button>
+                    <button class="btn primary max" data-close-modal="vendorMessageModal">
+                        <span>Send</span>
+                    </button>
                 </nav>
             </main>
         </dialog>
@@ -269,26 +188,26 @@ body.dark #vendorMessageModal {
             </div>
             
             <!-- Products Grid - Full Width for Horizontal Scroll -->
-            <div id="products-grid" class="row no-wrap scroll" style="padding: 0.5rem 0; gap: 1.5rem; padding-left: 0.5rem; padding-right: 0.5rem; overflow-x: auto; overflow-y: hidden; align-items: flex-start; height: auto;">
+            <div id="products-grid" class="row no-wrap scroll top-align horizontal-padding small-space">
                             <!-- Product Card 1 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('citrus-ipa')" style="cursor: pointer;">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('citrus-ipa')" class="link">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
-                                         alt="Citrus IPA" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Citrus IPA</h5>
-                                        <p class="text-grey margin-vertical-small">Perfectly balanced hops with refreshing citrus notes</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$8.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Citrus IPA" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Citrus IPA</h5>
+                                    <p>Perfectly balanced hops with refreshing citrus notes</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$8.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -316,24 +235,24 @@ body.dark #vendorMessageModal {
                             </article>
 
                             <!-- Product Card 2 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('chocolate-stout')" style="cursor: pointer;">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('chocolate-stout')" class="link">
                                     <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
-                                         alt="Chocolate Stout" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Chocolate Stout</h5>
-                                        <p class="text-grey margin-vertical-small">Rich chocolate and coffee flavors with smooth finish</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$9.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Chocolate Stout" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Chocolate Stout</h5>
+                                    <p>Rich chocolate and coffee flavors with smooth finish</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$9.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -361,24 +280,24 @@ body.dark #vendorMessageModal {
                             </article>
 
                             <!-- Product Card 3 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('golden-lager')" style="cursor: pointer;">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('golden-lager')" class="link">
                                     <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
-                                         alt="Golden Lager" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Golden Lager</h5>
-                                        <p class="text-grey margin-vertical-small">Crisp and refreshing with clean finish</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$7.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Golden Lager" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Golden Lager</h5>
+                                    <p>Crisp and refreshing with clean finish</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$7.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -406,24 +325,24 @@ body.dark #vendorMessageModal {
                             </article>
 
                             <!-- Product Card 4 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('hefeweizen')" style="cursor: pointer;">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('hefeweizen')" class="link">
                                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" 
-                                         alt="Hefeweizen" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Hefeweizen</h5>
-                                        <p class="text-grey margin-vertical-small">Traditional German wheat beer with banana and clove notes</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$8.49</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Hefeweizen" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Hefeweizen</h5>
+                                    <p>Traditional German wheat beer with banana and clove notes</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$8.49</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -451,24 +370,24 @@ body.dark #vendorMessageModal {
                             </article>
 
                             <!-- Product Card 5 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('pale-ale')" style="cursor: pointer;">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('pale-ale')" class="link">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
-                                         alt="Pale Ale" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Pale Ale</h5>
-                                        <p class="text-grey margin-vertical-small">Classic American pale ale with balanced hop bitterness</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$7.49</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Pale Ale" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Pale Ale</h5>
+                                    <p>Classic American pale ale with balanced hop bitterness</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$7.49</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -498,22 +417,26 @@ body.dark #vendorMessageModal {
             
             <!-- Events Link -->
             <div class="container medium-width auto-margin margin-top-medium left-align">
-                <a href="events/" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px; margin-bottom: 1.75rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="gallery/" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="events/" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 2rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
-                <a href="gallery/" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 0.75rem;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
+                <nav class="vertical l">
+                    <a href="events/" class="text-primary link row middle-align small-space margin-bottom-large">
+                        <span class="large-text">See Upcoming Events</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                    <a href="gallery/" class="text-primary link row middle-align small-space">
+                        <span class="large-text">See Photo Gallery</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                </nav>
+                <nav class="vertical s m margin-top-large">
+                    <a href="events/" class="text-primary link row middle-align small-space margin-top-large">
+                        <span class="medium-text">See Upcoming Events</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                    <a href="gallery/" class="text-primary link row middle-align small-space margin-top-medium">
+                        <span class="medium-text">See Photo Gallery</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                </nav>
             </div>
         </section>
 
@@ -570,7 +493,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                <div class="absolute right bottom small-padding">
                                     <button data-ui="#post-menu-1" class="circle transparent small">
                                         <i>more_vert</i>
                                     </button>
@@ -579,7 +502,7 @@ body.dark #vendorMessageModal {
                                     </menu>
                                 </div>
                             </div>
-                            <div class="comments-section" style="display: none;">
+                            <div class="comments-section page">
                                 <div class="comments-list">
                                     <div class="comment-item">
                                         <div class="row no-gap">
@@ -666,7 +589,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                <div class="absolute right bottom small-padding">
                                     <button data-ui="#post-menu-2" class="circle transparent small">
                                         <i>more_vert</i>
                                     </button>
@@ -675,7 +598,7 @@ body.dark #vendorMessageModal {
                                     </menu>
                                 </div>
                             </div>
-                            <div class="comments-section" style="display: none;">
+                            <div class="comments-section page">
                                 <div class="comments-list">
                                     <div class="comment-item">
                                         <div class="row no-gap">
@@ -750,7 +673,7 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
                                 </div>
-                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                <div class="absolute right bottom small-padding">
                                     <button data-ui="#post-menu-3" class="circle transparent small">
                                         <i>more_vert</i>
                                     </button>
@@ -759,7 +682,7 @@ body.dark #vendorMessageModal {
                                     </menu>
                                 </div>
                             </div>
-                            <div class="comments-section" style="display: none;">
+                            <div class="comments-section page">
                                 <div class="comments-list">
                                     <div class="comment-item">
                                         <div class="row no-gap">
@@ -797,29 +720,25 @@ body.dark #vendorMessageModal {
         </section>
 
         <!-- Product Detail Dialog -->
-        <dialog id="product-dialog" class="modal medium" style="max-height: calc(100vh - 108px); height: calc(100vh - 108px);">
-            <button data-ui="#product-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <dialog id="product-dialog" class="modal medium small-height max">
+            <button data-ui="#product-dialog" class="circle transparent absolute right top small-padding front">
                 <i>close</i>
             </button>
             
-            <div style="max-height: 100%; overflow-y: auto; padding-bottom: 1rem;">
+            <div class="max scroll padding-bottom-medium">
                 <!-- Product Image -->
-                <img id="dialog-product-image" src="" alt="" class="responsive round" style="height: 300px; object-fit: cover; width: 100%;">
+                <img id="dialog-product-image" src="" alt="" class="responsive round medium-height max">
                 
                 <!-- Action Buttons -->
-                <div class="row no-gap margin-top-medium" style="gap: 0.5rem;">
-                    <div class="col s8">
-                        <button id="dialog-add-to-cart-btn" class="btn primary" style="width: 100%;" onclick="addToCartWithAnimation(this)">
-                            <i>add_shopping_cart</i>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="col s4">
-                        <button id="dialog-favorite-btn" class="btn outline" style="width: 100%;" onclick="toggleFavoriteWithAnimation(this)">
-                            <i>favorite_border</i>
-                        </button>
-                    </div>
-                </div>
+                <nav class="row no-gap margin-top-medium small-space">
+                    <button id="dialog-add-to-cart-btn" class="btn primary max" onclick="addToCartWithAnimation(this)">
+                        <i>add_shopping_cart</i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <button id="dialog-favorite-btn" class="btn outline max" onclick="toggleFavoriteWithAnimation(this)">
+                        <i>favorite_border</i>
+                    </button>
+                </nav>
                 
                 <!-- Product Info -->
                 <div class="padding-medium">
@@ -865,29 +784,29 @@ body.dark #vendorMessageModal {
                     <!-- Payment Methods -->
                     <div class="margin-vertical-medium">
                         <h6 class="text-bold">Accepted Payment Methods</h6>
-                        <div class="row no-gap middle-align" style="gap: 1rem; margin-top: 0.5rem;">
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                        <nav class="row no-gap middle-align small-space margin-top-small">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">credit_card</i>
                                 <small>Stripe</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">account_balance</i>
                                 <small>PayPal</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">payment</i>
                                 <small>Venmo</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">attach_money</i>
                                 <small>Cash</small>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                     
                     <!-- Report Button -->
                     <div class="margin-vertical-medium">
-                        <button class="btn outline" style="width: 100%;" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
+                        <button class="btn outline max" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
                             <i>flag</i>
                             <span>Report Product</span>
                         </button>
@@ -905,7 +824,7 @@ body.dark #vendorMessageModal {
 
     <!-- Unified Report Dialog -->
     <dialog id="report-dialog" class="modal medium">
-        <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <button data-ui="#report-dialog" class="circle transparent absolute right top small-padding front">
             <i>close</i>
         </button>
         
@@ -931,7 +850,7 @@ body.dark #vendorMessageModal {
                 </div>
                 
                 <!-- Conditional Explain Field for Inappropriate Content/Product -->
-                <div id="explain-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="explain-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-explain" placeholder=" ">
                         <label>Explain</label>
@@ -939,7 +858,7 @@ body.dark #vendorMessageModal {
                 </div>
                 
                 <!-- Conditional Text Field for Other -->
-                <div id="other-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="other-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-other" placeholder=" ">
                         <label>Please specify</label>
@@ -1042,14 +961,11 @@ body.dark #vendorMessageModal {
 
         // Toggle comments dropdown
         function toggleComments(button) {
-            const card = button.closest('.card');
+            const card = button.closest('.card') || button.closest('article');
             const commentsSection = card.querySelector('.comments-section');
             
-            if (commentsSection.style.display === 'none') {
-                commentsSection.style.display = 'block';
-            } else {
-                commentsSection.style.display = 'none';
-            }
+            // Use Beer CSS active class - page elements are hidden by default, active shows them
+            commentsSection.classList.toggle('active');
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -1209,19 +1125,9 @@ body.dark #vendorMessageModal {
             }, 600);
         }
 
-        // Hamburger Menu Toggle for Vendor
-        function toggleHamburgerMenu() {
-            const overlay = document.getElementById('vendor-hamburger-menu-overlay');
-            const menu = document.getElementById('vendor-hamburger-menu');
-            
-            if (overlay.style.display === 'none' || overlay.style.display === '') {
-                overlay.style.display = 'block';
-                menu.style.right = '0';
-            } else {
-                overlay.style.display = 'none';
-                menu.style.right = '-240px';
-            }
-        }
+        // Hamburger Menu Toggle for Vendor - Now using Beer CSS ui() function
+        // The hamburger menu is now controlled via data-ui attributes and ui() function
+        // No custom JavaScript needed - Beer CSS handles it automatically
 
         // Report Dialog Functions
         let currentReportType = '';
@@ -1246,8 +1152,8 @@ body.dark #vendorMessageModal {
             
             // Reset form
             document.getElementById('report-form').reset();
-            document.getElementById('explain-field-container').style.display = 'none';
-            document.getElementById('other-field-container').style.display = 'none';
+            document.getElementById('explain-field-container').classList.add('page');
+            document.getElementById('other-field-container').classList.add('page');
             
             // Open dialog
             ui('#report-dialog');
@@ -1258,15 +1164,15 @@ body.dark #vendorMessageModal {
             const explainContainer = document.getElementById('explain-field-container');
             const otherContainer = document.getElementById('other-field-container');
             
-            // Hide both containers first
-            explainContainer.style.display = 'none';
-            otherContainer.style.display = 'none';
+            // Hide both containers first using Beer CSS page class
+            explainContainer.classList.add('page');
+            otherContainer.classList.add('page');
             
             // Show appropriate container based on selection
             if (reason === 'inappropriate-content' || reason === 'inappropriate-product') {
-                explainContainer.style.display = 'block';
+                explainContainer.classList.remove('page');
             } else if (reason === 'other') {
-                otherContainer.style.display = 'block';
+                otherContainer.classList.remove('page');
             }
         }
 

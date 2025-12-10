@@ -9,63 +9,6 @@
    
    
 <link href="../../style.css" rel="stylesheet">
-
-<style>
-/* Heart favorite animation */
-@keyframes heartPulse {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.3); }
-  50% { transform: scale(1.1); }
-  75% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.heart-animate {
-  animation: heartPulse 0.6s ease-in-out;
-}
-
-/* Green firework animation */
-@keyframes firework {
-  0% { 
-    transform: translateY(0) scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(20px) scale(1);
-    opacity: 0.8;
-  }
-  100% { 
-    transform: translateY(40px) scale(0.5);
-    opacity: 0;
-  }
-}
-
-.firework-effect {
-  position: relative;
-}
-
-.firework-effect::after {
-  content: '✨';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 20px;
-  color: #4CAF50;
-  animation: firework 0.8s ease-out;
-  pointer-events: none;
-}
-
-/* Product card hover effect */
-.product-card-clickable {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.product-card-clickable:hover {
-  transform: translateY(-4px);
-}
-</style>
   </head>
   <body>
 
@@ -94,11 +37,11 @@
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
         <!-- Vendor Menu Button -->
-        <button type="button" class="feed-menu-btn" aria-label="Vendor menu" aria-expanded="false" aria-controls="vendorMenu" onclick="toggleHamburgerMenu()" data-testid="vendor-hamburger-menu-btn">
+        <button type="button" class="feed-menu-btn" aria-label="Vendor menu" aria-expanded="false" aria-controls="vendorMenu" data-ui="#vendor-hamburger-menu" data-testid="vendor-hamburger-menu-btn">
           <i>menu</i>
           <menu class="feed-menu-dropdown" id="vendorMenu" role="menu">
             <li role="menuitem">
-              <a href="#" class="menu-item" onclick="toggleHamburgerMenu(); return false;">Menu</a>
+              <a href="#" class="menu-item" data-ui="#vendor-hamburger-menu">Menu</a>
             </li>
           </menu>
         </button>
@@ -106,25 +49,25 @@
     </header>
 
     <!-- Hamburger Menu Overlay for Vendor -->
-    <div id="vendor-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    <div id="vendor-hamburger-menu-overlay" class="overlay" data-ui="#vendor-hamburger-menu"></div>
     
     <!-- Hamburger Menu Sidebar for Vendor -->
-    <div id="vendor-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
-      <div style="padding: 1rem;">
-        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+    <dialog id="vendor-hamburger-menu" class="right medium-width">
+      <nav class="vertical padding">
+        <button class="circle transparent small right" data-ui="#vendor-hamburger-menu">
           <i>close</i>
         </button>
-        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+        <div class="space"></div>
         
-        <hr style="margin: 0.75rem 0;">
+        <hr class="margin-vertical-small">
         
         <!-- Menu Items -->
-        <a href="#" onclick="openReportDialog('vendor', 'sunny-acres-farm'); toggleHamburgerMenu(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
-          <span style="font-size: 0.9rem;">Report Vendor</span>
+        <a href="#" onclick="openReportDialog('vendor', 'sunny-acres-farm'); ui('#vendor-hamburger-menu'); return false;" class="row middle-align padding-vertical-small">
+          <i class="medium">flag</i>
+          <span class="small-text">Report Vendor</span>
         </a>
-      </div>
-    </div>
+      </nav>
+    </dialog>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
@@ -153,7 +96,7 @@
                      alt="Sunny Acres Farm produce stand filled with fresh vegetables" class="responsive round medium-height" loading="lazy">
             </div>
             
-            <div class="card surface-container margin-horizontal-small responsive auto-margin" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
+            <article class="surface-container margin-horizontal-small responsive auto-margin round padding relative front">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
@@ -167,22 +110,22 @@
                                             <h2 class="left-align">Sunny Acres Farm</h2>
                                         </div>
                                     </div>
-                                    <div class="vendor-description-container" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                                      <p class="text-left text-grey" style="word-wrap: break-word; white-space: normal; line-height: 1.4; margin: 0;">Nurturing organic produce and memorable farm visits since 1998</p>
+                                    <div class="vendor-description-container margin-top-small margin-bottom-small">
+                                      <p class="text-left text-grey">Nurturing organic produce and memorable farm visits since 1998</p>
                                     </div>
                                     
                                     <div class="row no-gap wrap margin-top-small">
                                         <div class="col s6 m4 l3 margin-bottom-small">
-                                            <a href="followers.html" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="followers.html" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">2.1k</span>
                                                     <div class="text-small text-grey">Followers</div>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="col s6 m4 l3 margin-bottom-small">
-                                            <a href="connections.html" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="connections.html" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">132</span>
                                                     <div class="text-small text-grey">Connections</div>
                                                 </div>
@@ -190,32 +133,28 @@
                                         </div>
                                     </div>
 
-                                    <div class="row no-gap wrap margin-top-small" style="gap: 0.6rem;">
-                                        <div>
-                                            <button class="btn primary border" 
-                                                    hx-post="/api/follow" 
-                                                    hx-target="this" 
-                                                    hx-swap="outerHTML"
-                                                    data-testid="follow-vendor-btn">
-                                                <span>Follow</span>
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="btn primary border circle" 
-                                                    hx-get="/contact-form" 
-                                                    hx-target="#contact-modal" 
-                                                    hx-swap="innerHTML"
-                                                    data-testid="message-vendor-btn">
-                                                <i>mail</i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <nav class="row no-gap wrap margin-top-small small-space">
+                                        <button class="btn primary border" 
+                                                hx-post="/api/follow" 
+                                                hx-target="this" 
+                                                hx-swap="outerHTML"
+                                                data-testid="follow-vendor-btn">
+                                            <span>Follow</span>
+                                        </button>
+                                        <button class="btn primary border circle" 
+                                                hx-get="/contact-form" 
+                                                hx-target="#contact-modal" 
+                                                hx-swap="innerHTML"
+                                                data-testid="message-vendor-btn">
+                                            <i>mail</i>
+                                        </button>
+                                    </nav>
                                 </div>
-                            </header>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
 
         <!-- Products Section -->
@@ -229,26 +168,26 @@
             </div>
             
             <!-- Products Grid - Full Width for Horizontal Scroll -->
-            <div id="products-grid" class="row no-wrap scroll" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: flex-start; gap: 1.5rem; padding-left: 0.5rem; padding-right: 0.5rem; overflow-x: auto; overflow-y: hidden; height: auto;">
+            <div id="products-grid" class="row no-wrap scroll top-align horizontal-padding small-space">
                             <!-- Product Card 1 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('weekly-csa')" style="cursor: pointer;">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('weekly-csa')" class="link">
                                     <img src="https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?w=300&h=200&fit=crop" 
-                                         alt="Weekly CSA Share with fresh vegetables" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Weekly CSA Harvest Box</h5>
-                                        <p class="text-grey margin-vertical-small">Seasonal vegetables, fruits, and herbs gathered fresh from our fields each week</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$42.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per share</span>
-                                            </div>
+                                         alt="Weekly CSA Share with fresh vegetables" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Weekly CSA Harvest Box</h5>
+                                    <p>Seasonal vegetables, fruits, and herbs gathered fresh from our fields each week</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$42.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per share</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -272,28 +211,28 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 2 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('free-range-eggs')" style="cursor: pointer;">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('free-range-eggs')" class="link">
                                     <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=300&h=200&fit=crop" 
-                                         alt="Farm fresh eggs in a basket" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Free-Range Eggs</h5>
-                                        <p class="text-grey margin-vertical-small">Farm fresh eggs laid daily by pasture-raised hens with natural diets</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$6.50</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per dozen</span>
-                                            </div>
+                                         alt="Farm fresh eggs in a basket" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Free-Range Eggs</h5>
+                                    <p class="margin-vertical-small">Farm fresh eggs laid daily by pasture-raised hens with natural diets</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$6.50</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per dozen</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -317,28 +256,28 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 3 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('seasonal-bouquet')" style="cursor: pointer;">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('seasonal-bouquet')" class="link">
                                     <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=300&h=200&fit=crop" 
-                                         alt="Seasonal flower bouquet" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Seasonal Flower Bouquet</h5>
-                                        <p class="text-grey margin-vertical-small">Hand-tied bouquet featuring blooms grown in our pesticide-free flower garden</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$24.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per arrangement</span>
-                                            </div>
+                                         alt="Seasonal flower bouquet" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Seasonal Flower Bouquet</h5>
+                                    <p class="margin-vertical-small">Hand-tied bouquet featuring blooms grown in our pesticide-free flower garden</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$24.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per arrangement</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -362,28 +301,28 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 4 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('wildflower-honey')" style="cursor: pointer;">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('wildflower-honey')" class="link">
                                     <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?w=300&h=200&fit=crop" 
-                                         alt="Jar of local wildflower honey" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Wildflower Honey</h5>
-                                        <p class="text-grey margin-vertical-small">Raw, unfiltered honey sourced from our hives pollinating local wildflowers</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$12.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per 16oz jar</span>
-                                            </div>
+                                         alt="Jar of local wildflower honey" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Wildflower Honey</h5>
+                                    <p class="margin-vertical-small">Raw, unfiltered honey sourced from our hives pollinating local wildflowers</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$12.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per 16oz jar</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -407,28 +346,28 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 5 -->
-                            <article class="medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="product-card-clickable" onclick="openProduct('goat-chevre')" style="cursor: pointer;">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('goat-chevre')" class="link">
                                     <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=300&h=200&fit=crop" 
-                                         alt="Farmstead goat cheese with herbs" loading="lazy" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Farmstead Goat Chèvre</h5>
-                                        <p class="text-grey margin-vertical-small">Creamy artisanal chèvre blended with garden herbs for a bright finish</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$9.75</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per 6oz round</span>
-                                            </div>
+                                         alt="Farmstead goat cheese with herbs" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Farmstead Goat Chèvre</h5>
+                                    <p class="margin-vertical-small">Creamy artisanal chèvre blended with garden herbs for a bright finish</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$9.75</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per 6oz round</span>
                                         </div>
                                     </div>
                                 </div>
-                                <footer class="tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -452,28 +391,32 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
             </div>
             
             <!-- Events Link -->
             <div class="container medium-width auto-margin margin-top-medium left-align">
-                <a href="events.html" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px; margin-bottom: 1.75rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="gallery.html" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="events.html" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 2rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
-                <a href="gallery.html" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 0.75rem;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
+                <nav class="vertical l">
+                    <a href="events.html" class="text-primary link row middle-align small-space margin-bottom-large">
+                        <span class="large-text">See Upcoming Events</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                    <a href="gallery.html" class="text-primary link row middle-align small-space">
+                        <span class="large-text">See Photo Gallery</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                </nav>
+                <nav class="vertical s m margin-top-large">
+                    <a href="events.html" class="text-primary link row middle-align small-space margin-top-large">
+                        <span class="medium-text">See Upcoming Events</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                    <a href="gallery.html" class="text-primary link row middle-align small-space margin-top-medium">
+                        <span class="medium-text">See Photo Gallery</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                </nav>
             </div>
         </section>
 
@@ -509,32 +452,32 @@
                                             <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
                                         </menu>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
                             <div class="card-divider"></div>
                             <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1500934824176-417feca7c2d8?w=600&h=300&fit=crop" 
-                                     alt="Freshly harvested vegetables from the field" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
+                                     alt="Freshly harvested vegetables from the field" class="responsive round medium-height" loading="lazy">
                                 <p>The first wave of spring greens is here! We just harvested butter lettuce, rainbow chard, and tender baby kale for this week’s CSA shares. Everything was picked at sunrise and cooled within the hour so it reaches your kitchen crisp and vibrant. 🥬</p>
                             </div>
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="brewing-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <button class="transparent row no-gap middle-align small-padding round" onclick="toggleLike(this)" data-testid="brewing-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">24</span>
-                                        </div>
+                                        </button>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <button class="transparent row no-gap middle-align small-padding round" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">8</span>
-                                        </div>
+                                        </button>
                                     </div>
                                 </div>
-                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                <div class="absolute right bottom small-padding">
                                     <button data-ui="#post-menu-1" class="circle transparent small" aria-label="Post options">
                                         <i>more_vert</i>
                                     </button>
@@ -543,7 +486,7 @@
                                     </menu>
                                 </div>
                             </footer>
-                            <div class="comments-section" style="display: none;">
+                            <div class="comments-section page">
                                 <div class="comments-list">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
@@ -569,7 +512,7 @@
                                 </div>
                                 
                                 <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="margin-top-medium border-top padding-top-medium">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
@@ -601,12 +544,12 @@
                                             <span>1 day ago</span>
                                         </div>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
                             <div class="card-divider"></div>
                             <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600&h=300&fit=crop" 
-                                     alt="Sunset over vegetable fields" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
+                                     alt="Sunset over vegetable fields" class="responsive round medium-height" loading="lazy">
                                 <p>We just installed new drip irrigation in our pepper and tomato tunnels. The plants are thriving, and we’re expecting our earliest summer harvest yet. Thank you to the volunteers who helped lay mulch this weekend! 🌱</p>
                             </div>
                             <div class="card-footer">
@@ -626,7 +569,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                <div class="absolute right bottom small-padding">
                                     <button data-ui="#post-menu-2" class="circle transparent small" aria-label="Post options">
                                         <i>more_vert</i>
                                     </button>
@@ -635,7 +578,7 @@
                                     </menu>
                                 </div>
                             </footer>
-                            <div class="comments-section" style="display: none;">
+                            <div class="comments-section page">
                                 <div class="comments-list">
                                     <article class="comment-item">
                                         <div class="row no-gap">
@@ -681,8 +624,8 @@
                                             <span>3 days ago</span>
                                         </div>
                                     </div>
-                                </div>
-                            </header>
+                                </footer>
+                            </article>
                             <div class="card-divider"></div>
                             <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=300&fit=crop" 
@@ -710,7 +653,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="position: absolute; right: 0.5rem; bottom: 0.5rem;">
+                                <div class="absolute right bottom small-padding">
                                     <button data-ui="#post-menu-3" class="circle transparent small" aria-label="Post options">
                                         <i>more_vert</i>
                                     </button>
@@ -719,7 +662,7 @@
                                     </menu>
                                 </div>
                             </footer>
-                            <div class="comments-section" style="display: none;">
+                            <div class="comments-section page">
                                 <div class="comments-list">
                                     <article class="comment-item">
                                         <div class="row no-gap">
@@ -756,29 +699,25 @@
         </section>
 
         <!-- Product Detail Dialog -->
-        <dialog id="product-dialog" class="modal medium" style="max-height: calc(100vh - 108px); height: calc(100vh - 108px);">
-            <button data-ui="#product-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <dialog id="product-dialog" class="modal medium small-height max">
+            <button data-ui="#product-dialog" class="circle transparent absolute right top small-padding front">
                 <i>close</i>
             </button>
             
-            <div style="max-height: 100%; overflow-y: auto; padding-bottom: 1rem;">
+            <div class="max scroll padding-bottom-medium">
                 <!-- Product Image -->
-                <img id="dialog-product-image" src="" alt="" class="responsive round" style="height: 300px; object-fit: cover; width: 100%;">
+                <img id="dialog-product-image" src="" alt="" class="responsive round medium-height max">
                 
                 <!-- Action Buttons -->
-                <div class="row no-gap margin-top-medium" style="gap: 0.5rem;">
-                    <div class="col s8">
-                        <button id="dialog-add-to-cart-btn" class="btn primary" style="width: 100%;" onclick="addToCartWithAnimation(this)">
-                            <i>add_shopping_cart</i>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="col s4">
-                        <button id="dialog-favorite-btn" class="btn outline" style="width: 100%;" onclick="toggleFavoriteWithAnimation(this)">
-                            <i>favorite_border</i>
-                        </button>
-                    </div>
-                </div>
+                <nav class="row no-gap margin-top-medium small-space">
+                    <button id="dialog-add-to-cart-btn" class="btn primary max" onclick="addToCartWithAnimation(this)">
+                        <i>add_shopping_cart</i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <button id="dialog-favorite-btn" class="btn outline max" onclick="toggleFavoriteWithAnimation(this)">
+                        <i>favorite_border</i>
+                    </button>
+                </nav>
                 
                 <!-- Product Info -->
                 <div class="padding-medium">
@@ -824,29 +763,29 @@
                     <!-- Payment Methods -->
                     <div class="margin-vertical-medium">
                         <h6 class="text-bold">Accepted Payment Methods</h6>
-                        <div class="row no-gap middle-align" style="gap: 1rem; margin-top: 0.5rem;">
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                        <nav class="row no-gap middle-align small-space margin-top-small">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">credit_card</i>
                                 <small>Stripe</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">account_balance</i>
                                 <small>PayPal</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">payment</i>
                                 <small>Venmo</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">attach_money</i>
                                 <small>Cash</small>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                     
                     <!-- Report Button -->
                     <div class="margin-vertical-medium">
-                        <button class="btn outline" style="width: 100%;" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
+                        <button class="btn outline max" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
                             <i>flag</i>
                             <span>Report Product</span>
                         </button>
@@ -864,7 +803,7 @@
 
     <!-- Unified Report Dialog -->
     <dialog id="report-dialog" class="modal medium">
-        <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <button data-ui="#report-dialog" class="circle transparent absolute right top small-padding front">
             <i>close</i>
         </button>
         
@@ -890,7 +829,7 @@
                 </div>
                 
                 <!-- Conditional Explain Field for Inappropriate Content/Product -->
-                <div id="explain-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="explain-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-explain" placeholder=" ">
                         <label>Explain</label>
@@ -898,7 +837,7 @@
                 </div>
                 
                 <!-- Conditional Text Field for Other -->
-                <div id="other-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="other-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-other" placeholder=" ">
                         <label>Please specify</label>
@@ -1005,14 +944,11 @@
         
         // Toggle comments dropdown
         function toggleComments(button) {
-            const card = button.closest('.card');
+            const card = button.closest('.card') || button.closest('article');
             const commentsSection = card.querySelector('.comments-section');
             
-            if (commentsSection.style.display === 'none') {
-                commentsSection.style.display = 'block';
-            } else {
-                commentsSection.style.display = 'none';
-            }
+            // Use Beer CSS active class - page elements are hidden by default, active shows them
+            commentsSection.classList.toggle('active');
         }
         
         function addComment(element) {
@@ -1207,19 +1143,9 @@
             }, 600);
         }
 
-        // Hamburger Menu Toggle for Vendor
-        function toggleHamburgerMenu() {
-            const overlay = document.getElementById('vendor-hamburger-menu-overlay');
-            const menu = document.getElementById('vendor-hamburger-menu');
-            
-            if (overlay.style.display === 'none' || overlay.style.display === '') {
-                overlay.style.display = 'block';
-                menu.style.right = '0';
-            } else {
-                overlay.style.display = 'none';
-                menu.style.right = '-240px';
-            }
-        }
+        // Hamburger Menu Toggle for Vendor - Now using Beer CSS ui() function
+        // The hamburger menu is now controlled via data-ui attributes and ui() function
+        // No custom JavaScript needed - Beer CSS handles it automatically
 
         // Report Dialog Functions
         let currentReportType = '';
@@ -1256,15 +1182,15 @@
             const explainContainer = document.getElementById('explain-field-container');
             const otherContainer = document.getElementById('other-field-container');
             
-            // Hide both containers first
-            explainContainer.style.display = 'none';
-            otherContainer.style.display = 'none';
+            // Hide both containers first using Beer CSS page class
+            explainContainer.classList.add('page');
+            otherContainer.classList.add('page');
             
             // Show appropriate container based on selection
             if (reason === 'inappropriate-content' || reason === 'inappropriate-product') {
-                explainContainer.style.display = 'block';
+                explainContainer.classList.remove('page');
             } else if (reason === 'other') {
-                otherContainer.style.display = 'block';
+                otherContainer.classList.remove('page');
             }
         }
 

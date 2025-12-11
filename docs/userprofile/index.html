@@ -847,11 +847,40 @@
         });
       }
 
+      // Helper function to create footer action buttons (Like/Comment)
+      function createFooterAction(icon, label, textClass, countClass) {
+        const col = document.createElement('div');
+        col.className = 'col s6';
+        
+        const row = document.createElement('div');
+        row.className = 'row no-gap middle-align padding-small';
+        
+        const iconEl = document.createElement('i');
+        iconEl.className = 'material-icons';
+        iconEl.textContent = icon;
+        
+        const textEl = document.createElement('span');
+        textEl.className = textClass;
+        textEl.textContent = label;
+        
+        const countEl = document.createElement('span');
+        countEl.className = countClass;
+        countEl.textContent = '0';
+        
+        row.appendChild(iconEl);
+        row.appendChild(textEl);
+        row.appendChild(countEl);
+        col.appendChild(row);
+        
+        return col;
+      }
+
       function buildPostCard({ id, title, description, media, vendorName, vendorAvatar }) {
         const card = document.createElement('article');
         card.className = 'medium margin-bottom-large relative';
         card.dataset.postId = id;
 
+        // Edit controls
         const editControls = document.createElement('div');
         editControls.className = 'edit-control row no-space absolute top right front margin-small';
 
@@ -875,6 +904,7 @@
         editControls.appendChild(deleteButton);
         card.appendChild(editControls);
 
+        // Header
         const cardHeader = document.createElement('header');
         const headerRow = document.createElement('div');
         headerRow.className = 'row no-gap';
@@ -884,7 +914,7 @@
         const avatarImg = document.createElement('img');
         avatarImg.className = 'circle small';
         avatarImg.src = vendorAvatar;
-        avatarImg.alt = vendorName + ' profile picture';
+        avatarImg.alt = `${vendorName} profile picture`;
         avatarImg.loading = 'lazy';
         avatarCol.appendChild(avatarImg);
 
@@ -903,6 +933,7 @@
         cardHeader.appendChild(headerRow);
         card.appendChild(cardHeader);
 
+        // Content
         const cardContent = document.createElement('div');
 
         if (title) {
@@ -912,30 +943,23 @@
         }
 
         if (media && media.src) {
-          let mediaElement;
-          if (media.type === 'video') {
-            mediaElement = document.createElement('video');
+          const isVideo = media.type === 'video';
+          const mediaElement = isVideo ? document.createElement('video') : document.createElement('img');
+          
+          mediaElement.className = 'responsive round medium-height';
+          mediaElement.src = media.src;
+          
+          if (isVideo) {
             mediaElement.controls = true;
-            mediaElement.className = 'responsive round medium-height';
             mediaElement.setAttribute('playsinline', '');
-            mediaElement.src = media.src;
           } else {
-            mediaElement = document.createElement('img');
-            mediaElement.className = 'responsive round medium-height';
-            mediaElement.src = media.src;
             mediaElement.alt = title || 'Vendor post image';
             mediaElement.loading = 'lazy';
           }
 
-          if (media.src && media.src.startsWith('blob:')) {
-            const revokeUrl = function() {
-              URL.revokeObjectURL(media.src);
-            };
-            if (media.type === 'video') {
-              mediaElement.addEventListener('loadeddata', revokeUrl, { once: true });
-            } else {
-              mediaElement.addEventListener('load', revokeUrl, { once: true });
-            }
+          if (media.src.startsWith('blob:')) {
+            const revokeUrl = () => URL.revokeObjectURL(media.src);
+            mediaElement.addEventListener(isVideo ? 'loadeddata' : 'load', revokeUrl, { once: true });
           }
 
           cardContent.appendChild(mediaElement);
@@ -944,52 +968,16 @@
         const descriptionParagraph = document.createElement('p');
         descriptionParagraph.textContent = description;
         cardContent.appendChild(descriptionParagraph);
-
         card.appendChild(cardContent);
 
+        // Footer
         const cardFooter = document.createElement('div');
         cardFooter.className = 'card-footer';
         const footerRow = document.createElement('div');
         footerRow.className = 'row no-gap';
-
-        const likeCol = document.createElement('div');
-        likeCol.className = 'col s6';
-        const likeRow = document.createElement('div');
-        likeRow.className = 'row no-gap middle-align padding-small';
-        const likeIcon = document.createElement('i');
-        likeIcon.className = 'material-icons';
-        likeIcon.textContent = 'favorite_border';
-        const likeText = document.createElement('span');
-        likeText.className = 'like-text';
-        likeText.textContent = 'Like';
-        const likeCount = document.createElement('span');
-        likeCount.className = 'like-count';
-        likeCount.textContent = '0';
-        likeRow.appendChild(likeIcon);
-        likeRow.appendChild(likeText);
-        likeRow.appendChild(likeCount);
-        likeCol.appendChild(likeRow);
-
-        const commentCol = document.createElement('div');
-        commentCol.className = 'col s6';
-        const commentRow = document.createElement('div');
-        commentRow.className = 'row no-gap middle-align padding-small';
-        const commentIcon = document.createElement('i');
-        commentIcon.className = 'material-icons';
-        commentIcon.textContent = 'chat_bubble_outline';
-        const commentText = document.createElement('span');
-        commentText.className = 'comment-text';
-        commentText.textContent = 'Comment';
-        const commentCount = document.createElement('span');
-        commentCount.className = 'comment-count';
-        commentCount.textContent = '0';
-        commentRow.appendChild(commentIcon);
-        commentRow.appendChild(commentText);
-        commentRow.appendChild(commentCount);
-        commentCol.appendChild(commentRow);
-
-        footerRow.appendChild(likeCol);
-        footerRow.appendChild(commentCol);
+        footerRow.appendChild(createFooterAction('favorite_border', 'Like', 'like-text', 'like-count'));
+        footerRow.appendChild(createFooterAction('chat_bubble_outline', 'Comment', 'comment-text', 'comment-count'));
+        
         cardFooter.appendChild(footerRow);
         card.appendChild(cardFooter);
 

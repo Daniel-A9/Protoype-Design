@@ -48,75 +48,84 @@
     </header>
 
     <!-- Hamburger Menu Overlay -->
-    <div id="hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    <div id="hamburger-menu-overlay" class="overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 9998;"></div>
     
     <!-- Hamburger Menu Sidebar -->
-    <div id="hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
-      <div style="padding: 1rem;">
-        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
-          <i>close</i>
-        </button>
-        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+    <aside id="hamburger-menu" class="fixed top right surface-container" style="right: -240px; width: 240px; top: 0; height: auto; min-height: fit-content; max-height: 100vh; z-index: 9999; position: fixed; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
+      <div class="padding-large">
+        <div class="right-align">
+          <button class="circle transparent small no-margin" onclick="toggleHamburgerMenu()">
+            <i>close</i>
+          </button>
+        </div>
+        <div class="margin-bottom-small"></div>
         
         <!-- Edit Vendor Button -->
-        <button id="edit-vendor-btn" class="responsive small" onclick="startEditMode()" data-testid="edit-vendor-btn" style="width: 100%; padding: 0.5rem;">
+        <button id="edit-vendor-btn" class="responsive small max margin-bottom-medium" onclick="startEditMode()" data-testid="edit-vendor-btn">
           <i>edit</i>
           <span>Edit Vendor</span>
         </button>
         
-        <hr style="margin: 0.75rem 0;">
+        <hr class="margin-vertical-medium">
         
         <!-- Menu Items -->
-        <a href="shopper/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">person_outline</i>
-          <span style="font-size: 0.9rem;">Personal Profile</span>
-        </a>
-        
-        <a href="groups/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">groups</i>
-          <span style="font-size: 0.9rem;">Groups</span>
-        </a>
-        
-        <a href="vendor-settings/" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">settings</i>
-          <span style="font-size: 0.9rem;">Vendor Settings</span>
-        </a>
-        
-        <hr style="margin: 0.75rem 0;">
-        
-        <!-- Create Category -->
-        <div style="font-size: 0.7rem; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; font-weight: 600;">Create</div>
-        
-        <a href="../newproduct/index.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">add_box</i>
-          <span style="font-size: 0.9rem;">Add Product</span>
-        </a>
-        
-        <a href="#new-post-dialog" data-ui="#new-post-dialog" onclick="createNewPost()" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">post_add</i>
-          <span style="font-size: 0.9rem;">New Post</span>
-        </a>
-        
-        <a href="../events/new/index.html" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">event</i>
-          <span style="font-size: 0.9rem;">Add Event</span>
-        </a>
-        
-        <a href="#certificate-dialog" data-ui="#certificate-dialog" onclick="openCertificateDialog(event);" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">verified_user</i>
-          <span style="font-size: 0.9rem;">Add Certificate</span>
-        </a>
+        <nav class="vertical">
+          <a href="shopper/" class="row middle-align no-space max padding-vertical-small">
+            <i class="medium">person_outline</i>
+            <span class="small-text">Personal Profile</span>
+          </a>
+          
+          <a href="groups/" class="row middle-align no-space max padding-vertical-small">
+            <i class="medium">groups</i>
+            <span class="small-text">Groups</span>
+          </a>
+          
+          <a href="vendor-settings/" class="row middle-align no-space max padding-vertical-small">
+            <i class="medium">settings</i>
+            <span class="small-text">Vendor Settings</span>
+          </a>
+          
+          <button class="row middle-align no-space max padding-vertical-small transparent" data-testid="view-as-visitor-btn-menu" onclick="toggleHamburgerMenu()" style="width: 100%; text-align: left; border: none; background: none; cursor: pointer; color: inherit;">
+            <i class="medium">visibility</i>
+            <span class="small-text">View as Visitor</span>
+          </button>
+          
+          <hr class="margin-vertical-medium">
+          
+          <!-- Create Category -->
+          <div class="small-text text-grey upper margin-bottom-small bold">Create</div>
+          
+          <a href="../newproduct/index.html" class="row middle-align no-space max padding-vertical-small">
+            <i class="medium">add_box</i>
+            <span class="small-text">Add Product</span>
+          </a>
+          
+          <a href="#new-post-dialog" data-ui="#new-post-dialog" onclick="createNewPost()" class="row middle-align no-space max padding-vertical-small">
+            <i class="medium">post_add</i>
+            <span class="small-text">New Post</span>
+          </a>
+          
+          <a href="../events/new/index.html" class="row middle-align no-space max padding-vertical-small">
+            <i class="medium">event</i>
+            <span class="small-text">Add Event</span>
+          </a>
+          
+          <a href="#certificate-dialog" data-ui="#certificate-dialog" onclick="openCertificateDialog(event);" class="row middle-align no-space max padding-vertical-small">
+            <i class="medium">verified_user</i>
+            <span class="small-text">Add Certificate</span>
+          </a>
+        </nav>
         
         <!-- Publish Button (hidden by default) -->
-        <button id="publish-btn" class="responsive primary small" onclick="publishChanges()" data-testid="publish-btn" style="width: 100%; display: none; margin-top: 1rem; padding: 0.5rem;">
+        <button id="publish-btn" class="responsive primary small max margin-top-large margin-bottom-medium" onclick="publishChanges()" data-testid="publish-btn" style="display: none;">
           <i>publish</i>
           <span>Publish</span>
         </button>
       </div>
-    </div>
+    </aside>
 
     <!-- Edit Mode Indicator Banner -->
-    <div id="edit-mode-banner" class="fixed top" style="display: none; background-color: #ffd700; color: #000; padding: 0.5rem; text-align: center; z-index: 999; top: 60px;">
+    <div id="edit-mode-banner" class="fixed top front center-align padding-small yellow" style="top: 60px; display: none;">
       <strong>Edit Mode Active</strong> - Click edit buttons to modify content
     </div>
 
@@ -139,38 +148,38 @@
       </a>
     </nav>
 
-    <main class="responsive auto-margin" style="padding-bottom: 70px;">
+    <main class="responsive auto-margin padding-bottom-large">
         <!-- Vendor Profile Hero Section -->
         <section id="home" class="margin-bottom-large">
-            <div class="margin-bottom-negative-large">
+            <div class="margin-bottom-negative-large relative">
                 <img id="cover-image" src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
-                     alt="Brewery Interior with Copper Vessels" class="responsive round" style="height: 300px; object-fit: cover;">
+                     alt="Brewery Interior with Copper Vessels" class="responsive round medium-height" loading="lazy">
                 
                 <!-- Edit Cover Image Button -->
-                <button class="edit-control circle small primary" style="position: absolute; top: 10px; right: 10px;" onclick="editCoverImage()" data-testid="edit-cover-btn">
+                <button class="edit-control circle small primary absolute top right margin-small" onclick="editCoverImage()" data-testid="edit-cover-btn" style="display: none;">
                   <i>edit</i>
                 </button>
             </div>
             
-            <article class="surface-container margin-horizontal-small responsive auto-margin" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
+            <article class="surface-container margin-horizontal-small responsive auto-margin round padding-large relative">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
                             <div class="row no-gap middle-align">
                                 <div class="col s12 m6">
                                     <div class="row no-gap middle-align">
-                                        <div class="col s2" style="position: relative;">
-                                            <img id="profile-image" src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" class="circle small" alt="Brewery Central Logo">
+                                        <div class="col s2 relative">
+                                            <img id="profile-image" src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" class="circle small" alt="Brewery Central Logo" loading="lazy">
                                             
                                             <!-- Edit Profile Image Button -->
-                                            <button class="edit-control circle extra-small primary" style="position: absolute; bottom: 0; right: 0;" onclick="editProfileImage()" data-testid="edit-profile-image-btn">
+                                            <button class="edit-control circle extra-small primary absolute bottom right" onclick="editProfileImage()" data-testid="edit-profile-image-btn" style="display: none;">
                                               <i class="small">edit</i>
                                             </button>
                                         </div>
                                         <div class="col s10">
                                             <div class="row middle-align">
                                               <h2 id="vendor-name" class="left-align">Brewery Central</h2>
-                                              <button class="edit-control circle transparent small" onclick="editVendorName()" data-testid="edit-name-btn">
+                                              <button class="edit-control circle transparent small" onclick="editVendorName()" data-testid="edit-name-btn" style="display: none;">
                                                 <i>edit</i>
                                               </button>
                                             </div>
@@ -178,35 +187,27 @@
                                     </div>
                                     <div class="row middle-align">
                                       <p id="vendor-tagline" class="text-left text-grey">Crafting exceptional beers since 2015</p>
-                                      <button class="edit-control circle transparent small" onclick="editVendorTagline()" data-testid="edit-tagline-btn">
+                                      <button class="edit-control circle transparent small" onclick="editVendorTagline()" data-testid="edit-tagline-btn" style="display: none;">
                                         <i>edit</i>
                                       </button>
                                     </div>
                                     
                                     <div class="row no-gap middle-align margin-top-small">
                                         <div class="col s4">
-                                            <a href="following/" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
-                                                    <span class="text-bold text-large">2.3k</span>
-                                                    <div class="text-small text-grey">Followers</div>
+                                            <a href="following/" class="max">
+                                                <div class="text-left">
+                                                    <span class="bold large-text">2.3k</span>
+                                                    <div class="small-text text-grey">Followers</div>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="col s4">
-                                            <a href="connections/" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
-                                                    <span class="text-bold text-large">156</span>
-                                                    <div class="text-small text-grey">Connections</div>
+                                            <a href="connections/" class="max">
+                                                <div class="text-left">
+                                                    <span class="bold large-text">156</span>
+                                                    <div class="small-text text-grey">Connections</div>
                                                 </div>
                                             </a>
-                                        </div>
-                                        <div class="col s4">
-                                            <div class="row no-gap right-align">
-                                                <button class="btn tiny primary border" data-testid="view-as-visitor-btn">
-                                                    <i>visibility</i>
-                                                    <span>View as Visitor</span>
-                                                </button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -287,8 +288,8 @@
         </dialog>
 
         <!-- New Post Dialog -->
-        <dialog id="new-post-dialog" class="modal large" style="max-height: calc(100vh - 80px);">
-            <button data-ui="#new-post-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <dialog id="new-post-dialog" class="modal large">
+            <button data-ui="#new-post-dialog" class="circle transparent absolute right top front margin-medium">
               <i>close</i>
             </button>
             <div class="padding-medium">
@@ -301,7 +302,7 @@
                         </div>
                     </div>
                     <div class="margin-top-small margin-bottom-medium center-align">
-                        <input type="file" id="new-post-media" accept="image/*,video/*" style="display: none;">
+                        <input type="file" id="new-post-media" accept="image/*,video/*" class="visually-hidden">
                         <button type="button" id="new-post-media-button" class="btn secondary border">
                             <i>cloud_upload</i>
                             <span id="new-post-media-label">Add image or video</span>
@@ -323,7 +324,7 @@
 
         <!-- Add Certificate Dialog -->
         <dialog id="certificate-dialog" class="modal medium">
-            <button data-ui="#certificate-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+            <button data-ui="#certificate-dialog" class="circle transparent absolute right top front margin-medium">
               <i>close</i>
             </button>
             <div class="padding-medium">
@@ -354,7 +355,7 @@
                         </div>
                     </div>
                     <div class="margin-top-small margin-bottom-medium center-align">
-                        <input type="file" id="certificate-attachment" accept="image/*,application/pdf" style="display: none;">
+                        <input type="file" id="certificate-attachment" accept="image/*,application/pdf" class="visually-hidden">
                         <button type="button" id="certificate-attachment-button" class="btn secondary border">
                             <i>cloud_upload</i>
                             <span id="certificate-attachment-label">Attach certificate</span>
@@ -376,15 +377,15 @@
                     <div class="col s12">
                         <div class="row middle-align margin-bottom-medium">
                           <h3>Latest Posts</h3>
-                          <button class="edit-control btn circle primary margin-left-small" data-ui="#new-post-dialog" data-testid="create-post-btn">
+                          <button class="edit-control btn circle primary margin-left-small" data-ui="#new-post-dialog" data-testid="create-post-btn" style="display: none;">
                             <i>add</i>
                           </button>
                         </div>
                         
                         <!-- Post Card 1 -->
-                        <div class="card small" style="position: relative;">
+                        <article class="card small relative">
                             <!-- Edit Controls -->
-                            <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                            <div class="edit-control row no-space absolute top right front margin-small" style="display: none;">
                               <button class="circle small primary" onclick="editPost('brewing-post')" data-testid="edit-post-brewing">
                                 <i>edit</i>
                               </button>
@@ -456,9 +457,9 @@
                         </div>
 
                         <!-- Post Card 2 -->
-                        <div class="card small" style="position: relative;">
+                        <article class="card small relative">
                             <!-- Edit Controls -->
-                            <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                            <div class="edit-control row no-space absolute top right front margin-small" style="display: none;">
                               <button class="circle small primary" onclick="editPost('festival-post')" data-testid="edit-post-festival">
                                 <i>edit</i>
                               </button>
@@ -530,9 +531,9 @@
                         </div>
 
                         <!-- Post Card 3 -->
-                        <div class="card small" style="position: relative;">
+                        <article class="card small relative">
                             <!-- Edit Controls -->
-                            <div class="edit-control" style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 0.5rem;">
+                            <div class="edit-control row no-space absolute top right front margin-small" style="display: none;">
                               <button class="circle small primary" onclick="editPost('tasting-post')" data-testid="edit-post-tasting">
                                 <i>edit</i>
                               </button>
@@ -601,7 +602,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -681,6 +682,8 @@
           document.getElementById('edit-vendor-btn').style.display = 'none';
         } else {
           hideEditControls();
+          document.getElementById('publish-btn').style.display = 'none';
+          document.getElementById('edit-vendor-btn').style.display = 'block';
         }
       })();
 
@@ -744,13 +747,15 @@
         const menu = document.getElementById('hamburger-menu');
         const overlay = document.getElementById('hamburger-menu-overlay');
         
-        if (menu.style.right === '0px') {
+        if (menu.style.right === '0px' || (menu.style.transform && menu.style.transform === 'translateX(0px)')) {
           // Close menu - slide out
           menu.style.right = '-240px';
+          menu.style.transform = '';
           overlay.style.display = 'none';
         } else {
           // Open menu - slide in
           menu.style.right = '0px';
+          menu.style.transform = 'translateX(0px)';
           overlay.style.display = 'block';
         }
       }
@@ -837,27 +842,18 @@
         }
 
         const isEditMode = localStorage.getItem('editMode') === 'true';
-        if (!isEditMode) {
-          card.querySelectorAll('.edit-control').forEach(control => {
-            control.style.display = 'none';
-          });
-        }
+        card.querySelectorAll('.edit-control').forEach(control => {
+          control.style.display = isEditMode ? '' : 'none';
+        });
       }
 
       function buildPostCard({ id, title, description, media, vendorName, vendorAvatar }) {
         const card = document.createElement('article');
-        card.className = 'medium margin-bottom-large';
-        card.style.position = 'relative';
+        card.className = 'medium margin-bottom-large relative';
         card.dataset.postId = id;
 
         const editControls = document.createElement('div');
-        editControls.className = 'edit-control';
-        editControls.style.position = 'absolute';
-        editControls.style.top = '10px';
-        editControls.style.right = '10px';
-        editControls.style.zIndex = '10';
-        editControls.style.display = 'flex';
-        editControls.style.gap = '0.5rem';
+        editControls.className = 'edit-control row no-space absolute top right front margin-small';
 
         const editButton = document.createElement('button');
         editButton.className = 'circle small primary';
@@ -920,16 +916,12 @@
           if (media.type === 'video') {
             mediaElement = document.createElement('video');
             mediaElement.controls = true;
-            mediaElement.className = 'responsive round';
-            mediaElement.style.height = '300px';
-            mediaElement.style.objectFit = 'cover';
+            mediaElement.className = 'responsive round medium-height';
             mediaElement.setAttribute('playsinline', '');
             mediaElement.src = media.src;
           } else {
             mediaElement = document.createElement('img');
-            mediaElement.className = 'responsive round';
-            mediaElement.style.height = '300px';
-            mediaElement.style.objectFit = 'cover';
+            mediaElement.className = 'responsive round medium-height';
             mediaElement.src = media.src;
             mediaElement.alt = title || 'Vendor post image';
             mediaElement.loading = 'lazy';
@@ -963,9 +955,7 @@
         const likeCol = document.createElement('div');
         likeCol.className = 'col s6';
         const likeRow = document.createElement('div');
-        likeRow.className = 'row no-gap middle-align';
-        likeRow.style.cursor = 'pointer';
-        likeRow.style.padding = '0.5rem';
+        likeRow.className = 'row no-gap middle-align padding-small';
         const likeIcon = document.createElement('i');
         likeIcon.className = 'material-icons';
         likeIcon.textContent = 'favorite_border';
@@ -983,9 +973,7 @@
         const commentCol = document.createElement('div');
         commentCol.className = 'col s6';
         const commentRow = document.createElement('div');
-        commentRow.className = 'row no-gap middle-align';
-        commentRow.style.cursor = 'pointer';
-        commentRow.style.padding = '0.5rem';
+        commentRow.className = 'row no-gap middle-align padding-small';
         const commentIcon = document.createElement('i');
         commentIcon.className = 'material-icons';
         commentIcon.textContent = 'chat_bubble_outline';
@@ -1017,18 +1005,8 @@
       }
 
       function resizeCertificateDialog() {
-        const dialog = document.getElementById('certificate-dialog');
-        if (!dialog) {
-          return;
-        }
-
-        if (window.innerWidth <= 640) {
-          dialog.style.maxHeight = 'calc(100vh - 24px)';
-          dialog.style.height = 'auto';
-        } else {
-          dialog.style.maxHeight = '';
-          dialog.style.height = '';
-        }
+        // Beer CSS handles responsive dialogs automatically
+        // This function is kept for compatibility but no longer needed
       }
 
       function openCertificateDialog(event) {
@@ -1072,13 +1050,15 @@
 
       // Toggle comments dropdown
       function toggleComments(button) {
-        const card = button.closest('.card');
+        const card = button.closest('.card, article');
         const commentsSection = card.querySelector('.comments-section');
         
-        if (commentsSection.style.display === 'none') {
-          commentsSection.style.display = 'block';
-        } else {
-          commentsSection.style.display = 'none';
+        if (commentsSection) {
+          if (commentsSection.style.display === 'none' || !commentsSection.style.display) {
+            commentsSection.style.display = 'block';
+          } else {
+            commentsSection.style.display = 'none';
+          }
         }
       }
 
@@ -1349,7 +1329,7 @@
 
     <!-- Unified Report Dialog -->
     <dialog id="report-dialog" class="modal medium">
-      <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+      <button data-ui="#report-dialog" class="circle transparent absolute right top front margin-medium">
         <i>close</i>
       </button>
       

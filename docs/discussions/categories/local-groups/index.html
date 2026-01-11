@@ -9,12 +9,11 @@
   </head>
   <body class="dark">
 
-    <!-- Fixed Top Header -->
-    <div class="top-header">
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <img src="../../../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
+    <header class="top-header">
+      <div class="header-wordmark">
+        <img src="../../../text.png" alt="Local Market Wordmark" loading="lazy" class="wordmark-img">
       </div>
-      <nav class="header-nav">
+      <nav class="header-nav" aria-label="Main navigation">
         <a href="../../../home/" class="link" data-testid="desktop-nav-home">Home</a>
         <a href="../../../" class="link" data-testid="desktop-nav-discovery">Discover</a>
         <a href="../local-discussions/" class="link" data-testid="desktop-nav-community">Community</a>
@@ -23,23 +22,24 @@
           <span>Cart</span>
         </a>
       </nav>
-      <!-- Right side: Logo and hamburger menu -->
       <div class="header-right">
-        <!-- Site Logo -->
         <a href="../../../" class="site-logo">
-          <img src="../../../Logo 333.png" alt="LocalMarket Logo">
+          <img src="../../../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
         </a>
-        <a href="../../../userprofile/" class="header-profile" data-testid="desktop-nav-profile">
+        <a href="../../../userprofile/" class="header-profile" data-testid="desktop-nav-profile" aria-label="User profile">
           <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="Brewery Central Logo" loading="lazy" class="circle small">
         </a>
-        <!-- Mobile Hamburger Menu Button -->
-        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <button type="button" class="feed-menu-btn" aria-label="Discussion menu" aria-expanded="false" aria-controls="discussionMenu" onclick="toggleHamburgerMenu()" data-testid="discussion-hamburger-menu-btn">
           <i>menu</i>
-        </div>
+          <menu class="feed-menu-dropdown" id="discussionMenu" role="menu">
+            <li role="menuitem">
+              <a href="#" class="menu-item" onclick="toggleHamburgerMenu(); return false;">Menu</a>
+            </li>
+          </menu>
+        </button>
       </div>
-    </div>
+    </header>
 
-    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
       <a href="../../../home/" class="nav-item" data-testid="nav-home">
         <i>home</i>
@@ -58,463 +58,339 @@
       </a>
     </nav>
 
-    <!-- Mobile Categories Overlay -->
-    <div class="mobile-categories-overlay" id="mobileCategoriesOverlay">
-      <div class="mobile-categories-content">
-        <div class="mobile-categories-header">
-          <h5>Categories</h5>
-        </div>
-        <div class="mobile-categories-list" id="mobileCategoriesList">
-          <!-- Local Section -->
-          <div class="section-header">
-            <h6>Local</h6>
-          </div>
-
-          <a href="../local-discussions/" class="category-item">
-            <h6>Discussions</h6>
-            <p>General community conversations and local topics</p>
+    <div id="discussion-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002;"></div>
+    
+    <div id="discussion-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto;">
+      <div class="padding-medium">
+        <nav class="right-align">
+          <button class="circle transparent small no-margin" onclick="toggleHamburgerMenu()">
+            <i>close</i>
+          </button>
+        </nav>
+        <h5 class="margin-bottom-medium">Categories</h5>
+        <hr class="margin-vertical-medium">
+        <div class="small-text upper bold margin-bottom-small">Local</div>
+        <nav class="vertical">
+          <a href="../local-discussions/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">forum</i>
+            <span class="small-text">Discussions</span>
           </a>
-
-          <a href="../local-groups/" class="category-item">
-            <h6>Groups</h6>
-            <p>Community groups, clubs, and organizations</p>
+          <a href="../local-groups/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">groups</i>
+            <span class="small-text">Groups</span>
           </a>
-
-          <a href="../used-barter/" class="category-item">
-            <h6>Used/Barter</h6>
-            <p>Buy, sell, trade, and barter items locally</p>
+          <a href="../used-barter/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">swap_horiz</i>
+            <span class="small-text">Used/Barter</span>
           </a>
-
-          <!-- General Section -->
-          <div class="section-header">
-            <h6>General</h6>
-          </div>
-
-          <a href="../food-farm-news/" class="category-item">
-            <h6>Food & Farm News</h6>
-            <p>Local food, farming, and agricultural updates</p>
+        </nav>
+        <hr class="margin-vertical-medium">
+        <div class="small-text upper bold margin-bottom-small">General</div>
+        <nav class="vertical">
+          <a href="../food-farm-news/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">restaurant</i>
+            <span class="small-text">Food & Farm News</span>
           </a>
-
-          <a href="../tips-resources/" class="category-item">
-            <h6>Tips & Resources</h6>
-            <p>Helpful tips, guides, and local resources</p>
+          <a href="../tips-resources/" class="row middle-align no-margin" onclick="toggleHamburgerMenu();">
+            <i class="medium">lightbulb</i>
+            <span class="small-text">Tips & Resources</span>
           </a>
-        </div>
+        </nav>
       </div>
     </div>
 
     <main class="responsive">
       <div class="container">
         <div class="row">
-          <!-- Main Content Column (2/3 on desktop) -->
           <div class="col s12 m8 l8 main-content">
             <h4>Local Groups</h4>
             <p class="category-description">Community groups, clubs, and organizations</p>
             <div class="feed-container">
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=160&h=160&fit=crop" alt="Raised garden beds" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Community Garden Collective</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=160&h=160&fit=crop" alt="Raised garden beds" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Community Garden Collective</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Hands-on planting days · Next: Apr 12 · Riverside Greenhouse</small>
+                      <small class="text-grey">Hands-on planting days · Next: Apr 12 · Riverside Greenhouse</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1455885666463-00fb7f22f8b3?w=160&h=160&fit=crop" alt="Stack of books" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Book Lovers Circle</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1455885666463-00fb7f22f8b3?w=160&h=160&fit=crop" alt="Stack of books" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Book Lovers Circle</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Monthly picks & author chats · Next: Apr 9 · Downtown Library</small>
+                      <small class="text-grey">Monthly picks & author chats · Next: Apr 9 · Downtown Library</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=160&h=160&fit=crop" alt="Photographer with camera" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Downtown Photo Walks</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=160&h=160&fit=crop" alt="Photographer with camera" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Downtown Photo Walks</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Street & night shoots · Next: Apr 14 · Market Fountain</small>
+                      <small class="text-grey">Street & night shoots · Next: Apr 14 · Market Fountain</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?w=160&h=160&fit=crop" alt="Runners warming up" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Riverfront Running Club</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?w=160&h=160&fit=crop" alt="Runners warming up" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Riverfront Running Club</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Intervals & tempo runs · Next: Apr 11 · Community Track</small>
+                      <small class="text-grey">Intervals & tempo runs · Next: Apr 11 · Community Track</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=160&h=160&fit=crop" alt="Chess pieces" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Knights Chess Guild</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=160&h=160&fit=crop" alt="Chess pieces" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Knights Chess Guild</h6>
                         <span class="chip tiny border">Private</span>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Invite-only ladder · Next: Apr 13 · Uptown Lounge</small>
+                      <small class="text-grey">Invite-only ladder · Next: Apr 13 · Uptown Lounge</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=160&h=160&fit=crop" alt="Hands knitting" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Knit & Natter Circle</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=160&h=160&fit=crop" alt="Hands knitting" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Knit & Natter Circle</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Charity projects & swaps · Next: Apr 10 · Senior Studio</small>
+                      <small class="text-grey">Charity projects & swaps · Next: Apr 10 · Senior Studio</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=160&h=160&fit=crop" alt="Volunteers packing food" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Volunteer Action Network</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=160&h=160&fit=crop" alt="Volunteers packing food" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Volunteer Action Network</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Food bank & cleanups · Next: Apr 13 · Community Hub</small>
+                      <small class="text-grey">Food bank & cleanups · Next: Apr 13 · Community Hub</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=160&h=160&fit=crop" alt="Tech speaker" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Emerging Tech Meetup</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=160&h=160&fit=crop" alt="Tech speaker" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Emerging Tech Meetup</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">AI & startup lightning talks · Next: Apr 16 · Innovation Lab</small>
+                      <small class="text-grey">AI & startup lightning talks · Next: Apr 16 · Innovation Lab</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=160&h=160&fit=crop" alt="Parents with kids" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Parent Village</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=160&h=160&fit=crop" alt="Parents with kids" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Parent Village</h6>
                         <span class="chip tiny border">Private</span>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Support circles & swaps · Next: Apr 13 · Family Center</small>
+                      <small class="text-grey">Support circles & swaps · Next: Apr 13 · Family Center</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=160&h=160&fit=crop" alt="Group collaborating in workshop" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Artisan Makers Workshop</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=160&h=160&fit=crop" alt="Group collaborating in workshop" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Artisan Makers Workshop</h6>
                         <span class="chip tiny border">Private</span>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Cohort-based sessions · Next: Apr 15 · Maker Lab</small>
+                      <small class="text-grey">Cohort-based sessions · Next: Apr 15 · Maker Lab</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?w=160&h=160&fit=crop" alt="Neighborhood watch meeting" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Neighborhood Watch Alliance</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?w=160&h=160&fit=crop" alt="Neighborhood watch meeting" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Neighborhood Watch Alliance</h6>
                         <span class="chip tiny border">Private</span>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Community safety & patrols · Next: Apr 18 · Westside Hall</small>
+                      <small class="text-grey">Community safety & patrols · Next: Apr 18 · Westside Hall</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=160&h=160&fit=crop" alt="Community theater rehearsal" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Local Theater Troupe</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=160&h=160&fit=crop" alt="Community theater rehearsal" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Local Theater Troupe</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Auditions & set builds · Next: Apr 17 · Playhouse</small>
+                      <small class="text-grey">Auditions & set builds · Next: Apr 17 · Playhouse</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=160&h=160&fit=crop" alt="Youth coding workshop" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Youth Coding Lab</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=160&h=160&fit=crop" alt="Youth coding workshop" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Youth Coding Lab</h6>
                         <span class="chip tiny border">Private</span>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Invitation-only cohort · Next: Apr 20 · Tech Hub</small>
+                      <small class="text-grey">Invitation-only cohort · Next: Apr 20 · Tech Hub</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
+                </header>
+              </article>
 
-              <div class="card medium" style="margin-bottom: 0.5rem; padding: 0;">
-                <div class="card-header" style="padding: 0.75rem 1rem;">
-                  <div class="row no-gap middle-align" style="display: flex; align-items: center;">
-                    <div style="width: 48px; height: 48px; flex-shrink: 0; margin-right: 0.75rem;">
-                      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=160&h=160&fit=crop" alt="Choir singing" loading="lazy" style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px;">
-                    </div>
-                    <div style="flex: 1; min-width: 0;">
-                      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.125rem;">
-                        <h6 style="margin: 0; font-weight: 600; font-size: 0.8rem;">Community Choir Voices</h6>
+              <article class="no-padding small-margin">
+                <header class="padding-medium">
+                  <div class="row no-gap middle-align">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=160&h=160&fit=crop" alt="Choir singing" loading="lazy" class="small round">
+                    <div class="max">
+                      <div class="row middle-align small-space">
+                        <h6 class="small bold no-margin">Community Choir Voices</h6>
                       </div>
-                      <small class="text-grey" style="display: block; line-height: 1.2;">Weekly rehearsals · Next: Apr 15 · Harmony Center</small>
+                      <small class="text-grey">Weekly rehearsals · Next: Apr 15 · Harmony Center</small>
                     </div>
-                    <div style="flex-shrink: 0; margin-left: 0.75rem;">
-                      <button class="btn tiny primary border" style="margin: 0 !important; padding: 0.1rem 0.75rem !important; border-radius: 0.5rem !important; min-height: auto !important; height: auto !important; line-height: 1.2 !important;">
-                        <span>Join</span>
-                      </button>
-                    </div>
+                    <button class="btn tiny primary border no-margin">Join</button>
                   </div>
-                </div>
-              </div>
-            </div>
-
+                </header>
+              </article>
             </div>
           </div>
 
-          <!-- Categories Sidebar Column (1/3 on desktop) -->
-          <div class="col s12 m4 l4">
+          <aside class="col s12 m4 l4">
             <div class="categories-sidebar" id="categoriesSidebar">
               <h5>Categories</h5>
-              
-              <!-- Local Section -->
               <div class="section-header">
                 <h6>Local</h6>
               </div>
-
               <a href="../local-discussions/" class="category-item">
                 <h6>Discussions</h6>
                 <p>General community conversations and local topics</p>
               </a>
-
               <a href="../local-groups/" class="category-item">
                 <h6>Groups</h6>
                 <p>Community groups, clubs, and organizations</p>
               </a>
-
               <a href="../used-barter/" class="category-item">
                 <h6>Used/Barter</h6>
                 <p>Buy, sell, trade, and barter items locally</p>
               </a>
-
-              <!-- General Section -->
               <div class="section-header">
                 <h6>General</h6>
               </div>
-
               <a href="../food-farm-news/" class="category-item">
                 <h6>Food & Farm News</h6>
                 <p>Local food, farming, and agricultural updates</p>
               </a>
-
               <a href="../tips-resources/" class="category-item">
                 <h6>Tips & Resources</h6>
                 <p>Helpful tips, guides, and local resources</p>
               </a>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </main>
 
     <script>
-      // Theme Toggle Functionality
       (function() {
         const storedTheme = localStorage.getItem('theme') || 'light';
-
         document.body.classList.remove('dark', 'light');
         document.body.classList.add(storedTheme);
-
         const toggleButton = document.createElement('button');
         toggleButton.className = 'theme-toggle circle';
         toggleButton.setAttribute('aria-label', 'Toggle theme');
         toggleButton.innerHTML = '<i>' + (storedTheme === 'light' ? 'dark_mode' : 'light_mode') + '</i>';
-
         toggleButton.addEventListener('click', function() {
           const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
           const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
           document.body.classList.remove('dark', 'light');
           document.body.classList.add(newTheme);
           localStorage.setItem('theme', newTheme);
-
           toggleButton.querySelector('i').textContent = newTheme === 'light' ? 'dark_mode' : 'light_mode';
         });
-
         document.body.appendChild(toggleButton);
       })();
     </script>
 
     <script>
-      // Mobile menu toggle functionality
-      function toggleMobileMenu() {
-        const overlay = document.getElementById('mobileCategoriesOverlay');
-        overlay.classList.toggle('active');
+      function toggleHamburgerMenu() {
+        const overlay = document.getElementById('discussion-hamburger-menu-overlay');
+        const menu = document.getElementById('discussion-hamburger-menu');
+        if (overlay.style.display === 'none' || overlay.style.display === '') {
+          overlay.style.display = 'block';
+          menu.style.right = '0';
+        } else {
+          overlay.style.display = 'none';
+          menu.style.right = '-240px';
+        }
       }
-
-      // Categories are now embedded directly in HTML - no need for htmx loading
-
-      // Close mobile menu when clicking outside
-      document.addEventListener('click', function(e) {
-        const overlay = document.getElementById('mobileCategoriesOverlay');
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        
-        if (overlay.classList.contains('active') && 
-            !overlay.contains(e.target) && 
-            !menuBtn.contains(e.target)) {
-          overlay.classList.remove('active');
-        }
-      });
-
-      // Close mobile menu when selecting a category
-      document.addEventListener('click', function(e) {
-        if (e.target.closest('.category-item')) {
-          const overlay = document.getElementById('mobileCategoriesOverlay');
-          overlay.classList.remove('active');
-        }
-      });
     </script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.12.13/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
@@ -583,7 +459,7 @@
       }
     </script>
     <dialog id="report-dialog" class="modal medium">
-      <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+      <button data-ui="#report-dialog" class="circle transparent absolute right top" style="z-index: 10;">
         <i>close</i>
       </button>
       <div class="padding-medium">

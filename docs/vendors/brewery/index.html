@@ -9,94 +9,21 @@
    
    
 <link href="../../style.css" rel="stylesheet">
-
-<style>
-/* Heart favorite animation */
-@keyframes heartPulse {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.3); }
-  50% { transform: scale(1.1); }
-  75% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.heart-animate {
-  animation: heartPulse 0.6s ease-in-out;
-}
-
-/* Green firework animation */
-@keyframes firework {
-  0% { 
-    transform: translateY(0) scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(20px) scale(1);
-    opacity: 0.8;
-  }
-  100% { 
-    transform: translateY(40px) scale(0.5);
-    opacity: 0;
-  }
-}
-
-.firework-effect {
-  position: relative;
-}
-
-.firework-effect::after {
-  content: '✨';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 20px;
-  color: #4CAF50;
-  animation: firework 0.8s ease-out;
-  pointer-events: none;
-}
-
-/* Product card hover effect */
-.product-card-clickable {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.product-card-clickable:hover {
-  transform: translateY(-4px);
-}
-
-body.dark #vendorMessageModal {
-  background-color: var(--surface) !important;
-}
-
-@media (max-width: 600px) {
-  #vendorMessageModal {
-    margin-bottom: 72px !important;
-    max-height: calc(100vh - 96px) !important;
-  }
-
-  #vendorMessageModal > main {
-    max-height: calc(100vh - 192px);
-    overflow-y: auto;
-  }
-}
-</style>
   </head>
   <body>
 
     <!-- Fixed Top Header -->
-    <div class="top-header">
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <a href="../../index.html" class="circle transparent" aria-label="Back to search feed" style="color: #000; display: inline-flex; align-items: center; justify-content: center;">
+    <header class="top-header">
+      <div class="header-wordmark">
+        <a href="../../index.html" class="circle transparent" aria-label="Back to search feed">
           <i>arrow_back</i>
         </a>
-        <img src="../../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
+        <img src="../../text.png" alt="Local Market Wordmark" loading="lazy" class="wordmark-img">
       </div>
-      <nav class="header-nav">
+      <nav class="header-nav" aria-label="Main navigation">
         <a href="../../home/index.html" class="link" data-testid="desktop-nav-home">Home</a>
         <a href="../../index.html" class="link" data-testid="desktop-nav-discovery">Discover</a>
-        <a href="../../discussions/categories/local-discussions/" class="link" data-testid="desktop-nav-community">Community</a>
+        <a href="../../discussions/categories/local-discussions/index.html" class="link" data-testid="desktop-nav-community">Community</a>
         <a href="../../cart/index.html" class="link" data-testid="desktop-nav-cart">
           <i>shopping_cart</i>
           <span>Cart</span>
@@ -104,38 +31,42 @@ body.dark #vendorMessageModal {
       </nav>
       <div class="header-right">
         <a href="../../index.html" class="site-logo">
-          <img src="../../Logo 333.png" alt="LocalMarket Logo">
+          <img src="../../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
         </a>
-        <!-- Hamburger Menu Button for Vendor -->
-        <div class="mobile-menu-btn" onclick="toggleHamburgerMenu()" data-testid="vendor-hamburger-menu-btn">
-          <i>menu</i>
-        </div>
-        <a href="../../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile">
+        <a href="../../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile" aria-label="User profile">
           <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="Profile" loading="lazy" class="circle small">
         </a>
+        <button type="button" class="feed-menu-btn" aria-label="Vendor menu" aria-expanded="false" aria-controls="vendorMenu" data-ui="#vendor-hamburger-menu" data-testid="vendor-hamburger-menu-btn">
+          <i>menu</i>
+          <menu class="feed-menu-dropdown" id="vendorMenu" role="menu">
+            <li role="menuitem">
+              <a href="#" class="menu-item" data-ui="#vendor-hamburger-menu">Vendor Settings</a>
+            </li>
+          </menu>
+        </button>
       </div>
-    </div>
+    </header>
 
     <!-- Hamburger Menu Overlay for Vendor -->
-    <div id="vendor-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    <div id="vendor-hamburger-menu-overlay" class="overlay" data-ui="#vendor-hamburger-menu"></div>
     
     <!-- Hamburger Menu Sidebar for Vendor -->
-    <div id="vendor-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
-      <div style="padding: 1rem;">
-        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+    <dialog id="vendor-hamburger-menu" class="right medium-width">
+      <nav class="vertical padding">
+        <button class="circle transparent small right" data-ui="#vendor-hamburger-menu">
           <i>close</i>
         </button>
-        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+        <div class="space"></div>
         
-        <hr style="margin: 0.75rem 0;">
+        <hr class="margin-vertical-small">
         
         <!-- Menu Items -->
-        <a href="#" onclick="openReportDialog('vendor', 'brewery-central'); toggleHamburgerMenu(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
-          <span style="font-size: 0.9rem;">Report Vendor</span>
+        <a href="#" onclick="openReportDialog('vendor', 'brewery-central'); ui('#vendor-hamburger-menu'); return false;" class="row middle-align padding-vertical-small">
+          <i class="medium">flag</i>
+          <span class="small-text">Report Vendor</span>
         </a>
-      </div>
-    </div>
+      </nav>
+    </dialog>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
@@ -145,7 +76,7 @@ body.dark #vendorMessageModal {
       <a href="../../index.html" class="nav-item active" data-testid="nav-search">
         <i>search</i>
       </a>
-      <a href="../../discussions/categories/local-discussions/" class="nav-item" data-testid="nav-discussions">
+      <a href="../../discussions/categories/local-discussions/index.html" class="nav-item" data-testid="nav-discussions">
         <i>groups</i>
       </a>
       <a href="../../cart/index.html" class="nav-item" data-testid="nav-cart">
@@ -156,15 +87,15 @@ body.dark #vendorMessageModal {
       </a>
     </nav>
 
-    <main class="responsive auto-margin" style="padding-bottom: 70px;">
+    <main class="responsive auto-margin">
         <!-- Vendor Profile Hero Section -->
         <section id="home" class="margin-bottom-large">
             <div class="margin-bottom-negative-large">
                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&h=400&fit=crop" 
-                     alt="Brewery Interior with Copper Vessels" class="responsive round" style="height: 300px; object-fit: cover;">
+                     alt="Brewery Interior with Copper Vessels" class="responsive round medium-height" loading="lazy">
             </div>
             
-            <div class="card surface-container margin-horizontal-small responsive auto-margin" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
+            <article class="surface-container margin-horizontal-small responsive auto-margin padding-medium">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
@@ -172,7 +103,7 @@ body.dark #vendorMessageModal {
                                 <div class="col s12 m8 l8">
                                     <div class="row no-gap middle-align">
                                         <div class="col s2">
-                                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" class="circle small" alt="Brewery Central Logo">
+                                            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" class="circle small" alt="Brewery Central Logo" loading="lazy">
                                         </div>
                                         <div class="col s10">
                                             <h2 class="left-align">Brewery Central</h2>
@@ -182,16 +113,16 @@ body.dark #vendorMessageModal {
                                     
                                     <div class="row no-gap middle-align margin-top-small">
                                         <div class="col s6 m4 l4">
-                                            <a href="followers/" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="followers/" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">2.3k</span>
                                                     <div class="text-small text-grey">Followers</div>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="col s6 m4 l4">
-                                            <a href="connections/" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="connections/" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">156</span>
                                                     <div class="text-small text-grey">Connections</div>
                                                 </div>
@@ -199,57 +130,49 @@ body.dark #vendorMessageModal {
                                         </div>
                                     </div>
 
-                                    <div class="row no-gap wrap margin-top-small" style="gap: 0.6rem;">
-                                        <div>
-                                            <button class="btn primary border" 
-                                                    hx-post="/api/follow" 
-                                                    hx-target="this" 
-                                                    hx-swap="outerHTML"
-                                                    data-testid="follow-vendor-btn">
-                                                <span>Follow</span>
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="btn primary border circle" 
-                                                    data-open-modal="vendorMessageModal"
-                                                    data-testid="message-vendor-btn"
-                                                    aria-label="Message Brewery Central">
-                                                <i>mail</i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <nav class="row no-gap wrap margin-top-small small-space">
+                                        <button class="btn primary border" 
+                                                hx-post="/api/follow" 
+                                                hx-target="this" 
+                                                hx-swap="outerHTML"
+                                                data-testid="follow-vendor-btn">
+                                            <span>Follow</span>
+                                        </button>
+                                        <button class="btn primary border circle" 
+                                                data-open-modal="vendorMessageModal"
+                                                data-testid="message-vendor-btn"
+                                                aria-label="Message Brewery Central">
+                                            <i>mail</i>
+                                        </button>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
 
-        <dialog id="vendorMessageModal" class="modal small-height" style="background-color: #F5F0E8;">
+        <dialog id="vendorMessageModal" class="modal small-height surface-bright">
             <header class="padding-horizontal small-padding">
                 <nav class="middle-align">
                     <button class="circle transparent" data-close-modal="vendorMessageModal" aria-label="Close message composer">
                         <i>arrow_back</i>
                     </button>
-                    <h6 class="max" style="margin-left: 0.5rem; font-size: 0.85rem;">Messaging: Brewery Central</h6>
+                    <h6 class="max small-text left-margin-small">Messaging: Brewery Central</h6>
                 </nav>
             </header>
-            <main class="padding-horizontal" style="padding-bottom: 0.5rem;">
-                <div class="field textarea fill" style="margin-bottom: 0.75rem;">
+            <main class="padding-horizontal padding-bottom-small">
+                <div class="field textarea fill margin-bottom-medium">
                     <textarea id="messageBody" name="messageBody" placeholder="What's on your mind?" rows="5" aria-label="Message body"></textarea>
                 </div>
                 <nav class="row no-gap">
-                    <div class="col s6">
-                        <button class="btn border surface" data-close-modal="vendorMessageModal" style="width: 100%;">
-                            <span>Cancel</span>
-                        </button>
-                    </div>
-                    <div class="col s6">
-                        <button class="btn primary" data-close-modal="vendorMessageModal" style="width: 100%;">
-                            <span>Send</span>
-                        </button>
-                    </div>
+                    <button class="btn border surface max" data-close-modal="vendorMessageModal">
+                        <span>Cancel</span>
+                    </button>
+                    <button class="btn primary max" data-close-modal="vendorMessageModal">
+                        <span>Send</span>
+                    </button>
                 </nav>
             </main>
         </dialog>
@@ -265,26 +188,26 @@ body.dark #vendorMessageModal {
             </div>
             
             <!-- Products Grid - Full Width for Horizontal Scroll -->
-            <div id="products-grid" class="row no-wrap scroll" style="padding: 0.5rem 0; gap: 1.5rem; padding-left: 0.5rem; padding-right: 0.5rem;">
+            <div id="products-grid" class="row no-wrap scroll top-align horizontal-padding small-space">
                             <!-- Product Card 1 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('citrus-ipa')">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('citrus-ipa')" class="link">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
-                                         alt="Citrus IPA" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Citrus IPA</h5>
-                                        <p class="text-grey margin-vertical-small">Perfectly balanced hops with refreshing citrus notes</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$8.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Citrus IPA" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Citrus IPA</h5>
+                                    <p>Perfectly balanced hops with refreshing citrus notes</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$8.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -308,28 +231,28 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 2 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('chocolate-stout')">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('chocolate-stout')" class="link">
                                     <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=200&fit=crop" 
-                                         alt="Chocolate Stout" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Chocolate Stout</h5>
-                                        <p class="text-grey margin-vertical-small">Rich chocolate and coffee flavors with smooth finish</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$9.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Chocolate Stout" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Chocolate Stout</h5>
+                                    <p>Rich chocolate and coffee flavors with smooth finish</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$9.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -353,28 +276,28 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 3 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('golden-lager')">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('golden-lager')" class="link">
                                     <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=200&fit=crop" 
-                                         alt="Golden Lager" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Golden Lager</h5>
-                                        <p class="text-grey margin-vertical-small">Crisp and refreshing with clean finish</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$7.99</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Golden Lager" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Golden Lager</h5>
+                                    <p>Crisp and refreshing with clean finish</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$7.99</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -398,28 +321,28 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 4 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('hefeweizen')">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('hefeweizen')" class="link">
                                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop" 
-                                         alt="Hefeweizen" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Hefeweizen</h5>
-                                        <p class="text-grey margin-vertical-small">Traditional German wheat beer with banana and clove notes</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$8.49</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Hefeweizen" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Hefeweizen</h5>
+                                    <p>Traditional German wheat beer with banana and clove notes</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$8.49</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -443,28 +366,28 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 5 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('pale-ale')">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('pale-ale')" class="link">
                                     <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=200&fit=crop" 
-                                         alt="Pale Ale" class="responsive round" style="height: 280px; object-fit: cover;">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Pale Ale</h5>
-                                        <p class="text-grey margin-vertical-small">Classic American pale ale with balanced hop bitterness</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$7.49</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per bottle</span>
-                                            </div>
+                                         alt="Pale Ale" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Pale Ale</h5>
+                                    <p>Classic American pale ale with balanced hop bitterness</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$7.49</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per bottle</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -488,28 +411,32 @@ body.dark #vendorMessageModal {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
             </div>
             
             <!-- Events Link -->
             <div class="container medium-width auto-margin margin-top-medium left-align">
-                <a href="events/" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px; margin-bottom: 1.75rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="gallery/" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="events/" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 2rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
-                <a href="gallery/" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 0.75rem;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
+                <nav class="vertical l">
+                    <a href="events/" class="text-primary link row middle-align small-space margin-bottom-large">
+                        <span class="large-text">See Upcoming Events</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                    <a href="gallery/" class="text-primary link row middle-align small-space">
+                        <span class="large-text">See Photo Gallery</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                </nav>
+                <nav class="vertical s m margin-top-large">
+                    <a href="events/" class="text-primary link row middle-align small-space margin-top-large">
+                        <span class="medium-text">See Upcoming Events</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                    <a href="gallery/" class="text-primary link row middle-align small-space margin-top-medium">
+                        <span class="medium-text">See Photo Gallery</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                </nav>
             </div>
         </section>
 
@@ -523,287 +450,295 @@ body.dark #vendorMessageModal {
                             <h3 class="left-align">Posts</h3>
                         </div>
                     </div>
-
-                    <!-- Post Card 1 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
-                                <div class="row no-gap">
+                    <div class="feed-container">
+                        <!-- Post Card 1 -->
+                        <div class="card small">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">2 hours ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-1" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-1">
-                                            <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>2 hours ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=300&fit=crop" 
-                                     alt="Brewing Process" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewing Process" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Just finished brewing our latest batch of Citrus IPA! The hops are perfectly balanced with refreshing citrus notes. Can't wait to share this with our community. The brewing process took 3 weeks of careful fermentation and conditioning. 🍺</p>
                             </div>
+                            <div class="card-divider"></div>
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="brewing-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="brewing-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">24</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">8</span>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="absolute right bottom small-padding">
+                                    <button data-ui="#post-menu-1" class="circle transparent small">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-1">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
                             </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>BeerLover42</strong>
-                                            <p class="margin-vertical-small">This looks amazing! When will it be available in stores?</p>
-                                            <small class="text-grey">1 hour ago</small>
+                            <div class="comments-section page">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="BeerLover42" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BeerLover42</strong>
+                                                <p>This looks amazing! When will it be available in stores?</p>
+                                                <small class="text-grey">1 hour ago</small>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>HopHead</strong>
-                                            <p class="margin-vertical-small">Love the citrus notes! Perfect for summer 🍺</p>
-                                            <small class="text-grey">45 minutes ago</small>
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="HopHead" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>HopHead</strong>
+                                                <p>Love the citrus notes! Perfect for summer 🍺</p>
+                                                <small class="text-grey">45 minutes ago</small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="brewing-post-comment-input">
+                                            <form hx-post="/api/comments/1" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="brewing-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="brewing-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="brewing-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    <!-- Post Card 2 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
-                                <div class="row no-gap">
+                        <!-- Post Card 2 -->
+                        <div class="card small">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">1 day ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-2" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-2">
-                                            <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>1 day ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=300&fit=crop" 
-                                     alt="Chocolate Stout" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Chocolate Stout" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Our seasonal Chocolate Stout is back! Rich chocolate and coffee flavors with a smooth finish. Perfect for these cooler evenings. Limited batch available - get yours before it's gone! ☕</p>
                             </div>
+                            <div class="card-divider"></div>
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="festival-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="festival-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">31</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="festival-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="festival-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">12</span>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="absolute right bottom small-padding">
+                                    <button data-ui="#post-menu-2" class="circle transparent small">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-2">
+                                        <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
                             </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>StoutLover</strong>
-                                            <p class="margin-vertical-small">Perfect for winter nights! The chocolate notes are incredible</p>
-                                            <small class="text-grey">3 hours ago</small>
+                            <div class="comments-section page">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="StoutLover" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>StoutLover</strong>
+                                                <p>Perfect for winter nights! The chocolate notes are incredible</p>
+                                                <small class="text-grey">3 hours ago</small>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="add-comment">
                                     <div class="row no-gap">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="tasting-post-comment-input">
+                                            <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="tasting-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="tasting-post-comment-submit">Post</button>
                                                 </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="tasting-post-comment-submit">Post</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    <!-- Post Card 3 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
-                                <div class="row no-gap">
+                        <!-- Post Card 3 -->
+                        <div class="card small">
+                            <div class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Brewery Central" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Brewery Central</h6>
-                                        <small class="text-grey">3 days ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-3" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-3">
-                                            <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Brewery Central</h5>
+                                        <div class="card-meta">
+                                            <span>3 days ago</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div class="card-divider"></div>
+                            <div class="card-image">
                                 <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=600&h=300&fit=crop" 
-                                     alt="Brewery Tour" class="responsive round" style="height: 300px; object-fit: cover;">
+                                     alt="Brewery Tour" loading="lazy" class="responsive round medium-height">
+                            </div>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>New brewery tour dates are live! Come see how we craft our signature beers. Includes tasting flight and take-home growler. Book your spot today! Limited to 15 people per tour. 🏭</p>
                             </div>
+                            <div class="card-divider"></div>
                             <div class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="tasting-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="tasting-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">18</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">5</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>BreweryTourist</strong>
-                                            <p class="margin-vertical-small">I went on the tour last week! Highly recommend it</p>
-                                            <small class="text-grey">1 day ago</small>
-                                        </div>
-                                    </div>
+                                <div class="absolute right bottom small-padding">
+                                    <button data-ui="#post-menu-3" class="circle transparent small">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-3">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewery-tour-post'); return false;">Report</a></li>
+                                    </menu>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
-                                    <div class="row no-gap">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="festival-post-comment-input">
-                                                </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="festival-post-comment-submit">Post</button>
-                                                </div>
+                            </div>
+                            <div class="comments-section page">
+                                <div class="comments-list">
+                                    <div class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="BreweryTourist" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>BreweryTourist</strong>
+                                                <p>I went on the tour last week! Highly recommend it</p>
+                                                <small class="text-grey">1 day ago</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <form hx-post="/api/comments/3" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="festival-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="festival-post-comment-submit">Post</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Product Detail Dialog -->
-        <dialog id="product-dialog" class="modal medium" style="max-height: calc(100vh - 108px); height: calc(100vh - 108px);">
-            <button data-ui="#product-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <dialog id="product-dialog" class="modal medium small-height max">
+            <button data-ui="#product-dialog" class="circle transparent absolute right top small-padding front">
                 <i>close</i>
             </button>
             
-            <div style="max-height: 100%; overflow-y: auto; padding-bottom: 1rem;">
+            <div class="max scroll padding-bottom-medium">
                 <!-- Product Image -->
-                <img id="dialog-product-image" src="" alt="" class="responsive round" style="height: 300px; object-fit: cover; width: 100%;">
+                <img id="dialog-product-image" src="" alt="" class="responsive round medium-height max">
                 
                 <!-- Action Buttons -->
-                <div class="row no-gap margin-top-medium" style="gap: 0.5rem;">
-                    <div class="col s8">
-                        <button id="dialog-add-to-cart-btn" class="btn primary" style="width: 100%;" onclick="addToCartWithAnimation(this)">
-                            <i>add_shopping_cart</i>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="col s4">
-                        <button id="dialog-favorite-btn" class="btn outline" style="width: 100%;" onclick="toggleFavoriteWithAnimation(this)">
-                            <i>favorite_border</i>
-                        </button>
-                    </div>
-                </div>
+                <nav class="row no-gap margin-top-medium small-space">
+                    <button id="dialog-add-to-cart-btn" class="btn primary max" onclick="addToCartWithAnimation(this)">
+                        <i>add_shopping_cart</i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <button id="dialog-favorite-btn" class="btn outline max" onclick="toggleFavoriteWithAnimation(this)">
+                        <i>favorite_border</i>
+                    </button>
+                </nav>
                 
                 <!-- Product Info -->
                 <div class="padding-medium">
@@ -849,29 +784,29 @@ body.dark #vendorMessageModal {
                     <!-- Payment Methods -->
                     <div class="margin-vertical-medium">
                         <h6 class="text-bold">Accepted Payment Methods</h6>
-                        <div class="row no-gap middle-align" style="gap: 1rem; margin-top: 0.5rem;">
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                        <nav class="row no-gap middle-align small-space margin-top-small">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">credit_card</i>
                                 <small>Stripe</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">account_balance</i>
                                 <small>PayPal</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">payment</i>
                                 <small>Venmo</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">attach_money</i>
                                 <small>Cash</small>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                     
                     <!-- Report Button -->
                     <div class="margin-vertical-medium">
-                        <button class="btn outline" style="width: 100%;" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
+                        <button class="btn outline max" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
                             <i>flag</i>
                             <span>Report Product</span>
                         </button>
@@ -889,7 +824,7 @@ body.dark #vendorMessageModal {
 
     <!-- Unified Report Dialog -->
     <dialog id="report-dialog" class="modal medium">
-        <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <button data-ui="#report-dialog" class="circle transparent absolute right top small-padding front">
             <i>close</i>
         </button>
         
@@ -915,7 +850,7 @@ body.dark #vendorMessageModal {
                 </div>
                 
                 <!-- Conditional Explain Field for Inappropriate Content/Product -->
-                <div id="explain-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="explain-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-explain" placeholder=" ">
                         <label>Explain</label>
@@ -923,7 +858,7 @@ body.dark #vendorMessageModal {
                 </div>
                 
                 <!-- Conditional Text Field for Other -->
-                <div id="other-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="other-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-other" placeholder=" ">
                         <label>Please specify</label>
@@ -1005,75 +940,32 @@ body.dark #vendorMessageModal {
             }
         });
 
-        function toggleLike(element) {
-            const icon = element.querySelector('i');
-            const likeText = element.querySelector('.like-text');
-            const likeCount = element.querySelector('.like-count');
+        // Toggle like button
+        function toggleLike(button) {
+            const heartIcon = button.querySelector('.material-icons');
+            const likeCountSpan = button.querySelector('.like-count');
+            const currentCount = parseInt(likeCountSpan.textContent);
             
-            if (element.classList.contains('liked')) {
-                // Unlike
-                element.classList.remove('liked');
-                icon.textContent = 'favorite_border';
-                icon.className = 'material-icons';
-                likeText.textContent = 'Like';
-                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            if (heartIcon.textContent === 'favorite_border') {
+                // Like the post
+                heartIcon.textContent = 'favorite';
+                button.classList.add('liked');
+                likeCountSpan.textContent = currentCount + 1;
             } else {
-                // Like
-                element.classList.add('liked');
-                icon.textContent = 'favorite';
-                icon.className = 'material-icons error';
-                likeText.textContent = 'Liked';
-                likeText.className = 'like-text error';
-                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                // Unlike the post
+                heartIcon.textContent = 'favorite_border';
+                button.classList.remove('liked');
+                likeCountSpan.textContent = currentCount - 1;
             }
         }
-        
-        function toggleComments(element) {
-            const postCard = element.closest('.card');
-            const commentsSection = postCard.querySelector('.card-footer');
+
+        // Toggle comments dropdown
+        function toggleComments(button) {
+            const card = button.closest('.card') || button.closest('article');
+            const commentsSection = card.querySelector('.comments-section');
             
-            if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
-                commentsSection.style.display = 'block';
-                element.querySelector('.comment-text').textContent = 'Hide Comments';
-            } else {
-                commentsSection.style.display = 'none';
-                element.querySelector('.comment-text').textContent = 'Comment';
-            }
-        }
-        
-        function addComment(element) {
-            const postCard = element.closest('.card');
-            const commentInput = postCard.querySelector('input[type="text"]');
-            const commentsContainer = postCard.querySelector('.margin-bottom-medium');
-            const commentCount = postCard.querySelector('.comment-count');
-            
-            if (commentInput.value.trim() === '') return;
-            
-            // Create new comment element
-            const newComment = document.createElement('div');
-            newComment.className = 'row no-gap margin-bottom-medium';
-            newComment.innerHTML = `
-                <div class="col s2">
-                    <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                </div>
-                <div class="col s10">
-                    <strong>You</strong>
-                    <p class="margin-vertical-small">${commentInput.value}</p>
-                    <small class="text-grey">Just now</small>
-                </div>
-            `;
-            
-            // Add to comments container
-            commentsContainer.appendChild(newComment);
-            
-            // Update comment count
-            commentCount.textContent = parseInt(commentCount.textContent) + 1;
-            
-            // Clear input
-            commentInput.value = '';
-            
-            // Scroll to new comment
-            newComment.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // Use Beer CSS active class - page elements are hidden by default, active shows them
+            commentsSection.classList.toggle('active');
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -1233,19 +1125,9 @@ body.dark #vendorMessageModal {
             }, 600);
         }
 
-        // Hamburger Menu Toggle for Vendor
-        function toggleHamburgerMenu() {
-            const overlay = document.getElementById('vendor-hamburger-menu-overlay');
-            const menu = document.getElementById('vendor-hamburger-menu');
-            
-            if (overlay.style.display === 'none' || overlay.style.display === '') {
-                overlay.style.display = 'block';
-                menu.style.right = '0';
-            } else {
-                overlay.style.display = 'none';
-                menu.style.right = '-240px';
-            }
-        }
+        // Hamburger Menu Toggle for Vendor - Now using Beer CSS ui() function
+        // The hamburger menu is now controlled via data-ui attributes and ui() function
+        // No custom JavaScript needed - Beer CSS handles it automatically
 
         // Report Dialog Functions
         let currentReportType = '';
@@ -1270,8 +1152,8 @@ body.dark #vendorMessageModal {
             
             // Reset form
             document.getElementById('report-form').reset();
-            document.getElementById('explain-field-container').style.display = 'none';
-            document.getElementById('other-field-container').style.display = 'none';
+            document.getElementById('explain-field-container').classList.add('page');
+            document.getElementById('other-field-container').classList.add('page');
             
             // Open dialog
             ui('#report-dialog');
@@ -1282,15 +1164,15 @@ body.dark #vendorMessageModal {
             const explainContainer = document.getElementById('explain-field-container');
             const otherContainer = document.getElementById('other-field-container');
             
-            // Hide both containers first
-            explainContainer.style.display = 'none';
-            otherContainer.style.display = 'none';
+            // Hide both containers first using Beer CSS page class
+            explainContainer.classList.add('page');
+            otherContainer.classList.add('page');
             
             // Show appropriate container based on selection
             if (reason === 'inappropriate-content' || reason === 'inappropriate-product') {
-                explainContainer.style.display = 'block';
+                explainContainer.classList.remove('page');
             } else if (reason === 'other') {
-                otherContainer.style.display = 'block';
+                otherContainer.classList.remove('page');
             }
         }
 

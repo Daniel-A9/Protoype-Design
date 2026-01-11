@@ -9,78 +9,21 @@
    
    
 <link href="../../style.css" rel="stylesheet">
-
-<style>
-/* Heart favorite animation */
-@keyframes heartPulse {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.3); }
-  50% { transform: scale(1.1); }
-  75% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.heart-animate {
-  animation: heartPulse 0.6s ease-in-out;
-}
-
-/* Green firework animation */
-@keyframes firework {
-  0% { 
-    transform: translateY(0) scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(20px) scale(1);
-    opacity: 0.8;
-  }
-  100% { 
-    transform: translateY(40px) scale(0.5);
-    opacity: 0;
-  }
-}
-
-.firework-effect {
-  position: relative;
-}
-
-.firework-effect::after {
-  content: '✨';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 20px;
-  color: #4CAF50;
-  animation: firework 0.8s ease-out;
-  pointer-events: none;
-}
-
-/* Product card hover effect */
-.product-card-clickable {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.product-card-clickable:hover {
-  transform: translateY(-4px);
-}
-</style>
   </head>
   <body>
 
     <!-- Fixed Top Header -->
-    <div class="top-header">
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <a href="../../index.html" class="circle transparent" aria-label="Back to search feed" style="color: #000; display: inline-flex; align-items: center; justify-content: center;">
+    <header class="top-header">
+      <div class="header-wordmark">
+        <a href="../../index.html" class="circle transparent" aria-label="Back to search feed">
           <i>arrow_back</i>
         </a>
-        <img src="../../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
+        <img src="../../text.png" alt="Local Market Wordmark" loading="lazy" class="wordmark-img">
       </div>
-      <nav class="header-nav">
+      <nav class="header-nav" aria-label="Main navigation">
         <a href="../../home/index.html" class="link" data-testid="desktop-nav-home">Home</a>
         <a href="../../index.html" class="link" data-testid="desktop-nav-discovery">Discover</a>
-        <a href="../../discussions/categories/local-discussions/" class="link" data-testid="desktop-nav-community">Community</a>
+        <a href="../../discussions/categories/local-discussions/index.html" class="link" data-testid="desktop-nav-community">Community</a>
         <a href="../../cart/index.html" class="link" data-testid="desktop-nav-cart">
           <i>shopping_cart</i>
           <span>Cart</span>
@@ -88,38 +31,43 @@
       </nav>
       <div class="header-right">
         <a href="../../index.html" class="site-logo">
-          <img src="../../Logo 333.png" alt="LocalMarket Logo">
+          <img src="../../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
         </a>
-        <!-- Hamburger Menu Button for Vendor -->
-        <div class="mobile-menu-btn" onclick="toggleHamburgerMenu()" data-testid="vendor-hamburger-menu-btn">
-          <i>menu</i>
-        </div>
-        <a href="../../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile">
+        <a href="../../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile" aria-label="User profile">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
+        <!-- Vendor Menu Button -->
+        <button type="button" class="feed-menu-btn" aria-label="Vendor menu" aria-expanded="false" aria-controls="vendorMenu" data-ui="#vendor-hamburger-menu" data-testid="vendor-hamburger-menu-btn">
+          <i>menu</i>
+          <menu class="feed-menu-dropdown" id="vendorMenu" role="menu">
+            <li role="menuitem">
+              <a href="#" class="menu-item" data-ui="#vendor-hamburger-menu">Menu</a>
+            </li>
+          </menu>
+        </button>
       </div>
-    </div>
+    </header>
 
     <!-- Hamburger Menu Overlay for Vendor -->
-    <div id="vendor-hamburger-menu-overlay" onclick="toggleHamburgerMenu()" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 1002; transition: opacity 0.3s ease;"></div>
+    <div id="vendor-hamburger-menu-overlay" class="overlay" data-ui="#vendor-hamburger-menu"></div>
     
     <!-- Hamburger Menu Sidebar for Vendor -->
-    <div id="vendor-hamburger-menu" style="position: fixed; top: 0; right: -240px; width: 240px; height: 100vh; background-color: var(--surface-container); z-index: 1003; transition: right 0.3s ease; overflow-y: auto; box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);">
-      <div style="padding: 1rem;">
-        <button class="circle transparent small" onclick="toggleHamburgerMenu()" style="float: right; margin: 0;">
+    <dialog id="vendor-hamburger-menu" class="right medium-width">
+      <nav class="vertical padding">
+        <button class="circle transparent small right" data-ui="#vendor-hamburger-menu">
           <i>close</i>
         </button>
-        <div style="clear: both; margin-bottom: 0.5rem;"></div>
+        <div class="space"></div>
         
-        <hr style="margin: 0.75rem 0;">
+        <hr class="margin-vertical-small">
         
         <!-- Menu Items -->
-        <a href="#" onclick="openReportDialog('vendor', 'mountain-pottery-studio'); toggleHamburgerMenu(); return false;" style="display: flex; align-items: center; padding: 0.5rem 0; text-decoration: none; color: var(--on-surface);">
-          <i style="margin-right: 0.5rem; font-size: 1.2rem;">flag</i>
-          <span style="font-size: 0.9rem;">Report Vendor</span>
+        <a href="#" onclick="openReportDialog('vendor', 'mountain-pottery-studio'); ui('#vendor-hamburger-menu'); return false;" class="row middle-align padding-vertical-small">
+          <i class="medium">flag</i>
+          <span class="small-text">Report Vendor</span>
         </a>
-      </div>
-    </div>
+      </nav>
+    </dialog>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
@@ -129,7 +77,7 @@
       <a href="../../index.html" class="nav-item active" data-testid="nav-search">
         <i>search</i>
       </a>
-      <a href="../../discussions/categories/local-discussions/" class="nav-item" data-testid="nav-discussions">
+      <a href="../../discussions/categories/local-discussions/index.html" class="nav-item" data-testid="nav-discussions">
         <i>groups</i>
       </a>
       <a href="../../cart/index.html" class="nav-item" data-testid="nav-cart">
@@ -140,15 +88,15 @@
       </a>
     </nav>
 
-    <main class="responsive auto-margin" style="padding-bottom: 70px;">
+    <main class="responsive auto-margin">
         <!-- Vendor Profile Hero Section -->
         <section id="home" class="margin-bottom-large">
             <div class="margin-bottom-negative-large">
                 <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?w=1200&h=400&fit=crop" 
-                     alt="Artist painting detailed designs onto a handcrafted ceramic vase" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
+                     alt="Artist painting detailed designs onto a handcrafted ceramic vase" class="responsive round medium-height" loading="lazy">
             </div>
             
-            <div class="card surface-container margin-horizontal-small responsive auto-margin" style="border-radius: 12px; padding: 1rem; position: relative; z-index: 2;">
+            <article class="surface-container margin-horizontal-small responsive auto-margin round padding relative front">
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
@@ -162,22 +110,22 @@
                                             <h2 class="left-align">Mountain Pottery Studio</h2>
                                         </div>
                                     </div>
-                                    <div class="vendor-description-container" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                                      <p class="text-left text-grey" style="word-wrap: break-word; white-space: normal; line-height: 1.4; margin: 0;">Handcrafted ceramics inspired by the Cascade mountains since 2012</p>
+                                    <div class="vendor-description-container margin-top-small margin-bottom-small">
+                                      <p class="text-left text-grey">Handcrafted ceramics inspired by the Cascade mountains since 2012</p>
                                     </div>
                                     
                                     <div class="row no-gap wrap margin-top-small">
                                         <div class="col s6 m4 l3 margin-bottom-small">
-                                            <a href="followers.html" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="followers.html" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">8.4k</span>
                                                     <div class="text-small text-grey">Followers</div>
                                                 </div>
                                             </a>
                                         </div>
                                         <div class="col s6 m4 l3 margin-bottom-small">
-                                            <a href="connections.html" style="text-decoration: none; color: inherit; display: block;">
-                                                <div class="text-left" style="cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                            <a href="connections.html" class="link">
+                                                <div class="text-left small-opacity">
                                                     <span class="text-bold text-large">52</span>
                                                     <div class="text-small text-grey">Connections</div>
                                                 </div>
@@ -185,36 +133,32 @@
                                         </div>
                                     </div>
 
-                                    <div class="row no-gap wrap margin-top-small" style="gap: 0.6rem;">
-                                        <div>
-                                            <button class="btn primary border" 
-                                                    hx-post="/api/follow" 
-                                                    hx-target="this" 
-                                                    hx-swap="outerHTML"
-                                                    data-testid="follow-vendor-btn">
-                                                <span>Follow</span>
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button class="btn primary border circle" 
-                                                    hx-get="/contact-form" 
-                                                    hx-target="#contact-modal" 
-                                                    hx-swap="innerHTML"
-                                                    data-testid="message-vendor-btn">
-                                                <i>mail</i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <nav class="row no-gap wrap margin-top-small small-space">
+                                        <button class="btn primary border" 
+                                                hx-post="/api/follow" 
+                                                hx-target="this" 
+                                                hx-swap="outerHTML"
+                                                data-testid="follow-vendor-btn">
+                                            <span>Follow</span>
+                                        </button>
+                                        <button class="btn primary border circle" 
+                                                hx-get="/contact-form" 
+                                                hx-target="#contact-modal" 
+                                                hx-swap="innerHTML"
+                                                data-testid="message-vendor-btn">
+                                            <i>mail</i>
+                                        </button>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
         </section>
 
         <!-- Products Section -->
-        <section id="products" class="padding-vertical-large">
+        <section id="products">
             <div class="container">
                 <div class="row no-gap middle-align margin-bottom-large">
                     <div class="col s12">
@@ -224,26 +168,26 @@
             </div>
             
             <!-- Products Grid - Full Width for Horizontal Scroll -->
-            <div id="products-grid" class="row no-wrap scroll" style="padding: 0.5rem 0; gap: 1.5rem; padding-left: 0.5rem; padding-right: 0.5rem;">
+            <div id="products-grid" class="row no-wrap scroll top-align horizontal-padding small-space">
                             <!-- Product Card 1 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('wheel-thrown-mug')">
+                            <article class="card medium-width column no-gap">
+                                <a onclick="openProduct('wheel-thrown-mug')" class="link">
                                     <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=300&h=200&fit=crop" 
-                                         alt="Wheel-thrown ceramic mug" class="responsive round" style="height: 280px; object-fit: cover;" loading="lazy">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Wheel-Thrown Stoneware Mug</h5>
-                                        <p class="text-grey margin-vertical-small">Matte glacier glaze with hand-carved faceting and a comfort-fit handle</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$48.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">each</span>
-                                            </div>
+                                         alt="Wheel-thrown ceramic mug" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="tiny-padding">
+                                    <h5>Wheel-Thrown Stoneware Mug</h5>
+                                    <p>Matte glacier glaze with hand-carved faceting and a comfort-fit handle</p>
+                                    <div class="row no-gap middle-align">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$48.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">each</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer>
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -267,28 +211,28 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 2 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('stoneware-planter')">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('stoneware-planter')" class="link">
                                     <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=300&h=200&fit=crop" 
-                                         alt="Handmade ceramic planters" class="responsive round" style="height: 280px; object-fit: cover;" loading="lazy">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Stoneware Hanging Planter</h5>
-                                        <p class="text-grey margin-vertical-small">Speckled clay body with satin glaze interior and waxed cotton hanging cord</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$62.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">each</span>
-                                            </div>
+                                         alt="Handmade ceramic planters" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Stoneware Hanging Planter</h5>
+                                    <p class="margin-vertical-small">Speckled clay body with satin glaze interior and waxed cotton hanging cord</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$62.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">each</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -312,28 +256,28 @@
                                             </button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </article>
 
                             <!-- Product Card 3 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('serving-bowl')">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('serving-bowl')" class="link">
                                     <img src="https://images.unsplash.com/photo-1528821154947-1aa3d1b749ff?w=300&h=200&fit=crop" 
-                                         alt="Large ceramic serving bowl" class="responsive round" style="height: 280px; object-fit: cover;" loading="lazy">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Mountain Ridge Serving Bowl</h5>
-                                        <p class="text-grey margin-vertical-small">Wide-rim bowl with layered ash and cobalt glazes mimicking alpine horizons</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$118.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">each</span>
-                                            </div>
+                                         alt="Large ceramic serving bowl" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Mountain Ridge Serving Bowl</h5>
+                                    <p class="margin-vertical-small">Wide-rim bowl with layered ash and cobalt glazes mimicking alpine horizons</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$118.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">each</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -358,27 +302,27 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </header>
 
                             <!-- Product Card 4 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('pour-over-set')">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('pour-over-set')" class="link">
                                     <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300&h=200&fit=crop" 
-                                         alt="Ceramic pour-over coffee set" class="responsive round" style="height: 280px; object-fit: cover;" loading="lazy">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Ceramic Pour-Over Set</h5>
-                                        <p class="text-grey margin-vertical-small">Two-piece brewer and carafe with satin charcoal glaze and walnut handle</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$134.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per set</span>
-                                            </div>
+                                         alt="Ceramic pour-over coffee set" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Ceramic Pour-Over Set</h5>
+                                    <p class="margin-vertical-small">Two-piece brewer and carafe with satin charcoal glaze and walnut handle</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$134.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per set</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -403,27 +347,27 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </header>
 
                             <!-- Product Card 5 -->
-                            <div class="card medium" style="flex: 0 0 320px; min-width: 320px; flex-shrink: 0; max-width: 320px;">
-                                <div class="card-content product-card-clickable" onclick="openProduct('hands-on-workshop')">
+                            <article class="card small-width column no-gap">
+                                <a onclick="openProduct('hands-on-workshop')" class="link">
                                     <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop" 
-                                         alt="Pottery workshop in progress" class="responsive round" style="height: 280px; object-fit: cover;" loading="lazy">
-                                    <div class="padding-vertical-medium">
-                                        <h5>Hands-On Wheel Workshop</h5>
-                                        <p class="text-grey margin-vertical-small">Three-hour small group lesson covering throwing basics and glazing techniques</p>
-                                        <div class="row no-gap middle-align margin-top-medium">
-                                            <div class="col s6">
-                                                <span class="text-bold text-large">$165.00</span>
-                                            </div>
-                                            <div class="col s6">
-                                                <span class="text-small text-grey">per seat</span>
-                                            </div>
+                                         alt="Pottery workshop in progress" loading="lazy" class="responsive round">
+                                </a>
+                                <div class="padding">
+                                    <h5>Hands-On Wheel Workshop</h5>
+                                    <p class="margin-vertical-small">Three-hour small group lesson covering throwing basics and glazing techniques</p>
+                                    <div class="row no-gap middle-align margin-top-medium">
+                                        <div class="col s6">
+                                            <span class="text-bold text-large">$165.00</span>
+                                        </div>
+                                        <div class="col s6">
+                                            <span class="text-small text-grey">per seat</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer tiny-padding">
+                                <footer class="padding">
                                     <div class="row no-gap middle-align">
                                         <div class="col s9">
                                             <button class="btn small" 
@@ -448,27 +392,31 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </header>
             </div>
             
             <!-- Events Link -->
             <div class="container medium-width auto-margin margin-top-medium left-align">
-                <a href="events.html" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px; margin-bottom: 1.75rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="gallery.html" class="text-primary l" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 26px;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 20px;">arrow_forward</i>
-                </a>
-                <a href="events.html" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 2rem;">
-                    <span>See Upcoming Events</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
-                <a href="gallery.html" class="text-primary s m" style="text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 17px; margin-top: 0.75rem;">
-                    <span>See Photo Gallery</span>
-                    <i style="font-size: 16px;">arrow_forward</i>
-                </a>
+                <nav class="vertical l">
+                    <a href="events.html" class="text-primary link row middle-align small-space margin-bottom-large">
+                        <span class="large-text">See Upcoming Events</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                    <a href="gallery.html" class="text-primary link row middle-align small-space">
+                        <span class="large-text">See Photo Gallery</span>
+                        <i class="medium">arrow_forward</i>
+                    </a>
+                </nav>
+                <nav class="vertical s m margin-top-large">
+                    <a href="events.html" class="text-primary link row middle-align small-space margin-top-large">
+                        <span class="medium-text">See Upcoming Events</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                    <a href="gallery.html" class="text-primary link row middle-align small-space margin-top-medium">
+                        <span class="medium-text">See Photo Gallery</span>
+                        <i class="small">arrow_forward</i>
+                    </a>
+                </nav>
             </div>
         </section>
 
@@ -482,17 +430,19 @@
                             <h3 class="left-align">Posts</h3>
                         </div>
                     </div>
-
-                    <!-- Post Card 1 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
+                    <div class="feed-container">
+                        <!-- Post Card 1 -->
+                        <div class="card small">
+                            <header class="card-header-row">
                                 <div class="row no-gap">
                                     <div class="col s2">
                                         <img src="https://www.beercss.com/favicon.png" class="circle small">
                                     </div>
                                     <div class="col s8">
-                                        <h6>Mountain Pottery Studio</h6>
-                                        <small class="text-grey">2 hours ago</small>
+                                        <h5 class="card-title">Mountain Pottery Studio</h5>
+                                        <div class="card-meta">
+                                            <span>2 hours ago</span>
+                                        </div>
                                     </div>
                                     <div class="col s2 right-align">
                                         <button data-ui="#post-menu-1" class="circle transparent small">
@@ -503,33 +453,50 @@
                                         </menu>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-content">
+                            </header>
+                            <div class="card-divider"></div>
+                            <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1524230572899-a752b3835840?w=600&h=300&fit=crop" 
-                                     alt="Potter trimming a mug on the wheel" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
+                                     alt="Potter trimming a mug on the wheel" class="responsive round medium-height" loading="lazy">
                                 <p>The new glacier glaze run just came out of the kiln and we’re obsessed with the icy blues and subtle speckles. 48 mugs made it through with gorgeous variation—look for them online this Friday! 🗻</p>
                             </div>
-                            <div class="card-footer">
+                            <footer class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="brewing-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="brewing-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">24</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="brewing-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">8</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                                <div class="absolute right bottom small-padding">
+                                    <button data-ui="#post-menu-1" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-1">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </footer>
+                                <div class="absolute right bottom small-padding">
+                                    <button data-ui="#post-menu-1" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-1">
+                                        <li><a href="#" onclick="openReportDialog('post', 'brewing-post-1'); return false;">Report</a></li>
+                                    </menu>
+                                </div>
+                            </footer>
+                            <div class="comments-section page">
+                                <div class="comments-list">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
@@ -554,7 +521,7 @@
                                 </div>
                                 
                                 <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="margin-top-medium border-top padding-top-medium">
                                     <div class="row no-gap">
                                         <div class="col s2">
                                             <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
@@ -571,100 +538,105 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </header>
                         </div>
 
-                    <!-- Post Card 2 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
-                                <div class="row no-gap">
+                        <!-- Post Card 2 -->
+                        <article class="card small">
+                            <header class="card-header-row">
+                                <div class="row no-gap top-align max">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Mountain Pottery Studio" loading="lazy" class="circle small">
                                     </div>
-                                    <div class="col s8">
-                                        <h6>Mountain Pottery Studio</h6>
-                                        <small class="text-grey">1 day ago</small>
-                                    </div>
-                                    <div class="col s2 right-align">
-                                        <button data-ui="#post-menu-2" class="circle transparent small">
-                                            <i>more_vert</i>
-                                        </button>
-                                        <menu id="post-menu-2">
-                                            <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
-                                        </menu>
+                                    <div class="col s10">
+                                        <h5 class="card-title">Mountain Pottery Studio</h5>
+                                        <div class="card-meta">
+                                            <span>1 day ago</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-content">
+                            </header>
+                            <div class="card-divider"></div>
+                            <figure class="card-image">
                                 <img src="https://images.unsplash.com/photo-1516815231560-8f41ec531527?w=600&h=300&fit=crop" 
-                                     alt="Shelves of finished pottery drying in studio" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
+                                     alt="Shelves of finished pottery drying in studio" loading="lazy" class="responsive round medium-height">
+                            </figure>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Studio shelves are full as we prep for the spring open house! Bowls, planters, and pour-over sets are curing before the final glaze firing this weekend.</p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-divider"></div>
+                            <footer class="card-footer">
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="festival-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleLike(this)" data-testid="festival-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">31</span>
                                         </div>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="festival-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <div class="clickable-container" onclick="toggleComments(this)" data-testid="festival-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">12</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
-                                <div class="margin-bottom-medium">
-                                    <div class="row no-gap margin-bottom-medium">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <strong>GalleryGuru</strong>
-                                            <p class="margin-vertical-small">Those planters will go fast—please save one for the Portland market booth!</p>
-                                            <small class="text-grey">3 hours ago</small>
-                                        </div>
-                                    </div>
+                                <div class="absolute right bottom small-padding">
+                                    <button data-ui="#post-menu-2" class="circle transparent small" aria-label="Post options">
+                                        <i>more_vert</i>
+                                    </button>
+                                    <menu id="post-menu-2">
+                                        <li><a href="#" onclick="openReportDialog('post', 'chocolate-stout-post'); return false;">Report</a></li>
+                                    </menu>
                                 </div>
-                                
-                                <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
-                                    <div class="row no-gap">
-                                        <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
-                                        </div>
-                                        <div class="col s10">
-                                            <div class="row no-gap middle-align">
-                                                <div class="col s10">
-                                                    <input type="text" class="field border" placeholder="Write a comment..." data-testid="tasting-post-comment-input">
-                                                </div>
-                                                <div class="col s2">
-                                                    <button class="btn small" onclick="addComment(this)" data-testid="tasting-post-comment-submit">Post</button>
-                                                </div>
+                            </footer>
+                            <div class="comments-section page">
+                                <div class="comments-list">
+                                    <article class="comment-item">
+                                        <div class="row no-gap">
+                                            <div class="col s2">
+                                                <img src="https://www.beercss.com/favicon.png" alt="GalleryGuru" loading="lazy" class="circle extra-small">
+                                            </div>
+                                            <div class="col s10">
+                                                <strong>GalleryGuru</strong>
+                                                <p>Those planters will go fast—please save one for the Portland market booth!</p>
+                                                <small class="text-grey">3 hours ago</small>
                                             </div>
                                         </div>
+                                    </article>
+                                </div>
+                                <div class="add-comment">
+                                    <div class="row no-gap">
+                                        <div class="col s2">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
+                                        </div>
+                                        <div class="col s10">
+                                            <form hx-post="/api/comments/2" hx-target=".comments-list" hx-swap="beforeend">
+                                                <div class="input-field">
+                                                    <input type="text" name="comment" class="comment-input" placeholder="Write a comment..." required data-testid="tasting-post-comment-input">
+                                                    <button type="submit" class="btn small" data-testid="tasting-post-comment-submit">Post</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
                     <!-- Post Card 3 -->
-                    <div class="card medium margin-bottom-large margin-horizontal-small">
-                            <div class="card-header">
+                        <article class="card small">
+                            <header>
                                 <div class="row no-gap">
                                     <div class="col s2">
-                                        <img src="https://www.beercss.com/favicon.png" class="circle small">
+                                        <img src="https://www.beercss.com/favicon.png" alt="Mountain Pottery Studio" loading="lazy" class="circle small">
                                     </div>
                                     <div class="col s8">
-                                        <h6>Mountain Pottery Studio</h6>
-                                        <small class="text-grey">3 days ago</small>
+                                        <h5 class="card-title">Mountain Pottery Studio</h5>
+                                        <div class="card-meta">
+                                            <span>3 days ago</span>
+                                        </div>
                                     </div>
                                     <div class="col s2 right-align">
                                         <button data-ui="#post-menu-3" class="circle transparent small">
@@ -675,37 +647,41 @@
                                         </menu>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-content">
+                            </header>
+                            <div>
                                 <img src="https://images.unsplash.com/photo-1512238701577-f182d9ef8af7?w=600&h=300&fit=crop" 
-                                     alt="Pottery workshop with instructor guiding students" class="responsive round" style="height: 300px; object-fit: cover;" loading="lazy">
+                                     alt="Pottery workshop with instructor guiding students" loading="lazy" class="responsive round medium-height">
+                            </figure>
+                            <div class="card-divider"></div>
+                            <div class="card-content left-align">
                                 <p>Summer workshop dates are live! Learn wheel fundamentals, decorate with underglaze, and leave with two fired pieces. Seats are limited to keep instruction hands-on. 🎨</p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-divider"></div>
+                            <footer>
                                 <div class="row no-gap">
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleLike(this)" data-testid="tasting-post-like-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <button class="transparent row no-gap middle-align small-padding round" onclick="toggleLike(this)" data-testid="tasting-post-like-btn">
                                             <i class="material-icons">favorite_border</i>
                                             <span class="like-text">Like</span>
                                             <span class="like-count">18</span>
-                                        </div>
+                                        </button>
                                     </div>
                                     <div class="col s6">
-                                        <div class="row no-gap middle-align" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn" style="cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background-color 0.2s;">
+                                        <button class="transparent row no-gap middle-align small-padding round" onclick="toggleComments(this)" data-testid="tasting-post-comment-btn">
                                             <i class="material-icons">chat_bubble_outline</i>
                                             <span class="comment-text">Comment</span>
                                             <span class="comment-count">5</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </footer>
                             
                             <!-- Comments Section -->
-                            <div class="card-footer surface-container-low" style="display: none; border-top: 1px solid var(--outline-variant); padding: 1rem;">
+                            <div class="surface-container-low page border-top padding">
                                 <div class="margin-bottom-medium">
                                     <div class="row no-gap margin-bottom-medium">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="StudioRegular" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <strong>StudioRegular</strong>
@@ -716,10 +692,10 @@
                                 </div>
                                 
                                 <!-- Add Comment Form -->
-                                <div class="margin-top-medium" style="border-top: 1px solid var(--outline-variant); padding-top: 1rem;">
+                                <div class="margin-top-medium border-top padding-top-medium">
                                     <div class="row no-gap">
                                         <div class="col s2">
-                                            <img src="https://www.beercss.com/favicon.png" class="circle extra-small">
+                                            <img src="https://www.beercss.com/favicon.png" alt="User" loading="lazy" class="circle extra-small">
                                         </div>
                                         <div class="col s10">
                                             <div class="row no-gap middle-align">
@@ -734,35 +710,31 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- Product Detail Dialog -->
-        <dialog id="product-dialog" class="modal medium" style="max-height: calc(100vh - 108px); height: calc(100vh - 108px);">
-            <button data-ui="#product-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <dialog id="product-dialog" class="modal medium small-height max">
+            <button data-ui="#product-dialog" class="circle transparent absolute right top small-padding front">
                 <i>close</i>
             </button>
             
-            <div style="max-height: 100%; overflow-y: auto; padding-bottom: 1rem;">
+            <div class="max scroll padding-bottom-medium">
                 <!-- Product Image -->
-                <img id="dialog-product-image" src="" alt="" class="responsive round" style="height: 300px; object-fit: cover; width: 100%;">
+                <img id="dialog-product-image" src="" alt="" class="responsive round medium-height max">
                 
                 <!-- Action Buttons -->
-                <div class="row no-gap margin-top-medium" style="gap: 0.5rem;">
-                    <div class="col s8">
-                        <button id="dialog-add-to-cart-btn" class="btn primary" style="width: 100%;" onclick="addToCartWithAnimation(this)">
-                            <i>add_shopping_cart</i>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
-                    <div class="col s4">
-                        <button id="dialog-favorite-btn" class="btn outline" style="width: 100%;" onclick="toggleFavoriteWithAnimation(this)">
-                            <i>favorite_border</i>
-                        </button>
-                    </div>
-                </div>
+                <nav class="row no-gap margin-top-medium small-space">
+                    <button id="dialog-add-to-cart-btn" class="btn primary max" onclick="addToCartWithAnimation(this)">
+                        <i>add_shopping_cart</i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <button id="dialog-favorite-btn" class="btn outline max" onclick="toggleFavoriteWithAnimation(this)">
+                        <i>favorite_border</i>
+                    </button>
+                </nav>
                 
                 <!-- Product Info -->
                 <div class="padding-medium">
@@ -808,29 +780,29 @@
                     <!-- Payment Methods -->
                     <div class="margin-vertical-medium">
                         <h6 class="text-bold">Accepted Payment Methods</h6>
-                        <div class="row no-gap middle-align" style="gap: 1rem; margin-top: 0.5rem;">
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                        <nav class="row no-gap middle-align small-space margin-top-small">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">credit_card</i>
                                 <small>Stripe</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">account_balance</i>
                                 <small>PayPal</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">payment</i>
                                 <small>Venmo</small>
                             </div>
-                            <div class="row no-gap middle-align" style="gap: 0.25rem;">
+                            <div class="row no-gap middle-align tiny-space">
                                 <i class="text-primary">attach_money</i>
                                 <small>Cash</small>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                     
                     <!-- Report Button -->
                     <div class="margin-vertical-medium">
-                        <button class="btn outline" style="width: 100%;" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
+                        <button class="btn outline max" onclick="openReportDialog('product', document.getElementById('dialog-add-to-cart-btn').getAttribute('data-product-id'))">
                             <i>flag</i>
                             <span>Report Product</span>
                         </button>
@@ -848,7 +820,7 @@
 
     <!-- Unified Report Dialog -->
     <dialog id="report-dialog" class="modal medium">
-        <button data-ui="#report-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem; z-index: 10;">
+        <button data-ui="#report-dialog" class="circle transparent absolute right top small-padding front">
             <i>close</i>
         </button>
         
@@ -874,7 +846,7 @@
                 </div>
                 
                 <!-- Conditional Explain Field for Inappropriate Content/Product -->
-                <div id="explain-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="explain-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-explain" placeholder=" ">
                         <label>Explain</label>
@@ -882,7 +854,7 @@
                 </div>
                 
                 <!-- Conditional Text Field for Other -->
-                <div id="other-field-container" class="margin-vertical-medium" style="display: none;">
+                <div id="other-field-container" class="margin-vertical-medium page">
                     <div class="field label border">
                         <input type="text" id="report-other" placeholder=" ">
                         <label>Please specify</label>
@@ -987,17 +959,13 @@
             }
         }
         
-        function toggleComments(element) {
-            const postCard = element.closest('.card');
-            const commentsSection = postCard.querySelector('.card-footer');
+        // Toggle comments dropdown
+        function toggleComments(button) {
+            const card = button.closest('.card') || button.closest('article');
+            const commentsSection = card.querySelector('.comments-section');
             
-            if (commentsSection.style.display === 'none' || commentsSection.style.display === '') {
-                commentsSection.style.display = 'block';
-                element.querySelector('.comment-text').textContent = 'Hide Comments';
-            } else {
-                commentsSection.style.display = 'none';
-                element.querySelector('.comment-text').textContent = 'Comment';
-            }
+            // Use Beer CSS active class - page elements are hidden by default, active shows them
+            commentsSection.classList.toggle('active');
         }
         
         function addComment(element) {
@@ -1192,19 +1160,9 @@
             }, 600);
         }
 
-        // Hamburger Menu Toggle for Vendor
-        function toggleHamburgerMenu() {
-            const overlay = document.getElementById('vendor-hamburger-menu-overlay');
-            const menu = document.getElementById('vendor-hamburger-menu');
-            
-            if (overlay.style.display === 'none' || overlay.style.display === '') {
-                overlay.style.display = 'block';
-                menu.style.right = '0';
-            } else {
-                overlay.style.display = 'none';
-                menu.style.right = '-240px';
-            }
-        }
+        // Hamburger Menu Toggle for Vendor - Now using Beer CSS ui() function
+        // The hamburger menu is now controlled via data-ui attributes and ui() function
+        // No custom JavaScript needed - Beer CSS handles it automatically
 
         // Report Dialog Functions
         let currentReportType = '';
@@ -1229,8 +1187,8 @@
             
             // Reset form
             document.getElementById('report-form').reset();
-            document.getElementById('explain-field-container').style.display = 'none';
-            document.getElementById('other-field-container').style.display = 'none';
+            document.getElementById('explain-field-container').classList.add('page');
+            document.getElementById('other-field-container').classList.add('page');
             
             // Open dialog
             ui('#report-dialog');
@@ -1241,15 +1199,15 @@
             const explainContainer = document.getElementById('explain-field-container');
             const otherContainer = document.getElementById('other-field-container');
             
-            // Hide both containers first
-            explainContainer.style.display = 'none';
-            otherContainer.style.display = 'none';
+            // Hide both containers first using Beer CSS page class
+            explainContainer.classList.add('page');
+            otherContainer.classList.add('page');
             
             // Show appropriate container based on selection
             if (reason === 'inappropriate-content' || reason === 'inappropriate-product') {
-                explainContainer.style.display = 'block';
+                explainContainer.classList.remove('page');
             } else if (reason === 'other') {
-                otherContainer.style.display = 'block';
+                otherContainer.classList.remove('page');
             }
         }
 

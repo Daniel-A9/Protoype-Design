@@ -10,14 +10,14 @@
   <body>
 
     <!-- Fixed Top Header -->
-    <div class="top-header">
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <img src="../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
+    <header class="top-header">
+      <div class="header-wordmark">
+        <img src="../text.png" alt="Local Market Wordmark" loading="lazy" class="wordmark-img">
       </div>
-      <nav class="header-nav">
+      <nav class="header-nav" aria-label="Main navigation">
         <a href="../home/index.html" class="link" data-testid="desktop-nav-home">Home</a>
         <a href="../index.html" class="link" data-testid="desktop-nav-discovery">Discover</a>
-        <a href="../discussions/categories/local-discussions/" class="link" data-testid="desktop-nav-community">Community</a>
+        <a href="../discussions/categories/local-discussions/index.html" class="link" data-testid="desktop-nav-community">Community</a>
         <a href="../cart/index.html" class="link" data-testid="desktop-nav-cart">
           <i>shopping_cart</i>
           <span>Cart</span>
@@ -27,20 +27,22 @@
       <div class="header-right">
         <!-- Site Logo -->
         <a href="../index.html" class="site-logo">
-          <img src="../Logo 333.png" alt="LocalMarket Logo">
+          <img src="../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
         </a>
-        <a href="../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile">
-          <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="Brewery Central Logo" loading="lazy" class="circle small">
+        <a href="../userprofile/index.html" class="header-profile" data-testid="desktop-nav-profile" aria-label="User profile">
+          <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=60&h=60&fit=crop" alt="Profile" loading="lazy" class="circle small">
         </a>
         <!-- Home Feed Hamburger Menu -->
-        <div class="feed-menu-btn" style="position: relative;" onclick="document.getElementById('homeFeedMenu').classList.toggle('active')">
+        <button type="button" class="feed-menu-btn" aria-label="Home feed menu" aria-expanded="false" aria-controls="homeFeedMenu">
           <i>menu</i>
-          <div class="feed-menu-dropdown" id="homeFeedMenu">
-            <a href="#" onclick="event.preventDefault(); document.getElementById('homeFeedMenu').classList.remove('active');">Edit Home Feed</a>
-          </div>
-        </div>
+          <menu class="feed-menu-dropdown" id="homeFeedMenu" role="menu">
+            <li role="menuitem">
+              <a href="#" class="menu-item">Edit Home Feed</a>
+            </li>
+          </menu>
+        </button>
       </div>
-    </div>
+    </header>
 
     <!-- Bottom Navigation (Mobile) -->
     <nav class="bottom-nav">
@@ -50,7 +52,7 @@
       <a href="../index.html" class="nav-item" data-testid="mobile-nav-search">
         <i>search</i>
       </a>
-      <a href="../discussions/categories/local-discussions/" class="nav-item" data-testid="mobile-nav-discussions">
+      <a href="../discussions/categories/local-discussions/index.html" class="nav-item" data-testid="mobile-nav-discussions">
         <i>groups</i>
       </a>
       <a href="../cart/index.html" class="nav-item" data-testid="mobile-nav-cart">
@@ -90,7 +92,7 @@
               <!-- Following: Vendor post -->
               <div class="card small" data-category="following">
                 <div class="card-header-row">
-                  <div class="row no-gap middle-align max">
+                  <div class="row no-gap top-align max">
                     <div class="col s2">
                       <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
@@ -187,7 +189,7 @@
               <!-- Events: Reminder -->
               <div class="card small" data-category="events">
                 <div class="card-header-row">
-                  <div class="row no-gap middle-align max">
+                  <div class="row no-gap top-align max">
                     <div class="col s2">
                       <i class="large text-primary">event</i>
                     </div>
@@ -208,7 +210,7 @@
               <!-- Discussions: Followed category post -->
               <div class="card small" data-category="discussions">
                 <div class="card-header-row">
-                  <div class="row no-gap middle-align max">
+                  <div class="row no-gap top-align max">
                     <div class="col s2">
                       <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
@@ -301,7 +303,7 @@
               <!-- More feed samples (mixed) -->
               <div class="card small" data-category="following">
                 <div class="card-header-row">
-                  <div class="row no-gap middle-align max">
+                  <div class="row no-gap top-align max">
                     <div class="col s2">
                       <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>
@@ -388,7 +390,7 @@
 
               <div class="card small" data-category="discussions">
                 <div class="card-header-row">
-                  <div class="row no-gap middle-align max">
+                  <div class="row no-gap top-align max">
                     <div class="col s2">
                       <img src="https://www.beercss.com/favicon.png" class="circle small" loading="lazy">
                     </div>

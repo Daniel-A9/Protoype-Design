@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="../style.css" rel="stylesheet">
+    <title>Pizza Pie</title>
+</head>
+
+<body class="light">
+    <header>
+        <h3>I like pizza pie</h3>
+        <img src="../logo 333.png" width="50" height="50" alt="Pizza Pie Logo">
+    </header>
+    <!-- Mobile Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="home/index.html" class="nav-item" data-testid="mobile-nav-home">
+            <i>home</i>
+        </a>
+        <a href="index.html" class="nav-item active" data-testid="mobile-nav-search">
+            <i>search</i>
+        </a>
+        <a href="discussions/categories/local-discussions/index.html" class="nav-item" data-testid="mobile-nav-discussions">
+            <i>groups</i>
+        </a>
+        <a href="cart/index.html" class="nav-item" data-testid="mobile-nav-cart">
+            <i>shopping_cart</i>
+        </a>
+        <a href="userprofile/index.html" class="nav-item" data-testid="mobile-nav-profile">
+            <i>person</i>
+        </a>
+    </nav>
+    <main class="responsive">
+        <div class="feed-container">
+              
+            <!-- Card 1: Brewery Central -->
+            <article class="card small clickable-card" onclick="window.location.href='vendors/brewery/index.html'" data-testid="brewery-card" data-desktop-layout="brewery">
+              <header class="card-header-row">
+                <span class="type-badge vendor">VENDOR</span>
+                <span class="subcategory-tag">Brewery</span>
+              </header>
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop" class="responsive" loading="lazy" alt="Brewery Central">
+              </div>
+              <div class="card-header-actions">
+                <div class="card-title-section">
+                  <h5 class="card-title">Brewery Central</h5>
+                  <address class="card-location">
+                    <span class="location">12345</span>
+                    <span class="location-detail">Pittsburgh, PA</span>
+                  </address>
+                </div>
+                <button type="button" class="follow-btn">Follow</button>
+              </div>
+              <hr class="card-divider">
+              <section class="card-content">
+                <p>Crafting exceptional, small-batch beers since 2015, we're dedicated to quality, creativity, and community. Stop by our taproom to enjoy fresh pours straight from the source and explore our brewery with guided tours!</p>
+              </section>
+            </div>
+        <div class="grid">
+            <div class="s3 m6 l3">
+                <button class="small circle extra" type="button">
+                    <i>person</i>
+                </button>
+            </div>
+            <div class="s3 m6 l3">
+                <h3>Pane 2</h3>
+            </div>
+            <div class="s3 m6 l3">
+                <button class="small rectangle extra" style="width: 50px; height: 50px;" type="button">
+                    <span>following</span>
+                </button>
+            </div>
+            <div class="s3 m6 l3">
+                <h3>Pane 4</h3>
+            </div>
+        </div>`
+        I want to eat pizza pie
+        <button class="small circle extra" type="button">
+            <i>pizza_slice</i>
+        </button>
+    </main>
+</body>
+
+</html>

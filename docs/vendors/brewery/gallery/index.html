@@ -8,19 +8,83 @@
     <title>Photo Gallery - Brewery Central</title>
 
     <link href="../../../style.css" rel="stylesheet">
+    <style>
+      /* Mobile styles (default) */
+      #gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.125rem !important;
+      }
+      #gallery-grid figure {
+        width: 100% !important;
+        height: 100px !important;
+        min-height: 100px !important;
+        max-height: 100px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        aspect-ratio: 1 / 1 !important;
+      }
+      #gallery-grid figure img {
+        width: 100px !important;
+        height: 100px !important;
+        min-width: 100px !important;
+        min-height: 100px !important;
+        max-width: 100px !important;
+        max-height: 100px !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+        display: block !important;
+      }
+      #gallery-grid figure button {
+        width: 100px !important;
+        height: 100px !important;
+        min-width: 100px !important;
+        min-height: 100px !important;
+        padding: 0 !important;
+        display: block !important;
+        border-radius: 0 !important;
+      }
+
+      /* Desktop styles (large screens) */
+      @media (min-width: 1024px) {
+        #gallery-grid {
+          grid-template-columns: repeat(5, 1fr) !important;
+          gap: 0.5rem !important;
+        }
+        #gallery-grid figure {
+          height: 180px !important;
+          min-height: 180px !important;
+          max-height: 180px !important;
+        }
+        #gallery-grid figure img {
+          width: 180px !important;
+          height: 180px !important;
+          min-width: 180px !important;
+          min-height: 180px !important;
+          max-width: 180px !important;
+          max-height: 180px !important;
+        }
+        #gallery-grid figure button {
+          width: 180px !important;
+          height: 180px !important;
+          min-width: 180px !important;
+          min-height: 180px !important;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="top-header">
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <a href="../" class="circle transparent" aria-label="Back to vendor profile" style="color: #000; display: inline-flex; align-items: center; justify-content: center;">
+    <header class="top-header">
+      <div class="header-wordmark">
+        <a href="../" class="circle transparent" aria-label="Back to vendor profile">
           <i>arrow_back</i>
         </a>
-        <img src="../../../text.png" alt="Local Market Wordmark" loading="lazy" style="height: 40px; filter: var(--wordmark-filter);">
+        <img src="../../../text.png" alt="Local Market Wordmark" loading="lazy" class="wordmark-img">
       </div>
-      <nav class="header-nav">
+      <nav class="header-nav" aria-label="Main navigation">
         <a href="../../../home/" class="link" data-testid="desktop-nav-home">Home</a>
         <a href="../../../" class="link" data-testid="desktop-nav-discovery">Discover</a>
-        <a href="../../../discussions/categories/local-discussions/" class="link" data-testid="desktop-nav-community">Community</a>
+        <a href="../../../discussions/categories/local-discussions/index.html" class="link" data-testid="desktop-nav-community">Community</a>
         <a href="../../../cart/" class="link" data-testid="desktop-nav-cart">
           <i>shopping_cart</i>
           <span>Cart</span>
@@ -28,13 +92,22 @@
       </nav>
       <div class="header-right">
         <a href="../../../" class="site-logo">
-          <img src="../../../Logo 333.png" alt="LocalMarket Logo">
+          <img src="../../../Logo 333.png" alt="LocalMarket Logo" loading="lazy">
         </a>
-        <a href="../../../userprofile/" class="header-profile" data-testid="desktop-nav-profile">
+        <a href="../../../userprofile/" class="header-profile" data-testid="desktop-nav-profile" aria-label="User profile">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Profile" loading="lazy" class="circle small">
         </a>
+        <!-- Vendor Menu Button -->
+        <button type="button" class="feed-menu-btn" aria-label="Vendor menu" aria-expanded="false" aria-controls="vendorMenu">
+          <i>menu</i>
+          <menu class="feed-menu-dropdown" id="vendorMenu" role="menu">
+            <li role="menuitem">
+              <a href="#" class="menu-item">Menu</a>
+            </li>
+          </menu>
+        </button>
       </div>
-    </div>
+    </header>
 
     <nav class="bottom-nav">
       <a href="../../../home/" class="nav-item" data-testid="nav-home">
@@ -43,7 +116,7 @@
       <a href="../../../" class="nav-item" data-testid="nav-search">
         <i>search</i>
       </a>
-      <a href="../../../discussions/categories/local-discussions/" class="nav-item" data-testid="nav-discussions">
+      <a href="../../../discussions/categories/local-discussions/index.html" class="nav-item" data-testid="nav-discussions">
         <i>groups</i>
       </a>
       <a href="../../../cart/" class="nav-item" data-testid="nav-cart">
@@ -54,66 +127,66 @@
       </a>
     </nav>
 
-    <main class="responsive" style="padding-bottom: 70px;">
-      <section class="container" style="padding-top: 1rem;">
+    <main class="responsive">
+      <section class="container top-padding-medium">
 
-        <div class="grid small-space" style="margin-top: 1.5rem;">
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1400&h=1400&fit=crop" data-alt="Copper brewing kettles" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop" alt="Copper brewing kettles" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div id="gallery-grid" class="margin-top-medium">
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1400&h=1400&fit=crop" data-alt="Copper brewing kettles">
+              <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=180&h=180&fit=crop 1024w" alt="Copper brewing kettles" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1400&h=1400&fit=crop" data-alt="Citrus IPA glass on bar" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=300&h=300&fit=crop" alt="Citrus IPA glass on bar" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1400&h=1400&fit=crop" data-alt="Citrus IPA glass on bar">
+              <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=180&h=180&fit=crop 1024w" alt="Citrus IPA glass on bar" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=1400&h=1400&fit=crop" data-alt="Chocolate stout pour" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=300&fit=crop" alt="Chocolate stout pour" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=1400&h=1400&fit=crop" data-alt="Chocolate stout pour">
+              <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=180&h=180&fit=crop 1024w" alt="Chocolate stout pour" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=1400&h=1400&fit=crop" data-alt="Golden lager flight" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=300&h=300&fit=crop" alt="Golden lager flight" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=1400&h=1400&fit=crop" data-alt="Golden lager flight">
+              <img src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=180&h=180&fit=crop 1024w" alt="Golden lager flight" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1516594836182-37cb57405c4b?w=1400&h=1400&fit=crop" data-alt="Tap handles at Brewery Central" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1516594836182-37cb57405c4b?w=300&h=300&fit=crop" alt="Tap handles at Brewery Central" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1516594836182-37cb57405c4b?w=1400&h=1400&fit=crop" data-alt="Tap handles at Brewery Central">
+              <img src="https://images.unsplash.com/photo-1516594836182-37cb57405c4b?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1516594836182-37cb57405c4b?w=180&h=180&fit=crop 1024w" alt="Tap handles at Brewery Central" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1532634896-26909d0d4b86?w=1400&h=1400&fit=crop" data-alt="Outdoor patio with string lights" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1532634896-26909d0d4b86?w=300&h=300&fit=crop" alt="Outdoor patio with string lights" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1532634896-26909d0d4b86?w=1400&h=1400&fit=crop" data-alt="Outdoor patio with string lights">
+              <img src="https://images.unsplash.com/photo-1532634896-26909d0d4b86?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1532634896-26909d0d4b86?w=180&h=180&fit=crop 1024w" alt="Outdoor patio with string lights" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1460518451285-97b6aa326961?w=1400&h=1400&fit=crop" data-alt="Brew master checking tanks" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1460518451285-97b6aa326961?w=300&h=300&fit=crop" alt="Brew master checking tanks" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1460518451285-97b6aa326961?w=1400&h=1400&fit=crop" data-alt="Brew master checking tanks">
+              <img src="https://images.unsplash.com/photo-1460518451285-97b6aa326961?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1460518451285-97b6aa326961?w=180&h=180&fit=crop 1024w" alt="Brew master checking tanks" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1512053565409-1b3b6f78174a?w=1400&h=1400&fit=crop" data-alt="Community night trivia" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1512053565409-1b3b6f78174a?w=300&h=300&fit=crop" alt="Community night trivia" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1512053565409-1b3b6f78174a?w=1400&h=1400&fit=crop" data-alt="Community night trivia">
+              <img src="https://images.unsplash.com/photo-1512053565409-1b3b6f78174a?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1512053565409-1b3b6f78174a?w=180&h=180&fit=crop 1024w" alt="Community night trivia" loading="lazy" width="100" height="100">
             </button>
-          </div>
-          <div class="s4 m4 l2">
-            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1580894908361-967195033215?w=1400&h=1400&fit=crop" data-alt="Live music performance" style="display: block; width: 100%; height: 0; padding-top: 100%; position: relative; overflow: hidden; border-radius: 0;">
-              <img src="https://images.unsplash.com/photo-1580894908361-967195033215?w=300&h=300&fit=crop" alt="Live music performance" loading="lazy" class="responsive" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover;">
+          </figure>
+          <figure>
+            <button class="transparent" data-gallery-image data-image="https://images.unsplash.com/photo-1580894908361-967195033215?w=1400&h=1400&fit=crop" data-alt="Live music performance">
+              <img src="https://images.unsplash.com/photo-1580894908361-967195033215?w=100&h=100&fit=crop" srcset="https://images.unsplash.com/photo-1580894908361-967195033215?w=180&h=180&fit=crop 1024w" alt="Live music performance" loading="lazy" width="100" height="100">
             </button>
-          </div>
+          </figure>
         </div>
       </section>
     </main>
 
-    <dialog id="image-dialog" class="modal max" style="max-height: calc(100vh - 64px);">
-      <button data-ui="#image-dialog" class="circle transparent" style="position: absolute; right: 1rem; top: 1rem;">
+    <dialog id="image-dialog" class="modal max">
+      <button data-ui="#image-dialog" class="circle transparent right-align top-align right-padding-medium top-padding-medium">
         <i>close</i>
       </button>
-      <div style="max-height: 100%; overflow-y: auto; padding-bottom: 1rem;">
-        <img id="dialog-image" src="" alt="" class="responsive round" style="width: 100%; height: auto; object-fit: cover;">
-        <p id="dialog-caption" class="text-grey" style="margin-top: 1rem; text-align: center;"></p>
+      <div class="scroll max-height padding-bottom-medium">
+        <img id="dialog-image" src="" alt="" class="responsive round max">
+        <p id="dialog-caption" class="text-grey margin-top-medium center-align"></p>
       </div>
     </dialog>
 
